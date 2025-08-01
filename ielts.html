@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>IELTS Exams</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        .text-justify {
+            text-align: justify;
+        }
+
+        .floating-logo {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1050;
+            box-shadow: none;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: auto;
+            height: auto;
+        }
+
+        .floating-logo img {
+            max-width: 100px;
+            height: auto;
+        }
+
+        .floating-logo:hover {
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+        }
+
+        header.position-relative {
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        header.position-relative img.background-hero {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+
+        header.position-relative .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            z-index: 2;
+            max-width: 900px;
+            padding: 0 15px;
+            text-align: center;
+            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.8);
+        }
+
+        section h2 {
+            color: #dc3545;
+            font-weight: 700;
+        }
+
+        hr.section-underline {
+            border-color: #dc3545;
+            border-width: 2px;
+            width: 130px;
+            margin-left: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-even .row>div:first-child {
+            order: 1;
+        }
+
+        .section-even .row>div:last-child {
+            order: 2;
+        }
+
+        .section-odd .row>div:first-child {
+            order: 1;
+        }
+
+        .section-odd .row>div:last-child {
+            order: 2;
+        }
+
+        @media (max-width: 767.98px) {
+
+            .section-even .row>div,
+            .section-odd .row>div {
+                order: unset !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <a href="/" class="floating-logo">
+        <img src="img/logo.png" alt="Logo" />
+    </a>
+
+    <header class="position-relative">
+        <img src="img/ielts.png" alt="Hero Background" class="background-hero" />
+        <div class="hero-content">
+            <h1 class="display-4 fw-bold">International English Language Testing System (IELTS)</h1>
+            <p class="lead px-3 text-justify mx-auto" style="max-width: 800px;">
+                IELTS is the top English proficiency test for study, work, and migration, assessing four key language
+                skills and recognized globally.
+            </p>
+            <a href="#book" class="btn btn-danger mt-3">Book Now</a>
+        </div>
+    </header>
+
+    <section id="about" class="py-5 section-odd">
+        <div class="container">
+            <h2 class="text-start mb-3">About</h2>
+            <hr class="section-underline" />
+            <div class="row align-items-center text-justify" style="font-size: 18px;">
+                <div class="col-md-6">
+                    <p>
+                        <strong>IELTS </strong>stands for the <strong>International English Language Testing
+                            System.</strong>Developed jointly by the
+                        British Council, IDP: IELTS Australia, and Cambridge Assessment English, the exam measures your
+                        proficiency in English through real-life language tasks. With two test types available—IELTS
+                        Academic for university admission and professional registration, and IELTS General Training for
+                        migration and training purposes—IELTS is designed to suit diverse needs.
+                    </p>
+                    <ol>
+                        <li>
+                            <strong>Test Format</strong>
+                            <ul>
+                                <li>Listening: 30 minutes (plus transfer time for paper-based tests)</li>
+                                <li>Reading: 60 minutes</li>
+                                <li>Writing: 60 minutes</li>
+                                <li>Speaking: 11–14 minutes (can be scheduled on the same day or within a week
+                                    before/after the other sections)</li>
+                            </ul>
+                            <p class="my-3">
+                                The total test duration is approximately 2 hours and 45 minutes.
+                            </p>
+                        </li>
+                        <li>
+                            <strong>Why choose IELTS?</strong>
+                            <ul>
+                                <li>Global Recognition: Accepted by over 12,500 organizations worldwide.</li>
+                                <li>Real-World Relevance: Designed to test everyday communication skills in academic and
+                                    social contexts.</li>
+                                <li> Flexible Options: Available on paper, computer, or even online in certain regions.
+                                </li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+                <div class="col-md-6">
+                    <img src="img/ielts.png" class="img-fluid rounded-3" alt="IELTS Image" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="criteria" class="py-5 section-even">
+        <div class="container">
+            <h2 class="text-start mb-3">Criteria</h2>
+            <hr class="section-underline" style="width: 140px" />
+            <div class="row align-items-center text-justify" style="font-size: 18px;">
+                <div class="col-md-6">
+                    <img src="img/documents.jpg" class="img-fluid rounded" alt="Criteria" />
+                </div>
+                <div class="col-md-6">
+                    <p>
+                        <strong>Scoring and Band Descriptors:</strong><br />
+                        IELTS uses a 9-band scoring system, where each section (Listening, Reading, Writing, Speaking)
+                        is scored and then averaged to give an Overall Band Score. Here’s a quick overview:
+                    </p>
+
+                    <ul>
+                        <li><strong>Band 9:</strong> Expert user – Full command of the language.</li>
+                        <li><strong>Band 8:</strong> Very good user – Operates fluently with occasional inaccuracies.
+                        </li>
+                        <li><strong>Band 7:</strong> Good user – Generally effective command with some inaccuracies.
+                        </li>
+                        <li><strong>Band 6:</strong> Modest user – Partial command with frequent mistakes.</li>
+                        <li><strong>Band 5 and below:</strong> Limited to minimal communication abilities.</li>
+                    </ul>
+
+                    <p><strong>Writing Assessment</strong></p>
+                    <ul>
+                        <li>Task Achievement/Response: Completeness and accuracy in addressing the task.</li>
+                        <li>Coherence and Cohesion: Logical organization and linking of ideas.</li>
+                        <li>Lexical Resource: Range and appropriate use of vocabulary.</li>
+                        <li>Grammatical Range and Accuracy: Variety and correctness of sentence structures.</li>
+                    </ul>
+
+                    <p><strong>Speaking Assessment</strong></p>
+                    <ul>
+                        <li>Fluency and Coherence: Smoothness and clarity of speech.</li>
+                        <li>Lexical Resource: Vocabulary diversity and precision.</li>
+                        <li>Grammatical Range and Accuracy: Correct and varied language use.</li>
+                        <li>Pronunciation: Clarity and natural intonation.</li>
+                    </ul>
+                    <p>The final Overall Band Score is the average of all four skills, rounded to the nearest half band.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="process" class="py-5 section-odd">
+        <div class="container">
+            <h2 class="text-start mb-3">Step by Step Process</h2>
+            <hr class="section-underline" style="width: 230px" />
+            <div class="row align-items-center text-justify" style="font-size: 18px;">
+                <div class="col-md-6">
+                    <ol>
+                        <li><strong>Choose Your Test Type:</strong>
+                            <ul>
+                                <li>Decide whether you need IELTS Academic (for higher education or professional
+                                    registration) or IELTS General Training (for immigration or non-academic training).
+                                </li>
+                            </ul>
+                        </li>
+                        <li><strong>Select a Test Centre and Date:</strong>
+                            <ul>
+                                <li>Visit the official IELTS website or your local test centre’s portal to view
+                                    available dates and locations. IELTS is offered in over 4,000 centres worldwide.
+                                </li>
+                            </ul>
+                        </li>
+                        <li><strong>Register Online or Offline:</strong>
+                            <ul>
+                                <li>Online Registration: Fill in your personal details, select your test type, centre,
+                                    and date, then create an account.</li>
+                                <li>Offline Registration: Some centres allow in-person registration at their branches.
+                                </li>
+                            </ul>
+                        </li>
+                        <li><strong>Complete the Application Form:</strong>
+                            <ul>
+                                <li>Ensure that the information you provide (name, date of birth, contact details)
+                                    exactly matches your identification document.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Upload Required Documents:</strong>
+                            <ul>
+                                <li>You will need to upload a scanned copy or photo of your valid identification
+                                    (passport or national ID) during the application process.
+                                </li>
+                            </ul>
+                        </li>
+                        <li><strong> Make Payment:</strong>
+                            <ul>
+                                <li>Pay the exam fee using online payment methods or, if applicable, at the test centre.
+                                    Your booking is confirmed once payment is successfully processed.
+                                </li>
+                            </ul>
+                        </li>
+                        <li><strong> Receive Confirmation:</strong>
+                            <ul>
+                                <li>After successful registration, you will receive an email with your test details,
+                                    including date, time, and venue.</li>
+                        </li>
+                        </ul>
+                        </li>
+                        <li><strong>Prepare for the Exam:</strong>
+                            <ul>
+                                <li>Use official preparation materials, practice tests, and IELTS preparation courses to
+                                    familiarize yourself with the exam format and improve your skills.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+                <div class="col-md-6">
+                    <img src="img/process.jpg" class="img-fluid rounded-3" alt="Step by Step" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 section-even" id="faq">
+        <div class="container">
+            <h2 class="text-start mb-4">FAQs</h2>
+            <hr class="section-underline" style="width: 80px" />
+            <div class="row align-items-center">
+                <div class="col-md-6 order-md-1">
+                    <img src="img/faqs.jpg" class="img-fluid rounded-3" alt="FAQs Image" />
+                </div>
+                <div class="col-md-6 order-md-2 text-justify" style="font-size: 18px;">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <strong>Q:</strong> What is the difference between IELTS Academic and General
+                            Training?<br />
+                            <strong>A:</strong> IELTS Academic is designed for those applying for higher
+                            education or professional registration, while IELTS General Training is geared
+                            toward work, training, or migration purposes.
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Q:</strong> How long is the IELTS exam?<br />
+                            <strong>A:</strong> The exam takes approximately 2 hours and 45 minutes in total,
+                            with Listening, Reading, and Writing completed in one sitting and the Speaking test
+                            scheduled on the same day or within a week before/after.
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Q:</strong> How is the IELTS scored?<br />
+                            <strong>A:</strong> Each section is scored on a 9-band scale. The Overall Band Score
+                            is the average of the four skills, rounded to the nearest half band.
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Q:</strong> What documents do I need to bring on test day?<br />
+                            <strong>A:</strong> You must bring the original identification document (passport or
+                            national ID) you used during registration, along with your registration
+                            confirmation.
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Q:</strong> How do I register for the IELTS exam?<br />
+                            <strong>A:</strong> You can register online via the official IELTS website or your
+                            local test centre’s portal. Complete the application, upload your ID, pay the fee,
+                            and receive your confirmation details.
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Q:</strong> What if I need to reschedule or cancel my test?<br />
+                            <strong>A:</strong> Rescheduling or cancellation policies vary by centre. Typically,
+                            you must request changes several weeks in advance and may incur an administrative
+                            fee if done close to the test date. Contact your test centre for specific
+                            guidelines.
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Q:</strong> Can I take IELTS online?<br />
+                            <strong>A:</strong> In some regions, IELTS Online is available. It has the same
+                            format and scoring as the paper-based or computer-delivered test but allows you to
+                            take the exam from a private location with a stable internet connection.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-light py-5" style="background-color: #7b282c;">
+        <div class="container-fluid px-lg-5">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <h5 class="text-uppercase">Subscribe to Our Newsletter</h5>
+                    <p>Get updates on new immigration policies and changes to permit processes.</p>
+                    <form>
+                        <input class="form-control mb-2" type="email" placeholder="Enter your email" required />
+                        <button class="btn btn-light w-100" type="submit">Subscribe</button>
+                    </form>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="text-uppercase">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#about" class="text-white text-decoration-none">About</a></li>
+                        <li><a href="#criteria" class="text-white text-decoration-none">Criteria</a></li>
+                        <li><a href="#process" class="text-white text-decoration-none">Step-by-Step</a></li>
+                        <li><a href="#faq" class="text-white text-decoration-none">FAQs</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="text-uppercase">Contact</h5>
+                    <p>Email: assessment@romancis.ca<br /> Phone: 09171857247 | (250) 667-0565</p>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="text-uppercase">Follow Us</h5>
+                    <p>
+                        <a href="https://www.facebook.com/RomanCanadianImmigrationServices"
+                            class="text-white text-decoration-none">Facebook</a><br />
+                        <a href="https://www.linkedin.com/company/roman-associates-immigration-services-ltd/"
+                            class="text-white text-decoration-none">LinkedIn</a><br />
+                        <a href="https://www.tiktok.com/@romancanadianimmigration"
+                            class="text-white text-decoration-none">Tiktok</a><br />
+                        <a href="https://www.youtube.com/@RomanCanadianImmigration"
+                            class="text-white text-decoration-none">Youtube</a>
+                    </p>
+                </div>
+            </div>
+            <div class="text-center pt-3">
+                <small>© 2025 Roman Canadian Immigration Services. All Rights Reserved.</small>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
