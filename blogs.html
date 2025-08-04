@@ -300,10 +300,8 @@
       marker.on('click', () => {
         map.setView([school.coordinates[1], school.coordinates[0]], 10);
 
-        // Always remove highlight from all cards
         document.querySelectorAll('.news-card').forEach(card => card.classList.remove('hovered'));
 
-        // Only highlight if this pin is tied to a card
         if (school.cardId) {
           const card = document.getElementById(school.cardId);
           if (card) {
