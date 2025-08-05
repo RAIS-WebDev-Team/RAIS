@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Service Offered</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: white;
+            padding: 0;
+            margin: 0;
+        }
+
+        .full-height-center {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+        }
+
+        .card-stack {
+            position: relative;
+            height: 320px;
+            max-width: 500px;
+            margin: auto;
+            perspective: 1000px;
+        }
+
+        .card-link {
+            position: absolute;
+            width: 100%;
+            height: 300px;
+            border-radius: 12px;
+            color: white;
+            font-size: 1rem;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            text-decoration: none;
+            background-color: #ccc;
+            transform: translate(calc(var(--i) * 30px), calc(var(--i) * -30px)) rotate(calc(var(--i) * 3deg));
+            z-index: calc(10 - var(--i));
+            transition: transform 1.5s ease, box-shadow 1.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .card-link:hover {
+            transform: translate(calc(var(--i) * 30px), calc(var(--i) * -30px)) scale(1.05);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+        }
+
+        .card-link img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .card-link:nth-child(1) {
+            background-color: #C2D6C3;
+        }
+
+        .card-link:nth-child(2) {
+            background-color: #FFE0B3;
+        }
+
+        .card-link:nth-child(3) {
+            background-color: #C8775D;
+        }
+
+        .card-link:nth-child(4) {
+            background-color: #F19D6D;
+        }
+
+        .card-link:nth-child(5) {
+            background-color: #F3C982;
+        }
+
+        .card-link:nth-child(6) {
+            background-color: #7D9C7B;
+        }
+
+        .card-link:nth-child(7) {
+            background-color: #5D8B6D;
+        }
+
+        /* Mobile view - vertical snap scroll with original card size */
+        @media (max-width: 768px) {
+            .card-stack {
+                position: static;
+                height: 320px;
+                overflow-y: scroll;
+                scroll-snap-type: y mandatory;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .card-link {
+                position: relative;
+                height: 300px;
+                transform: none !important;
+                scroll-snap-align: start;
+                z-index: auto;
+                margin-bottom: 1rem;
+            }
+
+            .card-link:hover {
+                transform: scale(1.02);
+            }
+
+            .card-link img {
+                height: 220px;
+            }
+
+            .full-height-center {
+                padding: 1.5rem 1rem;
+                min-height: auto;
+                display: block;
+            }
+
+            .text-section {
+                text-align: center;
+                margin-bottom: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container full-height-center">
+        <div class="row justify-content-center align-items-center text-center text-md-start w-100">
+            <!-- Text Section -->
+            <div class="col-12 col-md-4 text-section mb-4 mb-md-0">
+                <h1><strong>Service Offered</strong></h1>
+                <p>High-quality solutions with expert support and convenience.</p>
+            </div>
+
+            <!-- Cards -->
+            <div class="col-12 col-md-8">
+                <div class="card-stack">
+                    <a href="Service Offered/caregiver.html" class="card-link" style="--i:0;">
+                        Caregiver Permit
+                        <img src="img/Fcaregiver.png" alt="Caregiver Permit" />
+                    </a>
+                    <a href="Service Offered/work.html" class="card-link" style="--i:1;">
+                        Work Permit
+                        <img src="img/Fwork.png" alt="Work Permit" />
+                    </a>
+                    <a href="Service Offered/visitpermit.html" class="card-link" style="--i:2;">
+                        Visit (Tourist Visa) Permit
+                        <img src="img/Fvisit.png" alt="Tourist Visa" />
+                    </a>
+                    <a href="pr.html" class="card-link" style="--i:3;">
+                        Permanent Residency (PR)
+                        <img src="img/Fpr.png" alt="PR" />
+                    </a>
+                    <a href="Service Offered/fam.html" class="card-link" style="--i:4;">
+                        Family Sponsorship
+                        <img src="img/Ffamily.png" alt="Family Sponsorship" />
+                    </a>
+                    <a href="Service Offered/lmia.html" class="card-link" style="--i:5;">
+                        Labour Market Impact Assessment (LMIA)
+                        <img src="img/Flmia.png" alt="LMIA" />
+                    </a>
+                    <a href="Service Offered/study.html" class="card-link" style="--i:6;">
+                        Study Permit
+                        <img src="img/Fstudy.png" alt="Study Permit" />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const cards = document.querySelectorAll('.card-link');
+        let index = 0;
+
+        function updateCards() {
+            cards.forEach((card, i) => {
+                const pos = (i - index + cards.length) % cards.length;
+                card.style.setProperty('--i', pos);
+            });
+        }
+
+        function isMobile() {
+            return window.innerWidth <= 768;
+        }
+
+        if (!isMobile()) {
+            updateCards();
+            setInterval(() => {
+                index = (index + 1) % cards.length;
+                updateCards();
+            }, 2500);
+        }
+    </script>
+</body>
+
+</html>
+>
