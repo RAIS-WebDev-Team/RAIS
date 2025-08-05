@@ -285,13 +285,12 @@
         </article>
     </main>
 
-  <a href="index.html" class="btn-back">
-    ← Go Back
+  <a href="../blogs.html" class="btn-back">
+    Go Back
   </a>
 
    <footer id="contact">
         <div class="footer-container">
-            <!-- LEFT SIDE -->
             <div class="footer-left" style="padding-left: 20px;">
                 <h3>Wanna Subscribe to our News Letter?</h3>
                 <p>Subscribe to our newsletter for the latest updates on new features and product releases.</p>
@@ -306,7 +305,6 @@
                 </div>
             </div>
 
-            <!-- RIGHT SIDE -->
             <div class="footer-right">
                 <h3>Get In Touch</h3>
                 <p>
@@ -326,7 +324,7 @@
 
         function submitSubscription() {
             const email = document.getElementById("email").value;
-            if (email && email.includes('@')) { // Simple email validation
+            if (email && email.includes('@')) { 
                 alert("Subscribed successfully with: " + email);
                 document.getElementById("email").value = "";
                 document.getElementById("subscription-form").style.display = "none";

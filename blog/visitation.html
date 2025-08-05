@@ -9,8 +9,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #00796B; /* Deep Teal */
-            --secondary-color: #FFC107; /* Amber for highlights */
+            --primary-color: #00796B; 
+            --secondary-color: #FFC107; 
             --background-color: #F7F9F9;
             --surface-color: #FFFFFF;
             --text-color: #333333;
@@ -93,8 +93,8 @@
         .main-image {
             width: 100%;
             height: auto;
-            aspect-ratio: 16 / 9; /* Enforce landscape ratio */
-            object-fit: cover; /* Prevents image distortion */
+            aspect-ratio: 16 / 9;
+            object-fit: cover; 
             border-radius: 12px;
             margin-bottom: 2rem;
         }
@@ -122,7 +122,7 @@
             padding: 2rem;
             box-shadow: 0 4px 12px rgba(0,0,0,0.05);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            overflow: hidden; /* Ensures content respects the border radius */
+            overflow: hidden;
         }
         
         .event-card:hover {
@@ -133,8 +133,8 @@
         .event-card img {
             width: 100%;
             height: auto;
-            aspect-ratio: 16 / 9; /* Enforce landscape ratio */
-            object-fit: cover; /* Prevents image distortion */
+            aspect-ratio: 16 / 9; 
+            object-fit: cover; 
             border-radius: 8px;
             margin-bottom: 1.5rem;
         }
@@ -273,7 +273,6 @@
 <body>
     <header>
         <div class="logo-container">
-            <!-- You can replace this with the actual RAIS logo if available -->
             <img src="img/logo.png" alt="RAIS Logo">
         </div>
         <nav>
@@ -322,13 +321,12 @@
         </article>
     </main>
 
-  <a href="index.html" class="btn-back">
-    ← Go Back
+  <a href="../blogs.html" class="btn-back">
+    Go Back
   </a>
 
    <footer id="contact">
         <div class="footer-container">
-            <!-- LEFT SIDE -->
             <div class="footer-left" style="padding-left: 20px;">
                 <h3>Wanna Subscribe to our News Letter?</h3>
                 <p>Subscribe to our newsletter for the latest updates on new features and product releases.</p>
@@ -343,7 +341,6 @@
                 </div>
             </div>
 
-            <!-- RIGHT SIDE -->
             <div class="footer-right">
                 <h3>Get In Touch</h3>
                 <p>
@@ -363,7 +360,7 @@
 
         function submitSubscription() {
             const email = document.getElementById("email").value;
-            if (email && email.includes('@')) { // Simple email validation
+            if (email && email.includes('@')) { 
                 alert("Subscribed successfully with: " + email);
                 document.getElementById("email").value = "";
                 document.getElementById("subscription-form").style.display = "none";
