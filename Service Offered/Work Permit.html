@@ -6,266 +6,482 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Work Permit</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
     <link rel="stylesheet" href="all.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .highlight {
+            color: #781d22;
+            font-weight: bold;
+            text-decoration: underline;
+            text-underline-offset: 8px;
+        }
+
+        header {
+            position: relative;
+            height: 100vh;
+            background-image: url('../img/caregiver.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        .overlay-box {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 2;
+        }
+
+        .logo img {
+            width: 90px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 750px;
+            padding: 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px #000;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .hero-content a {
+            background-color: #b60022;
+            color: white;
+            padding: 10px 28px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .hero-content a:hover {
+            background-color: #8e001a;
+            transform: scale(1.05);
+        }
+
+        .nav-tabs .nav-link {
+            color: #444;
+            font-weight: 600;
+            border-radius: 0;
+        }
+
+        .nav-tabs .nav-link.active {
+            background-color: #781d22;
+            color: white;
+            border-color: transparent;
+        }
+
+        .tab-content {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+        }
+
+        .tab-content img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+
+        .fixed-container {
+            max-width: 1500px;
+            width: 1500px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 1024px) {
+            .fixed-container {
+                width: 100%;
+                padding: 0 15px;
+            }
+        }
+
+
+        footer {
+            background-color: #7b2c2c;
+            color: white;
+            padding: 50px 20px;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1100px;
+            margin: auto;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .footer-left,
+        .footer-right {
+            flex: 1;
+            min-width: 300px;
+            padding: 10px;
+        }
+
+        .footer-left {
+            text-align: center;
+            border-right: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .footer-left button,
+        .footer-left #subscription-form button {
+            background-color: #b60022;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            font-size: 14px;
+            border-radius: 25px;
+            margin-top: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .footer-left button:hover {
+            background-color: #8e001a;
+        }
+
+        .footer-right h3 {
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-left {
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+                margin-bottom: 30px;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+        }
+
+        .tab-pane .img-fluid {
+            max-height: 400;
+            object-fit: cover;
+            width: 100%;
+        }
+
+        .tab-pane .col-md-6,
+        .tab-pane .col-md-5,
+        .tab-pane .col-md-7 {
+            padding: 15px;
+        }
+
+        .tab-pane {
+            padding: 20px 0;
+        }
+
+        @media (max-width: 768px) {
+            .tab-pane .img-fluid {
+                max-height: 400px;
+            }
+        }
+
+        .tab-pane .row {
+            min-height: 400px;
+        }
+
+        .tab-pane img {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+        }
+    </style>
 </head>
 
-<body style="background-color: white">
-    <header class="position-relative text-white" style="
-        height: 100vh;
-        background: url('../img/workpermitbig.jpg') center/cover no-repeat;
-      ">
-        <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-75"></div>
-        <div class="position-absolute top-0 start-0 p-3 z-2">
-            <img src="../img/logo1.png" alt="logo" style="width: 100px" />
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="overlay-box"></div>
+        <div class="logo">
+            <img src="../img/logo.png" alt="logo" />
         </div>
-
-        <!-- Hero Content -->
-        <div class="container h-100 d-flex justify-content-center align-items-center z-2 position-relative text-center">
-            <div class="px-3 px-md-5">
-                <h1 class="display-5 fw-bold">Work Permit</h1>
-                <p class="lead mt-3">
-                    A work permit allows individuals to work legally in a specific
-                    country, often requiring employer sponsorship or meeting eligibility
-                    criteria. For caregivers, additional requirements may include
-                    qualifications and a positive Labour Market Impact Assessment
-                    (LMIA).
-                </p>
-                <a href="#apply" class="btn btn-lg mt-3 display-6 fw-medium custom-btn">Apply Now</a>
-            </div>
+        <div class="hero-content text-white text-center px-3">
+            <h1>Work Permit</h1>
+            <p>A work permit allows individuals to work legally in a specific
+                country, often requiring employer sponsorship or meeting eligibility
+                criteria. For caregivers, additional requirements may include
+                qualifications and a positive Labour Market Impact Assessment
+                (LMIA).</p>
+            <a href="#info">Explore</a>
         </div>
     </header>
+    <!-- TABS SECTION -->
+    <section class="py-5 my-5" id="info">
+        <div class="container fixed-container px-4 px-md-5">
 
-    <!-- ABOUT SECTION -->
-    <section class="py-5" id="about">
-        <div class="container">
-            <h2 class="text-start mb-4"><span class="highlight">About</span></h2>
-            <div class="row align-items-start">
-                <div class="col-md-6">
-                    <p>
-                        A work permit is required for foreign skilled workers wishing to
-                        work temporarily in Canada. To qualify, a person must have a
-                        temporary offer of employment from a Canadian employer. Certain
-                        positions may require the knowledge of the National Occupation
-                        Classification (NOC) Code, which classifies employment types by
-                        Canadian standards. Individuals applying for a Permanent Resident
-                        (PR) card may also apply for an open work permit.
-                    </p>
+            <ul class="nav nav-tabs mb-5 justify-content-center border-0" id="tabMenu" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#about" type="button"
+                        role="tab">About</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#criteria" type="button"
+                        role="tab">Criteria</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#process" type="button"
+                        role="tab">Process</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#documents" type="button"
+                        role="tab">Documents</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#faq" type="button"
+                        role="tab">FAQs</button>
+                </li>
+            </ul>
+            <div class="tab-content tab-section-content fs-6">
+                <!-- ABOUT -->
+                <div class="tab-pane fade show active" id="about" role="tabpanel">
+                    <div class="row align-items-center g-4">
+                        <div class="col-md-6">
+                            <p class="lh-lg text-justify px-md-4">
+                                A work permit is required for foreign skilled workers wishing to
+                                work temporarily in Canada. To qualify, a person must have a
+                                temporary offer of employment from a Canadian employer. Certain
+                                positions may require the knowledge of the National Occupation
+                                Classification (NOC) Code, which classifies employment types by
+                                Canadian standards. Individuals applying for a Permanent Resident
+                                (PR) card may also apply for an open work permit.
+                            </p>
+                        </div>
+                        <div class="col-md-6 text-center">
+                            <img src="../img/pic2.png" alt="Work Permit Image" class="img-fluid rounded"
+                                style="height: 350px; object-fit: contain;" />
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    <img src="../img/WORK PERMIT ABOUT.jpg" alt="Caregiver Image" class="img-fluid rounded" width="500"
-                        height="500" />
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CRITERIA  -->
-    <section class="py-5 bg-white" id="criteria">
-        <div class="container">
-            <h2 class="text-start mb-4"><span class="highlight">Criteria</span></h2>
-            <div class="row align-items-center">
-                <div class="col-md-6 order-md-1">
-                    <img src="../img/criteria.jpg" alt="Checklist" class="img-fluid rounded" width="500" height="500" />
-                </div>
-                <div class="col-md-6 order-md-2">
-                    <h4 class="text-start mb-4">
-                        There are two main types of work permits in Canada:
-                    </h4>
-                    <ul class="ps-3 list-group list-group-flush">
-                        <li class="list-group-item">
-                            <strong>1. Open Work Permit (OWP):</strong>
-                            <br />- This permit is not job-specific. <br />- Applicants do
-                            not need to specify an employer when applying. <br />- It
-                            includes permits for spouses, post-graduation work, youth
-                            programs, and more.
-                        </li>
-                        <li class="list-group-item">
-                            <strong>2. Employer-Specific Work Permit:</strong>
-                            <br />- The work permit specifies the employer, job duration,
-                            and work location (if applicable). <br />- Conditions must be
-                            followed as per the permit details.
-                        </li>
-                    </ul>
-                    <h6 class="text-start mt-5">
-                        The specific criteria you need to meet depends on which type of
-                        work permit you are applying for, your qualifications, job offer,
-                        and other individual circumstances.
-                    </h6>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PROCESS SECTION -->
-    <section class="py-5" id="process">
-        <div class="container">
-            <h2 class="text-start mb-4"><span class="highlight">Step By Step Process</span></h2>
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <ul class="ps-3 list-group list-group-flush">
-                        <li class="list-group-item">
-                            <strong> Employer Applies for Labour Market Opinion (if necessary):</strong>
-                            <br />- The employer may need to apply for a Labour Market Impact Assessment (LMIA) to prove
-                            there is a need for a foreign worker.
-                        </li>
-                        <li class="list-group-item">
-                            <strong>Employer Extends a Temporary Job Offer:</strong>
-                            <br />- Once the employer receives the LMIA (if needed), they can extend a temporary job
-                            offer to the foreign worker.
-                        </li>
-                        <li class="list-group-item">
-                            <strong>Foreign Skilled Worker Applies for Work Permit:</strong>
-                            <br />- After receiving the job offer, the foreign worker applies for a work permit.
-                        </li>
-                        <li class="list-group-item">
-                            <strong>Work Permit Is Issued:</strong>
-                            <br />- If all the criteria are met, the work permit is issued to the foreign worker, and
-                            they can begin their employment in Canada.
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md-6">
-                    <img src="../img/proc.jpg" alt="Step Image" class="img-fluid rounded" width="500" height="500" />
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- DOCUMENTS SECTION -->
-    <section class="py-5 bg-white" id="documents">
-        <div class="container">
-            <h2 class="text-start mb-4"><span class="highlight">Required Documents</span></h2>
-            <div class="row align-items-center">
-                <div class="col-md-6 order-md-1">
-                    <img src="../img/documents.jpg" alt="Checklist" class="img-fluid rounded" width="500"
-                        height="500" />
-                </div>
-                <div class="col-md-6 order-md-2">
-                    <ul class="ps-3 list-group list-group-flush">
-                        <li class="list-group-item">
-                            <strong>For the Sponsor:</strong>
-                            <ul class="mt-2">
-                                <li>Proof of Canadian citizenship or permanent residency (e.g., passport, PR card)</li>
-                                <li>Proof of income demonstrating financial ability to support the sponsored person</li>
-                                <li>Completed and signed application for sponsorship</li>
-                                <li>Divorce or death certificates (if applicable for spousal sponsorship)</li>
+                <!-- CRITERIA -->
+                <div class="tab-pane fade" id="criteria" role="tabpanel">
+                    <div class="row align-items-center g-4">
+                        <div class="col-md-6 text-center">
+                            <img src="../img/criteria.jpg" alt="Criteria" class="img-fluid rounded"
+                                style="height: 350px; object-fit: contain;" />
+                        </div>
+                        <div class="col-md-6 px-md-4" style="font-size: 16px;">
+                            <h5 class="fw-bold mb-3">Criteria:</h5>
+                            <p class="fw-bold mb-3">There are two main types of work permits in Canada:</p>
+                            <ul class="lh-lg ps-0" style="list-style: none;">
+                                <li class="pb-3 mb-3 border-bottom">
+                                    <strong>Open Work Permit (OWP):</strong>
+                                    <ul class="ps-4" style="list-style-type: circle;">
+                                        <li>Not job-specific</li>
+                                        <li>No employer required when applying</li>
+                                        <li>Includes permits for spouses, post-graduation work, youth programs, and more
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="pb-3 mb-3">
+                                    <strong>Employer-Specific Work Permit:</strong>
+                                    <ul class="ps-4" style="list-style-type: circle;">
+                                        <li>Tied to a specific employer, job duration, and location</li>
+                                        <li>Conditions must be followed as stated in the permit</li>
+                                    </ul>
+                                </li>
                             </ul>
-                        </li>
-                        <li class="list-group-item">
-                            <strong>For the Sponsored Person:</strong>
-                            <ul class="mt-2">
-                                <li>Proof of relationship (e.g., marriage certificate, joint financial records)</li>
-                                <li>Proof of identity (passport, national ID card, or birth certificate)</li>
-                                <li>Medical exam results</li>
-                                <li>Police certificates</li>
-                                <li>Proof of financial dependency (for children or dependent adults)</li>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PROCESS -->
+                <div class="tab-pane fade" id="process" role="tabpanel">
+                    <div class="row align-items-center g-4">
+                        <div class="col-md-6 px-md-4">
+                            <h5 class="fw-bold mb-3">Process:</h5>
+                            <ol class="lh-base" style="font-size: 16px; padding-left: 1rem;">
+                                <li class="mb-3">
+                                    <strong>Employer Applies for LMIA:</strong>
+                                    <ul style="list-style-type: circle; padding-left: 1.2rem; margin-top: 0.3rem;">
+                                        <li>May require an LMIA to prove the need for a foreign worker.</li>
+                                    </ul>
+                                </li>
+                                <li class="mb-3">
+                                    <strong>Employer Extends a Job Offer:</strong>
+                                    <ul style="list-style-type: circle; padding-left: 1.2rem; margin-top: 0.3rem;">
+                                        <li>Once LMIA is approved, a job offer is extended.</li>
+                                    </ul>
+                                </li>
+                                <li class="mb-3">
+                                    <strong>Worker Applies for Work Permit:</strong>
+                                    <ul style="list-style-type: circle; padding-left: 1.2rem; margin-top: 0.3rem;">
+                                        <li>The worker applies after receiving the offer.</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <strong>Work Permit Issued:</strong>
+                                    <ul style="list-style-type: circle; padding-left: 1.2rem; margin-top: 0.3rem;">
+                                        <li>If criteria are met, the permit is issued.</li>
+                                    </ul>
+                                </li>
+                            </ol>
+                        </div>
+                        <div class="col-md-6 text-center">
+                            <img src="../img/proc.jpg" alt="Process" class="img-fluid rounded"
+                                style="height: 350px; object-fit: contain;" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DOCUMENTS -->
+                <div class="tab-pane fade" id="documents" role="tabpanel">
+                    <div class="row align-items-center g-4">
+                        <div class="col-md-6 text-center">
+                            <img src="../img/documents.png" alt="Documents" class="img-fluid rounded"
+                                style="height: 350px; object-fit: contain;" />
+                        </div>
+                        <div class="col-md-6 px-md-4">
+                            <h5 class="fw-bold mb-3">Required Documents:</h5>
+                            <ul class="list-group list-group-flush lh-lg">
+                                <li class="list-group-item">
+                                    <strong>For the Sponsor:</strong>
+                                    <ul class="mt-2 ps-4">
+                                        <li>Proof of citizenship or permanent residency</li>
+                                        <li>Proof of income</li>
+                                        <li>Completed application</li>
+                                        <li>Divorce or death certificates (if applicable)</li>
+                                    </ul>
+                                </li>
+                                <li class="list-group-item">
+                                    <strong>For the Sponsored Person:</strong>
+                                    <ul class="mt-2 ps-4">
+                                        <li>Proof of relationship</li>
+                                        <li>Proof of identity</li>
+                                        <li>Medical exam results</li>
+                                        <li>Police certificates</li>
+                                        <li>Proof of dependency (if any)</li>
+                                    </ul>
+                                </li>
+                                <li class="list-group-item">
+                                    <strong>For Both:</strong>
+                                    <ul class="mt-2 ps-4">
+                                        <li>Application fee receipt</li>
+                                    </ul>
+                                </li>
                             </ul>
-                        </li>
-                        <li class="list-group-item">
-                            <strong>For Both:</strong>
-                            <ul class="mt-2">
-                                <li>Application fee payment</li>
+                        </div>
+                    </div>
+                </div>
+                <!-- FAQ -->
+                <div class="tab-pane fade" id="faq" role="tabpanel">
+                    <div class="row align-items-center g-4">
+                        <div class="col-md-6">
+                            <h5 class="fw-bold mb-3">Frequently Asked:</h5>
+                            <ul class="list-group list-group-flush lh-lg">
+                                <li class="list-group-item">
+                                    <strong>Q1:</strong> Can I apply without a job offer?<br />
+                                    <strong>A:</strong> In most cases, no. Open work permits are exceptions.
+                                </li>
+                                <li class="list-group-item">
+                                    <strong>Q2:</strong> What’s the difference between permits?<br />
+                                    <strong>A:</strong> Open permits are not job-specific. Employer-specific are
+                                    restricted.
+                                </li>
+                                <li class="list-group-item">
+                                    <strong>Q3:</strong> How long can I stay?<br />
+                                    <strong>A:</strong> Depends on job offer and permit type.
+                                </li>
+                                <li class="list-group-item">
+                                    <strong>Q4:</strong> Can my family come with me?<br />
+                                    <strong>A:</strong> Yes. Spouses may get a permit; children can study.
+                                </li>
+                                <li class="list-group-item">
+                                    <strong>Q5:</strong> How can I succeed?<br />
+                                    <strong>A:</strong> Submit accurate docs. Consider an immigration consultant.
+                                </li>
                             </ul>
-                        </li>
-                    </ul>
+                        </div>
+                        <div class="col-md-6 text-center">
+                            <img src="../img/faq.jpg" alt="FAQs Image" class="img-fluid rounded"
+                                style="height: 350px; object-fit: contain;" />
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-
-
-    <!-- FAQ SECTION -->
-    <section class="py-5" id="faq">
-        <div class="container">
-            <h2 class="text-start mb-4"><span class="highlight">FAQs</span></h2>
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                            <strong>Q:</strong> Can I apply for a work permit without a job offer?
-                            <br /><strong>A:</strong>
-                            No, in most cases, you need a job offer from a Canadian employer to apply for a work permit
-                            unless you are applying under an open work permit category.
-                        </li>
-                        <li class="list-group-item">
-                            <strong>Q:</strong> What is the difference between an open work permit and an
-                            employer-specific work permit?
-                            applying?<br /><strong>A:</strong>
-                            An open work permit is not tied to a specific employer or job and allows flexibility in
-                            employment. An employer-specific work permit is tied to a particular employer, job, and
-                            location.
-                        </li>
-                        <li class="list-group-item">
-                            <strong>Q:</strong> How long can I stay in Canada on a work permit?
-                            <br /><strong>A:</strong>
-                            The duration of your work permit depends on the terms of your job offer and the specific
-                            type of work permit you have received.
-                        </li>
-                        <li class="list-group-item">
-                            <strong>Q:</strong> Can my family come with me to Canada?
-
-                            <br /><strong>A:</strong>
-                            Yes, if you hold an open work permit, your spouse or common-law partner may be eligible for
-                            an open work permit, and dependent children may be allowed to study in Canada.
-                        </li>
-                        <li class="list-group-item">
-                            <strong>Q:</strong> How can I ensure my work permit application is successful?
-                            <br /><strong>A:</strong>
-                            Ensure that all required documents are submitted and meet the criteria for the work permit.
-                            Consulting with an immigration consultant may increase the chances of a successful
-                            application.
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md-6">
-                    <img src="../img/faq.jpg" alt="FAQs Image" class="img-fluid rounded" width="500" height="500" />
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- FOOTER -->
     <footer>
         <div class="footer-container">
-            <!-- LEFT SIDE -->
-            <div class="footer-left" style="padding-left: 20px;">
-                <h3>Wanna Subscribe to our News Letter?</h3>
-                <p>Subscribe to our newsletter for the latest updates on new features and product releases.</p>
-
-                <!-- Click Here Button -->
-                <button id="show-form-btn" onclick="showSubscriptionForm()"
-                    style="padding: 10px 20px; border-radius: 20px; background-color: #b60022; color: white; border: none; cursor: pointer;">
-                    Click here
-                </button>
-
-                <!-- Subscription Form (Initially Hidden) -->
-                <div id="subscription-form" style="display: none; margin-top: 10px;">
+            <div class="footer-left">
+                <h3>Wanna Subscribe to our Newsletter?</h3>
+                <p>Get the latest updates and tips straight to your inbox.</p>
+                <button onclick="showSubscriptionForm()">Click here</button>
+                <div id="subscription-form" style="display: none;">
                     <input type="email" id="email" placeholder="Enter your email" required
-                        style="padding: 6px 10px 6px 20px; width: 45%; border-radius: 25px; border: 1px solid #ccc; outline: none;" />
-                    <button onclick="submitSubscription()"
-                        style="padding: 6px 16px; margin-left: 5px; border-radius: 25px; background-color: #b60022; color: white; border: none; cursor: pointer;">
-                        Subscribe
-                    </button>
+                        style="padding: 6px 12px; width: 45%; border-radius: 25px; border: none;" />
+                    <button onclick="submitSubscription()">Subscribe</button>
                 </div>
             </div>
-
-            <!-- RIGHT SIDE -->
             <div class="footer-right">
                 <h3>Get In Touch</h3>
                 <p>
-                    Email: assessment@romancis.ca<br>
-                    Contacts: 09171857247 | (250) 667-0565<br>
-                    Location: City Sleep Inn Hotel and Events Centre, Barangay Sico, Lipa City, Batangas
+                    <i class="bi bi-envelope-fill me-2"></i> assessment@romancis.ca<br>
+                    <i class="bi bi-telephone-fill me-2"></i> 09171857247 | (250) 667-0565<br>
+                    <i class="bi bi-geo-alt-fill me-2"></i> City Sleep Inn Hotel and Events Centre, Brgy
+                    Sico, Lipa
+                    City, Batangas
                 </p>
             </div>
         </div>
     </footer>
 
+    <!-- JS -->
     <script>
         function showSubscriptionForm() {
             document.getElementById("subscription-form").style.display = "block";
-            document.getElementById("show-form-btn").style.display = "none";
+            event.target.style.display = "none";
         }
 
         function submitSubscription() {
