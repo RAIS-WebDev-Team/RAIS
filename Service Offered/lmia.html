@@ -237,6 +237,10 @@
             max-width: 100%;
             object-fit: contain;
         }
+
+        .tab-pane .row {
+            min-height: 730px;
+        }
     </style>
 </head>
 
@@ -245,7 +249,7 @@
     <header>
         <div class="overlay-box"></div>
         <div class="logo">
-            <img src="../img/logo1.png" alt="logo" />
+            <img src="../img/logo.png" alt="logo" />
         </div>
         <div class="hero-content text-white px-3">
             <h1>Labour Market Impact Assessment (LMIA)</h1>
@@ -286,7 +290,7 @@
                 <!-- ABOUT -->
                 <div class="tab-pane fade show active" id="about" role="tabpanel">
                     <div class="row align-items-center g-4">
-                        <div class="col-md-6">
+                        <div class="col-md-9 px-5">
                             <pci style="font-size: 16px; line-height: 1.8; text-align: justify; padding-left: 1rem;">
                                 A Labour Market Impact Assessment (LMIA) is a crual document that employers in Canada
                                 must obtain before hiring a temporary foreign worker (TFW). The LMIA process allows the
@@ -306,7 +310,7 @@
                                 Program.
                                 </p>
                         </div>
-                        <div class="col-md-6 text-center">
+                        <div class="col-md-3 text-center">
                             <img src="../img/lmia1.png" alt="LMIA Image" class="img-fluid rounded"
                                 style="height: 350px; object-fit: contain;" />
                         </div>
@@ -314,15 +318,14 @@
                 </div>
                 <!-- CRITERIA -->
                 <div class="tab-pane fade" id="criteria" role="tabpanel">
-                    <div class="row align-items-center g-4">
-                        <div class="col-md-6 text-center">
+                    <div class="row align-items-center g-4 ">
+                        <div class="col-md-3 text-center">
                             <img src="../img/criteria.jpg" alt="Checklist" class="img-fluid rounded"
                                 style="height: 250px; object-fit: contain;" />
                         </div>
-                        <div class="col-md-6 ps-md-1 pe-3"
-                            style="font-size: 14px; line-height: 1.5; text-align: justify;">
+                        <div class="col-md-9 ps-md-1 px-5"
+                            style="font-size: 16px; line-height: 1.5; text-align: justify;">
                             <h5 class="fw-bold mb-3">Criteria:</h5>
-
                             <div class="mb-4">
                                 <p class="fw-bold">Employer Eligibility:</p>
                                 <ul class="ps-3" style="list-style-type: circle;">
@@ -333,8 +336,6 @@
                                 </ul>
                             </div>
 
-                            <hr class="my-4" />
-
                             <div class="mb-4">
                                 <p class="fw-bold">Job Advertisement:</p>
                                 <ul class="ps-3" style="list-style-type: circle;">
@@ -344,8 +345,6 @@
                                 </ul>
                             </div>
 
-                            <hr class="my-4" />
-
                             <div class="mb-4">
                                 <p class="fw-bold">Salary and Job Type:</p>
                                 <ul class="ps-3" style="list-style-type: circle;">
@@ -353,8 +352,6 @@
                                         provincial/territorial median wage.</li>
                                 </ul>
                             </div>
-
-                            <hr class="my-4" />
 
                             <div class="mb-4">
                                 <p class="fw-bold">Documentation:</p>
@@ -364,8 +361,6 @@
                                         residents applied.</li>
                                 </ul>
                             </div>
-
-                            <hr class="my-4" />
 
                             <div>
                                 <p class="fw-bold">Employer’s Ability to Support:</p>
@@ -377,12 +372,11 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- PROCESS -->
                 <div class="tab-pane fade" id="process" role="tabpanel">
                     <div class="row align-items-center g-4">
-                        <div class="col-md-6" style="font-size: 16px; line-height: 1.8; text-align: justify;">
-                            <p><strong>LMIA Process Overview:</strong></p>
+                        <div class="col-md-9 px-5" style="font-size: 18px; line-height: 1.8; text-align: justify;">
+                            <p><strong>LMIA Process:</strong></p>
                             <ol>
                                 <li><strong>Determine the job category:</strong> Identify if it’s a high-wage or
                                     low-wage position.</li>
@@ -398,7 +392,7 @@
                                     decision.</li>
                             </ol>
                         </div>
-                        <div class="col-md-6 text-center">
+                        <div class="col-md-3 text-center">
                             <img src="../img/proc.png" alt="Process Image" class="img-fluid rounded"
                                 style="height: 350px; object-fit: contain;" />
                         </div>
@@ -407,88 +401,70 @@
                 <!-- DOCUMENTS -->
                 <div class="tab-pane fade" id="documents" role="tabpanel">
                     <div class="row align-items-center g-4">
-                        <div class="col-md-6 text-center">
+                        <div class="col-md-3 text-center">
                             <img src="../img/documents.png" alt="Documents" class="img-fluid rounded"
                                 style="height: 350px; object-fit: contain;" />
                         </div>
-                        <div class="col-md-6 text-justify">
-                            <p style="font-weight: bold; font-size: 14px;">
-                                To apply for an LMIA, employers typically need to submit the following documents:
-                            </p>
-                            <ol class="list-group-flush ps-3" style="font-size: 14px; line-height: 1.7;">
+                        <div class="col-md-9 text-justify px-5">
+                            <h5 class="fw-bold mb-3">Documents:</h5>
+                            <p style="font-weight: bold; font-size: 16px;">To apply for an LMIA, employers typically
+                                need to submit the following documents:</p>
+                            <ul class="ps-3" style="font-size: 16px; line-height: 1.7; list-style-type: none;">
                                 <li><strong>Employer’s Information:</strong>
-                                    <ul style="padding-left: 20px;">
+                                    <ul style="font-size: 14px; padding-left: 20px; list-style-type: circle;">
                                         <li>Business license or registration – Proof of the company’s legal status.</li>
                                         <li>Financial information or evidence that the business can financially support
                                             a foreign worker.</li>
                                     </ul>
                                 </li>
-
-                                <hr class="my-4" />
-
                                 <li><strong>Job Advertisement Records:</strong>
-                                    <ul style="padding-left: 20px;">
+                                    <ul style="font-size: 16px; padding-left: 20px; list-style-type: circle;">
                                         <li>Proof of the job advertisement for at least four weeks, including dates,
                                             platforms used, and a description of the recruitment efforts made.</li>
                                     </ul>
                                 </li>
-
-                                <hr class="my-4" />
-
                                 <li><strong>Job Description:</strong>
-                                    <ul style="padding-left: 20px;">
+                                    <ul style="font-size: 16px; padding-left: 20px; list-style-type: circle;">
                                         <li>Detailed job description outlining duties, responsibilities, salary, and
                                             working conditions.</li>
                                     </ul>
                                 </li>
-
-                                <hr class="my-4" />
-
                                 <li><strong>Reasons for Not Hiring Canadians:</strong>
-                                    <ul style="padding-left: 20px;">
+                                    <ul style="font-size: 16px; padding-left: 20px; list-style-type: circle;">
                                         <li>Documentation explaining why Canadian candidates were not suitable for the
                                             position (e.g., skills mismatch, lack of experience).</li>
                                     </ul>
                                 </li>
-
-                                <hr class="my-4" />
-
                                 <li><strong>Employee Salary Information:</strong>
-                                    <ul style="padding-left: 20px;">
+                                    <ul style="font-size: 16px; padding-left: 20px; list-style-type: circle;">
                                         <li>Proof of the salary offered to the foreign worker and its comparison to the
                                             provincial or territorial median wage.</li>
                                     </ul>
                                 </li>
-
-                                <hr class="my-4" />
-
                                 <li><strong>Employer’s Statement:</strong>
-                                    <ul style="padding-left: 20px;">
+                                    <ul style="font-size: 16px; padding-left: 20px; list-style-type: circle;">
                                         <li>A letter or statement from the employer explaining the need for a foreign
                                             worker and the terms of employment.</li>
                                     </ul>
                                 </li>
-
-                                <hr class="my-4" />
-
                                 <li><strong>Additional Documents:</strong>
-                                    <ul style="padding-left: 20px;">
+                                    <ul style="font-size: 16px; padding-left: 20px; list-style-type: circle;">
                                         <li>Any other documents requested by Employment and Social Development Canada
                                             (ESDC) based on the job type or wage category.</li>
                                     </ul>
                                 </li>
-                            </ol>
+                            </ul>
                         </div>
                     </div>
                 </div>
 
-
                 <!-- FAQ -->
                 <div class="tab-pane fade" id="faq" role="tabpanel">
                     <div class="row align-items-center g-4">
-                        <div class="col-md-6">
+                        <div class="col-md-9 px-5">
+                            <h5 class="fw-bold mb-3">Frequently Asked:</h5>
                             <ul class="list-group list-group-flush text-justify"
-                                style="font-size: 14px; line-height: 1.8;">
+                                style="font-size: 16px; line-height: 1.8;">
                                 <li class="list-group-item">
                                     <strong>Q:</strong> What is the difference between high-wage and low-wage LMIA
                                     applications?<br>
@@ -535,7 +511,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="col-md-6 text-center">
+                        <div class="col-md-3 text-center">
                             <img src="../img/faq.jpg" alt="FAQs Image" class="img-fluid rounded"
                                 style="height: 350px; object-fit: contain;" />
                         </div>

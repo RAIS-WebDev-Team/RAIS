@@ -16,7 +16,7 @@
         }
 
         body {
-            font-family: "Segoe UI", sans-serif;
+            font-family: 'Segoe UI', sans-serif;
             background-color: #f8f9fa;
         }
 
@@ -30,7 +30,7 @@
         header {
             position: relative;
             height: 100vh;
-            background-image: url("../img/Ffamily.png");
+            background-image: url('../img/Ffamily.png');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -235,6 +235,10 @@
             max-width: 100%;
             object-fit: contain;
         }
+
+        .tab-pane .row {
+            min-height: 490px;
+        }
     </style>
 </head>
 
@@ -248,9 +252,9 @@
         <div class="hero-content text-white text-center px-3">
             <h1>Family Permit</h1>
             <p>
-                Family sponsorship allows individuals to bring their family members to
-                live with them in another country, requiring proof of financial
-                stability and support commitment. It helps reunite families and
+                Family sponsorship allows individuals to bring their family members to live with them in another
+                country, requiring proof of financial stability and support commitment. It helps reunite families
+                and
                 provides opportunities for a better life.
             </p>
             <a href="#info">Explore</a>
@@ -263,46 +267,39 @@
             <ul class="nav nav-tabs mb-5 justify-content-center border-0" id="tabMenu" role="tablist">
                 <li class="nav-item" role="presentation">
                     <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#about" type="button"
-                        role="tab">
-                        About
-                    </button>
+                        role="tab">About</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#criteria" type="button" role="tab">
-                        Criteria
-                    </button>
+                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#criteria" type="button"
+                        role="tab">Criteria</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#process" type="button" role="tab">
-                        Process
-                    </button>
+                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#process" type="button"
+                        role="tab">Process</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#documents" type="button" role="tab">
-                        Documents
-                    </button>
+                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#documents" type="button"
+                        role="tab">Documents</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#faq" type="button" role="tab">
-                        FAQs
-                    </button>
+                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#faq" type="button"
+                        role="tab">FAQs</button>
                 </li>
             </ul>
             <div class="tab-content">
                 <!-- ABOUT TAB -->
                 <div class="tab-pane fade show active" id="about" role="tabpanel">
                     <div class="row align-items-center g-4">
-                        <div class="col-md-6">
-                            <p class="ps-5 text-justify" style="font-size: 18px; line-height: 1.7">
-                                Family Sponsorship is a program that allows Canadian citizens
-                                and permanent residents to sponsor certain family members to
-                                immigrate to Canada. The goal is to help families reunite and
-                                build their lives together in Canada.
+                        <div class="col-md-9">
+                            <p class="ps-5 text-justify" style="font-size: 18px; line-height: 1.7;">
+                                Family Sponsorship is a program that allows Canadian citizens and permanent residents to
+                                sponsor certain family members to immigrate to Canada. The goal is to help families
+                                reunite and build their lives together in Canada.
                             </p>
                         </div>
-                        <div class="col-md-6 text-center">
+                        <div class="col-md-3 text-center">
                             <img src="../img/fam1.jpg" alt="Family Image" class="img-fluid rounded"
-                                style="height: 350px; object-fit: contain" />
+                                style="height: 350px; object-fit: contain;" />
                         </div>
                     </div>
                 </div>
@@ -310,30 +307,28 @@
                 <!-- CRITERIA TAB -->
                 <div class="tab-pane fade" id="criteria" role="tabpanel">
                     <div class="row align-items-center g-4">
-                        <div class="col-md-6 text-center">
+                        <div class="col-md-3 text-center">
                             <img src="../img/criteria.jpg" class="img-fluid rounded"
-                                style="height: 300px; object-fit: contain" alt="Checklist" />
+                                style="height: 300px; object-fit: contain;" alt="Checklist">
                         </div>
-                        <div class="col-md-6 ps-5" style="font-size: 18px">
+                        <div class="col-md-9 ps-5" style="font-size: 18px;">
                             <h4 class="fw-bold mb-3">Criteria:</h4>
                             <div class="mb-4">
                                 <h5 class="fw-bold mb-2">Eligibility of the Sponsor:</h5>
-                                <ul class="ps-3 lh-lg text-justify" style="list-style-type: circle">
+                                <ul class="ps-3 lh-lg text-justify" style="list-style-type: circle;">
                                     <li>Canadian citizen or permanent resident.</li>
                                     <li>At least 18 years old.</li>
                                     <li>Must financially support the sponsored person.</li>
-                                    <li>
-                                        Not receiving social assistance (except for disability).
-                                    </li>
+                                    <li>Not receiving social assistance (except for disability).</li>
                                 </ul>
                             </div>
+
+                            <!-- Separation line -->
                             <hr class="my-4" />
 
                             <div>
-                                <h5 class="fw-bold mb-2">
-                                    Eligibility of the Sponsored Person:
-                                </h5>
-                                <ul class="ps-3 lh-lg text-justify" style="list-style-type: circle">
+                                <h5 class="fw-bold mb-2">Eligibility of the Sponsored Person:</h5>
+                                <ul class="ps-3 lh-lg text-justify" style="list-style-type: circle;">
                                     <li>Spouse, partner, or dependent child under age 22.</li>
                                     <li>Parents or grandparents (with conditions).</li>
                                     <li>Must meet health and security requirements.</li>
@@ -346,9 +341,9 @@
                 <!-- PROCESS TAB -->
                 <div class="tab-pane fade" id="process" role="tabpanel">
                     <div class="row align-items-center g-4">
-                        <div class="col-md-6">
+                        <div class="col-md-9">
                             <h5 class="fw-bold mb-3">Process:</h5>
-                            <ol class="fw-medium lh-lg ps-5 text-justify" style="font-size: 18px">
+                            <ol class="fw-medium lh-lg ps-5 text-justify" style="font-size: 18px;">
                                 <li>Determine eligibility for both sponsor and applicant.</li>
                                 <li>Submit sponsorship application to IRCC.</li>
                                 <li>Wait for IRCC review and processing.</li>
@@ -356,9 +351,9 @@
                                 <li>Arrive in Canada as a permanent resident.</li>
                             </ol>
                         </div>
-                        <div class="col-md-6 text-center">
+                        <div class="col-md-3 text-center">
                             <img src="../img/proc.png" alt="Process" class="img-fluid rounded"
-                                style="height: 350px; object-fit: contain" />
+                                style="height: 350px; object-fit: contain;" />
                         </div>
                     </div>
                 </div>
@@ -366,26 +361,17 @@
                 <!-- DOCUMENTS TAB -->
                 <div class="tab-pane fade" id="documents" role="tabpanel">
                     <div class="row align-items-center g-4">
-                        <div class="col-md-6 text-center">
+                        <div class="col-md-3 text-center">
                             <img src="../img/documents.png" alt="Documents" class="img-fluid rounded"
-                                style="height: 350px; object-fit: contain" />
+                                style="height: 350px; object-fit: contain;" />
                         </div>
-                        <div class="col-md-6">
-                            <h5 class="fw-bold mb-3 fs-5" style="font-size: 18px">
-                                Required Documents:
-                            </h5>
-                            <ul class="lh-lg py-5 pe-3 text-justify" style="font-size: 18px">
-                                <li>
-                                    <strong>For the Sponsor:</strong> Proof of status, income,
-                                    application form.
-                                </li>
-                                <li>
-                                    <strong>For the Sponsored:</strong> Identity, relationship,
-                                    police clearance, medical.
-                                </li>
-                                <li>
-                                    <strong>For Both:</strong> Fees, photos, declaration forms.
-                                </li>
+                        <div class="col-md-9">
+                            <h5 class="fw-bold mb-3 fs-5" style="font-size: 18px;">Required Documents:</h5>
+                            <ul class="lh-lg py-5 pe-3 text-justify" style="font-size: 18px;">
+                                <li><strong>For the Sponsor:</strong> Proof of status, income, application form.</li>
+                                <li><strong>For the Sponsored:</strong> Identity, relationship, police clearance,
+                                    medical.</li>
+                                <li><strong>For Both:</strong> Fees, photos, declaration forms.</li>
                             </ul>
                         </div>
                     </div>
@@ -394,36 +380,35 @@
                 <!-- FAQ TAB -->
                 <div class="tab-pane fade" id="faq" role="tabpanel">
                     <div class="row align-items-center g-4">
-                        <div class="col-md-6">
+                        <div class="col-md-9">
                             <h5 class="fw-bold mb-3">Frequently Asked:</h5>
-                            <ul class="list-group list-group-flush lh-lg text-justify ps-5" style="font-size: 18px">
+                            <ul class="list-group list-group-flush lh-lg text-justify ps-5" style="font-size: 18px;">
                                 <li class="list-group-item border-0 ps-0">
-                                    <strong>Q1:</strong> Can I bring my family?<br />
-                                    <strong>A:</strong> Yes, eligible dependents can accompany
-                                    you.
+                                    <strong>Q1:</strong> Can I bring my family?<br>
+                                    <strong>A:</strong> Yes, eligible dependents can accompany you.
                                 </li>
-                                <hr class="my-2" />
+                                <hr class="my-2">
                                 <li class="list-group-item border-0 ps-0">
-                                    <strong>Q2:</strong> Do I need a job offer?<br />
-                                    <strong>A:</strong> Not for sponsorship, but financial proof
-                                    is needed.
+                                    <strong>Q2:</strong> Do I need a job offer?<br>
+                                    <strong>A:</strong> Not for sponsorship, but financial proof is needed.
                                 </li>
-                                <hr class="my-2" />
+                                <hr class="my-2">
                                 <li class="list-group-item border-0 ps-0">
-                                    <strong>Q3:</strong> Can I apply outside Canada?<br />
-                                    <strong>A:</strong> Yes, applications from abroad are
-                                    accepted.
+                                    <strong>Q3:</strong> Can I apply outside Canada?<br>
+                                    <strong>A:</strong> Yes, applications from abroad are accepted.
                                 </li>
                             </ul>
                         </div>
-                        <div class="col-md-6 text-center">
+                        <div class="col-md-3 text-center">
                             <img src="../img/faq.jpg" class="img-fluid rounded"
-                                style="height: 350px; object-fit: contain" alt="FAQ Image" />
+                                style="height: 350px; object-fit: contain;" alt="FAQ Image" />
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
+
     </section>
     <!-- FOOTER -->
     <footer>
@@ -432,24 +417,20 @@
                 <h3>Wanna Subscribe to our Newsletter?</h3>
                 <p>Get the latest updates and tips straight to your inbox.</p>
                 <button onclick="showSubscriptionForm()">Click here</button>
-                <div id="subscription-form" style="display: none">
-                    <input type="email" id="email" placeholder="Enter your email" required style="
-                padding: 6px 12px;
-                width: 45%;
-                border-radius: 25px;
-                border: none;" />
+                <div id="subscription-form" style="display: none;">
+                    <input type="email" id="email" placeholder="Enter your email" required
+                        style="padding: 6px 12px; width: 45%; border-radius: 25px; border: none;" />
                     <button onclick="submitSubscription()">Subscribe</button>
                 </div>
             </div>
             <div class="footer-right">
                 <h3>Get In Touch</h3>
                 <p>
-                    <i class="bi bi-envelope-fill me-2"></i>
-                    assessment@romancis.ca<br />
-                    <i class="bi bi-telephone-fill me-2"></i> 09171857247 | (250)
-                    667-0565<br />
-                    <i class="bi bi-geo-alt-fill me-2"></i> City Sleep Inn Hotel and
-                    Events Centre, Brgy Sico, Lipa City, Batangas
+                    <i class="bi bi-envelope-fill me-2"></i> assessment@romancis.ca<br>
+                    <i class="bi bi-telephone-fill me-2"></i> 09171857247 | (250) 667-0565<br>
+                    <i class="bi bi-geo-alt-fill me-2"></i> City Sleep Inn Hotel and Events Centre, Brgy Sico,
+                    Lipa
+                    City, Batangas
                 </p>
             </div>
         </div>
