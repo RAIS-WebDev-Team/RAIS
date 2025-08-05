@@ -1,341 +1,352 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+        content="A visit from STI College Lipa's internship adviser, Ms. Annie Rose Aboilo, to Roman & Associates Immigration Services to strengthen their partnership and check on student interns.">
     <title>RAIS Blog | The Visitation</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500&display=swap"
+        rel="stylesheet">
+
     <style>
         :root {
-            --primary-color: #00796B; 
-            --secondary-color: #FFC107; 
-            --background-color: #F7F9F9;
-            --surface-color: #FFFFFF;
+            --primary-color: #0C470C;
+            --background-color: #f7f9f7;
             --text-color: #333333;
-            --heading-color: #102A43;
-            --light-gray: #E0E0E0;
-            --font-family: 'Poppins', sans-serif;
+            --card-background: #ffffff;
         }
 
         body {
-            font-family: var(--font-family);
-            line-height: 1.7;
-            margin: 0;
-            padding: 0;
+            font-family: 'Poppins', sans-serif;
             background-color: var(--background-color);
             color: var(--text-color);
         }
 
-        header {
-            background: var(--surface-color);
-            padding: 1rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--light-gray);
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        header .logo-container img {
-            max-height: 45px;
-        }
-
-        header nav a {
-            margin: 0 1rem;
-            text-decoration: none;
-            color: var(--primary-color);
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        header nav a:hover {
-            color: var(--heading-color);
-        }
-
-        main {
-            width: 90%;
-            max-width: 800px;
-            margin: 2rem auto;
-             border-left: 5px solid var(--primary-color);
-        }
-
-        .blog-post {
-            background: var(--surface-color);
-            padding: 2rem 3rem;
-            border-radius: 12px;
-            box-shadow: 0 8px 24px rgba(16, 42, 67, 0.1);
-        }
-
-        .blog-header {
+        .hero-section {
+            position: relative;
+            color: white;
             text-align: center;
-            margin-bottom: 2rem;
+            padding: 5rem 1rem;
+            /* Image and overlay */
+            background: linear-gradient(rgba(12, 71, 12, 0.65), rgba(12, 71, 12, 0.65)), url('img/Sti.png');
+            background-size: cover;
+            background-position: top center;
+            min-height: 450px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .blog-title {
-            font-size: 2.8rem;
-            color: var(--heading-color);
-            margin-bottom: 0.5rem;
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.8rem;
             font-weight: 700;
-            line-height: 1.2;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
         }
 
-        .author {
-            color: #757575;
-            margin-bottom: 1.5rem;
-            font-style: italic;
+        .main-content {
+            padding: 4rem 0;
         }
 
-        .main-image {
+        .article-section {
+            background: var(--card-background);
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .article-image {
             width: 100%;
             height: auto;
             aspect-ratio: 16 / 9;
-            object-fit: cover; 
-            border-radius: 12px;
-            margin-bottom: 2rem;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1rem;
         }
-        
-        .blog-post h2 {
-            font-size: 1.8rem;
+
+        .article-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
             color: var(--primary-color);
-            font-weight: 600;
-            margin-top: 3rem;
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .article-meta {
+            font-size: 0.9rem;
+            color: #6c757d;
+            margin-bottom: 2rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .article-body p {
+            line-height: 1.8;
             margin-bottom: 1.5rem;
         }
 
-        .blog-post p {
-            font-size: 1rem;
-            margin-bottom: 1.5rem;
+        .highlight-text {
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        .article-body h2 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
         }
 
         .event-card {
             background-color: var(--background-color);
-            border: 1px solid var(--light-gray);
-            border-radius: 12px;
-            margin-top: 2rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
             padding: 2rem;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            overflow: hidden;
+            margin-top: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border-left: 3px solid var(--primary-color);
         }
-        
-        .event-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+
+        .event-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .conclusion-image {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1rem;
         }
 
         .event-card img {
             width: 100%;
             height: auto;
-            aspect-ratio: 16 / 9; 
-            object-fit: cover; 
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
             border-radius: 8px;
-            margin-bottom: 1.5rem;
-        }
-        
-        .event-card h3 {
-             font-size: 1.5rem;
-             color: var(--heading-color);
-             margin-top: 0;
-             margin-bottom: 1rem;
+            margin-bottom: 1rem;
         }
 
-        
-        .social-media a {
-            display: inline-block;
-            margin-right: 1rem;
-            font-size: 1.2rem;
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 50px 20px;
         }
 
-        @media (max-width: 768px) {
-            .blog-post {
-                padding: 1.5rem;
-            }
-            .blog-title {
-                font-size: 2rem;
-            }
-            footer {
-                text-align: center;
-            }
-            .social-media {
-                 margin-top: 1rem;
-            }
-        }
-
-    .btn-back {
-      margin-bottom: 2rem;
-      font-weight: 500;
-      color: var(--primary-color);
-      border-color: var(--primary-color);
-      margin-left: 2rem;
-      text-decoration: none;
-      padding: 0.5rem 1rem;
-      border: 1px solid var(--primary-color);
-      border-radius: 5px;
-      display: inline-block;
-      transition: all 0.3s ease;
-    }
-
-    .btn-back:hover {
-      background-color: var(--primary-color);
-      color: white;
-    }
-
-    footer {
-        background-color:  var(--primary-color) ;
-        color: white;
-        padding: 50px 20px;
-    }
-
-    .footer-container {
-        display: flex;
-        justify-content: space-between;
-        max-width: 1100px;
-        margin: auto;
-        flex-wrap: wrap;
-        gap: 40px;
-    }
-
-    .footer-left,
-    .footer-right {
-        flex: 1;
-        min-width: 300px;
-        padding: 10px;
-    }
-
-    .footer-left {
-        text-align: center;
-        border-right: 1px solid rgba(255, 255, 255, 0.4);
-    }
-
-    .footer-left h3 {
-        font-weight: bold;
-        margin-bottom: 10px;
-    }
-
-    .footer-left p {
-        font-size: 14px;
-        margin-bottom: 20px;
-        color: #ddd;
-    }
-
-    .footer-left button {
-        background-color:var(--primary-color);
-        color: white;
-        border: none;
-        padding: 8px 20px;
-        font-size: 14px;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        cursor: pointer;
-        transition: background var(--primary-color) 0.3s ease;
-    }
-
-    .footer-left button:hover {
-        background-color: var(--primary-color);
-    }
-
-    .footer-right h3 {
-        font-weight: bold;
-        margin-bottom: 15px;
-    }
-
-    .footer-right p {
-        font-size: 14px;
-        line-height: 1.6;
-        color: #ddd;
-    }
-
-    @media (max-width: 768px) {
         .footer-container {
-            flex-direction: column;
-            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            max-width: 1100px;
+            margin: auto;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .footer-left,
+        .footer-right {
+            flex: 1;
+            min-width: 300px;
+            padding: 10px;
         }
 
         .footer-left {
-            border-right: none;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-            margin-bottom: 30px;
+            text-align: center;
+            border-right: 1px solid rgba(255, 255, 255, 0.4);
         }
 
-        .footer-right {
-            padding-top: 20px;
+        .footer-left h3 {
+            font-weight: bold;
+            margin-bottom: 10px;
         }
-    }
+
+        .footer-left p {
+            font-size: 14px;
+            margin-bottom: 20px;
+            color: #ddd;
+        }
+
+        .footer-left button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            font-size: 14px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: background var(--primary-color) 0.3s ease;
+        }
+
+        .footer-left button:hover {
+            background-color: var(--primary-color);
+        }
+
+        .footer-right h3 {
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .footer-right p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #ddd;
+        }
+
+        .btn-back {
+            margin-bottom: 2rem;
+            font-weight: 500;
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+            margin-left: 2rem;
+        }
+
+        .btn-back:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-left {
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+                margin-bottom: 30px;
+            }
+
+            .footer-right {
+                padding-top: 20px;
+            }
+        }
     </style>
 </head>
+
 <body>
-    <header>
-        <div class="logo-container">
-            <img src="img/logo.png" alt="RAIS Logo">
+
+    <header class="hero-section">
+        <div class="container">
+            <h1 class="hero-title">Bridging Education and Industry</h1>
         </div>
-        <nav>
-            <a href="#visits">Visits</a>
-            <a href="#conclusion">Conclusion</a>
-            <a href="#contact">Contact</a>
-        </nav>
     </header>
 
-    <main>
-        <article class="blog-post">
-            <div class="blog-header">
-                <h1 class="blog-title">The Visitation</h1>
-                <p class="author">Written By: Imnil Benmarc A. Jolo</p>
+    <main class="main-content">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-9">
+                    <article class="article-section">
+                        <h2 class="article-title">The Visitation</h2>
+                        <p class="article-meta">Written By: Imnil Benmarc A. Jolo</p>
+
+                        <img src="img/Sti.png" class="img-fluid article-image"
+                            alt="Ms. Aboilo from STI College Lipa visits interns at Roman & Associates Immigration Services">
+
+                        <div class="article-body">
+                            <p>
+                                On February 28, 2025, Ms. Annie Rose Aboilo, internship adviser from STI College Lipa,
+                                visited Roman & Associates Immigration Services to check on her students and ensure they
+                                were gaining practical, real-world experience. Her visit, along with that of Dr. Maria
+                                Delia Miraña Poot and Ms. Dorie G. Gatus from De La Salle Lipa on March 27, highlighted
+                                the strong collaboration between academic institutions and RAIS in supporting student
+                                development through meaningful internships.
+                            </p>
+
+                            <h2>Academic Partner Visits</h2>
+                            <div class="event-card">
+                                <h3>MISS ABOILO OF STI LIPA GOES TO RAIS</h3>
+                                <img src="img/Sti.png" class="img-fluid" alt="STI College Lipa Campus">
+                                <p>On the 28th of February 2025, Ms. Annie Rose Aboilo, the internship adviser from STI
+                                    College Lipa, paid a meaningful visit to the office of Roman & Associates
+                                    Immigration Services. Her visit was an important opportunity for her to check in on
+                                    her students currently interning at the company. Ms. Aboilo took the time to engage
+                                    with the interns, asking them about their experiences and how they’ve been applying
+                                    their academic knowledge in a real-world setting. This hands-on approach ensured
+                                    that the students were gaining valuable insights and contributing meaningfully to
+                                    the company’s operations.</p>
+                                <p>During her time at the office, Ms. Aboilo also met with key personnel to discuss the
+                                    objectives and expectations of the internship program. The meeting provided an
+                                    opportunity to explore how students from STI College Lipa could benefit from
+                                    exposure to the field of immigration consultancy and deepen their understanding of
+                                    the industry.</p>
+                            </div>
+
+                            <div class="event-card">
+                                <h3>THE TWO LIPASALYANO ADVISERS PAY A VISIT</h3>
+                                <img src="img/lasalle.png" class="img-fluid" alt="De La Salle Lipa Campus facade">
+                                <p>On the 27th of March 2025, Roman & Associates Immigration Services also had the
+                                    pleasure of welcoming two distinguished guests from De La Salle Lipa’s Financial
+                                    Management program—Ms. Maria Delia Miraña Poot, PhD, and Ms. Dorie G. Gatus, MBA.
+                                    Their visit marked an important step in strengthening the partnership between RAIS
+                                    and De La Salle Lipa, further solidifying the collaboration between the institution
+                                    and the company.</p>
+                                <p>During their visit, Dr. Miraña Poot and Ms. Gatus took the time to check in on their
+                                    students currently completing internships with RAIS, ensuring that they are gaining
+                                    valuable hands-on experience and developing essential skills in a real-world
+                                    business environment. Their commitment to the students’ growth, coupled with their
+                                    focus on delivering practical learning opportunities, highlighted the strong
+                                    connection between academic institutions and industry leaders.</p>
+                            </div>
+
+                            <h2>Conclusion</h2>
+                            <img src="img/conclusion.png" class="img-fluid article-image"
+                                alt="De La Salle Lipa Campus facade">
+                            <p>As we reflect on these enriching visits, we look forward to future collaborations with De
+                                La Salle Lipa, STI College Lipa, and other esteemed educational institutions. These
+                                partnerships serve as a cornerstone for bridging the gap between academic learning and
+                                real-world professional experience. By fostering these connections, we not only
+                                contribute to the personal growth of students but also support the development of
+                                skilled professionals who will excel in their future careers.</p>
+                            <p>Together, we will continue to empower students by providing them with the tools,
+                                resources, and experiences needed to thrive in their chosen fields. This collaboration
+                                is about more than just internships; it’s about nurturing future leaders, encouraging
+                                innovative thinking, and preparing students for the challenges and opportunities that
+                                lie ahead. We are excited to continue this journey, working hand in hand with
+                                educational institutions to make a lasting impact on the lives of students and the
+                                industries they will one day transform.</p>
+                        </div>
+                    </article>
+                </div>
             </div>
-            
-            <img class="main-image" src="img/Sti.png" alt="Campus of De La Salle Lipa">
-
-            <section id="intro">
-                <p>On February 28, 2025, Ms. Annie Rose Aboilo, internship adviser from STI College Lipa, visited Roman & Associates Immigration Services to check on her students and ensure they were gaining practical, real-world experience. Her visit, along with that of Dr. Maria Delia Miraña Poot and Ms. Dorie G. Gatus from De La Salle Lipa on March 27, highlighted the strong collaboration between academic institutions and RAIS in supporting student development through meaningful internships.</p>
-            </section>
-
-            <section id="visits">
-                <h2>Academic Partner Visits</h2>
-                <div class="event-card">
-                    <h3>MISS ABOILO OF STI LIPA GOES TO RAIS</h3>
-                    <img src="img/Sti.png" alt="STI College Lipa Campus">
-                    <p>On the 28th of February 2025, Ms. Annie Rose Aboilo, the internship adviser from STI College Lipa, paid a meaningful visit to the office of Roman & Associates Immigration Services. Her visit was an important opportunity for her to check in on her students currently interning at the company. Ms. Aboilo took the time to engage with the interns, asking them about their experiences and how they’ve been applying their academic knowledge in a real-world setting. This hands-on approach ensured that the students were gaining valuable insights and contributing meaningfully to the company’s operations.</p>
-                    <p>During her time at the office, Ms. Aboilo also met with key personnel to discuss the objectives and expectations of the internship program. The meeting provided an opportunity to explore how students from STI College Lipa could benefit from exposure to the field of immigration consultancy and deepen their understanding of the industry.</p>
-                </div>
-
-                <div class="event-card">
-                    <h3>THE TWO LIPASALYANO ADVISERS PAY A VISIT</h3>
-                    <img src="img/lasalle.png" alt="De La Salle Lipa Campus facade">
-                    <p>On the 27th of March 2025, Roman & Associates Immigration Services also had the pleasure of welcoming two distinguished guests from De La Salle Lipa’s Financial Management program—Ms. Maria Delia Miraña Poot, PhD, and Ms. Dorie G. Gatus, MBA. Their visit marked an important step in strengthening the partnership between RAIS and De La Salle Lipa, further solidifying the collaboration between the institution and the company.</p>
-                    <p>During their visit, Dr. Miraña Poot and Ms. Gatus took the time to check in on their students currently completing internships with RAIS, ensuring that they are gaining valuable hands-on experience and developing essential skills in a real-world business environment. Their commitment to the students’ growth, coupled with their focus on delivering practical learning opportunities, highlighted the strong connection between academic institutions and industry leaders.</p>
-                </div>
-            </section>
-            
-            <section id="conclusion">
-                <h2>CONCLUSION</h2>
-                <img src="img/conclusion.png" alt="De La Salle Lipa Campus facade">
-                <p>As we reflect on these enriching visits, we look forward to future collaborations with De La Salle Lipa, STI College Lipa, and other esteemed educational institutions. These partnerships serve as a cornerstone for bridging the gap between academic learning and real-world professional experience. By fostering these connections, we not only contribute to the personal growth of students but also support the development of skilled professionals who will excel in their future careers.</p>
-                <p>Together, we will continue to empower students by providing them with the tools, resources, and experiences needed to thrive in their chosen fields. This collaboration is about more than just internships; it’s about nurturing future leaders, encouraging innovative thinking, and preparing students for the challenges and opportunities that lie ahead. We are excited to continue this journey, working hand in hand with educational institutions to make a lasting impact on the lives of students and the industries they will one day transform.</p>
-            </section>
-        </article>
+        </div>
     </main>
 
-  <a href="../blogs.html" class="btn-back">
-    Go Back
-  </a>
+    <a href="../blogs.html" class="btn btn-outline-primary btn-back">
+        ← Go Back
+    </a>
 
-   <footer id="contact">
+    <footer>
         <div class="footer-container">
             <div class="footer-left" style="padding-left: 20px;">
                 <h3>Wanna Subscribe to our News Letter?</h3>
                 <p>Subscribe to our newsletter for the latest updates on new features and product releases.</p>
-                <button id="show-form-btn" onclick="showSubscriptionForm()" style="padding: 10px 20px; border-radius: 20px; background-color: #012b26; color: white; border: none; cursor: pointer;">
+
+                <button id="show-form-btn" onclick="showSubscriptionForm()"
+                    style="padding: 10px 20px; border-radius: 20px; background-color: #012b26; color: white; border: none; cursor: pointer;">
                     Click here
                 </button>
+
                 <div id="subscription-form" style="display: none; margin-top: 10px;">
-                    <input type="email" id="email" placeholder="Enter your email" required style="padding: 6px 10px 6px 20px; width: 45%; border-radius: 25px; border: 1px solid #ccc; outline: none;" />
-                    <button onclick="submitSubscription()" style="padding: 6px 16px; margin-left: 5px; border-radius: 25px; background-color: #012b26; color: white; border: none; cursor: pointer;">
+                    <input type="email" id="email" placeholder="Enter your email" required
+                        style="padding: 6px 10px 6px 20px; width: 45%; border-radius: 25px; border: 1px solid #ccc; outline: none;" />
+                    <button onclick="submitSubscription()"
+                        style="padding: 6px 16px; margin-left: 5px; border-radius: 25px; background-color: #012b26; color: white; border: none; cursor: pointer;">
                         Subscribe
                     </button>
                 </div>
@@ -351,7 +362,7 @@
             </div>
         </div>
     </footer>
-    
+
     <script>
         function showSubscriptionForm() {
             document.getElementById("subscription-form").style.display = "block";
@@ -360,15 +371,20 @@
 
         function submitSubscription() {
             const email = document.getElementById("email").value;
-            if (email && email.includes('@')) { 
+            if (email && email.includes('@')) {
                 alert("Subscribed successfully with: " + email);
                 document.getElementById("email").value = "";
                 document.getElementById("subscription-form").style.display = "none";
-                 document.getElementById("show-form-btn").style.display = "inline-block";
+                document.getElementById("show-form-btn").style.display = "inline-block";
             } else {
                 alert("Please enter a valid email address.");
             }
         }
     </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>

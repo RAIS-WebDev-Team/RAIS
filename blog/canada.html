@@ -1,146 +1,178 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RAIS Blog | A Calling to Canada</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary-color: #00796B; /* Deep Teal */
-            --secondary-color: #FFC107; /* Amber for highlights */
-            --background-color: #F7F9F9;
-            --surface-color: #FFFFFF;
-            --text-color: #333333;
-            --heading-color: #102A43;
-            --light-gray: #E0E0E0;
-            --font-family: 'Poppins', sans-serif;
-        }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description"
+    content="RAIS blog post detailing the collaborative effort to organize the 'A Calling to Canada' event on April 12, 2025.">
+  <title>RAIS Blog | A Calling to Canada</title>
 
-        body {
-            font-family: var(--font-family);
-            line-height: 1.7;
-            margin: 0;
-            padding: 0;
-            background-color: var(--background-color);
-            color: var(--text-color);
-        }
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
 
-        header {
-            background: var(--surface-color);
-            padding: 1rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--light-gray);
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500&display=swap"
+    rel="stylesheet">
 
-        header .logo-container img {
-            max-height: 45px;
-        }
+  <style>
+    :root {
+      --primary-color: #0C470C;
+      --background-color: #f7f9f7;
+      --text-color: #333333;
+      --card-background: #ffffff;
+    }
 
-        header nav a {
-            margin: 0 1rem;
-            text-decoration: none;
-            color: var(--primary-color);
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--background-color);
+      color: var(--text-color);
+    }
 
-        header nav a:hover {
-            color: var(--heading-color);
-        }
+    .hero-section {
+      position: relative;
+      color: white;
+      text-align: center;
+      padding: 5rem 1rem;
+      background: linear-gradient(rgba(12, 71, 12, 0.65), rgba(12, 71, 12, 0.65)), url('img/assistance.png');
+      background-size: cover;
+      background-position: center;
+      min-height: 350px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-        main {
-            width: 90%;
-            max-width: 800px;
-            margin: 2rem auto;
-             border-left: 5px solid var(--primary-color);
-        }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.8rem;
+      font-weight: 700;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+    }
 
-        .blog-post {
-            background: var(--surface-color);
-            padding: 2rem 3rem;
-            border-radius: 12px;
-            box-shadow: 0 8px 24px rgba(16, 42, 67, 0.1);
-        }
+    .main-content {
+      padding: 4rem 0;
+    }
 
-        .blog-header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
+    .article-section {
+      background: var(--card-background);
+      padding: 3rem;
+      border-radius: 8px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+      border-left: 5px solid var(--primary-color);
+    }
 
-        .blog-title {
-            font-size: 2.8rem;
-            color: var(--heading-color);
-            margin-bottom: 0.5rem;
-            font-weight: 700;
-            line-height: 1.2;
-        }
+    .article-image {
+      border-radius: 8px;
+      margin-bottom: 2rem;
+      max-width: 80%;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+    }
 
-        .author {
-            color: #757575;
-            margin-bottom: 1.5rem;
-            font-style: italic;
-        }
+    .article-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
 
-        .main-image {
-            width: 100%;
-            height: auto;
-            aspect-ratio: 16 / 9; /* Enforce landscape ratio */
-            object-fit: cover; /* Prevents image distortion */
-            border-radius: 12px;
-            margin-bottom: 2rem;
-        }
-        
-        .blog-post h2 {
-            font-size: 1.8rem;
-            color: var(--primary-color);
-            font-weight: 600;
-            margin-top: 3rem;
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
+    .article-meta {
+      font-size: 0.9rem;
+      color: #6c757d;
+      margin-bottom: 2rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
 
-        .blog-post p {
-            font-size: 1rem;
-            margin-bottom: 1.5rem;
-        }
+    .article-body p {
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
 
-        .blog-post img {
-             width: 100%;
-            height: auto;
-            aspect-ratio: 16 / 9;
-            object-fit: cover;
-            border-radius: 12px;
-            margin-bottom: 1.5rem;
-        }
+    .highlight-text {
+      color: var(--primary-color);
+      font-weight: 500;
+    }
 
+    .article-body h2 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+    }
 
-        @media (max-width: 768px) {
-            .blog-post {
-                padding: 1.5rem;
-            }
-            .blog-title {
-                font-size: 2rem;
-            }
-            .newsletter form {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .newsletter input[type="email"] {
-                min-width: auto;
-                width: 100%;
-                box-sizing: border-box;
-            }
-        }
+    footer {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 50px 20px;
+    }
+
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      max-width: 1100px;
+      margin: auto;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    .footer-left,
+    .footer-right {
+      flex: 1;
+      min-width: 300px;
+      padding: 10px;
+    }
+
+    .footer-left {
+      text-align: center;
+      border-right: 1px solid rgba(255, 255, 255, 0.4);
+    }
+
+    .footer-left h3 {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .footer-left p {
+      font-size: 14px;
+      margin-bottom: 20px;
+      color: #ddd;
+    }
+
+    .footer-left button {
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 8px 20px;
+      font-size: 14px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+      transition: background var(--primary-color) 0.3s ease;
+    }
+
+    .footer-left button:hover {
+      background-color: var(--primary-color);
+    }
+
+    .footer-right h3 {
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .footer-right p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #ddd;
+    }
 
     .btn-back {
       margin-bottom: 2rem;
@@ -148,12 +180,6 @@
       color: var(--primary-color);
       border-color: var(--primary-color);
       margin-left: 2rem;
-      text-decoration: none;
-      padding: 0.5rem 1rem;
-      border: 1px solid var(--primary-color);
-      border-radius: 5px;
-      display: inline-block;
-      transition: all 0.3s ease;
     }
 
     .btn-back:hover {
@@ -161,178 +187,131 @@
       color: white;
     }
 
-    footer {
-        background-color:  var(--primary-color) ;
-        color: white;
-        padding: 50px 20px;
-    }
-
-    .footer-container {
-        display: flex;
-        justify-content: space-between;
-        max-width: 1100px;
-        margin: auto;
-        flex-wrap: wrap;
-        gap: 40px;
-    }
-
-    .footer-left,
-    .footer-right {
-        flex: 1;
-        min-width: 300px;
-        padding: 10px;
-    }
-
-    .footer-left {
-        text-align: center;
-        border-right: 1px solid rgba(255, 255, 255, 0.4);
-    }
-
-    .footer-left h3 {
-        font-weight: bold;
-        margin-bottom: 10px;
-    }
-
-    .footer-left p {
-        font-size: 14px;
-        margin-bottom: 20px;
-        color: #ddd;
-    }
-
-    .footer-left button {
-        background-color:var(--primary-color);
-        color: white;
-        border: none;
-        padding: 8px 20px;
-        font-size: 14px;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        cursor: pointer;
-        transition: background var(--primary-color) 0.3s ease;
-    }
-
-    .footer-left button:hover {
-        background-color: var(--primary-color);
-    }
-
-    .footer-right h3 {
-        font-weight: bold;
-        margin-bottom: 15px;
-    }
-
-    .footer-right p {
-        font-size: 14px;
-        line-height: 1.6;
-        color: #ddd;
-    }
-
     @media (max-width: 768px) {
-        .footer-container {
-            flex-direction: column;
-            text-align: center;
-        }
+      .footer-container {
+        flex-direction: column;
+        text-align: center;
+      }
 
-        .footer-left {
-            border-right: none;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-            margin-bottom: 30px;
-        }
+      .footer-left {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+        margin-bottom: 30px;
+      }
 
-        .footer-right {
-            padding-top: 20px;
-        }
+      .footer-right {
+        padding-top: 20px;
+      }
     }
-    </style>
+  </style>
 </head>
+
 <body>
-    <header>
-        <div class="logo-container">
-            <img src="img/logo.png" alt="RAIS Logo">
-        </div>
-        <nav>
-            <a href="#about">About</a>
-            <a href="#collaboration">Collaboration</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
 
-    <main>
-        <article class="blog-post">
-            <div class="blog-header">
-                <h1 class="blog-title">A LONG ROAD FOR “A CALLING TO CANADA”</h1>
-                <p class="author">Written By: Imnil Benmarc A. Jolo</p>
+  <header class="hero-section">
+    <div class="container">
+      <h1 class="hero-title">A LONG ROAD FOR “A CALLING TO CANADA”</h1>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-9">
+          <article class="article-section">
+            <h2 class="article-title">A LONG ROAD FOR “A CALLING TO CANADA”</h2>
+            <p class="article-meta">Written By: Imnil Benmarc A. Jolo</p>
+
+            <img src="img/collaboration.png" class="img-fluid article-image"
+              alt="Promotional image for A Calling to Canada event">
+
+            <div class="article-body">
+              <h2>WHAT IS “A CALLING TO CANADA”?</h2>
+              <p>
+                On Saturday, the 12th of April 2025, <span class="highlight-text">Roman & Associates Immigration Services</span> will be hosting a highly anticipated event entitled “A Calling to Canada.” This special gathering is designed for individuals who are aspiring to study, work, or visit Canada and are seeking the right guidance to begin their journey. The event promises to be an informative and engaging opportunity where participants can gain valuable insights into the different immigration pathways, eligibility requirements, and practical steps involved in making their Canadian dream a reality. From understanding visa options and documentation to exploring study and employment opportunities, attendees will walk away better informed and more confident about navigating their plans for moving to or visiting Canada.
+              </p>
+
+              <h2>COLLABORATION IS ALL AROUND</h2>
+              <img src="img/all around.png" class="img-fluid article-image"
+                alt="RCIS team at the English Language Academy in Tacloban">
+              <p>
+                In the lead-up to this much-awaited event, it is undeniable that the marketing, finance, and IT teams have worked tirelessly behind the scenes, embodying the spirit of collaboration and shared purpose. The marketing team took charge of crafting a compelling narrative around the event—developing engaging promotional materials, coordinating outreach efforts across various platforms, and ensuring that the message of opportunity and guidance reached the right audience, as well as making props that would make the event look appealing and exciting to the participants’ eyes. Meanwhile, the finance team played a crucial role in planning and allocating resources efficiently, making sure every aspect of the event—big or small—was well-supported and aligned with the organization’s goals and budgetary framework.
+              </p>
+              <p>
+                Equally vital was the contribution of the IT team, who developed and maintained secure, user-friendly digital systems for event registration, communication, and real-time updates. Their efforts ensured that participants could access information with ease and that the event infrastructure would run smoothly without technical disruptions. Together, these teams transformed a vision into a reality, proving that excellence is achieved not only through individual expertise but also through unified effort. Their dedication has laid a strong foundation for what promises to be an inspiring, educational, and transformative experience for all attendees.
+              </p>
+
+              <h2>ASSISTANCE IS ALWAYS THERE</h2>
+              <img src="img/assistance.png" class="img-fluid article-image"
+                alt="RCIS team at the English Language Academy in Tacloban">
+              <p>
+                As the event draws near, there are still tasks that remain unfinished, whether due to a shortage of manpower, some members of the said teams having other tasks to finish, or the sheer volume of work that needs to be completed. Despite the challenges, the company’s IT and finance teams continue to work diligently, ensuring that every detail is taken care of before the big day. The collaborative spirit and dedication of each team member are what keep everything moving forward, and no task is left unresolved. From finalizing promotional materials to securing the logistics for the event, everyone involved is contributing their expertise and time to ensure the success of "A Calling to Canada."
+              </p>
             </div>
-            
-            <img class="main-image" src="img/collaboration.png" alt="Promotional image for A Calling to Canada event">
-    
-            <section id="about">
-                <h2>WHAT IS “A CALLING TO CANADA”?</h2>
-                <p>On Saturday, the 12th of April 2025, Roman & Associates Immigration Services will be hosting a highly anticipated event entitled “A Calling to Canada.” This special gathering is designed for individuals who are aspiring to study, work, or visit Canada and are seeking the right guidance to begin their journey. The event promises to be an informative and engaging opportunity where participants can gain valuable insights into the different immigration pathways, eligibility requirements, and practical steps involved in making their Canadian dream a reality. From understanding visa options and documentation to exploring study and employment opportunities, attendees will walk away better informed and more confident about navigating their plans for moving to or visiting Canada.</p>
-            </section>
-    
-            <section id="collaboration">
-                <h2>COLLABORATION IS ALL AROUND</h2>
-                <img src="img/all around.png" alt="RCIS team at the English Language Academy in Tacloban">
-                <p>In the lead-up to this much-awaited event, it is undeniable that the marketing, finance, and IT teams have worked tirelessly behind the scenes, embodying the spirit of collaboration and shared purpose. The marketing team took charge of crafting a compelling narrative around the event—developing engaging promotional materials, coordinating outreach efforts across various platforms, and ensuring that the message of opportunity and guidance reached the right audience, as well as making props that would make the event look appealing and exciting to the participants’ eyes. Meanwhile, the finance team played a crucial role in planning and allocating resources efficiently, making sure every aspect of the event—big or small—was well-supported and aligned with the organization’s goals and budgetary framework.</p>
-                <p>Equally vital was the contribution of the IT team, who developed and maintained secure, user-friendly digital systems for event registration, communication, and real-time updates. Their efforts ensured that participants could access information with ease and that the event infrastructure would run smoothly without technical disruptions. Together, these teams transformed a vision into a reality, proving that excellence is achieved not only through individual expertise but also through unified effort. Their dedication has laid a strong foundation for what promises to be an inspiring, educational, and transformative experience for all attendees.</p>
-            </section>
-    
-            <section id="assistance">
-                <h2>ASSISTANCE IS ALWAYS THERE</h2>
-                <img src="img/assistance.png" alt="RCIS team at the English Language Academy in Tacloban">
-                <p>As the event draws near, there are still tasks that remain unfinished, whether due to a shortage of manpower, some members of the said teams having other tasks to finish, or the sheer volume of work that needs to be completed. Despite the challenges, the company’s IT and finance teams continue to work diligently, ensuring that every detail is taken care of before the big day. The collaborative spirit and dedication of each team member are what keep everything moving forward, and no task is left unresolved. From finalizing promotional materials to securing the logistics for the event, everyone involved is contributing their expertise and time to ensure the success of "A Calling to Canada."</p>
-            </section>
-        </article>
-    </main>
+          </article>
+        </div>
+      </div>
+    </div>
+  </main>
 
-  <a href="../blogs.html" class="btn-back">
-    Go Back
+  <a href="../blogs.html" class="btn btn-outline-primary btn-back">
+    ← Go Back
   </a>
 
-   <footer id="contact">
-        <div class="footer-container">
-            <div class="footer-left" style="padding-left: 20px;">
-                <h3>Wanna Subscribe to our News Letter?</h3>
-                <p>Subscribe to our newsletter for the latest updates on new features and product releases.</p>
-                <button id="show-form-btn" onclick="showSubscriptionForm()" style="padding: 10px 20px; border-radius: 20px; background-color: var(--primary-color); color: white; border: none; cursor: pointer;">
-                    Click here
-                </button>
-                <div id="subscription-form" style="display: none; margin-top: 10px;">
-                    <input type="email" id="email" placeholder="Enter your email" required style="padding: 6px 10px 6px 20px; width: 45%; border-radius: 25px; border: 1px solid #ccc; outline: none;" />
-                    <button onclick="submitSubscription()" style="padding: 6px 16px; margin-left: 5px; border-radius: 25px; background-color:var(--primary-color); color: white; border: none; cursor: pointer;">
-                        Subscribe
-                    </button>
-                </div>
-            </div>
+  <footer>
+    <div class="footer-container">
+      <div class="footer-left" style="padding-left: 20px;">
+        <h3>Wanna Subscribe to our News Letter?</h3>
+        <p>Subscribe to our newsletter for the latest updates on new features and product releases.</p>
 
-            <div class="footer-right">
-                <h3>Get In Touch</h3>
-                <p>
-                    Email: assessment@romancis.ca<br>
-                    Contacts: 09171857247 | (250) 667-0565<br>
-                    Location: City Sleep Inn Hotel and Events Centre, Barangay Sico, Lipa City, Batangas
-                </p>
-            </div>
+        <button id="show-form-btn" onclick="showSubscriptionForm()"
+          style="padding: 10px 20px; border-radius: 20px; background-color: #012b26; color: white; border: none; cursor: pointer;">
+          Click here
+        </button>
+
+        <div id="subscription-form" style="display: none; margin-top: 10px;">
+          <input type="email" id="email" placeholder="Enter your email" required
+            style="padding: 6px 10px 6px 20px; width: 45%; border-radius: 25px; border: 1px solid #ccc; outline: none;" />
+          <button onclick="submitSubscription()"
+            style="padding: 6px 16px; margin-left: 5px; border-radius: 25px; background-color: #012b26; color: white; border: none; cursor: pointer;">
+            Subscribe
+          </button>
         </div>
-    </footer>
-    
-    <script>
-        function showSubscriptionForm() {
-            document.getElementById("subscription-form").style.display = "block";
-            document.getElementById("show-form-btn").style.display = "none";
-        }
+      </div>
 
-        function submitSubscription() {
-            const email = document.getElementById("email").value;
-            if (email && email.includes('@')) { 
-                alert("Subscribed successfully with: " + email);
-                document.getElementById("email").value = "";
-                document.getElementById("subscription-form").style.display = "none";
-                 document.getElementById("show-form-btn").style.display = "inline-block";
-            } else {
-                alert("Please enter a valid email address.");
-            }
-        }
-    </script>
+      <div class="footer-right">
+        <h3>Get In Touch</h3>
+        <p>
+          Email: assessment@romancis.ca<br>
+          Contacts: 09171857247 | (250) 667-0565<br>
+          Location: City Sleep Inn Hotel and Events Centre, Barangay Sico, Lipa City, Batangas
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function showSubscriptionForm() {
+      document.getElementById("subscription-form").style.display = "block";
+      document.getElementById("show-form-btn").style.display = "none";
+    }
+
+    function submitSubscription() {
+      const email = document.getElementById("email").value;
+      if (email && email.includes('@')) { // Simple email validation
+        alert("Subscribed successfully with: " + email);
+        document.getElementById("email").value = "";
+        document.getElementById("subscription-form").style.display = "none";
+        document.getElementById("show-form-btn").style.display = "inline-block";
+      } else {
+        alert("Please enter a valid email address.");
+      }
+    }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+    crossorigin="anonymous"></script>
 </body>
+
 </html>
