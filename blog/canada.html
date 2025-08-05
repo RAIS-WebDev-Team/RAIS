@@ -36,6 +36,7 @@
       color: white;
       text-align: center;
       padding: 5rem 1rem;
+      /* Image and overlay */
       background: linear-gradient(rgba(12, 71, 12, 0.65), rgba(12, 71, 12, 0.65)), url('img/assistance.png');
       background-size: cover;
       background-position: center;
@@ -65,14 +66,12 @@
     }
 
     .article-image {
-      border-radius: 8px;
-      margin-bottom: 2rem;
-      max-width: 80%;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
+      width: 100%;
+      height: auto;
       aspect-ratio: 16 / 9;
       object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 1rem;
     }
 
     .article-title {
@@ -108,6 +107,32 @@
       margin-top: 2.5rem;
       margin-bottom: 1rem;
     }
+
+    .event-card {
+      background-color: var(--background-color);
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 2rem;
+      margin-top: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      border-left: 3px solid var(--primary-color);
+    }
+
+    .event-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      color: var(--primary-color);
+    }
+
+    .event-card img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+
 
     footer {
       background-color: var(--primary-color);
@@ -186,23 +211,6 @@
       background-color: var(--primary-color);
       color: white;
     }
-
-    @media (max-width: 768px) {
-      .footer-container {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .footer-left {
-        border-right: none;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-        margin-bottom: 30px;
-      }
-
-      .footer-right {
-        padding-top: 20px;
-      }
-    }
   </style>
 </head>
 
@@ -228,25 +236,56 @@
             <div class="article-body">
               <h2>WHAT IS “A CALLING TO CANADA”?</h2>
               <p>
-                On Saturday, the 12th of April 2025, <span class="highlight-text">Roman & Associates Immigration Services</span> will be hosting a highly anticipated event entitled “A Calling to Canada.” This special gathering is designed for individuals who are aspiring to study, work, or visit Canada and are seeking the right guidance to begin their journey. The event promises to be an informative and engaging opportunity where participants can gain valuable insights into the different immigration pathways, eligibility requirements, and practical steps involved in making their Canadian dream a reality. From understanding visa options and documentation to exploring study and employment opportunities, attendees will walk away better informed and more confident about navigating their plans for moving to or visiting Canada.
+                On Saturday, the 12th of April 2025, <span class="highlight-text">Roman & Associates Immigration
+                  Services</span> will be hosting a highly anticipated event entitled “A Calling to Canada.” This special
+                gathering is designed for individuals who are aspiring to study, work, or visit Canada and are seeking
+                the right guidance to begin their journey. The event promises to be an informative and engaging
+                opportunity where participants can gain valuable insights into the different immigration pathways,
+                eligibility requirements, and practical steps involved in making their Canadian dream a reality. From
+                understanding visa options and documentation to exploring study and employment opportunities, attendees
+                will walk away better informed and more confident about navigating their plans for moving to or visiting
+                Canada.
               </p>
 
-              <h2>COLLABORATION IS ALL AROUND</h2>
-              <img src="img/all around.png" class="img-fluid article-image"
-                alt="RCIS team at the English Language Academy in Tacloban">
-              <p>
-                In the lead-up to this much-awaited event, it is undeniable that the marketing, finance, and IT teams have worked tirelessly behind the scenes, embodying the spirit of collaboration and shared purpose. The marketing team took charge of crafting a compelling narrative around the event—developing engaging promotional materials, coordinating outreach efforts across various platforms, and ensuring that the message of opportunity and guidance reached the right audience, as well as making props that would make the event look appealing and exciting to the participants’ eyes. Meanwhile, the finance team played a crucial role in planning and allocating resources efficiently, making sure every aspect of the event—big or small—was well-supported and aligned with the organization’s goals and budgetary framework.
-              </p>
-              <p>
-                Equally vital was the contribution of the IT team, who developed and maintained secure, user-friendly digital systems for event registration, communication, and real-time updates. Their efforts ensured that participants could access information with ease and that the event infrastructure would run smoothly without technical disruptions. Together, these teams transformed a vision into a reality, proving that excellence is achieved not only through individual expertise but also through unified effort. Their dedication has laid a strong foundation for what promises to be an inspiring, educational, and transformative experience for all attendees.
-              </p>
+              <h2>Behind the Scenes</h2>
+              <div class="event-card">
+                <h3>COLLABORATION IS ALL AROUND</h3>
+                <img src="img/all around.png" class="img-fluid" alt="RCIS team at the English Language Academy in Tacloban">
+                <p>
+                  In the lead-up to this much-awaited event, it is undeniable that the marketing, finance, and IT teams
+                  have worked tirelessly behind the scenes, embodying the spirit of collaboration and shared purpose.
+                  The marketing team took charge of crafting a compelling narrative around the event—developing engaging
+                  promotional materials, coordinating outreach efforts across various platforms, and ensuring that the
+                  message of opportunity and guidance reached the right audience, as well as making props that would
+                  make the event look appealing and exciting to the participants’ eyes. Meanwhile, the finance team
+                  played a crucial role in planning and allocating resources efficiently, making sure every aspect of
+                  the event—big or small—was well-supported and aligned with the organization’s goals and budgetary
+                  framework.
+                </p>
+                <p>
+                  Equally vital was the contribution of the IT team, who developed and maintained secure, user-friendly
+                  digital systems for event registration, communication, and real-time updates. Their efforts ensured
+                  that participants could access information with ease and that the event infrastructure would run
+                  smoothly without technical disruptions. Together, these teams transformed a vision into a reality,
+                  proving that excellence is achieved not only through individual expertise but also through unified
+                  effort. Their dedication has laid a strong foundation for what promises to be an inspiring,
+                  educational, and transformative experience for all attendees.
+                </p>
+              </div>
 
-              <h2>ASSISTANCE IS ALWAYS THERE</h2>
-              <img src="img/assistance.png" class="img-fluid article-image"
-                alt="RCIS team at the English Language Academy in Tacloban">
-              <p>
-                As the event draws near, there are still tasks that remain unfinished, whether due to a shortage of manpower, some members of the said teams having other tasks to finish, or the sheer volume of work that needs to be completed. Despite the challenges, the company’s IT and finance teams continue to work diligently, ensuring that every detail is taken care of before the big day. The collaborative spirit and dedication of each team member are what keep everything moving forward, and no task is left unresolved. From finalizing promotional materials to securing the logistics for the event, everyone involved is contributing their expertise and time to ensure the success of "A Calling to Canada."
-              </p>
+              <div class="event-card">
+                <h3>ASSISTANCE IS ALWAYS THERE</h3>
+                <img src="img/assistance.png" class="img-fluid" alt="RCIS team at the English Language Academy in Tacloban">
+                <p>
+                  As the event draws near, there are still tasks that remain unfinished, whether due to a shortage of
+                  manpower, some members of the said teams having other tasks to finish, or the sheer volume of work
+                  that needs to be completed. Despite the challenges, the company’s IT and finance teams continue to
+                  work diligently, ensuring that every detail is taken care of before the big day. The collaborative
+                  spirit and dedication of each team member are what keep everything moving forward, and no task is left
+                  unresolved. From finalizing promotional materials to securing the logistics for the event, everyone
+                  involved is contributing their expertise and time to ensure the success of "A Calling to Canada."
+                </p>
+              </div>
             </div>
           </article>
         </div>
@@ -314,4 +353,4 @@
     crossorigin="anonymous"></script>
 </body>
 
-</html>
+</html>```
