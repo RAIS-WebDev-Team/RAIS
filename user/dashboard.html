@@ -1,0 +1,1073 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RAIS Dashboard</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <!-- Bootstrap Icons CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Custom Styles -->
+  <style>
+    :root {
+      --rais-primary-green: #004d40; /* Dark Navy Green for primary elements */
+      --rais-dark-green: #00332c;   /* Even Darker Navy Green for hover states */
+      --rais-text-dark: #333333;
+      --rais-text-light: #525252;
+      --rais-card-bg: #FFFFFF;  
+      --rais-light-gray: #E8E8E8;
+      --rais-progress-bg: #D9D9D9;
+      --rais-progress-active: var(--rais-primary-green); /* Use primary green for progress */
+      --rais-bg-light: #F7F7F7;
+      --rais-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      --rais-button-maroon: #811F1D; /* Maroon for buttons, badges, floating elements */
+      --rais-highlight-light-green: #98FB98; /* Light Green for tour highlights */
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--rais-light-gray);
+      color: var(--rais-text-dark);
+    }
+
+    .main-wrapper {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Sidebar Styles */
+    .sidebar {
+      background-color: var(--rais-primary-green);
+      width: 70px;
+      flex-shrink: 0;
+      color: white;
+      padding: 30px 0;
+      box-shadow: var(--rais-shadow);
+      transition: width 0.3s ease-in-out;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sidebar:hover {
+      width: 240px;
+    }
+    
+    .sidebar .logo {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 30px;
+      text-align: center;
+      letter-spacing: 1px;
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    .sidebar:hover .logo {
+      opacity: 1;
+    }
+
+    .sidebar .nav {
+      flex-grow: 1;
+    }
+    
+    .sidebar .nav-link {
+      color: white;
+      font-weight: 500;
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      white-space: nowrap;
+      transition: background-color 0.3s ease;
+    }
+
+    .sidebar .nav-link:hover {
+      background-color: var(--rais-dark-green);
+    }
+
+    .sidebar .nav-link i {
+      font-size: 1.2rem;
+      min-width: 20px;
+      text-align: center;
+    }
+    
+    .sidebar .nav-link span {
+      opacity: 0;
+      transition: opacity 0.1s ease-in-out 0.2s;
+    }
+    
+    .sidebar:hover .nav-link span {
+      opacity: 1;
+    }
+    
+    .profile-section {
+      cursor: pointer;
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      white-space: nowrap;
+      transition: background-color 0.3s ease;
+      margin-top: auto;
+    }
+    
+    .profile-section:hover {
+      background-color: var(--rais-dark-green);
+    }
+    
+    .profile-section i {
+      font-size: 1.2rem;
+      min-width: 20px;
+      text-align: center;
+      color: white;
+    }
+    
+    .profile-section .profile-name-text {
+      opacity: 0;
+      transition: opacity 0.1s ease-in-out 0.2s;
+      color: white; /* Explicitly set to white */
+    }
+    
+    .sidebar:hover .profile-name-text {
+      opacity: 1;
+    }
+
+    .sidebar .footer-text {
+      font-size: 0.8rem;
+      color: #bbb;
+      text-align: center;
+      padding: 15px 0;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+    
+    .sidebar:hover .footer-text {
+      opacity: 1;
+    }
+
+    /* Header Styles */
+    .header {
+      background-color: var(--rais-bg-light);
+      height: 60px;
+      display: flex;
+      justify-content: space-between; /* Adjusted to space-between */
+      align-items: center;
+      padding: 0 25px;
+      box-shadow: var(--rais-shadow);
+      flex-grow: 1;
+    }
+
+    .header .logo-img {
+      height: 150px; /* Adjusted size */
+      width: 150px;  /* Adjusted size */
+      object-fit: contain;
+    }
+
+    .user-status {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .user-status .badge {
+      background-color: var(--rais-button-maroon);
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 5px 15px;
+      border-radius: 20px;
+    }
+    
+    .user-status .btn {
+      color: var(--rais-text-light);
+      font-size: 1.5rem;
+      padding: 0;
+    }
+
+    .tour-help-btn {
+        background: none;
+        border: 2px solid var(--rais-highlight-light-green); /* Highlight */
+        border-radius: 50%;
+        color: var(--rais-text-dark);
+        font-size: 1.5rem;
+        width: 40px; /* Fixed size for circular highlight */
+        height: 40px; /* Fixed size for circular highlight */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        margin-right: 10px; /* Space from power button */
+        transition: background-color 0.2s, color 0.2s;
+    }
+
+    .tour-help-btn:hover {
+        background-color: var(--rais-light-gray);
+        color: var(--rais-primary-green); /* Hover text color changes to dark green */
+    }
+
+    /* Main Content Styles */
+    .main-content {
+      flex-grow: 1;
+      padding: 30px;
+      overflow-y: auto;
+    }
+
+    /* Top Section Cards */
+    .user-info-card {
+      background-color: var(--rais-card-bg);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: var(--rais-shadow);
+    }
+    
+    .user-info-card .card-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .user-info-card .profile-info {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .profile-display-area {
+      position: relative;
+      width: 96px; /* Width of the icon */
+      height: 96px; /* Height of the icon */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .profile-display-area .profile-icon {
+      font-size: 6rem;
+      color: var(--rais-primary-green);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .profile-display-area .profile-image-dashboard {
+      width: 96px; /* Same as icon size */
+      height: 96px; /* Same as icon size */
+      border-radius: 50%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    
+    .user-info-card .profile-name {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 0;
+    }
+    
+    .user-info-card .contact-info {
+      font-size: 0.9rem;
+      color: var(--rais-text-light);
+    }
+
+    .user-info-card .social-links a {
+      color: var(--rais-text-dark);
+      margin-right: 15px;
+    }
+    
+    .quick-actions-card {
+      background-color: var(--rais-card-bg);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: var(--rais-shadow);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .quick-actions-card img {
+      max-width: 140px;
+    }
+
+    .quick-actions-card h2 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-top: 10px;
+    }
+    
+    .quick-actions-card .btn {
+      background-color: var(--rais-light-gray);
+      color: var(--rais-text-dark);
+      border-radius: 20px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      padding: 8px 25px; /* Adjusted padding for quick action buttons */
+      margin: 5px;
+    }
+    
+    /* Progress Steps */
+    .progress-steps {
+      position: relative;
+      background-color: var(--rais-card-bg);
+      border-radius: 12px;
+      box-shadow: var(--rais-shadow);
+      padding: 30px 40px;
+      display: flex; /* Ensure flexbox for layout */
+      justify-content: space-between; /* Distribute items */
+      align-items: flex-start; /* Align items to the start of the cross axis */
+    }
+    
+    .progress-steps::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 60px;
+      right: 60px;
+      height: 4px;
+      background-color: var(--rais-progress-bg);
+      transform: translateY(-50%);
+      z-index: 1;
+    }
+    
+    .step-item {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      display: flex; /* Make step-item a flex container */
+      flex-direction: column; /* Stack children vertically */
+      align-items: center; /* Center children horizontally */
+    }
+    
+    .step-circle {
+      width: 60px;
+      height: 60px;
+      line-height: 60px;
+      border-radius: 50%;
+      background-color: var(--rais-progress-bg);
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: var(--rais-text-dark);
+      margin-bottom: 10px; /* Space between circle and label */
+    }
+    
+    .step-circle.active {
+      background-color: var(--rais-primary-green);
+      color: white;
+    }
+    
+    .step-label {
+      font-size: 0.8rem;
+      color: var(--rais-text-light);
+      white-space: nowrap;
+      margin-top: 5px; /* Adjust as needed for vertical spacing */
+    }
+    
+    /* Contents Grid */
+    .contents-grid .card {
+      border: none;
+      box-shadow: var(--rais-shadow);
+      border-radius: 12px;
+      overflow: hidden;
+      /* Removed cursor: pointer; */
+    }
+    
+    .contents-grid .card:hover {
+        transform: translateY(-5px); /* Add hover effect */
+        transition: transform 0.2s ease-in-out;
+    }
+
+    .contents-grid .card img {
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .add-card {
+      min-height: 250px;
+      border-radius: 12px;
+      box-shadow: var(--rais-shadow);
+      background-color: var(--rais-card-bg);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: transform 0.2s ease-in-out;
+    }
+    
+    .add-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .add-card .icon {
+      font-size: 4rem;
+      color: #C2C2C2;
+    }
+    
+    /* Floating Button */
+    .floating-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: var(--rais-button-maroon); /* Changed to Maroon */
+      color: white;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      text-decoration: none;
+      transition: background-color 0.2s;
+      z-index: 100;
+    }
+    
+    .floating-btn:hover {
+      background-color: var(--rais-dark-green); /* Hover remains dark green */
+    }
+    
+    /* Collapsible Chatbox */
+    .chat-container {
+      position: fixed;
+      bottom: 100px;
+      right: 30px;
+      width: 350px;
+      max-height: 500px;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: var(--rais-shadow);
+      display: flex;
+      flex-direction: column;
+      z-index: 99;
+      transform: translateY(100%);
+      opacity: 0;
+      visibility: hidden;
+      transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    }
+    
+    .chat-container.show {
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .chat-header {
+      background-color: var(--rais-primary-green);
+      color: white;
+      padding: 1rem;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+      cursor: pointer;
+    }
+    
+    .chat-body {
+      padding: 1rem;
+      flex-grow: 1;
+      overflow-y: auto;
+      background-color: var(--rais-bg-light);
+      display: flex;
+      flex-direction: column-reverse;
+      height: 350px;
+    }
+    
+    .chat-footer {
+      padding: 1rem;
+      border-top: 1px solid var(--rais-light-gray);
+    }
+    
+    .chat-footer .input-group {
+      border-radius: 20px;
+    }
+    
+    .chat-footer .form-control {
+      border-radius: 20px 0 0 20px;
+    }
+    
+    .chat-toggle-btn {
+        position: fixed;
+        bottom: 30px;
+        right: 100px;
+        background-color: var(--rais-button-maroon); /* Changed to Maroon */
+        color: white;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        z-index: 100;
+    }
+
+    /* Welcome Tour Modal Styles */
+    .welcome-tour-modal .modal-content {
+      border-radius: 15px;
+      overflow: hidden;
+      border: 2px solid var(--rais-highlight-light-green); /* Highlight the modal itself */
+    }
+
+    .welcome-tour-modal .modal-dialog {
+      position: fixed; /* Use fixed to keep it relative to viewport */
+      margin: 0; /* Remove default margin */
+      transform: none; /* Remove centering transform */
+      max-width: 280px; /* Made smaller */
+      z-index: 1051; /* Ensure it's above the backdrop */
+      top: 50px; /* Fixed top position */
+      right: 50px; /* Fixed right position */
+      bottom: auto;
+      left: auto;
+    }
+
+    .welcome-tour-modal .modal-header {
+      background-color: var(--rais-card-bg);
+      border-bottom: none;
+      padding: 1rem 1.5rem 0.5rem; /* Adjusted padding */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .welcome-tour-modal .modal-header .progress-container {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem; /* Adjusted margin */
+      position: relative;
+    }
+
+    .welcome-tour-modal .modal-header .progress-line {
+      position: absolute;
+      width: calc(100% - 60px); /* Adjust based on circle size */
+      height: 4px;
+      background-color: var(--rais-light-gray);
+      top: 50%;
+      left: 30px;
+      transform: translateY(-50%);
+      z-index: 0;
+    }
+
+    .welcome-tour-modal .modal-header .progress-fill {
+      height: 100%;
+      background-color: var(--rais-primary-green);
+      width: 0%;
+      transition: width 0.3s ease-in-out;
+    }
+
+    .welcome-tour-modal .modal-header .step-indicator {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background-color: var(--rais-light-gray);
+      color: var(--rais-text-dark);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: 600;
+      font-size: 0.9rem;
+      z-index: 1;
+      transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    }
+
+    .welcome-tour-modal .modal-header .step-indicator.active {
+      background-color: var(--rais-primary-green);
+      color: white;
+    }
+
+    .welcome-tour-modal .modal-header h5 {
+      font-size: 1.5rem; /* Adjusted font size */
+      font-weight: 700;
+      color: var(--rais-text-dark);
+      margin-bottom: 0;
+    }
+
+    .welcome-tour-modal .modal-body {
+      padding: 1rem 1.5rem; /* Adjusted padding */
+      text-align: center;
+    }
+
+    .welcome-tour-modal .modal-body p {
+      font-size: 0.9rem; /* Adjusted font size */
+      line-height: 1.5; /* Adjusted line height */
+      color: var(--rais-text-light);
+    }
+
+    .welcome-tour-modal .modal-footer {
+      border-top: none;
+      padding: 0.5rem 1.5rem 1rem; /* Adjusted padding */
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .welcome-tour-modal .modal-footer .btn {
+      border-radius: 20px;
+      padding: 6px 18px; /* Adjusted padding */
+      font-weight: 500;
+      font-size: 0.85rem; /* Adjusted font size */
+    }
+
+    .welcome-tour-modal .modal-footer .btn-secondary {
+      background-color: var(--rais-light-gray);
+      color: var(--rais-text-dark);
+      border: none;
+    }
+
+    .welcome-tour-modal .modal-footer .btn-primary {
+      background-color: var(--rais-primary-green);
+      border: none;
+    }
+
+    /* Tour Highlight Styles */
+    .tour-highlight {
+        /* Removed box-shadow to prevent tinting */
+        position: relative; /* Needed for z-index to work */
+        z-index: 99999; /* Bring highlighted element to front, above modal backdrop */
+        border: 3px solid var(--rais-highlight-light-green); /* Highlight border */
+        border-radius: 15px; /* Adjust as needed */
+        transition: all 0.3s ease-in-out;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .main-wrapper {
+        flex-direction: column;
+      }
+      .sidebar {
+        display: none;
+      }
+      .chat-container {
+        width: 90%;
+        left: 5%;
+      }
+      .welcome-tour-modal .modal-header {
+        padding: 1rem;
+      }
+      .welcome-tour-modal .modal-body {
+        padding: 1rem;
+      }
+      .welcome-tour-modal .modal-footer {
+        flex-direction: column;
+        gap: 10px;
+        padding: 1rem;
+      }
+      .welcome-tour-modal .modal-footer .btn {
+        width: 100%;
+      }
+      .welcome-tour-modal .modal-dialog {
+        top: 20px;
+        right: 20px;
+        left: 20px;
+        max-width: calc(100% - 40px);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main-wrapper">
+    <!-- Sidebar -->
+    <aside class="sidebar d-flex flex-column d-none d-md-block">
+      <div class="logo">RAIS</div>
+      <nav class="nav flex-column">
+        <a class="nav-link" href="dashboard.html"><i class="bi bi-house-door-fill"></i><span>Dashboard</span></a>
+        <a class="nav-link" href="documents.html"><i class="bi bi-file-earmark-text"></i><span>Documents</span></a>
+        <a class="nav-link" href="forms.html"><i class="bi bi-journal-text"></i><span>Forms</span></a>
+        <a class="nav-link" href="notifications.html"><i class="bi bi-bell"></i><span>Notifications</span></a>
+        <a class="nav-link" href="settings.html"><i class="bi bi-gear"></i><span>Settings</span></a>
+      </nav>
+      
+      <!-- Profile Section -->
+      <a class="profile-section" href="profile.html">
+        <i class="bi bi-person-circle"></i>
+        <span class="profile-name-text">Profile</span>
+      </a>
+
+      <div class="mt-auto footer-text">
+        &copy; 2023 RAIS
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="d-flex flex-column flex-grow-1">
+      <!-- Header -->
+      <div class="header">
+        <!-- Left-aligned placeholder (empty for now, but maintains space) -->
+        <div></div> 
+        <!-- Centered Logo -->
+        <img src="../img/logo.png" alt="RAIS Logo" class="logo-img">
+        <!-- Right-aligned user status and tour button -->
+        <div class="user-status d-flex align-items-center gap-2">
+          <button class="tour-help-btn" id="tourToggleButton"><i class="bi bi-question-circle"></i></button>
+          <button class="btn btn-link"><i class="bi bi-power"></i></button>
+          <span class="badge">ACTIVE</span>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <div class="row g-4 mb-4">
+          <!-- User Info Card -->
+          <div class="col-12 col-lg-7">
+            <div class="user-info-card h-100 d-flex flex-column justify-content-between">
+              <div>
+                <div class="profile-info d-flex align-items-center gap-3">
+                  <div class="profile-display-area" id="dashboardProfileImageContainer">
+                    <!-- Profile image or icon will be rendered here by JS -->
+                  </div>
+                  <span class="profile-name" id="dashboardProfileName">FIRST NAME, LAST NAME</span>
+                </div>
+                <div class="social-links mt-3" id="dashboardSocialLinks">
+                  <!-- Social media icons will be dynamically loaded here -->
+                </div>
+                <div class="contact-info mt-3">
+                  <div id="dashboardContactNumber">(+63) 987 654 3210</div>
+                  <div id="dashboardBirthday">Birthday: MM/DD/YYYY</div>
+                  <div id="dashboardDate">MM/DD/YY</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Quick Actions Card -->
+          <div class="col-12 col-lg-5">
+            <div class="quick-actions-card h-100 d-flex flex-column justify-content-center">
+              <img src="../img/logoulit.png" alt="RAIS Logo" class="img-fluid mb-2">
+              <h2>QUICK ACTIONS</h2>
+              <div class="action-buttons">
+                <a href="#" class="btn">Tutorials</a>
+                <a href="#" class="btn">Statement</a>
+                <a href="#" class="btn">Documents</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Progress Steps -->
+        <div class="progress-steps mb-4">
+          <div class="step-item">
+            <div class="step-circle active">1</div>
+            <div class="step-label">Let's Start</div>
+          </div>
+          <div class="step-item">
+            <div class="step-circle">2</div>
+            <div class="step-label">Keep Going...</div>
+          </div>
+          <div class="step-item">
+            <div class="step-circle">3</div>
+            <div class="step-label">Almost There!</div>
+          </div>
+          <div class="step-item">
+            <div class="step-circle">4</div>
+            <div class="step-label">Tara Canada na!</div>
+          </div>
+        </div>
+
+        <!-- Contents Grid -->
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 contents-grid">
+          <div class="col">
+            <a href="../blogs.html" class="card h-100 text-decoration-none text-dark">
+              <img src="../img/thumbblogs.png" class="card-img-top" alt="pektyur">
+              <div class="card-body">
+                <h5 class="card-title">Blogs and Events</h5>
+                <p class="card-text text-muted">View Blogs & Events.</p>
+              </div>
+            </a>
+          </div>
+          <div class="col">
+            <a href="service_page.html" class="card h-100 text-decoration-none text-dark">
+              <img src="../img/thumbservice.png" class="card-img-top" alt="Service Offering">
+              <div class="card-body">
+                <h5 class="card-title">Service Offered</h5>
+                <p class="card-text text-muted">Learn more about our services.</p>
+              </div>
+            </a>
+          </div>
+          <div class="col d-flex">
+            <div class="add-card flex-grow-1">
+              <span class="icon">+</span>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100">
+              <img src="https://placehold.co/400x180/D9D9D9/333333?text=More+Content" class="card-img-top" alt="More Content">
+              <div class="card-body">
+                <h5 class="card-title">Mamaya lalagyan</h5>
+                <p class="card-text text-muted">later po hehehe.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Collapsible Chatbox -->
+  <div class="chat-container" id="chatContainer">
+    <div class="chat-header d-flex justify-content-between align-items-center" onclick="toggleChat()">
+      <h5 class="chat-modal-title mb-0"><i class="bi bi-chat-dots-fill me-2"></i>Live Chat</h5>
+      <i class="bi bi-x-lg text-white"></i>
+    </div>
+    <div class="chat-body">
+      <!-- Chat messages will go here -->
+      <div class="text-center text-muted">Start a new conversation.</div>
+    </div>
+    <div class="chat-footer">
+      <div class="input-group">
+        <input type="text" class="form-control message-input" placeholder="Type a message..." aria-label="Message input">
+        <button class="btn btn-outline-secondary" type="button" id="send-button">
+          <i class="bi bi-send-fill text-dark"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Floating Action Button -->
+  <a href="book-flight.html" class="floating-btn text-decoration-none">
+    <i class="bi bi-plus-lg"></i>
+  </a>
+
+  <!-- Floating Chat Toggle Button -->
+  <button class="chat-toggle-btn" onclick="toggleChat()">
+      <i class="bi bi-chat-dots"></i>
+  </button>
+
+  <!-- Welcome Tour Modal -->
+  <div class="modal fade welcome-tour-modal" id="welcomeTourModal" tabindex="-1" aria-labelledby="welcomeTourModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="progress-container">
+            <div class="progress-line">
+              <div class="progress-fill" id="tourProgressFill"></div>
+            </div>
+            <div class="step-indicator active" id="stepIndicator1">1</div>
+            <div class="step-indicator" id="stepIndicator2">2</div>
+            <div class="step-indicator" id="stepIndicator3">3</div>
+            <div class="step-indicator" id="stepIndicator4">4</div>
+          </div>
+          <h5 class="modal-title" id="welcomeTourModalLabel">Welcome</h5>
+        </div>
+        <div class="modal-body">
+          <p id="tourContent">Welcome to your RAIS dashboard! This tour will guide you through the main features and how to navigate them.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="tourPrevBtn" style="display: none;">Previous</button>
+          <button type="button" class="btn btn-primary" id="tourNextBtn">Next</button>
+          <button type="button" class="btn btn-secondary" id="tourSkipBtn" data-bs-dismiss="modal">Skip Tour</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+
+  <script>
+    function toggleChat() {
+      const chatContainer = document.getElementById('chatContainer');
+      chatContainer.classList.toggle('show');
+    }
+
+    // Load profile data from local storage and update dashboard social links
+    document.addEventListener('DOMContentLoaded', function() {
+      const profileData = JSON.parse(localStorage.getItem('userProfile')) || {};
+      const socialLinksContainer = document.getElementById('dashboardSocialLinks');
+      socialLinksContainer.innerHTML = ''; // Clear existing placeholders
+
+      if (profileData.facebook) {
+        socialLinksContainer.innerHTML += `<a href="${profileData.facebook}" target="_blank"><i class="bi bi-facebook fs-5"></i></a>`;
+      }
+      if (profileData.instagram) {
+        socialLinksContainer.innerHTML += `<a href="${profileData.instagram}" target="_blank"><i class="bi bi-instagram fs-5"></i></a>`;
+      }
+      if (profileData.gmail) {
+        socialLinksContainer.innerHTML += `<a href="mailto:${profileData.gmail}" target="_blank"><i class="bi bi-envelope fs-5"></i></a>`;
+      }
+
+      // Update profile name, contact, and date on dashboard
+      document.getElementById('dashboardProfileName').textContent = `${profileData.firstName || 'FIRST NAME'}, ${profileData.lastName || 'LAST NAME'}`;
+      document.getElementById('dashboardContactNumber').textContent = profileData.contact || '(+63) 987 654 3210';
+      document.getElementById('dashboardBirthday').textContent = profileData.birthday ? `Birthday: ${profileData.birthday}` : 'Birthday: MM/DD/YYYY';
+      // You might want to update the date dynamically or keep it static
+      // document.getElementById('dashboardDate').textContent = new Date().toLocaleDateString(); 
+
+      // Handle profile image display on dashboard
+      const dashboardProfileImageContainer = document.getElementById('dashboardProfileImageContainer');
+      if (profileData.profileImage) {
+          dashboardProfileImageContainer.innerHTML = `<img src="${profileData.profileImage}" alt="Profile Image" class="profile-image-dashboard">`;
+      } else {
+          dashboardProfileImageContainer.innerHTML = `<i class="bi bi-person-circle profile-icon"></i>`;
+      }
+
+
+      // Welcome Tour Logic
+      const hasSeenTour = localStorage.getItem('hasSeenWelcomeTour');
+      if (!hasSeenTour) {
+        const welcomeTourModal = new bootstrap.Modal(document.getElementById('welcomeTourModal'));
+        welcomeTourModal.show();
+        localStorage.setItem('hasSeenWelcomeTour', 'true'); // Mark tour as seen
+      }
+
+      let currentStep = 0;
+      let highlightedElement = null; // To keep track of the currently highlighted element
+      const welcomeTourModalElement = document.getElementById('welcomeTourModal');
+      const welcomeTourModalDialog = welcomeTourModalElement.querySelector('.modal-dialog');
+
+
+      const tourSteps = [
+        {
+          title: "Welcome to RAIS!",
+          content: "This tour helps you get familiar with your new dashboard. Let's explore!",
+          targetSelector: null
+        },
+        {
+          title: "Your Profile & Quick Actions",
+          content: "Top-left: your info and quick links.",
+          targetSelector: ".user-info-card"
+        },
+        {
+          title: "Your Progress Journey",
+          content: "Track your immigration progress here.",
+          targetSelector: ".progress-steps"
+        },
+        {
+          title: "Important Resources",
+          content: "Below: map, service offerings. '+' adds more content.",
+          targetSelector: ".contents-grid"
+        },
+        {
+          title: "Sidebar Navigation",
+          content: "Left sidebar: navigate to Documents, Forms, Notifications, and Settings.",
+          targetSelector: ".sidebar"
+        },
+        {
+          title: "Need Help? Chat with us!",
+          content: "Click the chatbox at the bottom right for live support.",
+          targetSelector: ".chat-toggle-btn" // Changed to highlight the chat toggle button
+        },
+        {
+          title: "Ready to Book Your Flight?",
+          content: "The floating '+' button: shortcut to book your flight to Canada!",
+          targetSelector: ".floating-btn" // Already correctly targets the floating button
+        },
+        {
+          title: "Tour Complete!",
+          content: "You're all set! Enjoy your RAIS dashboard.",
+          targetSelector: null
+        }
+      ];
+
+      const tourTitle = document.getElementById('welcomeTourModalLabel');
+      const tourContent = document.getElementById('tourContent');
+      const tourPrevBtn = document.getElementById('tourPrevBtn');
+      const tourNextBtn = document.getElementById('tourNextBtn');
+      const tourProgressFill = document.getElementById('tourProgressFill');
+      const stepIndicators = [
+        document.getElementById('stepIndicator1'),
+        document.getElementById('stepIndicator2'),
+        document.getElementById('stepIndicator3'),
+        document.getElementById('stepIndicator4')
+      ];
+
+      function updateTourContent() {
+        // Remove previous highlight
+        if (highlightedElement) {
+          highlightedElement.classList.remove('tour-highlight');
+        }
+
+        tourTitle.textContent = tourSteps[currentStep].title;
+        tourContent.textContent = tourSteps[currentStep].content;
+
+        tourPrevBtn.style.display = currentStep === 0 ? 'none' : 'block';
+        tourNextBtn.textContent = currentStep === tourSteps.length - 1 ? 'Finish' : 'Next';
+
+        // Update progress indicators
+        const progressPercentage = (currentStep / (tourSteps.length - 1)) * 100;
+        tourProgressFill.style.width = `${progressPercentage}%`;
+
+        // Update active step circles
+        stepIndicators.forEach((indicator, index) => {
+          // Calculate which step indicator should be active based on the current tour step
+          // This assumes step indicators are for major sections, not every single tour step
+          const majorStepIndex = Math.floor(index * (tourSteps.length / stepIndicators.length));
+          if (currentStep >= majorStepIndex) {
+            indicator.classList.add('active');
+          } else {
+            indicator.classList.remove('active');
+          }
+        });
+
+        // Add highlight to current element
+        if (tourSteps[currentStep].targetSelector) {
+          highlightedElement = document.querySelector(tourSteps[currentStep].targetSelector);
+          if (highlightedElement) {
+            highlightedElement.classList.add('tour-highlight');
+          }
+        }
+      }
+
+      tourNextBtn.addEventListener('click', () => {
+        if (currentStep < tourSteps.length - 1) {
+          currentStep++;
+          updateTourContent();
+        } else {
+          // Tour finished
+          const welcomeTourModal = bootstrap.Modal.getInstance(document.getElementById('welcomeTourModal'));
+          welcomeTourModal.hide();
+          if (highlightedElement) {
+            highlightedElement.classList.remove('tour-highlight'); // Ensure highlight is removed on finish
+          }
+        }
+      });
+
+      tourPrevBtn.addEventListener('click', () => {
+        if (currentStep > 0) {
+          currentStep--;
+          updateTourContent();
+        }
+      });
+
+      // Handle Skip Tour button
+      document.getElementById('tourSkipBtn').addEventListener('click', () => {
+        if (highlightedElement) {
+          highlightedElement.classList.remove('tour-highlight'); // Ensure highlight is removed on skip
+        }
+      });
+
+      // Tour Toggle Button Logic
+      document.getElementById('tourToggleButton').addEventListener('click', () => {
+        currentStep = 0; // Reset tour to the beginning
+        updateTourContent();
+        const welcomeTourModal = new bootstrap.Modal(document.getElementById('welcomeTourModal'));
+        welcomeTourModal.show();
+      });
+
+      // Initial content load
+      updateTourContent();
+    });
+  </script>
+</body>
+
+</html>
