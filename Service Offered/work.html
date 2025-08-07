@@ -2,508 +2,493 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Work Permit</title>
-    <link rel="icon" href="../img/logoulit.png" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="all.css" />
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Work Permit</title>
+  <link rel="icon" href="../img/logoulit.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="all.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f8f9fa;
-        }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8f9fa;
+    }
 
-        .highlight {
-            color: #781d22;
-            font-weight: bold;
-            text-decoration: underline;
-            text-underline-offset: 8px;
-        }
+    .highlight {
+      color: #781d22;
+      font-weight: bold;
+      text-decoration: underline;
+      text-underline-offset: 8px;
+    }
 
-        header {
-            position: relative;
-            height: 100vh;
-            background-image: url('../img/Fwork.png');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-        }
+    header {
+      position: relative;
+      height: 100vh;
+      background-image: url('../img/Fwork.png');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+    }
 
-        .overlay-box {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 100%;
-            background-color: rgba(0, 0, 0, 0.4);
-            z-index: 1;
-        }
+    .overlay-box {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+      z-index: 1;
+    }
 
-        .logo {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            z-index: 2;
-        }
+    .logo {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      z-index: 2;
+    }
 
-        .logo img {
-            width: 90px;
-        }
+    .logo img {
+      width: 90px;
+    }
 
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            max-width: 750px;
-            padding: 20px;
-        }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 750px;
+      padding: 20px;
+    }
 
-        .hero-content h1 {
-            font-size: 3.2rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 5px #000;
-        }
+    .hero-content h1 {
+      font-size: 3.2rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 5px #000;
+    }
 
-        .hero-content p {
-            font-size: 1.2rem;
-            line-height: 1.7;
-            margin-bottom: 30px;
-        }
+    .hero-content p {
+      font-size: 1.2rem;
+      line-height: 1.7;
+      margin-bottom: 30px;
+    }
 
-        .hero-content a {
-            background-color: #b60022;
-            color: white;
-            padding: 10px 28px;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: all 0.3s ease-in-out;
-        }
+    .hero-content a {
+      background-color: #b60022;
+      color: white;
+      padding: 10px 28px;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: all 0.3s ease-in-out;
+    }
 
-        .hero-content a:hover {
-            background-color: #8e001a;
-            transform: scale(1.05);
-        }
+    .hero-content a:hover {
+      background-color: #8e001a;
+      transform: scale(1.05);
+    }
 
-        .nav-tabs .nav-link {
-            color: #444;
-            font-weight: 600;
-            border-radius: 0;
-        }
+    .nav-tabs .nav-link {
+      color: #444;
+      font-weight: 600;
+      border-radius: 0;
+    }
 
-        .nav-tabs .nav-link.active {
-            background-color: #781d22;
-            color: white;
-            border-color: transparent;
-        }
+    .nav-tabs .nav-link.active {
+      background-color: #781d22;
+      color: white;
+      border-color: transparent;
+    }
 
-        .tab-content {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
-        }
+    .tab-content {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    }
 
-        .tab-content img {
-            max-width: 100%;
-            border-radius: 10px;
-        }
+    .tab-content img {
+      max-width: 100%;
+      border-radius: 10px;
+    }
 
-        .fixed-container {
-            max-width: 1500px;
-            width: 1500px;
-            margin: 0 auto;
-        }
+    .fixed-container {
+      max-width: 1500px;
+      width: 1500px;
+      margin: 0 auto;
+    }
 
-        @media (max-width: 1024px) {
-            .fixed-container {
-                width: 100%;
-                padding: 0 15px;
-            }
-        }
+    @media (max-width: 1024px) {
+      .fixed-container {
+        width: 100%;
+        padding: 0 15px;
+      }
+    }
 
 
-        footer {
-            background-color: #7b2c2c;
-            color: white;
-            padding: 50px 20px;
-        }
+    footer {
+      background-color: #7b2c2c;
+      color: white;
+      padding: 50px 20px;
+    }
 
-        .footer-container {
-            display: flex;
-            justify-content: space-between;
-            max-width: 1100px;
-            margin: auto;
-            flex-wrap: wrap;
-            gap: 40px;
-        }
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      max-width: 1100px;
+      margin: auto;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
 
-        .footer-left,
-        .footer-right {
-            flex: 1;
-            min-width: 300px;
-            padding: 10px;
-        }
+    .footer-left,
+    .footer-right {
+      flex: 1;
+      min-width: 300px;
+      padding: 10px;
+    }
 
-        .footer-left {
-            text-align: center;
-            border-right: 1px solid rgba(255, 255, 255, 0.4);
-        }
+    .footer-left {
+      text-align: center;
+      border-right: 1px solid rgba(255, 255, 255, 0.4);
+    }
 
-        .footer-left button,
-        .footer-left #subscription-form button {
-            background-color: #b60022;
-            color: white;
-            border: none;
-            padding: 8px 20px;
-            font-size: 14px;
-            border-radius: 25px;
-            margin-top: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
+    .footer-left button,
+    .footer-left #subscription-form button {
+      background-color: #b60022;
+      color: white;
+      border: none;
+      padding: 8px 20px;
+      font-size: 14px;
+      border-radius: 25px;
+      margin-top: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
 
-        .footer-left button:hover {
-            background-color: #8e001a;
-        }
+    .footer-left button:hover {
+      background-color: #8e001a;
+    }
 
-        .footer-right h3 {
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
+    .footer-right h3 {
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
 
-        @media (max-width: 768px) {
-            .footer-container {
-                flex-direction: column;
-                text-align: center;
-            }
+    @media (max-width: 768px) {
+      .footer-container {
+        flex-direction: column;
+        text-align: center;
+      }
 
-            .footer-left {
-                border-right: none;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-                margin-bottom: 30px;
-            }
+      .footer-left {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+        margin-bottom: 30px;
+      }
 
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
 
-            .hero-content p {
-                font-size: 1rem;
-            }
-        }
+      .hero-content p {
+        font-size: 1rem;
+      }
+    }
 
-        .tab-pane .img-fluid {
-            max-height: 400;
-            object-fit: cover;
-            width: 100%;
-        }
+    .tab-pane .img-fluid {
+      max-height: 400;
+      object-fit: cover;
+      width: 100%;
+    }
 
-        .tab-pane .col-md-6,
-        .tab-pane .col-md-5,
-        .tab-pane .col-md-7 {
-            padding: 15px;
-        }
+    .tab-pane .col-md-6,
+    .tab-pane .col-md-5,
+    .tab-pane .col-md-7 {
+      padding: 15px;
+    }
 
-        .tab-pane {
-            padding: 20px 0;
-        }
+    .tab-pane {
+      padding: 20px 0;
+    }
 
-        @media (max-width: 768px) {
-            .tab-pane .img-fluid {
-                max-height: 400px;
-            }
-        }
+    @media (max-width: 768px) {
+      .tab-pane .img-fluid {
+        max-height: 400px;
+      }
+    }
 
-        .tab-pane .row {
-            min-height: 400px;
-        }
+    .tab-pane .row {
+      min-height: 400px;
+    }
 
-        .tab-pane img {
-            max-height: 100%;
-            max-width: 100%;
-            object-fit: contain;
-        }
+    .tab-pane img {
+      max-height: 100%;
+      max-width: 100%;
+      object-fit: contain;
+    }
 
-        .tab-pane .row {
-            min-height: 590px;
-        }
-    </style>
+    .tab-pane .row {
+      min-height: 590px;
+    }
+  </style>
 </head>
 
 <body>
-    <!-- HEADER -->
-    <header>
-        <div class="overlay-box"></div>
-        <div class="logo">
-            <img src="../img/logo1.png" alt="logo" />
-        </div>
-        <div class="hero-content text-white text-center px-3">
-            <h1>Work Permit</h1>
-            <p>A work permit allows individuals to work legally in a specific
-                country, often requiring employer sponsorship or meeting eligibility
-                criteria. For caregivers, additional requirements may include
-                qualifications and a positive Labour Market Impact Assessment
-                (LMIA).</p>
-            <a href="#info">Explore</a>
-        </div>
-    </header>
-    <!-- TABS SECTION -->
-    <section class="py-5 my-5" id="info">
-        <div class="container fixed-container px-4 px-md-5">
+  <header>
+    <div class="overlay-box"></div>
+    <div class="logo">
+      <img src="../img/logo1.png" alt="logo" />
+    </div>
+    <div class="hero-content text-white text-center px-3">
+      <h1>Work Permit</h1>
+      <p>A work permit allows individuals to work legally in a specific
+        country, often requiring employer sponsorship or meeting eligibility
+        criteria. For caregivers, additional requirements may include
+        qualifications and a positive Labour Market Impact Assessment
+        (LMIA).</p>
+      <a href="#info">Explore</a>
+    </div>
+  </header>
+  <section class="py-5 my-5" id="info">
+    <div class="container fixed-container px-4 px-md-5">
 
-            <ul class="nav nav-tabs mb-5 justify-content-center border-0" id="tabMenu" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#about" type="button"
-                        role="tab">About</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#criteria" type="button"
-                        role="tab">Criteria</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#process" type="button"
-                        role="tab">Process</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#documents" type="button"
-                        role="tab">Documents</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#faq" type="button"
-                        role="tab">FAQs</button>
-                </li>
-            </ul>
-            <div class="tab-content tab-section-content fs-6">
-                <!-- ABOUT -->
-                <div class="tab-pane fade show active" id="about" role="tabpanel">
-                    <div class="row align-items-center g-4">
-                        <div class="col-md-9 px-md-4">
-                            <p class="lh-lg text-justify" style="font-size: 16px;">
-                                A work permit is required for foreign skilled workers wishing to work temporarily in
-                                Canada.
-                                To qualify, a person must have a temporary offer of employment from a Canadian employer.
-                                Certain positions may require knowledge of the National Occupation Classification (NOC)
-                                Code,
-                                which classifies employment types by Canadian standards. Individuals applying for a
-                                Permanent Resident
-                                (PR) card may also apply for an open work permit.
-                            </p>
-                        </div>
-                        <div class="col-md-3 text-center">
-                            <img src="../img/aboutwork.png" alt="Work Permit Image" class="img-fluid rounded"
-                                style="height: 350px; object-fit: contain;" />
-                        </div>
-                    </div>
-                </div>
-
-                <!-- CRITERIA -->
-                <div class="tab-pane fade" id="criteria" role="tabpanel">
-                    <div class="row align-items-center g-4">
-                        <div class="col-md-3 text-center">
-                            <img src="../img/" alt="Criteria" class="img-fluid rounded"
-                                style="height: 350px; object-fit: contain;" />
-                        </div>
-                        <div class="col-md-9 px-md-4" style="font-size: 16px;">
-                            <h5 class="fw-bold mb-3">Criteria:</h5>
-                            <p class="fw-bold mb-3">There are two main types of work permits in Canada:</p>
-                            <ul class="lh-lg ps-0" style="list-style: none;">
-                                <li class="pb-3 mb-3 border-bottom">
-                                    <strong>Open Work Permit (OWP):</strong>
-                                    <ul class="ps-4" style="list-style-type: circle;">
-                                        <li>Not job-specific</li>
-                                        <li>No employer required when applying</li>
-                                        <li>Includes permits for spouses, post-graduation work, youth programs, and more
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="pb-3 mb-3">
-                                    <strong>Employer-Specific Work Permit:</strong>
-                                    <ul class="ps-4" style="list-style-type: circle;">
-                                        <li>Tied to a specific employer, job duration, and location</li>
-                                        <li>Conditions must be followed as stated in the permit</li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- PROCESS -->
-                <div class="tab-pane fade" id="process" role="tabpanel">
-                    <div class="row align-items-center g-4">
-                        <div class="col-md-9 px-md-4">
-                            <h5 class="fw-bold mb-3">Process:</h5>
-                            <ol class="lh-base" style="font-size: 16px; padding-left: 1rem;">
-                                <li class="mb-3">
-                                    <strong>Employer Applies for LMIA:</strong>
-                                    <ul style="list-style-type: circle; padding-left: 1.2rem; margin-top: 0.3rem;">
-                                        <li>May require an LMIA to prove the need for a foreign worker.</li>
-                                    </ul>
-                                </li>
-                                <li class="mb-3">
-                                    <strong>Employer Extends a Job Offer:</strong>
-                                    <ul style="list-style-type: circle; padding-left: 1.2rem; margin-top: 0.3rem;">
-                                        <li>Once LMIA is approved, a job offer is extended.</li>
-                                    </ul>
-                                </li>
-                                <li class="mb-3">
-                                    <strong>Worker Applies for Work Permit:</strong>
-                                    <ul style="list-style-type: circle; padding-left: 1.2rem; margin-top: 0.3rem;">
-                                        <li>The worker applies after receiving the offer.</li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <strong>Work Permit Issued:</strong>
-                                    <ul style="list-style-type: circle; padding-left: 1.2rem; margin-top: 0.3rem;">
-                                        <li>If criteria are met, the permit is issued.</li>
-                                    </ul>
-                                </li>
-                            </ol>
-                        </div>
-                        <div class="col-md-3 text-center">
-                            <img src="../img/proc.png" alt="Process" class="img-fluid rounded"
-                                style="height: 350px; object-fit: contain;" />
-                        </div>
-                    </div>
-                </div>
-
-                <!-- DOCUMENTS -->
-                <div class="tab-pane fade" id="documents" role="tabpanel">
-                    <div class="row align-items-center g-4">
-                        <div class="col-md-3 text-center">
-                            <img src="../img/documents.png" alt="Documents" class="img-fluid rounded"
-                                style="height: 350px; object-fit: contain;" />
-                        </div>
-                        <div class="col-md-9 px-md-4" style="font-size: 16px; line-height: 1.8;">
-                            <h5 class="fw-bold mb-3">Required Documents:</h5>
-                            <ul class="list-group list-group-flush lh-lg">
-                                <li class="list-group-item">
-                                    <strong>For the Sponsor:</strong>
-                                    <ul class="mt-2 ps-4">
-                                        <li>Proof of citizenship or permanent residency</li>
-                                        <li>Proof of income</li>
-                                        <li>Completed application</li>
-                                        <li>Divorce or death certificates (if applicable)</li>
-                                    </ul>
-                                </li>
-                                <li class="list-group-item">
-                                    <strong>For the Sponsored Person:</strong>
-                                    <ul class="mt-2 ps-4">
-                                        <li>Proof of relationship</li>
-                                        <li>Proof of identity</li>
-                                        <li>Medical exam results</li>
-                                        <li>Police certificates</li>
-                                        <li>Proof of dependency (if any)</li>
-                                    </ul>
-                                </li>
-                                <li class="list-group-item">
-                                    <strong>For Both:</strong>
-                                    <ul class="mt-2 ps-4">
-                                        <li>Application fee receipt</li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!-- FAQ -->
-                <div class="tab-pane fade" id="faq" role="tabpanel">
-                    <div class="row align-items-center g-4">
-                        <div class="col-md-9">
-                            <h5 class="fw-bold mb-3">Frequently Asked:</h5>
-                            <ul class="list-group list-group-flush lh-lg">
-                                <li class="list-group-item">
-                                    <strong>Q1:</strong> Can I apply without a job offer?<br />
-                                    <strong>A:</strong> In most cases, no. Open work permits are exceptions.
-                                </li>
-                                <li class="list-group-item">
-                                    <strong>Q2:</strong> What’s the difference between permits?<br />
-                                    <strong>A:</strong> Open permits are not job-specific. Employer-specific are
-                                    restricted.
-                                </li>
-                                <li class="list-group-item">
-                                    <strong>Q3:</strong> How long can I stay?<br />
-                                    <strong>A:</strong> Depends on job offer and permit type.
-                                </li>
-                                <li class="list-group-item">
-                                    <strong>Q4:</strong> Can my family come with me?<br />
-                                    <strong>A:</strong> Yes. Spouses may get a permit; children can study.
-                                </li>
-                                <li class="list-group-item">
-                                    <strong>Q5:</strong> How can I succeed?<br />
-                                    <strong>A:</strong> Submit accurate docs. Consider an immigration consultant.
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-md-3 text-center">
-                            <img src="../img/faq.jpg" alt="FAQs Image" class="img-fluid rounded"
-                                style="height: 350px; object-fit: contain;" />
-                        </div>
-                    </div>
-                </div>
+      <ul class="nav nav-tabs mb-5 justify-content-center border-0" id="tabMenu" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#about" type="button"
+            role="tab">About</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" data-bs-toggle="tab" data-bs-target="#criteria" type="button"
+            role="tab">Criteria</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" data-bs-toggle="tab" data-bs-target="#process" type="button"
+            role="tab">Process</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" data-bs-toggle="tab" data-bs-target="#documents" type="button"
+            role="tab">Documents</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" data-bs-toggle="tab" data-bs-target="#faq" type="button" role="tab">FAQs</button>
+        </li>
+      </ul>
+      <div class="tab-content tab-section-content fs-6">
+        <div class="tab-pane fade show active" id="about" role="tabpanel">
+          <div class="row align-items-center g-4">
+            <div class="col-md-9 px-md-4">
+              <p class="lh-lg text-justify" style="font-size: 16px;">
+                A work permit is required for foreign skilled workers wishing to work temporarily in
+                Canada.
+                To qualify, a person must have a temporary offer of employment from a Canadian employer.
+                Certain positions may require knowledge of the National Occupation Classification (NOC)
+                Code,
+                which classifies employment types by Canadian standards. Individuals applying for a
+                Permanent Resident
+                (PR) card may also apply for an open work permit.
+              </p>
             </div>
-        </div>
-    </section>
-    <!-- FOOTER -->
-    <footer>
-        <div class="footer-container">
-            <div class="footer-left">
-                <h3>Wanna Subscribe to our Newsletter?</h3>
-                <p>Get the latest updates and tips straight to your inbox.</p>
-                <button onclick="showSubscriptionForm()">Click here</button>
-                <div id="subscription-form" style="display: none;">
-                    <input type="email" id="email" placeholder="Enter your email" required
-                        style="padding: 6px 12px; width: 45%; border-radius: 25px; border: none;" />
-                    <button onclick="submitSubscription()">Subscribe</button>
-                </div>
+            <div class="col-md-3 text-center">
+              <img src="../img/aboutwork.png" alt="Work Permit Image" class="img-fluid rounded"
+                style="height: 350px; object-fit: contain;" />
             </div>
-            <div class="footer-right">
-                <h3>Get In Touch</h3>
-                <p>
-                    <i class="bi bi-envelope-fill me-2"></i> assessment@romancis.ca<br>
-                    <i class="bi bi-telephone-fill me-2"></i> 09171857247 | (250) 667-0565<br>
-                    <i class="bi bi-geo-alt-fill me-2"></i> City Sleep Inn Hotel and Events Centre, Brgy
-                    Sico, Lipa
-                    City, Batangas
-                </p>
-            </div>
+          </div>
         </div>
-    </footer>
+        <div class="tab-pane fade" id="criteria" role="tabpanel">
+          <div class="row align-items-center g-4">
+            <div class="col-md-3 text-center">
+              <img src="../img/" alt="Criteria" class="img-fluid rounded" style="height: 350px; object-fit: contain;" />
+            </div>
+            <div class="col-md-9 px-md-4" style="font-size: 16px;">
+              <h5 class="fw-bold mb-3">Criteria:</h5>
+              <p class="fw-bold mb-3">There are two main types of work permits in Canada:</p>
+              <ul class="lh-lg ps-0" style="list-style: none;">
+                <li class="pb-3 mb-3 border-bottom">
+                  <strong>Open Work Permit (OWP):</strong>
+                  <ul class="ps-4" style="list-style-type: circle;">
+                    <li>Not job-specific</li>
+                    <li>No employer required when applying</li>
+                    <li>Includes permits for spouses, post-graduation work, youth programs, and more
+                    </li>
+                  </ul>
+                </li>
+                <li class="pb-3 mb-3">
+                  <strong>Employer-Specific Work Permit:</strong>
+                  <ul class="ps-4" style="list-style-type: circle;">
+                    <li>Tied to a specific employer, job duration, and location</li>
+                    <li>Conditions must be followed as stated in the permit</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="process" role="tabpanel">
+          <div class="row align-items-center g-4">
+            <div class="col-md-9 px-md-4">
+              <h5 class="fw-bold mb-3">Process:</h5>
+              <ol class="lh-base" style="font-size: 16px; padding-left: 1rem;">
+                <li class="mb-3">
+                  <strong>Employer Applies for LMIA:</strong>
+                  <ul style="list-style-type: circle; padding-left: 1.2rem; margin-top: 0.3rem;">
+                    <li>May require an LMIA to prove the need for a foreign worker.</li>
+                  </ul>
+                </li>
+                <li class="mb-3">
+                  <strong>Employer Extends a Job Offer:</strong>
+                  <ul style="list-style-type: circle; padding-left: 1.2rem; margin-top: 0.3rem;">
+                    <li>Once LMIA is approved, a job offer is extended.</li>
+                  </ul>
+                </li>
+                <li class="mb-3">
+                  <strong>Worker Applies for Work Permit:</strong>
+                  <ul style="list-style-type: circle; padding-left: 1.2rem; margin-top: 0.3rem;">
+                    <li>The worker applies after receiving the offer.</li>
+                  </ul>
+                </li>
+                <li>
+                  <strong>Work Permit Issued:</strong>
+                  <ul style="list-style-type: circle; padding-left: 1.2rem; margin-top: 0.3rem;">
+                    <li>If criteria are met, the permit is issued.</li>
+                  </ul>
+                </li>
+              </ol>
+            </div>
+            <div class="col-md-3 text-center">
+              <img src="../img/proc.png" alt="Process" class="img-fluid rounded"
+                style="height: 350px; object-fit: contain;" />
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="documents" role="tabpanel">
+          <div class="row align-items-center g-4">
+            <div class="col-md-3 text-center">
+              <img src="../img/documents.png" alt="Documents" class="img-fluid rounded"
+                style="height: 350px; object-fit: contain;" />
+            </div>
+            <div class="col-md-9 px-md-4" style="font-size: 16px; line-height: 1.8;">
+              <h5 class="fw-bold mb-3">Required Documents:</h5>
+              <ul class="list-group list-group-flush lh-lg">
+                <li class="list-group-item">
+                  <strong>For the Sponsor:</strong>
+                  <ul class="mt-2 ps-4">
+                    <li>Proof of citizenship or permanent residency</li>
+                    <li>Proof of income</li>
+                    <li>Completed application</li>
+                    <li>Divorce or death certificates (if applicable)</li>
+                  </ul>
+                </li>
+                <li class="list-group-item">
+                  <strong>For the Sponsored Person:</strong>
+                  <ul class="mt-2 ps-4">
+                    <li>Proof of relationship</li>
+                    <li>Proof of identity</li>
+                    <li>Medical exam results</li>
+                    <li>Police certificates</li>
+                    <li>Proof of dependency (if any)</li>
+                  </ul>
+                </li>
+                <li class="list-group-item">
+                  <strong>For Both:</strong>
+                  <ul class="mt-2 ps-4">
+                    <li>Application fee receipt</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="faq" role="tabpanel">
+          <div class="row align-items-center g-4">
+            <div class="col-md-9">
+              <h5 class="fw-bold mb-3">Frequently Asked:</h5>
+              <ul class="list-group list-group-flush lh-lg">
+                <li class="list-group-item">
+                  <strong>Q1:</strong> Can I apply without a job offer?<br />
+                  <strong>A:</strong> In most cases, no. Open work permits are exceptions.
+                </li>
+                <li class="list-group-item">
+                  <strong>Q2:</strong> What’s the difference between permits?<br />
+                  <strong>A:</strong> Open permits are not job-specific. Employer-specific are
+                  restricted.
+                </li>
+                <li class="list-group-item">
+                  <strong>Q3:</strong> How long can I stay?<br />
+                  <strong>A:</strong> Depends on job offer and permit type.
+                </li>
+                <li class="list-group-item">
+                  <strong>Q4:</strong> Can my family come with me?<br />
+                  <strong>A:</strong> Yes. Spouses may get a permit; children can study.
+                </li>
+                <li class="list-group-item">
+                  <strong>Q5:</strong> How can I succeed?<br />
+                  <strong>A:</strong> Submit accurate docs. Consider an immigration consultant.
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-3 text-center">
+              <img src="../img/faq.jpg" alt="FAQs Image" class="img-fluid rounded"
+                style="height: 350px; object-fit: contain;" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="footer-container">
+      <div class="footer-left">
+        <h3>Wanna Subscribe to our Newsletter?</h3>
+        <p>Get the latest updates and tips straight to your inbox.</p>
+        <button onclick="showSubscriptionForm()">Click here</button>
+        <div id="subscription-form" style="display: none;">
+          <input type="email" id="email" placeholder="Enter your email" required
+            style="padding: 6px 12px; width: 45%; border-radius: 25px; border: none;" />
+          <button onclick="submitSubscription()">Subscribe</button>
+        </div>
+      </div>
+      <div class="footer-right">
+        <h3>Get In Touch</h3>
+        <p>
+          <i class="bi bi-envelope-fill me-2"></i> assessment@romancis.ca<br>
+          <i class="bi bi-telephone-fill me-2"></i> 09171857247 | (250) 667-0565<br>
+          <i class="bi bi-geo-alt-fill me-2"></i> City Sleep Inn Hotel and Events Centre, Brgy
+          Sico, Lipa
+          City, Batangas
+        </p>
+      </div>
+    </div>
+  </footer>
+  <script>
+    function showSubscriptionForm() {
+      document.getElementById("subscription-form").style.display = "block";
+      event.target.style.display = "none";
+    }
 
-    <!-- JS -->
-    <script>
-        function showSubscriptionForm() {
-            document.getElementById("subscription-form").style.display = "block";
-            event.target.style.display = "none";
-        }
-
-        function submitSubscription() {
-            const email = document.getElementById("email").value;
-            if (email) {
-                alert("Subscribed successfully with: " + email);
-                document.getElementById("email").value = "";
-                document.getElementById("subscription-form").style.display = "none";
-            } else {
-                alert("Please enter a valid email address.");
-            }
-        }
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    function submitSubscription() {
+      const email = document.getElementById("email").value;
+      if (email) {
+        alert("Subscribed successfully with: " + email);
+        document.getElementById("email").value = "";
+        document.getElementById("subscription-form").style.display = "none";
+      } else {
+        alert("Please enter a valid email address.");
+      }
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

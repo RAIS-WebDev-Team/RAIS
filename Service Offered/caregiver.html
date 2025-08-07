@@ -2,443 +2,427 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Caregiver Permit</title>
-    <link rel="icon" href="../img/logoulit.png" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="all.css" />
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Caregiver Permit</title>
+  <link rel="icon" href="../img/logoulit.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="all.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f8f9fa;
-        }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8f9fa;
+    }
 
-        .highlight {
-            color: #781d22;
-            font-weight: bold;
-            text-decoration: underline;
-            text-underline-offset: 8px;
-        }
+    .highlight {
+      color: #781d22;
+      font-weight: bold;
+      text-decoration: underline;
+      text-underline-offset: 8px;
+    }
 
-        header {
-            position: relative;
-            height: 100vh;
-            background-image: url('../img/Fcaregiver.png');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-        }
+    header {
+      position: relative;
+      height: 100vh;
+      background-image: url('../img/Fcaregiver.png');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+    }
 
-        .overlay-box {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 100%;
-            background-color: rgba(0, 0, 0, 0.4);
-            z-index: 1;
-        }
+    .overlay-box {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+      z-index: 1;
+    }
 
-        .logo {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            z-index: 2;
-        }
+    .logo {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      z-index: 2;
+    }
 
-        .logo img {
-            width: 90px;
-        }
+    .logo img {
+      width: 90px;
+    }
 
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            max-width: 750px;
-            padding: 20px;
-        }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 750px;
+      padding: 20px;
+    }
 
-        .hero-content h1 {
-            font-size: 3.2rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 5px #000;
-        }
+    .hero-content h1 {
+      font-size: 3.2rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 5px #000;
+    }
 
-        .hero-content p {
-            font-size: 1.2rem;
-            line-height: 1.7;
-            margin-bottom: 30px;
-        }
+    .hero-content p {
+      font-size: 1.2rem;
+      line-height: 1.7;
+      margin-bottom: 30px;
+    }
 
-        .hero-content a {
-            background-color: #b60022;
-            color: white;
-            padding: 10px 28px;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: all 0.3s ease-in-out;
-        }
+    .hero-content a {
+      background-color: #b60022;
+      color: white;
+      padding: 10px 28px;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: all 0.3s ease-in-out;
+    }
 
-        .hero-content a:hover {
-            background-color: #8e001a;
-            transform: scale(1.05);
-        }
+    .hero-content a:hover {
+      background-color: #8e001a;
+      transform: scale(1.05);
+    }
 
-        .nav-tabs .nav-link {
-            color: #444;
-            font-weight: 600;
-            border-radius: 0;
-        }
+    .nav-tabs .nav-link {
+      color: #444;
+      font-weight: 600;
+      border-radius: 0;
+    }
 
-        .nav-tabs .nav-link.active {
-            background-color: #781d22;
-            color: white;
-            border-color: transparent;
-        }
+    .nav-tabs .nav-link.active {
+      background-color: #781d22;
+      color: white;
+      border-color: transparent;
+    }
 
-        .tab-content {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
-        }
+    .tab-content {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    }
 
-        .tab-content img {
-            max-width: 100%;
-            border-radius: 10px;
-        }
+    .tab-content img {
+      max-width: 100%;
+      border-radius: 10px;
+    }
 
-        .fixed-container {
-            max-width: 1500px;
-            width: 1500px;
-            margin: 0 auto;
-        }
+    .fixed-container {
+      max-width: 1500px;
+      width: 1500px;
+      margin: 0 auto;
+    }
 
-        @media (max-width: 1024px) {
-            .fixed-container {
-                width: 100%;
-                padding: 0 15px;
-            }
-        }
+    @media (max-width: 1024px) {
+      .fixed-container {
+        width: 100%;
+        padding: 0 15px;
+      }
+    }
 
 
-        footer {
-            background-color: #7b2c2c;
-            color: white;
-            padding: 50px 20px;
-        }
+    footer {
+      background-color: #7b2c2c;
+      color: white;
+      padding: 50px 20px;
+    }
 
-        .footer-container {
-            display: flex;
-            justify-content: space-between;
-            max-width: 1100px;
-            margin: auto;
-            flex-wrap: wrap;
-            gap: 40px;
-        }
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      max-width: 1100px;
+      margin: auto;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
 
-        .footer-left,
-        .footer-right {
-            flex: 1;
-            min-width: 300px;
-            padding: 10px;
-        }
+    .footer-left,
+    .footer-right {
+      flex: 1;
+      min-width: 300px;
+      padding: 10px;
+    }
 
-        .footer-left {
-            text-align: center;
-            border-right: 1px solid rgba(255, 255, 255, 0.4);
-        }
+    .footer-left {
+      text-align: center;
+      border-right: 1px solid rgba(255, 255, 255, 0.4);
+    }
 
-        .footer-left button,
-        .footer-left #subscription-form button {
-            background-color: #b60022;
-            color: white;
-            border: none;
-            padding: 8px 20px;
-            font-size: 14px;
-            border-radius: 25px;
-            margin-top: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
+    .footer-left button,
+    .footer-left #subscription-form button {
+      background-color: #b60022;
+      color: white;
+      border: none;
+      padding: 8px 20px;
+      font-size: 14px;
+      border-radius: 25px;
+      margin-top: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
 
-        .footer-left button:hover {
-            background-color: #8e001a;
-        }
+    .footer-left button:hover {
+      background-color: #8e001a;
+    }
 
-        .footer-right h3 {
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
+    .footer-right h3 {
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
 
-        @media (max-width: 768px) {
-            .footer-container {
-                flex-direction: column;
-                text-align: center;
-            }
+    @media (max-width: 768px) {
+      .footer-container {
+        flex-direction: column;
+        text-align: center;
+      }
 
-            .footer-left {
-                border-right: none;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-                margin-bottom: 30px;
-            }
+      .footer-left {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+        margin-bottom: 30px;
+      }
 
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
 
-            .hero-content p {
-                font-size: 1rem;
-            }
-        }
+      .hero-content p {
+        font-size: 1rem;
+      }
+    }
 
-        .tab-pane .img-fluid {
-            max-height: 400;
-            object-fit: cover;
-            width: 100%;
-        }
+    .tab-pane .img-fluid {
+      max-height: 400;
+      object-fit: cover;
+      width: 100%;
+    }
 
-        .tab-pane .col-md-6,
-        .tab-pane .col-md-5,
-        .tab-pane .col-md-7 {
-            padding: 15px;
-        }
+    .tab-pane .col-md-6,
+    .tab-pane .col-md-5,
+    .tab-pane .col-md-7 {
+      padding: 15px;
+    }
 
-        .tab-pane {
-            padding: 20px 0;
-        }
+    .tab-pane {
+      padding: 20px 0;
+    }
 
-        @media (max-width: 768px) {
-            .tab-pane .img-fluid {
-                max-height: 400px;
-            }
-        }
+    @media (max-width: 768px) {
+      .tab-pane .img-fluid {
+        max-height: 400px;
+      }
+    }
 
-        .tab-pane .row {
-            min-height: 400px;
-        }
+    .tab-pane .row {
+      min-height: 400px;
+    }
 
-        .tab-pane img {
-            max-height: 100%;
-            max-width: 100%;
-            object-fit: contain;
-        }
+    .tab-pane img {
+      max-height: 100%;
+      max-width: 100%;
+      object-fit: contain;
+    }
 
-        .tab-pane .row {
-            min-height: 420px;
-        }
-    </style>
+    .tab-pane .row {
+      min-height: 420px;
+    }
+  </style>
 </head>
 
 <body>
-    <!-- HEADER -->
-    <header>
-        <div class="overlay-box"></div>
-        <div class="logo">
-            <img src="../img/logo1.png" alt="logo" />
-        </div>
-        <div class="hero-content text-white text-center px-3">
-            <h1>Caregiver Permit</h1>
-            <p>A caregiver provides personal care and support to individuals in need, such as the elderly or those with
-                disabilities. They assist with daily activities while promoting dignity and independence.</p>
-            <a href="#info">Explore</a>
-        </div>
-    </header>
-    <!-- TABS SECTION -->
-    <section class="py-5 my-5" id="info">
-        <div class="container fixed-container px-4 px-md-5">
-            <ul class="nav nav-tabs mb-5 justify-content-center border-0" id="tabMenu" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#about" type="button"
-                        role="tab">About</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#criteria" type="button"
-                        role="tab">Criteria</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#process" type="button"
-                        role="tab">Process</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#documents" type="button"
-                        role="tab">Documents</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#faq" type="button"
-                        role="tab">FAQs</button>
-                </li>
-            </ul>
+  <header>
+    <div class="overlay-box"></div>
+    <div class="logo">
+      <img src="../img/logo1.png" alt="logo" />
+    </div>
+    <div class="hero-content text-white text-center px-3">
+      <h1>Caregiver Permit</h1>
+      <p>A caregiver provides personal care and support to individuals in need, such as the elderly or those with
+        disabilities. They assist with daily activities while promoting dignity and independence.</p>
+      <a href="#info">Explore</a>
+    </div>
+  </header>
+  <section class="py-5 my-5" id="info">
+    <div class="container fixed-container px-4 px-md-5">
+      <ul class="nav nav-tabs mb-5 justify-content-center border-0" id="tabMenu" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#about" type="button"
+            role="tab">About</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" data-bs-toggle="tab" data-bs-target="#criteria" type="button"
+            role="tab">Criteria</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" data-bs-toggle="tab" data-bs-target="#process" type="button"
+            role="tab">Process</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" data-bs-toggle="tab" data-bs-target="#documents" type="button"
+            role="tab">Documents</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" data-bs-toggle="tab" data-bs-target="#faq" type="button" role="tab">FAQs</button>
+        </li>
+      </ul>
 
-            <div class="tab-content">
-                <!-- ABOUT -->
-                <div class="tab-pane fade show active" id="about" role="tabpanel">
-                    <div class="row align-items-center g-4">
-                        <div class="col-md-6">
-                            <p class="lh-lg text-justify ps-5" style="font-size: 18px;">
-                                The Caregiver Pilot Program is designed for individuals who wish to immigrate to Canada
-                                to work as
-                                in-home caregivers. It provides a pathway to permanent residency for caregivers who meet
-                                certain
-                                eligibility criteria and have a valid job offer.
-                            </p>
-                        </div>
-                        <div class="col-md-6 text-center">
-                            <img src="../img/pic2.png" alt="Family Image" class="img-fluid rounded"
-                                style="height: 350px; object-fit: contain;" />
-                        </div>
-                    </div>
-                </div>
-
-                <!-- CRITERIA -->
-                <div class="tab-pane fade" id="criteria" role="tabpanel">
-                    <div class="row align-items-center g-4">
-                        <div class="col-md-6 text-center">
-                            <img src="../img/criteria.jpg" class="img-fluid rounded"
-                                style="height: 350px; object-fit: contain;" alt="Checklist">
-                        </div>
-                        <div class="col-md-6 ps-5">
-                            <h5 class="fw-bold mb-3">Criteria:</h5>
-                            <ul class="lh-lg text-justify ps-4" style="font-size: 18px; list-style-type: disc;">
-                                <li><strong>Basic Language Proficiency:</strong> CLB 5+ (English/French)</li>
-                                <li><strong>Valid Job Offer:</strong> Full-time caregiver offer in Canada</li>
-                                <li><strong>Work Experience:</strong> 24 months in past 36 months</li>
-                                <li><strong>Education:</strong> Canadian 1-year post-secondary equivalent</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- PROCESS -->
-                <div class="tab-pane fade" id="process" role="tabpanel">
-                    <div class="row align-items-center g-4">
-                        <div class="col-md-6">
-                            <h5 class="fw-bold mb-3">Process:</h5>
-                            <ol class="lh-lg ps-5 text-justify" style="font-size: 18px;">
-                                <li><strong>Employer Submits Offer:</strong> Job offer and documents.</li>
-                                <li><strong>Apply for Work Permit:</strong> Submit application online.</li>
-                                <li><strong>Biometrics:</strong> Attend appointment.</li>
-                                <li><strong>Medical Exam:</strong> Complete medical checkup.</li>
-                                <li><strong>Receive Permit:</strong> Start working in Canada.</li>
-                            </ol>
-                        </div>
-                        <div class="col-md-6 text-center">
-                            <img src="../img/proc.png" alt="Process" class="img-fluid rounded"
-                                style="height: 350px; object-fit: contain;" />
-                        </div>
-                    </div>
-                </div>
-
-                <!-- DOCUMENTS -->
-                <div class="tab-pane fade" id="documents" role="tabpanel">
-                    <div class="row align-items-center g-4">
-                        <div class="col-md-6 text-center">
-                            <img src="../img/documents.png" alt="Documents" class="img-fluid rounded"
-                                style="height: 350px; object-fit: contain;" />
-                        </div>
-                        <div class="col-md-6">
-                            <ul class="lh-lg text-justify ps-5" style="font-size: 18px; list-style-type: disc;">
-                                <p class="fw-bold">Required Documents:</p>
-                                <li>Valid Passport</li>
-                                <li>Job Offer Letter</li>
-                                <li>Proof of Education</li>
-                                <li>Language Test Results</li>
-                                <li>Medical & Police Clearance</li>
-                                <li>Proof of Experience</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-
-                <!-- FAQ -->
-                <div class="tab-pane fade" id="faq" role="tabpanel">
-                    <div class="row align-items-center g-4">
-                        <div class="col-md-6">
-                            <h5 class="fw-bold mb-3">Frequently Asked:</h5>
-                            <ul class="list-group list-group-flush lh-lg text-justify ps-5" style="font-size: 18px;">
-                                <li class="list-group-item">
-                                    <strong>Q1:</strong> Can I bring my family?<br>
-                                    <strong>A:</strong> Yes, dependents may accompany you.
-                                </li>
-                                <li class="list-group-item">
-                                    <strong>Q2:</strong> Do I need a job offer?<br>
-                                    <strong>A:</strong> Yes, a valid offer is required.
-                                </li>
-                                <li class="list-group-item">
-                                    <strong>Q3:</strong> Can I apply from outside Canada?<br>
-                                    <strong>A:</strong> Yes, international applicants are eligible.
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-md-6 text-center">
-                            <img src="../img/faq.jpg" alt="FAQs Image" class="img-fluid rounded"
-                                style="height: 350px; object-fit: contain;" />
-                        </div>
-                    </div>
-                </div>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="about" role="tabpanel">
+          <div class="row align-items-center g-4">
+            <div class="col-md-6">
+              <p class="lh-lg text-justify ps-5" style="font-size: 18px;">
+                The Caregiver Pilot Program is designed for individuals who wish to immigrate to Canada
+                to work as
+                in-home caregivers. It provides a pathway to permanent residency for caregivers who meet
+                certain
+                eligibility criteria and have a valid job offer.
+              </p>
             </div>
-        </div>
-    </section>
-    <!-- FOOTER -->
-    <footer>
-        <div class="footer-container">
-            <div class="footer-left">
-                <h3>Wanna Subscribe to our Newsletter?</h3>
-                <p>Get the latest updates and tips straight to your inbox.</p>
-                <button onclick="showSubscriptionForm()">Click here</button>
-                <div id="subscription-form" style="display: none;">
-                    <input type="email" id="email" placeholder="Enter your email" required
-                        style="padding: 6px 12px; width: 45%; border-radius: 25px; border: none;" />
-                    <button onclick="submitSubscription()">Subscribe</button>
-                </div>
+            <div class="col-md-6 text-center">
+              <img src="../img/pic2.png" alt="Family Image" class="img-fluid rounded"
+                style="height: 350px; object-fit: contain;" />
             </div>
-            <div class="footer-right">
-                <h3>Get In Touch</h3>
-                <p>
-                    <i class="bi bi-envelope-fill me-2"></i> assessment@romancis.ca<br>
-                    <i class="bi bi-telephone-fill me-2"></i> 09171857247 | (250) 667-0565<br>
-                    <i class="bi bi-geo-alt-fill me-2"></i> City Sleep Inn Hotel and Events Centre, Brgy Sico, Lipa
-                    City, Batangas
-                </p>
-            </div>
+          </div>
         </div>
-    </footer>
+        <div class="tab-pane fade" id="criteria" role="tabpanel">
+          <div class="row align-items-center g-4">
+            <div class="col-md-6 text-center">
+              <img src="../img/criteria.jpg" class="img-fluid rounded" style="height: 350px; object-fit: contain;"
+                alt="Checklist">
+            </div>
+            <div class="col-md-6 ps-5">
+              <h5 class="fw-bold mb-3">Criteria:</h5>
+              <ul class="lh-lg text-justify ps-4" style="font-size: 18px; list-style-type: disc;">
+                <li><strong>Basic Language Proficiency:</strong> CLB 5+ (English/French)</li>
+                <li><strong>Valid Job Offer:</strong> Full-time caregiver offer in Canada</li>
+                <li><strong>Work Experience:</strong> 24 months in past 36 months</li>
+                <li><strong>Education:</strong> Canadian 1-year post-secondary equivalent</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="process" role="tabpanel">
+          <div class="row align-items-center g-4">
+            <div class="col-md-6">
+              <h5 class="fw-bold mb-3">Process:</h5>
+              <ol class="lh-lg ps-5 text-justify" style="font-size: 18px;">
+                <li><strong>Employer Submits Offer:</strong> Job offer and documents.</li>
+                <li><strong>Apply for Work Permit:</strong> Submit application online.</li>
+                <li><strong>Biometrics:</strong> Attend appointment.</li>
+                <li><strong>Medical Exam:</strong> Complete medical checkup.</li>
+                <li><strong>Receive Permit:</strong> Start working in Canada.</li>
+              </ol>
+            </div>
+            <div class="col-md-6 text-center">
+              <img src="../img/proc.png" alt="Process" class="img-fluid rounded"
+                style="height: 350px; object-fit: contain;" />
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="documents" role="tabpanel">
+          <div class="row align-items-center g-4">
+            <div class="col-md-6 text-center">
+              <img src="../img/documents.png" alt="Documents" class="img-fluid rounded"
+                style="height: 350px; object-fit: contain;" />
+            </div>
+            <div class="col-md-6">
+              <ul class="lh-lg text-justify ps-5" style="font-size: 18px; list-style-type: disc;">
+                <p class="fw-bold">Required Documents:</p>
+                <li>Valid Passport</li>
+                <li>Job Offer Letter</li>
+                <li>Proof of Education</li>
+                <li>Language Test Results</li>
+                <li>Medical & Police Clearance</li>
+                <li>Proof of Experience</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="faq" role="tabpanel">
+          <div class="row align-items-center g-4">
+            <div class="col-md-6">
+              <h5 class="fw-bold mb-3">Frequently Asked:</h5>
+              <ul class="list-group list-group-flush lh-lg text-justify ps-5" style="font-size: 18px;">
+                <li class="list-group-item">
+                  <strong>Q1:</strong> Can I bring my family?<br>
+                  <strong>A:</strong> Yes, dependents may accompany you.
+                </li>
+                <li class="list-group-item">
+                  <strong>Q2:</strong> Do I need a job offer?<br>
+                  <strong>A:</strong> Yes, a valid offer is required.
+                </li>
+                <li class="list-group-item">
+                  <strong>Q3:</strong> Can I apply from outside Canada?<br>
+                  <strong>A:</strong> Yes, international applicants are eligible.
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-6 text-center">
+              <img src="../img/faq.jpg" alt="FAQs Image" class="img-fluid rounded"
+                style="height: 350px; object-fit: contain;" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="footer-container">
+      <div class="footer-left">
+        <h3>Wanna Subscribe to our Newsletter?</h3>
+        <p>Get the latest updates and tips straight to your inbox.</p>
+        <button onclick="showSubscriptionForm()">Click here</button>
+        <div id="subscription-form" style="display: none;">
+          <input type="email" id="email" placeholder="Enter your email" required
+            style="padding: 6px 12px; width: 45%; border-radius: 25px; border: none;" />
+          <button onclick="submitSubscription()">Subscribe</button>
+        </div>
+      </div>
+      <div class="footer-right">
+        <h3>Get In Touch</h3>
+        <p>
+          <i class="bi bi-envelope-fill me-2"></i> assessment@romancis.ca<br>
+          <i class="bi bi-telephone-fill me-2"></i> 09171857247 | (250) 667-0565<br>
+          <i class="bi bi-geo-alt-fill me-2"></i> City Sleep Inn Hotel and Events Centre, Brgy Sico, Lipa
+          City, Batangas
+        </p>
+      </div>
+    </div>
+  </footer>
+  <script>
+    function showSubscriptionForm() {
+      document.getElementById("subscription-form").style.display = "block";
+      event.target.style.display = "none";
+    }
 
-    <!-- JS -->
-    <script>
-        function showSubscriptionForm() {
-            document.getElementById("subscription-form").style.display = "block";
-            event.target.style.display = "none";
-        }
-
-        function submitSubscription() {
-            const email = document.getElementById("email").value;
-            if (email) {
-                alert("Subscribed successfully with: " + email);
-                document.getElementById("email").value = "";
-                document.getElementById("subscription-form").style.display = "none";
-            } else {
-                alert("Please enter a valid email address.");
-            }
-        }
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    function submitSubscription() {
+      const email = document.getElementById("email").value;
+      if (email) {
+        alert("Subscribed successfully with: " + email);
+        document.getElementById("email").value = "";
+        document.getElementById("subscription-form").style.display = "none";
+      } else {
+        alert("Please enter a valid email address.");
+      }
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
