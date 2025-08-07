@@ -2,537 +2,500 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RAIS Admin Dashboard</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="icon" href="../img/logoulit.png" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Custom Styles -->
-    <style>
-        :root {
-            --rais-primary-green: #004d40;
-            /* Dark Navy Green for primary elements */
-            --rais-dark-green: #00332c;
-            /* Even Darker Navy Green for hover states */
-            --rais-text-dark: #333333;
-            --rais-text-light: #525252;
-            --rais-card-bg: #FFFFFF;
-            --rais-light-gray: #E8E8E8;
-            --rais-progress-bg: #D9D9D9;
-            --rais-progress-active: var(--rais-primary-green);
-            /* Use primary green for progress */
-            --rais-bg-light: #F7F7F7;
-            --rais-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-            --rais-button-maroon: #811F1D;
-            /* Maroon for buttons, badges, floating elements */
-            --rais-highlight-light-green: #98FB98;
-            /* Light Green for tour highlights */
-        }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RAIS Admin Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="icon" href="../img/logoulit.png" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--rais-light-gray);
-            color: var(--rais-text-dark);
-        }
+  <style>
+    :root {
+      --rais-primary-green: #004d40;
+      --rais-dark-green: #00332c;
+      --rais-text-dark: #333333;
+      --rais-text-light: #525252;
+      --rais-card-bg: #FFFFFF;
+      --rais-light-gray: #E8E8E8;
+      --rais-progress-bg: #D9D9D9;
+      --rais-progress-active: var(--rais-primary-green);
+      --rais-bg-light: #F7F7F7;
+      --rais-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      --rais-button-maroon: #811F1D;
+      --rais-highlight-light-green: #98FB98;
+    }
 
-        .main-wrapper {
-            display: flex;
-            min-height: 100vh;
-        }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--rais-light-gray);
+      color: var(--rais-text-dark);
+    }
 
-        /* Sidebar Styles */
-        .sidebar {
-            background-color: var(--rais-primary-green);
-            width: 70px;
-            flex-shrink: 0;
-            color: white;
-            padding: 30px 0;
-            box-shadow: var(--rais-shadow);
-            transition: width 0.3s ease-in-out;
-            overflow: hidden;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-        }
+    .main-wrapper {
+      display: flex;
+      min-height: 100vh;
+    }
 
-        .sidebar:hover {
-            width: 240px;
-        }
+    .sidebar {
+      background-color: var(--rais-primary-green);
+      width: 70px;
+      flex-shrink: 0;
+      color: white;
+      padding: 30px 0;
+      box-shadow: var(--rais-shadow);
+      transition: width 0.3s ease-in-out;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
 
-        .sidebar .logo {
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin-bottom: 30px;
-            text-align: center;
-            letter-spacing: 1px;
-            white-space: nowrap;
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
-        }
+    .sidebar:hover {
+      width: 240px;
+    }
 
-        .sidebar:hover .logo {
-            opacity: 1;
-        }
+    .sidebar .logo {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 30px;
+      text-align: center;
+      letter-spacing: 1px;
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
 
-        .sidebar .nav {
-            flex-grow: 1;
-        }
+    .sidebar:hover .logo {
+      opacity: 1;
+    }
 
-        .sidebar .nav-link {
-            color: white;
-            font-weight: 500;
-            padding: 15px 30px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            white-space: nowrap;
-            transition: background-color 0.3s ease;
-        }
+    .sidebar .nav {
+      flex-grow: 1;
+    }
 
-        .sidebar .nav-link:hover {
-            background-color: var(--rais-dark-green);
-        }
+    .sidebar .nav-link {
+      color: white;
+      font-weight: 500;
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      white-space: nowrap;
+      transition: background-color 0.3s ease;
+    }
 
-        .sidebar .nav-link i {
-            font-size: 1.2rem;
-            min-width: 20px;
-            text-align: center;
-        }
+    .sidebar .nav-link:hover {
+      background-color: var(--rais-dark-green);
+    }
 
-        .sidebar .nav-link span {
-            opacity: 0;
-            transition: opacity 0.1s ease-in-out 0.2s;
-        }
+    .sidebar .nav-link i {
+      font-size: 1.2rem;
+      min-width: 20px;
+      text-align: center;
+    }
 
-        .sidebar:hover .nav-link span {
-            opacity: 1;
-        }
+    .sidebar .nav-link span {
+      opacity: 0;
+      transition: opacity 0.1s ease-in-out 0.2s;
+    }
 
-        .profile-section {
-            cursor: pointer;
-            padding: 15px 30px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            white-space: nowrap;
-            transition: background-color 0.3s ease;
-            margin-top: auto;
-        }
+    .sidebar:hover .nav-link span {
+      opacity: 1;
+    }
 
-        .profile-section:hover {
-            background-color: var(--rais-dark-green);
-        }
+    .profile-section {
+      cursor: pointer;
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      white-space: nowrap;
+      transition: background-color 0.3s ease;
+      margin-top: auto;
+    }
 
-        .profile-section i {
-            font-size: 1.2rem;
-            min-width: 20px;
-            text-align: center;
-            color: white;
-        }
+    .profile-section:hover {
+      background-color: var(--rais-dark-green);
+    }
 
-        .profile-section .profile-name-text {
-            opacity: 0;
-            transition: opacity 0.1s ease-in-out 0.2s;
-            color: white;
-            /* Explicitly set to white */
-        }
+    .profile-section i {
+      font-size: 1.2rem;
+      min-width: 20px;
+      text-align: center;
+      color: white;
+    }
 
-        .sidebar:hover .profile-name-text {
-            opacity: 1;
-        }
+    .profile-section .profile-name-text {
+      opacity: 0;
+      transition: opacity 0.1s ease-in-out 0.2s;
+      color: white;
+    }
 
-        .sidebar .footer-text {
-            font-size: 0.8rem;
-            color: #bbb;
-            text-align: center;
-            padding: 15px 0;
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
-        }
+    .sidebar:hover .profile-name-text {
+      opacity: 1;
+    }
 
-        .sidebar:hover .footer-text {
-            opacity: 1;
-        }
+    .sidebar .footer-text {
+      font-size: 0.8rem;
+      color: #bbb;
+      text-align: center;
+      padding: 15px 0;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
 
-        /* Header Styles */
-        .header {
-            background-color: var(--rais-bg-light);
-            height: 60px;
-            display: flex;
-            justify-content: space-between;
-            /* Adjusted to space-between */
-            align-items: center;
-            padding: 0 25px;
-            box-shadow: var(--rais-shadow);
-            flex-grow: 1;
-        }
+    .sidebar:hover .footer-text {
+      opacity: 1;
+    }
 
-        .header .logo-img {
-            height: 70px;
-            /* Adjusted size */
-            width: 70px;
-            /* Adjusted size */
-            object-fit: contain;
-        }
+    .header {
+      background-color: var(--rais-bg-light);
+      height: 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 25px;
+      box-shadow: var(--rais-shadow);
+      flex-grow: 1;
+    }
 
-        .user-status {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+    .header .logo-img {
+      height: 70px;
+      width: 70px;
+      object-fit: contain;
+    }
 
-        .user-status .badge {
-            background-color: var(--rais-button-maroon);
-            font-size: 0.8rem;
-            font-weight: 500;
-            padding: 5px 15px;
-            border-radius: 20px;
-        }
+    .user-status {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-        .user-status .btn {
-            color: var(--rais-text-light);
-            font-size: 1.5rem;
-            padding: 0;
-        }
+    .user-status .badge {
+      background-color: var(--rais-button-maroon);
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 5px 15px;
+      border-radius: 20px;
+    }
 
-        /* Main Content Styles */
-        .main-content {
-            flex-grow: 1;
-            padding: 30px;
-            overflow-y: auto;
-        }
+    .user-status .btn {
+      color: var(--rais-text-light);
+      font-size: 1.5rem;
+      padding: 0;
+    }
 
-        .main-content h1 {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
+    .main-content {
+      flex-grow: 1;
+      padding: 30px;
+      overflow-y: auto;
+    }
 
-        .content-card {
-            background-color: var(--rais-card-bg);
-            border-radius: 12px;
-            box-shadow: var(--rais-shadow);
-            padding: 30px;
-            margin-bottom: 20px;
-            /* Added margin for spacing */
-        }
+    .main-content h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
 
-        .content-card h2 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
+    .content-card {
+      background-color: var(--rais-card-bg);
+      border-radius: 12px;
+      box-shadow: var(--rais-shadow);
+      padding: 30px;
+      margin-bottom: 20px;
+    }
 
-        .table-responsive {
-            margin-top: 15px;
-        }
+    .content-card h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
 
-        .table th,
-        .table td {
-            vertical-align: middle;
-        }
+    .table-responsive {
+      margin-top: 15px;
+    }
 
-        .table .btn {
-            font-size: 0.85rem;
-            padding: 5px 10px;
-        }
+    .table th,
+    .table td {
+      vertical-align: middle;
+    }
 
-        .chat-log-item {
-            background-color: var(--rais-light-gray);
-            border-radius: 8px;
-            padding: 10px;
-            margin-bottom: 8px;
-        }
+    .table .btn {
+      font-size: 0.85rem;
+      padding: 5px 10px;
+    }
 
-        .chat-log-item strong {
-            color: var(--rais-primary-green);
-        }
+    .chat-log-item {
+      background-color: var(--rais-light-gray);
+      border-radius: 8px;
+      padding: 10px;
+      margin-bottom: 8px;
+    }
 
-        /* Floating Button (not present on admin page, but keeping for consistency if needed) */
-        .floating-btn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: var(--rais-button-maroon);
-            color: white;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            text-decoration: none;
-            transition: background-color 0.2s;
-            z-index: 100;
-        }
+    .chat-log-item strong {
+      color: var(--rais-primary-green);
+    }
 
-        .floating-btn:hover {
-            background-color: var(--rais-dark-green);
-        }
+    .floating-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: var(--rais-button-maroon);
+      color: white;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      text-decoration: none;
+      transition: background-color 0.2s;
+      z-index: 100;
+    }
 
-        /* Collapsible Chatbox (not present on admin page, but keeping for consistency if needed) */
-        .chat-container {
-            position: fixed;
-            bottom: 100px;
-            right: 30px;
-            width: 350px;
-            max-height: 500px;
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: var(--rais-shadow);
-            display: flex;
-            flex-direction: column;
-            z-index: 99;
-            transform: translateY(100%);
-            opacity: 0;
-            visibility: hidden;
-            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-        }
+    .floating-btn:hover {
+      background-color: var(--rais-dark-green);
+    }
 
-        .chat-container.show {
-            transform: translateY(0);
-            opacity: 1;
-            visibility: visible;
-        }
+    .chat-container {
+      position: fixed;
+      bottom: 100px;
+      right: 30px;
+      width: 350px;
+      max-height: 500px;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: var(--rais-shadow);
+      display: flex;
+      flex-direction: column;
+      z-index: 99;
+      transform: translateY(100%);
+      opacity: 0;
+      visibility: hidden;
+      transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    }
 
-        .chat-header {
-            background-color: var(--rais-primary-green);
-            color: white;
-            padding: 1rem;
-            border-top-left-radius: 12px;
-            border-top-right-radius: 12px;
-            cursor: pointer;
-        }
+    .chat-container.show {
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+    }
 
-        .chat-body {
-            padding: 1rem;
-            flex-grow: 1;
-            overflow-y: auto;
-            background-color: var(--rais-bg-light);
-            display: flex;
-            flex-direction: column-reverse;
-            height: 350px;
-        }
+    .chat-header {
+      background-color: var(--rais-primary-green);
+      color: white;
+      padding: 1rem;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+      cursor: pointer;
+    }
 
-        .chat-footer {
-            padding: 1rem;
-            border-top: 1px solid var(--rais-light-gray);
-        }
+    .chat-body {
+      padding: 1rem;
+      flex-grow: 1;
+      overflow-y: auto;
+      background-color: var(--rais-bg-light);
+      display: flex;
+      flex-direction: column-reverse;
+      height: 350px;
+    }
 
-        .chat-footer .input-group {
-            border-radius: 20px;
-        }
+    .chat-footer {
+      padding: 1rem;
+      border-top: 1px solid var(--rais-light-gray);
+    }
 
-        .chat-footer .form-control {
-            border-radius: 20px 0 0 20px;
-        }
+    .chat-footer .input-group {
+      border-radius: 20px;
+    }
 
-        .chat-toggle-btn {
-            position: fixed;
-            bottom: 30px;
-            right: 100px;
-            background-color: var(--rais-button-maroon);
-            color: white;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            cursor: pointer;
-            z-index: 100;
-        }
+    .chat-footer .form-control {
+      border-radius: 20px 0 0 20px;
+    }
 
+    .chat-toggle-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 100px;
+      background-color: var(--rais-button-maroon);
+      color: white;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      z-index: 100;
+    }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .main-wrapper {
-                flex-direction: column;
-            }
+    @media (max-width: 768px) {
+      .main-wrapper {
+        flex-direction: column;
+      }
 
-            .sidebar {
-                display: none;
-            }
+      .sidebar {
+        display: none;
+      }
 
-            .chat-container {
-                width: 90%;
-                left: 5%;
-            }
-        }
-    </style>
+      .chat-container {
+        width: 90%;
+        left: 5%;
+      }
+    }
+  </style>
 </head>
 
 <body>
-    <div class="main-wrapper">
-        <!-- Sidebar -->
-        <aside class="sidebar d-flex flex-column d-none d-md-block">
-            <div class="logo">RAIS</div>
-            <nav class="nav flex-column">
-                <a class="nav-link active" href="admin.html"><i
-                        class="bi bi-speedometer2"></i><span>Dashboard</span></a>
-                <a class="nav-link" href="user_management.html"><i class="bi bi-people-fill"></i><span>User
-                        Management</span></a>
-                <a class="nav-link" href="chat_management.html"><i class="bi bi-chat-dots-fill"></i><span>Chat
-                        Management</span></a>
-                <a class="nav-link" href="blog_management.html"><i class="bi bi-journal-richtext"></i><span>Blog
-                        Management</span></a>
-                <a class="nav-link" href="admin_profile.html"><i class="bi bi-person-gear"></i><span>Admin
-                        Profiles</span></a>
-            </nav>
+  <div class="main-wrapper">
+    <aside class="sidebar d-flex flex-column d-none d-md-block">
+      <div class="logo">RAIS</div>
+      <nav class="nav flex-column" style="font-family: 'Archivo Black', sans-serif;">
+        <a class="nav-link active" href="admin.html"><i class="bi bi-speedometer2"></i><span>Dashboard</span></a>
+        <a class="nav-link" href="user_management.html"><i class="bi bi-people-fill"></i><span>User
+            Management</span></a>
+        <a class="nav-link" href="chat_management.html"><i class="bi bi-chat-dots-fill"></i><span>Chat
+            Management</span></a>
+        <a class="nav-link" href="blog_management.html"><i class="bi bi-journal-richtext"></i><span>Blog
+            Management</span></a>
+        <a class="nav-link" href="admin_profile.html"><i class="bi bi-person-gear"></i><span>Admin
+            Profiles</span></a>
+      </nav>
 
-            <!-- Profile Section (Admin Profile) -->
-            <a class="profile-section" href="#">
-                <i class="bi bi-person-circle"></i>
-                <span class="profile-name-text">Admin User</span>
-            </a>
+      <a class="profile-section" style="font-family: 'Archivo Black', sans-serif;" href="#">
+        <i class="bi bi-person-circle"></i>
+        <span class="profile-name-text">Admin User</span>
+      </a>
 
-            <div class="mt-auto footer-text">
-                &copy; 2023 RAIS
-            </div>
-        </aside>
+      <div class="mt-auto footer-text">
+        &copy; 2023 RAIS
+      </div>
+    </aside>
 
-        <!-- Main Content Area -->
-        <div class="d-flex flex-column flex-grow-1">
-            <!-- Header -->
-            <div class="header">
-                <!-- Left-aligned placeholder (empty for now, but maintains space) -->
-                <div></div>
-                <!-- Centered Logo -->
-                <img src="../img/logoulit.png" alt="RAIS Logo" class="logo-img">
-                <!-- Right-aligned user status -->
-                <div class="user-status d-flex align-items-center gap-2">
-                    <button class="btn btn-link"><i class="bi bi-power"></i></button>
-                    <span class="badge">ADMIN</span>
-                </div>
-            </div>
-
-            <!-- Main Content -->
-            <main class="main-content">
-                <h1>Admin Dashboard</h1>
-
-                <!-- Active/Inactive Users Overview -->
-                <div class="row g-4 mb-4">
-                    <div class="col-md-6">
-                        <div class="content-card text-center">
-                            <h2>Active Users</h2>
-                            <h1 class="display-4 text-success">125</h1>
-                            <p class="text-muted">Currently logged in or active in the last 24 hours.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="content-card text-center">
-                            <h2>Inactive Users</h2>
-                            <h1 class="display-4 text-warning">45</h1>
-                            <p class="text-muted">Users who haven't logged in for over 30 days.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- User Management Section -->
-                <div class="content-card">
-                    <h2>User Management</h2>
-                    <div class="table-responsive">
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Status</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody id="userTableBody">
-                                <!-- User data will be loaded here -->
-                            </tbody>
-                        </table>
-                    </div>
-                    <a href="user_management.html" class="btn btn-sm btn-primary"
-                        style="background-color: var(--rais-button-maroon);">Manage Users</a>
-                </div>
-
-                <!-- Chat Management Section -->
-                <div class="content-card">
-                    <h2>Live Chat Monitoring</h2>
-                    <div id="chatLog"
-                        style="max-height: 300px; overflow-y: auto; border: 1px solid var(--rais-light-gray); border-radius: 8px; padding: 15px;">
-                        <!-- Chat messages will be dynamically added here -->
-                        <div class="chat-log-item"><strong>User 1:</strong> Hello, I have a question about my visa
-                            application.</div>
-                        <div class="chat-log-item"><strong>User 2:</strong> When is the next IELTS fair?</div>
-                        <div class="chat-log-item"><strong>User 3:</strong> I need help updating my profile information.
-                        </div>
-                    </div>
-                    <a href="chat_management.html" class="btn btn-sm btn-outline-secondary mt-3"
-                        style="color: var(--rais-primary-green); border-color: var(--rais-primary-green);">View Full
-                        Chat History</a>
-                </div>
-
-                <!-- Blog Management Section -->
-                <div class="content-card">
-                    <h2>Blog Management</h2>
-                    <div class="row g-3">
-                        <div class="col-md-6">
-                            <div class="card h-100">
-                                <div class="card-body">
-                                    <h5 class="card-title">Latest Blog Post</h5>
-                                    <p class="card-text text-muted">"A Long Road for 'A Calling to Canada'"</p>
-                                    <button class="btn btn-sm btn-outline-secondary"
-                                        style="color: var(--rais-primary-green); border-color: var(--rais-primary-green);">Edit
-                                        Latest</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card h-100">
-                                <div class="card-body">
-                                    <h5 class="card-title">Create New Post</h5>
-                                    <p class="card-text text-muted">Draft and publish new articles for your users.</p>
-                                    <button class="btn btn-sm btn-outline-secondary"
-                                        style="color: var(--rais-primary-green); border-color: var(--rais-primary-green);">New
-                                        Post</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="blog_management.html" class="btn btn-sm btn-primary mt-3"
-                        style="background-color: var(--rais-button-maroon);">Manage Blogs</a>
-                </div>
-
-            </main>
+    <div class="d-flex flex-column flex-grow-1">
+      <div class="header">
+        <div></div>
+        <img src="../img/logoulit.png" alt="RAIS Logo" class="logo-img">
+        <div class="user-status d-flex align-items-center gap-2">
+          <button class="btn btn-link"><i class="bi bi-power"></i></button>
+          <span class="badge">ADMIN</span>
         </div>
+      </div>
+
+      <main class="main-content">
+        <h1>Admin Dashboard</h1>
+
+        <div class="row g-4 mb-4">
+          <div class="col-md-6">
+            <div class="content-card text-center">
+              <h2>Active Users</h2>
+              <h1 class="display-4 text-success">125</h1>
+              <p class="text-muted">Currently logged in or active in the last 24 hours.</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="content-card text-center">
+              <h2>Inactive Users</h2>
+              <h1 class="display-4 text-warning">45</h1>
+              <p class="text-muted">Users who haven't logged in for over 30 days.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-card">
+          <h2>User Management</h2>
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="userTableBody">
+              </tbody>
+            </table>
+          </div>
+          <a href="user_management.html" class="btn btn-sm btn-primary"
+            style="background-color: var(--rais-button-maroon);">Manage Users</a>
+        </div>
+
+        <div class="content-card">
+          <h2>Live Chat Monitoring</h2>
+          <div id="chatLog"
+            style="max-height: 300px; overflow-y: auto; border: 1px solid var(--rais-light-gray); border-radius: 8px; padding: 15px;">
+            <div class="chat-log-item"><strong>User 1:</strong> Hello, I have a question about my visa
+              application.</div>
+            <div class="chat-log-item"><strong>User 2:</strong> When is the next IELTS fair?</div>
+            <div class="chat-log-item"><strong>User 3:</strong> I need help updating my profile information.
+            </div>
+          </div>
+          <a href="chat_management.html" class="btn btn-sm btn-outline-secondary mt-3"
+            style="color: var(--rais-primary-green); border-color: var(--rais-primary-green);">View Full
+            Chat History</a>
+        </div>
+
+        <div class="content-card">
+          <h2>Blog Management</h2>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <div class="card h-100">
+                <div class="card-body">
+                  <h5 class="card-title">Latest Blog Post</h5>
+                  <p class="card-text text-muted">"A Long Road for 'A Calling to Canada'"</p>
+                  <button class="btn btn-sm btn-outline-secondary"
+                    style="color: var(--rais-primary-green); border-color: var(--rais-primary-green);">Edit
+                    Latest</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card h-100">
+                <div class="card-body">
+                  <h5 class="card-title">Create New Post</h5>
+                  <p class="card-text text-muted">Draft and publish new articles for your users.</p>
+                  <button class="btn btn-sm btn-outline-secondary"
+                    style="color: var(--rais-primary-green); border-color: var(--rais-primary-green);">New
+                    Post</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <a href="blog_management.html" class="btn btn-sm btn-primary mt-3"
+            style="background-color: var(--rais-button-maroon);">Manage Blogs</a>
+        </div>
+
+      </main>
     </div>
+  </div>
 
-    <!-- Bootstrap JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-        crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+    crossorigin="anonymous"></script>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Placeholder user data for admin table
-            const users = [
-                { id: 1, name: 'John Doe', email: 'john.doe@example.com', status: 'Active' },
-                { id: 2, name: 'Jane Smith', email: 'jane.smith@example.com', status: 'Pending Docs' },
-                { id: 3, name: 'Peter Jones', email: 'peter.j@example.com', status: 'Approved' },
-                { id: 4, name: 'Alice Brown', email: 'alice.b@example.com', status: 'Inactive' }
-            ];
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const users = [
+        { id: 1, name: 'John Doe', email: 'john.doe@example.com', status: 'Active' },
+        { id: 2, name: 'Jane Smith', email: 'jane.smith@example.com', status: 'Pending Docs' },
+        { id: 3, name: 'Peter Jones', email: 'peter.j@example.com', status: 'Approved' },
+        { id: 4, name: 'Alice Brown', email: 'alice.b@example.com', status: 'Inactive' }
+      ];
 
-            const userTableBody = document.getElementById('userTableBody');
-            users.forEach(user => {
-                const row = userTableBody.insertRow();
-                row.innerHTML = `
+      const userTableBody = document.getElementById('userTableBody');
+      users.forEach(user => {
+        const row = userTableBody.insertRow();
+        row.innerHTML = `
                 <td>${user.id}</td>
                 <td>${user.name}</td>
                 <td>${user.email}</td>
@@ -542,9 +505,9 @@
                     <button class="btn btn-sm btn-danger">Delete</button>
                 </td>
             `;
-            });
-        });
-    </script>
+      });
+    });
+  </script>
 </body>
 
 </html>
