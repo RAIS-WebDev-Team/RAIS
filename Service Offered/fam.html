@@ -5,7 +5,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Family Permit</title>
-        <link rel="icon" href="../img/logoulit.png" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
     <link rel="stylesheet" href="all.css" />
@@ -31,7 +30,7 @@
         header {
             position: relative;
             height: 100vh;
-            background-image: url('../img/Ffamily.png');
+            background-image: url('../img/fam.jpg');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -238,7 +237,7 @@
         }
 
         .tab-pane .row {
-            min-height: 490px;
+            min-height: 680px;
         }
     </style>
 </head>
@@ -293,9 +292,13 @@
                     <div class="row align-items-center g-4">
                         <div class="col-md-9">
                             <p class="ps-5 text-justify" style="font-size: 18px; line-height: 1.7;">
-                                Family Sponsorship is a program that allows Canadian citizens and permanent residents to
-                                sponsor certain family members to immigrate to Canada. The goal is to help families
-                                reunite and build their lives together in Canada.
+                                Family Sponsorship is a Canadian immigration program designed to allow citizens and
+                                permanent residents to bring their close family members—such as spouses, partners,
+                                dependent children, parents, and grandparents—to live with them in Canada permanently.
+                                This initiative plays a crucial role in supporting family unity, offering sponsored
+                                individuals the opportunity to settle, thrive, and contribute to Canadian society. The
+                                ultimate goal of the program is to help families reunite, foster stronger social bonds,
+                                and build a stable life together in Canada.
                             </p>
                         </div>
                         <div class="col-md-3 text-center">
@@ -304,7 +307,6 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- CRITERIA TAB -->
                 <div class="tab-pane fade" id="criteria" role="tabpanel">
                     <div class="row align-items-center g-4">
@@ -312,44 +314,117 @@
                             <img src="../img/criteria.jpg" class="img-fluid rounded"
                                 style="height: 300px; object-fit: contain;" alt="Checklist">
                         </div>
-                        <div class="col-md-9 ps-5" style="font-size: 18px;">
+
+                        <div class="col-md-9 ps-5 text-justify" style="font-size: 16px; line-height: 1.8;">
                             <h4 class="fw-bold mb-3">Criteria:</h4>
+
                             <div class="mb-4">
                                 <h5 class="fw-bold mb-2">Eligibility of the Sponsor:</h5>
-                                <ul class="ps-3 lh-lg text-justify" style="list-style-type: circle;">
-                                    <li>Canadian citizen or permanent resident.</li>
-                                    <li>At least 18 years old.</li>
-                                    <li>Must financially support the sponsored person.</li>
-                                    <li>Not receiving social assistance (except for disability).</li>
-                                </ul>
+                                <ol class="ps-3">
+                                    <li>
+                                        <strong>Canadian Citizenship or Permanent Residency:</strong>
+                                        <ul style="list-style-type: circle; padding-left: 1.2rem;">
+                                            <li>Must be a Canadian citizen or permanent resident.</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <strong>Age:</strong>
+                                        <ul style="list-style-type: circle; padding-left: 1.2rem;">
+                                            <li>At least 18 years old.</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <strong>Financial Support:</strong>
+                                        <ul style="list-style-type: circle; padding-left: 1.2rem;">
+                                            <li>Must demonstrate the ability to financially support their relative and
+                                                provide basic needs (food, clothing, shelter).</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <strong>Not Receiving Social Assistance:</strong>
+                                        <ul style="list-style-type: circle; padding-left: 1.2rem;">
+                                            <li>Must not be receiving social assistance (except for reasons of
+                                                disability).</li>
+                                        </ul>
+                                    </li>
+                                </ol>
                             </div>
 
-                            <!-- Separation line -->
                             <hr class="my-4" />
 
                             <div>
                                 <h5 class="fw-bold mb-2">Eligibility of the Sponsored Person:</h5>
-                                <ul class="ps-3 lh-lg text-justify" style="list-style-type: circle;">
-                                    <li>Spouse, partner, or dependent child under age 22.</li>
-                                    <li>Parents or grandparents (with conditions).</li>
-                                    <li>Must meet health and security requirements.</li>
-                                </ul>
+                                <ol class="ps-3">
+                                    <li>
+                                        <strong>Spouse, Common-law Partner, or Conjugal Partner:</strong>
+                                        <ul style="list-style-type: circle; padding-left: 1.2rem;">
+                                            <li>They must be in a genuine relationship with the sponsor and meet the
+                                                legal definition of spouse, common-law, or conjugal partner.</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <strong>Dependent Children:</strong>
+                                        <ul style="list-style-type: circle; padding-left: 1.2rem;">
+                                            <li>Must be under 22 years old and not married or in a common-law
+                                                relationship. Children over 22 may be eligible if they are financially
+                                                dependent due to a physical or mental condition.</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <strong>Parents or Grandparents:</strong>
+                                        <ul style="list-style-type: circle; padding-left: 1.2rem;">
+                                            <li>Parents and grandparents can be sponsored, but they must meet specific
+                                                eligibility criteria, including health and security requirements.</li>
+                                        </ul>
+                                    </li>
+                                </ol>
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <!-- PROCESS TAB -->
                 <div class="tab-pane fade" id="process" role="tabpanel">
                     <div class="row align-items-center g-4">
-                        <div class="col-md-9">
+                        <div class="col-md-9" style="font-size: 16px; line-height: 1.8;">
                             <h5 class="fw-bold mb-3">Process:</h5>
-                            <ol class="fw-medium lh-lg ps-5 text-justify" style="font-size: 18px;">
-                                <li>Determine eligibility for both sponsor and applicant.</li>
-                                <li>Submit sponsorship application to IRCC.</li>
-                                <li>Wait for IRCC review and processing.</li>
-                                <li>If approved, obtain permanent residency.</li>
-                                <li>Arrive in Canada as a permanent resident.</li>
+                            <ol class="px-5 text-justify">
+                                <li>
+                                    <strong>Determine eligibility:</strong>
+                                    <ul style="list-style-type: circle; padding-left: 1.2rem;">
+                                        <li>Both the sponsor and the sponsored person need to meet eligibility
+                                            requirements. The sponsor must ensure they can financially support the
+                                            relative and provide the required documentation.</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <strong>Submit Sponsorship Application:</strong>
+                                    <ul style="list-style-type: circle; padding-left: 1.2rem;">
+                                        <li>The sponsor must submit a complete sponsorship application to Immigration,
+                                            Refugees and Citizenship Canada (IRCC), including both sponsorship and
+                                            applicant forms.</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <strong>IRCC Review:</strong>
+                                    <ul style="list-style-type: circle; padding-left: 1.2rem;">
+                                        <li>The IRCC will assess the eligibility of both the sponsor and the sponsored
+                                            person to ensure they meet all criteria.</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <strong>Approval and Permanent Residency:</strong>
+                                    <ul style="list-style-type: circle; padding-left: 1.2rem;">
+                                        <li>Once approved, the sponsored family member will receive permanent resident
+                                            status, allowing them to live, work, and study in Canada.</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <strong>Arrival in Canada:</strong>
+                                    <ul style="list-style-type: circle; padding-left: 1.2rem;">
+                                        <li>The sponsored person can then arrive in Canada and begin their life as a
+                                            permanent resident.</li>
+                                    </ul>
+                                </li>
                             </ol>
                         </div>
                         <div class="col-md-3 text-center">
@@ -358,7 +433,6 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- DOCUMENTS TAB -->
                 <div class="tab-pane fade" id="documents" role="tabpanel">
                     <div class="row align-items-center g-4">
@@ -366,37 +440,101 @@
                             <img src="../img/documents.png" alt="Documents" class="img-fluid rounded"
                                 style="height: 350px; object-fit: contain;" />
                         </div>
-                        <div class="col-md-9">
-                            <h5 class="fw-bold mb-3 fs-5" style="font-size: 18px;">Required Documents:</h5>
-                            <ul class="lh-lg py-5 pe-3 text-justify" style="font-size: 18px;">
-                                <li><strong>For the Sponsor:</strong> Proof of status, income, application form.</li>
-                                <li><strong>For the Sponsored:</strong> Identity, relationship, police clearance,
-                                    medical.</li>
-                                <li><strong>For Both:</strong> Fees, photos, declaration forms.</li>
-                            </ul>
+                        <div class="col-md-9" style="font-size: 16px; line-height: 1.8;">
+                            <h5 class="fw-bold mb-3">To apply for Family Sponsorship, the following documents are
+                                typically required:</h5>
+                            <ol class="ps-3 text-justify">
+                                <li>
+                                    <strong>For the Sponsor:</strong>
+                                    <ul style="list-style-type: circle; padding-left: 1.2rem;">
+                                        <li>Proof of Canadian citizenship or permanent residency (e.g., passport, PR
+                                            card).</li>
+                                        <li><strong>Proof of income:</strong> Demonstrating the ability to financially
+                                            support the sponsored person.</li>
+                                        <li><strong>Application for sponsorship:</strong> Completed and signed.</li>
+                                        <li><strong>Any previous relationships:</strong> Divorce certificates or death
+                                            certificates if applicable (for spousal sponsorship).</li>
+                                    </ul>
+                                </li>
+
+                                <li>
+                                    <strong>For the Sponsored Person:</strong>
+                                    <ul style="list-style-type: circle; padding-left: 1.2rem;">
+                                        <li><strong>Proof of relationship:</strong> Evidence of marriage, common-law
+                                            partnership, or proof of dependency (e.g., marriage certificate, joint
+                                            financial records).</li>
+                                        <li><strong>Proof of identity:</strong> Passport, national ID card, or birth
+                                            certificate.</li>
+                                        <li><strong>Medical exam results:</strong> To confirm they are medically
+                                            admissible to Canada.</li>
+                                        <li><strong>Police certificates:</strong> To show that they have no serious
+                                            criminal history.</li>
+                                        <li><strong>Proof of financial dependency:</strong> For children or dependent
+                                            adults.</li>
+                                    </ul>
+                                </li>
+
+                                <li>
+                                    <strong>For Both:</strong>
+                                    <ul style="list-style-type: circle; padding-left: 1.2rem;">
+                                        <li><strong>Application fee:</strong> Payment for processing the sponsorship
+                                            application.</li>
+                                    </ul>
+                                </li>
+                            </ol>
                         </div>
                     </div>
                 </div>
-
                 <!-- FAQ TAB -->
                 <div class="tab-pane fade" id="faq" role="tabpanel">
                     <div class="row align-items-center g-4">
                         <div class="col-md-9">
                             <h5 class="fw-bold mb-3">Frequently Asked:</h5>
-                            <ul class="list-group list-group-flush lh-lg text-justify ps-5" style="font-size: 18px;">
+                            <ul class="list-group list-group-flush lh-base text-justify ps-5"
+                                style="font-size: 16px; line-height: 1.4;">
                                 <li class="list-group-item border-0 ps-0">
-                                    <strong>Q1:</strong> Can I bring my family?<br>
-                                    <strong>A:</strong> Yes, eligible dependents can accompany you.
+                                    <strong>Q1:</strong> Can I sponsor someone if I live outside of Canada?<br>
+                                    <strong>A:</strong> No, you must live in Canada to sponsor a relative. However,
+                                    there are exceptions for Canadian citizens who are living abroad and have a clear
+                                    intent to return to Canada.
                                 </li>
                                 <hr class="my-2">
                                 <li class="list-group-item border-0 ps-0">
-                                    <strong>Q2:</strong> Do I need a job offer?<br>
-                                    <strong>A:</strong> Not for sponsorship, but financial proof is needed.
+                                    <strong>Q2:</strong> How long does the Family Sponsorship process take?<br>
+                                    <strong>A:</strong> The processing time for family sponsorship applications can
+                                    vary, but it generally takes 12 to 24 months. Processing times may vary depending on
+                                    the specific relationship and whether the application is complete.
                                 </li>
                                 <hr class="my-2">
                                 <li class="list-group-item border-0 ps-0">
-                                    <strong>Q3:</strong> Can I apply outside Canada?<br>
-                                    <strong>A:</strong> Yes, applications from abroad are accepted.
+                                    <strong>Q3:</strong> Can I sponsor my siblings or other family members?<br>
+                                    <strong>A:</strong> The Family Sponsorship program is generally limited to spouses,
+                                    common-law partners, dependent children, parents, and grandparents. Other family
+                                    members, such as siblings, cannot be sponsored under this program, but there may be
+                                    other immigration pathways for them.
+                                </li>
+                                <hr class="my-2">
+                                <li class="list-group-item border-0 ps-0">
+                                    <strong>Q4:</strong> What if the sponsored person is already in Canada?<br>
+                                    <strong>A:</strong> If the sponsored person is already in Canada, they may be
+                                    eligible for inland sponsorship. This allows them to stay in Canada while their
+                                    sponsorship application is being processed.
+                                </li>
+                                <hr class="my-2">
+                                <li class="list-group-item border-0 ps-0">
+                                    <strong>Q5:</strong> Can the sponsor be responsible for providing financial support
+                                    indefinitely?<br>
+                                    <strong>A:</strong> The sponsor’s obligation to financially support the sponsored
+                                    person typically lasts for 3 years for a spouse, common-law partner, or dependent
+                                    child, and 10 years or until the person becomes a Canadian citizen for parents or
+                                    grandparents.
+                                </li>
+                                <hr class="my-2">
+                                <li class="list-group-item border-0 ps-0">
+                                    <strong>Q6:</strong> What happens if the sponsor or the sponsored person’s
+                                    application is refused?<br>
+                                    <strong>A:</strong> If the application is refused, the sponsor can appeal the
+                                    decision or reapply, depending on the reason for refusal.
                                 </li>
                             </ul>
                         </div>
@@ -406,6 +544,8 @@
                         </div>
                     </div>
                 </div>
+
+
 
             </div>
         </div>
