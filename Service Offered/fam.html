@@ -8,6 +8,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="all.css" />
   <style>
     * {
@@ -244,6 +245,7 @@
 </head>
 
 <body>
+  <!-- HERO HEADER -->
   <header>
     <div class="overlay-box"></div>
     <div class="logo">
@@ -260,8 +262,10 @@
       <a href="#info">Explore</a>
     </div>
   </header>
+  <!-- TABBED CONTENT SECTION -->
   <section class="py-5 my-5" id="info">
     <div class="container fixed-container px-4 px-md-5">
+      <!-- Tabs -->
       <ul class="nav nav-tabs mb-5 justify-content-center border-0" id="tabMenu" role="tablist">
         <li class="nav-item" role="presentation">
           <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#about" type="button"
@@ -284,9 +288,10 @@
         </li>
       </ul>
       <div class="tab-content">
+        <!-- ABOUT TAB -->
         <div class="tab-pane fade show active" id="about" role="tabpanel">
           <div class="row align-items-center g-4">
-            <div class="col-md-9">
+            <div class="col-md-6">
               <p class="ps-5 text-justify" style="font-size: 18px; line-height: 1.7;">
                 Family Sponsorship is a Canadian immigration program designed to allow citizens and
                 permanent residents to bring their close family members—such as spouses, partners,
@@ -297,12 +302,13 @@
                 and build a stable life together in Canada.
               </p>
             </div>
-            <div class="col-md-3 text-center">
+            <div class="col-md-6 text-center">
               <img src="../img/fam1.jpg" alt="Family Image" class="img-fluid rounded"
                 style="height: 350px; object-fit: contain;" />
             </div>
           </div>
         </div>
+        <!-- CRITERIA TAB -->
         <div class="tab-pane fade" id="criteria" role="tabpanel">
           <div class="row align-items-center g-4">
             <div class="col-md-3 text-center">
@@ -315,7 +321,7 @@
 
               <div class="mb-4">
                 <h5 class="fw-bold mb-2">Eligibility of the Sponsor:</h5>
-                <ol class="ps-3">
+                <ol class="px-3">
                   <li>
                     <strong>Canadian Citizenship or Permanent Residency:</strong>
                     <ul style="list-style-type: circle; padding-left: 1.2rem;">
@@ -349,7 +355,7 @@
 
               <div>
                 <h5 class="fw-bold mb-2">Eligibility of the Sponsored Person:</h5>
-                <ol class="ps-3">
+                <ol class="px-3">
                   <li>
                     <strong>Spouse, Common-law Partner, or Conjugal Partner:</strong>
                     <ul style="list-style-type: circle; padding-left: 1.2rem;">
@@ -377,10 +383,11 @@
             </div>
           </div>
         </div>
+        <!-- PROCESS TAB -->
         <div class="tab-pane fade" id="process" role="tabpanel">
           <div class="row align-items-center g-4">
-            <div class="col-md-9" style="font-size: 16px; line-height: 1.8;">
-              <h5 class="fw-bold mb-3">Process:</h5>
+            <div class="col-md-9 px-5" style="font-size: 18px; line-height: 1.8;">
+              <h4 class="fw-bold mb-3">Process:</h4>
               <ol class="px-5 text-justify">
                 <li>
                   <strong>Determine eligibility:</strong>
@@ -427,16 +434,17 @@
             </div>
           </div>
         </div>
+        <!-- DOCUMENTS TAB -->
         <div class="tab-pane fade" id="documents" role="tabpanel">
           <div class="row align-items-center g-4">
             <div class="col-md-3 text-center">
               <img src="../img/documents.png" alt="Documents" class="img-fluid rounded"
                 style="height: 350px; object-fit: contain;" />
             </div>
-            <div class="col-md-9" style="font-size: 16px; line-height: 1.8;">
-              <h5 class="fw-bold mb-3">To apply for Family Sponsorship, the following documents are
-                typically required:</h5>
-              <ol class="ps-3 text-justify">
+            <div class="col-md-9" style="font-size: 18px; line-height: 1.8;">
+              <h4 class="fw-bold mb-3">To apply for Family Sponsorship, the following documents are
+                typically required:</h4>
+              <ol class="px-3 text-justify">
                 <li>
                   <strong>For the Sponsor:</strong>
                   <ul style="list-style-type: circle; padding-left: 1.2rem;">
@@ -478,10 +486,11 @@
             </div>
           </div>
         </div>
+        <!-- FAQ TAB -->
         <div class="tab-pane fade" id="faq" role="tabpanel">
           <div class="row align-items-center g-4">
             <div class="col-md-9">
-              <h5 class="fw-bold mb-3">Frequently Asked:</h5>
+              <h4 class="fw-bold ps-5 mb-3">Frequently Asked:</h4>
               <ul class="list-group list-group-flush lh-base text-justify ps-5"
                 style="font-size: 16px; line-height: 1.4;">
                 <li class="list-group-item border-0 ps-0">
@@ -543,6 +552,7 @@
     </div>
 
   </section>
+  <!-- FOOTER -->
   <footer>
     <div class="footer-container">
       <div class="footer-left">
@@ -567,6 +577,7 @@
       </div>
     </div>
   </footer>
+  <!-- JS -->
   <script>
     function showSubscriptionForm() {
       document.getElementById("subscription-form").style.display = "block";

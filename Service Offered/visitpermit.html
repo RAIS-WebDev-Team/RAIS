@@ -5,10 +5,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Visit Permit</title>
-  <link rel="icon" href="../img/logoulit.png" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="all.css" />
   <style>
     * {
@@ -32,7 +32,7 @@
     header {
       position: relative;
       height: 100vh;
-      background-image: url('../img/Fvisit.png');
+      background-image: url('../img/');
       background-size: cover;
       background-position: center;
       display: flex;
@@ -240,12 +240,13 @@
     }
 
     .tab-pane .row {
-      min-height: 525px;
+      min-height: 690px;
     }
   </style>
 </head>
 
 <body>
+  <!-- HEADER -->
   <header>
     <div class="overlay-box"></div>
     <div class="logo">
@@ -258,6 +259,7 @@
       <a href="#info">Explore</a>
     </div>
   </header>
+  <!-- TABS SECTION -->
   <section class="py-5 my-5" id="info">
     <div class="container fixed-container px-4 px-md-5">
 
@@ -282,50 +284,105 @@
           <button class="nav-link" data-bs-toggle="tab" data-bs-target="#faq" type="button" role="tab">FAQs</button>
         </li>
       </ul>
-      <div class="tab-content" style="font-size: 16px; line-height: 1.8; text-align: justify;">
+      <div class="tab-content" style="font-size: 18px; line-height: 1.8; text-align: justify;">
+        <!-- ABOUT -->
         <div class="tab-pane fade show active" id="about" role="tabpanel">
           <div class="row align-items-center g-4">
-            <div class="col-md-9 ps-5">
+            <div class="col-md-6 ps-5">
               <p>
-                A Visitor Visa, also known as a Temporary Resident Visa (TRV), is an official document
-                that allows you to enter Canada as a temporary resident. Visitors can stay for up to 6
-                months, subject to discretion by border officers.
+                A Visitor Visa, also known as a Temporary Resident Visa (TRV) or tourist visa, is an official document
+                placed in your passport by a Canadian visa office to show that you meet the requirements to enter Canada
+                as a temporary resident. Visitors can enter Canada for various purposes, such as tourism, family visits,
+                or business activities. Most visitors can stay in Canada for up to 6 months.
+
+                Visitors are not Canadian citizens or permanent residents, but they are legally authorized to enter
+                Canada temporarily. The length of stay is typically 6 months, but the border services officer at the
+                port of entry may adjust this duration based on individual circumstances. Visitors may also receive a
+                visitor record, which outlines the date they are required to leave.
               </p>
             </div>
-            <div class="col-md-3 text-center">
-              <img src="../img/visa.png" alt="Family Image" class="img-fluid rounded"
+            <div class="col-md-6 text-center">
+              <img src="../img/" alt="Family Image" class="img-fluid rounded"
                 style="height: 350px; object-fit: contain;" />
             </div>
           </div>
         </div>
+        <!-- CRITERIA -->
         <div class="tab-pane fade" id="criteria" role="tabpanel">
           <div class="row align-items-center g-4">
             <div class="col-md-3 text-center">
               <img src="../img/criteria.jpg" class="img-fluid rounded" style="height: 350px; object-fit: contain;"
                 alt="Checklist">
             </div>
-            <div class="col-md-9 ps-5">
-              <h5 class="fw-bold mb-3">Criteria:</h5>
-              <ul>
-                <li>Valid travel document (e.g., passport)</li>
-                <li>Purpose: Tourism, family visit, or business</li>
-                <li>Proof of ties to home country</li>
-                <li>Financial means for your stay</li>
+            <div class="col-md-9 px-5">
+              <h4 class="fw-bold mb-3">Criteria:</h4>
+              <p class="fw-bold">You may need a Visitor Visa if you meet the following criteria:</p>
+              <p><strong>1. Purpose of Visit:</strong> You are traveling to Canada for tourism, business, or to visit
+                family members.</p>
+              <p><strong>2. Travel Document:</strong> You are traveling with a valid passport or travel document.</p>
+              <p><strong>3. Nationality:</strong> Your nationality determines whether you need a Visitor Visa or an
+                Electronic Travel Authorization (eTA).</p>
+              <p><strong>4. Eligibility:</strong> You must be able to demonstrate that you:</p>
+              <ul style="list-style-type: circle; padding-left: 1.5rem;">
+                <li>Have enough money for your stay and return.</li>
+                <li>Have strong ties to your home country (such as a job, family, or property) to prove that you will
+                  leave Canada at the end of your visit.</li>
+                <li>Will obey the conditions of your visa and leave Canada at the end of your authorized stay.</li>
               </ul>
+              <p>If you are unsure whether you qualify for a Visitor Visa, you can speak to an immigration specialist
+                for further guidance.</p>
             </div>
           </div>
         </div>
+
+        <!-- PROCESS -->
         <div class="tab-pane fade" id="process" role="tabpanel">
           <div class="row align-items-center g-4">
-            <div class="col-md-9 px-5" style="font-size: 16px;">
-              <h5 class="fw-bold mb-3">Process:</h5>
-              <ol class="lh-lg">
-                <li><strong>Check Visa Requirements</strong></li>
-                <li><strong>Prepare Your Application</strong></li>
-                <li><strong>Submit Application</strong></li>
-                <li><strong>Wait for Decision</strong></li>
-                <li><strong>Receive a Decision</strong></li>
-                <li><strong>Travel to Canada</strong></li>
+            <div class="col-md-9 px-5" style="font-size: 18px;">
+              <h4 class="fw-bold mb-3">Process:</h4>
+              <ol class="lh-base">
+                <li>
+                  <strong>Check Visa Requirements</strong>
+                  <ul style="list-style-type: circle; margin: 0; padding-left: 1rem;">
+                    <li>Verify if you need a Visitor Visa or an Electronic Travel Authorization (eTA) based on your
+                      nationality, travel document, and method of travel.</li>
+                  </ul>
+                </li>
+                <li>
+                  <strong>Prepare Your Application</strong>
+                  <ul style="list-style-type: circle; margin: 0; padding-left: 1rem;">
+                    <li>Gather all necessary documents, including proof of financial support, travel history, and ties
+                      to your home country.</li>
+                  </ul>
+                </li>
+                <li>
+                  <strong>Submit Your Application</strong>
+                  <ul style="list-style-type: circle; margin: 0; padding-left: 1rem;">
+                    <li>Complete the online or paper application for a Visitor Visa and submit it along with required
+                      documents.</li>
+                  </ul>
+                </li>
+                <li>
+                  <strong>Wait for Decision</strong>
+                  <ul style="list-style-type: circle; margin: 0; padding-left: 1rem;">
+                    <li>Once your application is submitted, the Canadian visa office will review it. Processing times
+                      can vary, so check the estimated timeframes.</li>
+                  </ul>
+                </li>
+                <li>
+                  <strong>Receive a Decision</strong>
+                  <ul style="list-style-type: circle; margin: 0; padding-left: 1rem;">
+                    <li>If your application is approved, you will receive a <strong>Visitor Visa</strong> in your
+                      passport. If additional documents are required, you will be contacted.</li>
+                  </ul>
+                </li>
+                <li>
+                  <strong>Travel to Canada</strong>
+                  <ul style="list-style-type: circle; margin: 0; padding-left: 1rem;">
+                    <li>After receiving your Visitor Visa, you can travel to Canada. Upon arrival, the border services
+                      officer will determine your exact length of stay.</li>
+                  </ul>
+                </li>
               </ol>
             </div>
             <div class="col-md-3 text-center">
@@ -334,58 +391,125 @@
             </div>
           </div>
         </div>
+
+
+        <!-- DOCUMENTS -->
         <div class="tab-pane fade" id="documents" role="tabpanel">
           <div class="row align-items-center g-4">
             <div class="col-md-3 text-center">
               <img src="../img/documents.png" alt="Documents" class="img-fluid rounded"
                 style="height: 350px; object-fit: contain;" />
             </div>
-            <div class="col-md-9 ps-5" style="font-size: 16px;">
-              <p class="fw-bold">Required Documents:</p>
-              <ul>
-                <li>Valid Passport</li>
-                <li>Completed Application Form</li>
-                <li>Proof of Financial Support</li>
-                <li>Travel Itinerary</li>
-                <li>Ties to Home Country</li>
-                <li>Photographs</li>
-                <li>Application Fees</li>
-              </ul>
+            <div class="col-md-9 ps-md-5" style="font-size: 18px;">
+              <h4 class="fw-bold">Required Documents:</h4>
+              <ol class="lh-base px-5">
+                <li>
+                  <strong>Valid Passport</strong>
+                  <ul style="list-style-type: circle; padding-left: 1.2rem;">
+                    <li>Your passport should be valid for the duration of your stay in Canada.</li>
+                  </ul>
+                </li>
+                <li>
+                  <strong>Completed Application Form</strong>
+                  <ul style="list-style-type: circle; padding-left: 1.2rem;">
+                    <li>The official application for a Visitor Visa (available online or in paper form).</li>
+                  </ul>
+                </li>
+                <li>
+                  <strong>Proof of Financial Support</strong>
+                  <ul style="list-style-type: circle; padding-left: 1.2rem;">
+                    <li>Documents showing you have enough money to support yourself during your stay in Canada.</li>
+                  </ul>
+                </li>
+                <li>
+                  <strong>Travel Itinerary</strong>
+                  <ul style="list-style-type: circle; padding-left: 1.2rem;">
+                    <li>A detailed plan of your travel in Canada (e.g., flight bookings, accommodation arrangements).
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <strong>Ties to Home Country</strong>
+                  <ul style="list-style-type: circle; padding-left: 1.2rem;">
+                    <li>Evidence of ties to your home country (e.g., employment letter, property ownership, family).
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <strong>Photographs</strong>
+                  <ul style="list-style-type: circle; padding-left: 1.2rem;">
+                    <li>Passport-sized photos that meet Canada’s visa photo requirements.</li>
+                  </ul>
+                </li>
+                <li>
+                  <strong>Application Fees</strong>
+                  <ul style="list-style-type: circle; padding-left: 1.2rem;">
+                    <li>Payment of the visa application fee.</li>
+                  </ul>
+                </li>
+                <li>
+                  <strong>Additional Documents (if applicable)</strong>
+                  <ul style="list-style-type: circle; padding-left: 1.2rem;">
+                    <li>Depending on your case, additional documents may be required, such as an invitation letter from
+                      family or business partners in Canada.</li>
+                  </ul>
+                </li>
+              </ol>
             </div>
           </div>
         </div>
+
+        <!-- FAQ -->
         <div class="tab-pane fade" id="faq" role="tabpanel">
           <div class="row align-items-center g-4">
             <div class="col-md-9 ps-5">
               <h5 class="fw-bold mb-3">Frequently Asked:</h5>
               <ul class="list-group list-group-flush" style="font-size: 16px; line-height: 1.4;">
                 <li class="list-group-item">
-                  <strong>Q1: How long can I stay?</strong><br>
-                  A: Up to 6 months.
+                  <p class="mb-1"><strong>Q1:</strong> How long can I stay in Canada with a Visitor Visa?</p>
+                  <p class="mb-0"><strong>A:</strong> Most visitors are allowed to stay for up to 6 months. However,
+                    the
+                    border services officer may allow a shorter or longer stay based on individual circumstances.</p>
                 </li>
                 <li class="list-group-item">
-                  <strong>Q2: Do I need a visa?</strong><br>
-                  A: It depends on your nationality.
+                  <p class="mb-1"><strong>Q2:</strong> Do I need a Visitor Visa to visit Canada?</p>
+                  <p class="mb-0"><strong>A:</strong> Not everyone needs a Visitor Visa. Depending on your nationality
+                    and travel document, you may need either a Visitor Visa or an Electronic Travel Authorization
+                    (eTA).
+                    Check with the Canadian authorities or consult an immigration specialist.</p>
                 </li>
                 <li class="list-group-item">
-                  <strong>Q3: Can I work?</strong><br>
-                  A: No, not with a Visitor Visa.
+                  <p class="mb-1"><strong>Q3:</strong> Can I work or study while on a Visitor Visa?</p>
+                  <p class="mb-0"><strong>A:</strong> No, a Visitor Visa does not allow you to work or study in
+                    Canada.
+                    If you wish to work or study, you will need to apply for the appropriate visa or permit.</p>
                 </li>
                 <li class="list-group-item">
-                  <strong>Q4: What happens if I overstay?</strong><br>
-                  A: You may face penalties or be denied future entry.
+                  <p class="mb-1"><strong>Q4:</strong> What happens if I stay longer than the allowed time?</p>
+                  <p class="mb-0"><strong>A:</strong> If you overstay your visa, you may be subject to penalties,
+                    including removal from Canada or a ban from entering in the future. It’s crucial to comply with
+                    the
+                    conditions of your visa.</p>
                 </li>
                 <li class="list-group-item">
-                  <strong>Q5: Can I extend my stay?</strong><br>
-                  A: Yes, but you must apply before your visa expires.
+                  <p class="mb-1"><strong>Q5:</strong> Can I extend my stay in Canada with a Visitor Visa?</p>
+                  <p class="mb-0"><strong>A:</strong> Yes, you can apply to extend your stay while in Canada if you
+                    want
+                    to remain longer. You must apply for an extension before your current visitor status expires.</p>
                 </li>
                 <li class="list-group-item">
-                  <strong>Q6: Are biometrics required?</strong><br>
-                  A: Yes, for some applicants depending on nationality.
+                  <p class="mb-1"><strong>Q6:</strong> Do I need to provide biometrics for my Visitor Visa application?
+                  </p>
+                  <p class="mb-0"><strong>A:</strong> Some applicants are required to provide biometrics (fingerprints
+                    and a photo) as part of the application process. You will be notified if you need to provide
+                    biometrics.</p>
                 </li>
                 <li class="list-group-item">
-                  <strong>Q7: Does the visa allow multiple entries?</strong><br>
-                  A: It depends on the type of visa issued.
+                  <p class="mb-1"><strong>Q7:</strong> Can I visit Canada multiple times with the same Visitor Visa?
+                  </p>
+                  <p class="mb-0"><strong>A:</strong> A Visitor Visa is typically valid for a single entry or multiple
+                    entries, depending on the visa issued. You can apply for multiple-entry visas if you plan to visit
+                    Canada more than once.</p>
                 </li>
               </ul>
             </div>
@@ -398,6 +522,7 @@
       </div>
     </div>
   </section>
+  <!-- FOOTER -->
   <footer>
     <div class="footer-container">
       <div class="footer-left">
@@ -422,6 +547,7 @@
       </div>
     </div>
   </footer>
+  <!-- JS -->
   <script>
     function showSubscriptionForm() {
       document.getElementById("subscription-form").style.display = "block";
