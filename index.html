@@ -30,16 +30,13 @@
 
 <body class="text-white" style="overflow-x: hidden; font-family: 'Poppins', sans-serif">
 
-  <!-- Hero Section with Header -->
   <section class="hero position-relative text-white" style="min-height: 100vh; overflow: hidden;">
-    <!-- Background Video -->
     <video autoplay muted loop playsinline class="position-absolute w-100 h-100"
       style="object-fit: cover; top: 0; left: 0; z-index: -1;">
       <source src="vids/niagarapoh.mp4" type="video/mp4" />
       Your browser does not support HTML5 video.
     </video>
 
-    <!-- Header Content -->
     <header class="d-flex justify-content-between align-items-center py-4 px-5 flex-column flex-md-row gap-1">
       <img src="img/logo.png" alt="RAIS Logo" style="height: 120px;" />
       <nav class="navbar navbar-expand-md px-4 py-2">
@@ -68,7 +65,6 @@
       </a>
     </header>
 
-    <!-- Hero Main Text -->
     <div class="d-flex flex-column justify-content-center align-items-center text-center"
       style="min-height: calc(75vh - 150px);">
       <h1 class="display-1 fw-bold" style="font-family:'Poppins', 'sans-serif'; text-shadow: 3px 3px 8px #000000cc;">TARA CANADA!</h1>
@@ -88,16 +84,13 @@
     </div>
   </section>
 
-  <!-- Up button -->
   <button class="back-to-top position-fixed bottom-0 end-0 mb-4 me-4 btn btn-success rounded-circle d-none"
     onclick="scrollToTop()" style="width: 50px; height: 50px; z-index: 999;">
     <i class="bi bi-arrow-up fs-4"></i>
   </button>
 
-  <!-- Footer -->
   <footer id="Footer" style="background-color:#7b2c2c;color:white;padding:50px 20px;font-family:'Poppins',sans-serif;">
     <div style="display:flex;justify-content:space-between;max-width:1100px;margin:auto;flex-wrap:wrap;gap:40px;">
-      <!-- Left side -->
       <div style="flex:1;min-width:300px;padding:10px;text-align:center;border-right:1px solid rgba(255,255,255,0.4);">
         <h3>Wanna Subscribe to our Newsletter?</h3>
         <p>Get the latest updates and tips straight to your inbox.</p>
@@ -116,7 +109,6 @@
           </button>
         </div>
       </div>
-      <!-- Right side -->
       <div style="flex:1;min-width:300px;padding:10px;">
         <h3 style="font-weight:bold;margin-bottom:15px;">Get In Touch</h3>
         <p>
@@ -163,7 +155,6 @@
         });
       });
 
-    // Subscription
     function showSubscriptionForm(event) {
       document.getElementById("subscription-form").style.display = "block";
       event.target.style.display = "none";
