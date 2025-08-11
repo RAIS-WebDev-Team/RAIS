@@ -3,118 +3,217 @@
 
 <head>
   <meta charset="UTF-8" />
-  <title>Education Blog & News</title>
+  <title>RAIS Blogs & Events</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <link rel="icon" href="../img/logoulit.png" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
+    :root {
+      --primary-color: #0C470C;
+      --background-color: #FFFFFF;
+      --surface-color: #FFFFFF;
+      --text-color: #333333;
+      --heading-color: #023621;
+      --light-gray: #E0E0E0;
+      --font-family: 'Poppins', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      padding-bottom: 2rem;
-      font-family: 'Poppins', sans-serif;
-      background: #f4f7f9;
+      font-family: var(--font-family);
+      background: var(--background-color);
+      color: var(--text-color);
     }
+
 
     header {
-      color: black;
-      text-align: center;
-      padding: 50px 0;
+      background: var(--surface-color);
+      padding: 1rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--light-gray);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
     }
 
-    #map {
-      height: 600px;
-      max-width: 1200px;
-      margin: 2rem auto;
-      border-radius: 12px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-      border: 4px solid #0C470C;
-    }
-
-    .leaflet-popup-content h5 {
-      margin: 0 0 0.3em;
-      font-size: 1.1em;
-    }
-
-    .leaflet-popup-content p {
-      font-size: 0.9em;
-      color: #444;
-    }
-
-    .leaflet-popup-content a {
-      color: #007bff;
+    .logo-link {
       text-decoration: none;
-      font-weight: bold;
     }
 
-    .top-picks-container {
-      max-width: 1200px;
-      margin: 3rem auto;
-      padding: 0 1rem;
+    .logo-text {
+      color: var(--heading-color);
+      font-weight: 700;
+      font-size: 1.8rem;
+      line-height: 1;
     }
 
-    .top-picks-container h2 {
-      font-size: 2em;
-      color: #d90429;
-      margin-bottom: 1.5rem;
-      text-align: left;
-    }
-
-    .news-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      justify-content: center;
-    }
-
-    .news-card {
-      flex: 1;
-      min-width: 280px;
-      max-width: 350px;
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      overflow: hidden;
-      text-decoration: none;
-      color: #212529;
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .news-card img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      border-top-left-radius: 12px;
-      border-top-right-radius: 12px;
-    }
-
-    .news-card:hover,
-    .news-card.hovered {
-      transform: scale(1.03) !important;
-      box-shadow: 0 0 20px #0C470C !important;
-    }
-
-    .card-content {
-      padding: 1.25rem;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .card-content h3 {
-      margin: 0;
-      font-size: 1.15em;
-      line-height: 1.4;
+    .logo-subtext {
+      display: block;
+      font-size: 0.6rem;
+      color: var(--primary-color);
+      letter-spacing: 1.5px;
       font-weight: 600;
     }
 
-    footer {
+    header {
+      background: var(--surface-color);
+      padding: 1rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--light-gray);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      top: 0;
+      z-index: 1000;
+    }
+
+   
+    header nav a {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: var(--primary-color);
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    header nav a:hover {
+      color: var(--heading-color);
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle .bar {
+      width: 25px;
+      height: 3px;
+      background-color: var(--primary-color);
+      margin: 4px 0;
+      transition: 0.4s;
+    }
+
+    .section-container {
+      padding: 4rem 2rem;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      font-weight: 600;
+      color: var(--heading-color);
+      font-size: 2rem;
+    }
+
+    #map {
+      height: 650px;
+      max-width: 1200px;
+      margin: 0 auto;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      border: 3px solid var(--primary-color);
+    }
+
+    .blog-section .col-lg-6 {
+      display: flex;
+      align-items: stretch;
+      height: 200px;
+    }
+
+    logo-link {
+      text-decoration: none;
+    }
+
+
+    .logo-image {
+      max-height: 45px;
+      width: auto;
+    }
+
+    .btn-back {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1001;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
       background-color: #0C470C;
       color: white;
-      padding: 50px 20px;
+      border-radius: 50%;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transition: all 0.3s ease;
+    }
+
+    .btn-back:hover {
+      background-color: #102A43;
+      transform: scale(1.1);
+    }
+
+    .btn-back i {
+      font-size: 1.2rem;
+    }
+
+    .blog-card {
+      width: 100%;
+      display: flex;
+      background: var(--surface-color);
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      text-decoration: none;
+      color: var(--text-color);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid var(--light-gray);
+    }
+
+    .blog-card:hover,
+    .blog-card.hovered {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(12, 71, 12, 0.15);
+    }
+
+    .blog-card .img-wrapper {
+      flex: 0 0 40%;
+    }
+
+    .blog-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .blog-card .card-content {
+      padding: 1.5rem;
+      display: flex;
+    }
+
+    .card-content .title-area {
+      flex-grow: 1;
+    }
+
+    .card-content h5 {
+      font-weight: 600;
+      line-height: 1.4;
+      font-size: 1.15rem;
+      margin-bottom: 1rem;
+    }
+
+    footer {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 60px 20px;
     }
 
     .footer-container {
@@ -134,13 +233,15 @@
     }
 
     .footer-left {
-      text-align: center;
-      border-right: 1px solid rgba(255, 255, 255, 0.4);
+      text-align: left;
+      padding-right: 2rem;
+      border-right: 1px solid rgba(255, 255, 255, 0.2);
     }
 
-    .footer-left h3 {
-      font-weight: bold;
-      margin-bottom: 10px;
+    .footer-left h3,
+    .footer-right h3 {
+      font-weight: 700;
+      margin-bottom: 15px;
     }
 
     .footer-left p,
@@ -149,133 +250,223 @@
       color: #ddd;
     }
 
-    .footer-left button {
-      background-color: #0C470C;
+    #subscription-form {
+      display: flex;
+      background-color: white;
+      border-radius: 30px;
+      padding: 5px;
+      margin-top: 1.5rem;
+    }
+
+    #subscription-form input {
+      flex-grow: 1;
+      border: none;
+      outline: none;
+      padding: 8px 20px;
+      background: transparent;
+      color: #333;
+    }
+
+    #subscription-form button {
+      background-color: var(--primary-color);
       color: white;
       border: none;
-      padding: 8px 20px;
+      padding: 10px 25px;
       font-size: 14px;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      border-radius: 25px;
       cursor: pointer;
-      transition: background #0C470C 0.3s ease;
     }
 
-    .footer-left button:hover {
-      background-color: #00695C;
+    @media (max-width: 991px) {
+      header {
+        flex-wrap: wrap;
+        position: relative;
+      }
+
+      header nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        background-color: var(--surface-color);
+        padding: 1rem 0;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        z-index: 999;
+      }
+
+      header nav.active {
+        display: flex;
+      }
+
+      header nav a {
+        padding: 0.5rem 0;
+        margin: 0;
+        border-bottom: 1px solid var(--light-gray);
+      }
+
+      header nav a:last-child {
+        border-bottom: none;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .footer-left {
+        border-right: none;
+        text-align: center;
+      }
+
+      .footer-right {
+        text-align: center;
+      }
     }
 
-    .footer-right h3 {
-      font-weight: bold;
-      margin-bottom: 15px;
+    @media (max-width: 768px) {
+      .blog-card {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .blog-card .card-content {
+        text-align: center;
+      }
+
+      .blog-card img {
+        height: 220px;
+      }
+
+      .btn-back {
+        top: 15px;
+        left: 15px;
+        width: 40px;
+        height: 40px;
+      }
+
+      .btn-back i {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
 
 <body>
-
   <header>
-    <h1>Blogs and Events</h1>
-    <h5>Stay updated with our latest activities</h5>
+    <a href="#" class="logo-link">
+      <img src="img/logo.png" alt="RAIS Events Logo" class="logo-image">
+    </a>
+    <div class="menu-toggle" id="mobile-menu">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+    <nav id="nav-links">
+      <a href="#map">Event</a>
+      <a href="#blogs">Blogs</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </header>
 
-  <div id="map"></div>
+  <main>
+    <a href="../index.html" class="btn-back" aria-label="Go Back">
+      <i class="fas fa-arrow-left"></i>
+    </a>
+    <section class="section-container">
+      <h2 class="section-title">Event Locations</h2>
+      <div id="map"></div>
+    </section>
 
-  <div class="container my-5 px-5">
-    <h2 class="m-4">Recent Events</h2>
-    <div class="row justify-content-center g-5">
+    <section class="section-container blog-section" id="blogs">
+      <h2 class="section-title">Recent Events</h2>
+      <div class="container">
+        <div class="row g-4">
 
-      <div class="col-md-4 mb-4">
-        <a href="blog/mini-fair.html" class="card news-card shadow-sm text-decoration-none text-dark h-100 w-100"
-          id="event1">
-          <img src="blog/img/mini fair.png" alt="mini fair">
-          <div class="card-body text-start d-flex flex-column justify-content-between">
-            <h5 class="card-title">RCIS AT THE IELTS MINI FAIR</h5>
-            <p class="text-muted mb-0">Written By: Imnil Benmarc A. Jolo</p>
+          <!-- Card 1 -->
+          <div class="col-lg-6">
+            <a href="blog/mini-fair.html" class="blog-card" id="event1">
+              <div class="img-wrapper">
+                <img src="blog/img/minifair.png" alt="IELTS Mini Fair">
+              </div>
+              <div class="card-content">
+                <div class="title-area">
+                  <h5>RCIS AT THE IELTS MINI FAIR</h5>
+                </div>
+                <p class="text-muted mb-0">Written By: Imnil Benmarc A. Jolo</p>
+              </div>
+            </a>
           </div>
-        </a>
-      </div>
 
-      <div class="col-md-4 mb-4">
-        <a href="blog/visitation.html" class="card news-card shadow-sm text-decoration-none text-dark h-100 w-100"
-          id="event2">
-          <img src="blog/img/Sti.png" alt="visitation">
-          <div class="card-body text-start d-flex flex-column justify-content-between">
-            <h5 class="card-title">THE VISITATION</h5>
-            <p class="text-muted mb-0">Written By: Imnil Benmarc A. Jolo</p>
+          <!-- Card 2 -->
+          <div class="col-lg-6">
+            <a href="blog/visitation.html" class="blog-card" id="event2">
+              <div class="img-wrapper">
+                <img src="blog/img/lasalle.png" alt="Visitation from academic partners">
+              </div>
+              <div class="card-content">
+                <div class="title-area">
+                  <h5>THE VISITATION: BRIDGING ACADEMIA AND INDUSTRY</h5>
+                </div>
+                <p class="text-muted mb-0">Written By: Imnil Benmarc A. Jolo</p>
+              </div>
+            </a>
           </div>
-        </a>
-      </div>
 
-      <div class="col-md-4 mb-4">
-        <a href="blog/canada.html" class="card news-card shadow-sm text-decoration-none text-dark h-100 w-100"
-          id="event3">
-          <img src="blog/img/canada.png" alt="calling canada">
-          <div class="card-body text-start d-flex flex-column justify-content-between">
-            <h5 class="card-title">A LONG ROAD FOR “A CALLING TO CANADA”</h5>
-            <p class="text-muted mb-0">Written By: Imnil Benmarc A. Jolo</p>
+          <!-- Card 3 -->
+          <div class="col-lg-6">
+            <a href="blog/canada.html" class="blog-card" id="event3">
+              <div class="img-wrapper">
+                <img src="blog/img/canada.png" alt="A Calling to Canada event">
+              </div>
+              <div class="card-content">
+                <div class="title-area">
+                  <h5>A LONG ROAD FOR “A CALLING TO CANADA”</h5>
+                </div>
+                <p class="text-muted mb-0">Written By: Imnil Benmarc A. Jolo</p>
+              </div>
+            </a>
           </div>
-        </a>
-      </div>
 
-    </div>
-  </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer id="contact">
     <div class="footer-container">
-      <div class="footer-left" style="padding-left: 20px;">
+      <div class="footer-left">
         <h3>Wanna Subscribe to our News Letter?</h3>
-        <p>Subscribe to our newsletter for the latest updates on new features and product releases.</p>
-        <button id="show-form-btn" onclick="showSubscriptionForm()">Click here</button>
-        <div id="subscription-form" style="display: none; margin-top: 10px;">
-          <input type="email" id="email" placeholder="Enter your email" required
-            style="padding: 6px 10px 6px 20px; width: 45%; border-radius: 25px; border: 1px solid #ccc; outline: none;" />
-          <button onclick="submitSubscription()"
-            style="padding: 6px 16px; margin-left: 5px; border-radius: 25px; color: white; border: none; cursor: pointer;">
-            Subscribe
-          </button>
+        <p>Subscribe for the latest updates on new features and product releases.</p>
+        <div id="subscription-form">
+          <input type="email" id="email" placeholder="Enter your email" required />
+          <button onclick="submitSubscription()">Subscribe</button>
         </div>
       </div>
-
       <div class="footer-right">
         <h3>Get In Touch</h3>
-        <p>Email: assessment@romancis.ca<br>Contacts: 09171857247 | (250) 667-0565<br>Location: City Sleep Inn Hotel
-          and Events Centre, Barangay Sico, Lipa City, Batangas</p>
+        <p>Email: assessment@romancis.ca<br>Contacts: 09171857247 | (250) 667-0565<br>Location: City Sleep Inn Hotel and
+          Events Centre, Barangay Sico, Lipa City, Batangas</p>
       </div>
     </div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script>
+    // Mobile menu toggle
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navLinks = document.getElementById('nav-links');
+    mobileMenu.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
     const schools = [
-      {
-        title: "Student Life at La Salle Lipa",
-        summary: "Experience education and values at La Salle.",
-        coordinates: [121.1621, 13.9412],
-        url: "blog/la-salle.html",
-        cardId: "event2"
-      },
-      {
-        title: "Tech & Training at STI Lipa",
-        summary: "A look into STI Lipa’s modern curriculum.",
-        coordinates: [121.1628, 13.9416],
-        url: "blog/sti-lipa.html",
-        cardId: "event2"
-      },
-      {
-        title: "IELTS Prep at 9.0 Niner Calamba",
-        summary: "Reviewing English with proven techniques.",
-        coordinates: [121.1658, 14.2133],
-        url: "blog/calamba.html",
-        cardId: "event1"
-      },
-      {
-        title: "Learning English in Tacloban",
-        summary: "ELA helps students master the language.",
-        coordinates: [125.0016, 11.2410],
-        url: "blog/tacloban.html",
-        cardId: "event1"
-      }
+      { title: "Student Life at La Salle Lipa", summary: "Experience education and values at La Salle.", coordinates: [13.9412, 121.1621], url: "blog/la-salle.html", cardId: "event2" },
+      { title: "Tech & Training at STI Lipa", summary: "A look into STI Lipa’s modern curriculum.", coordinates: [13.9416, 121.1628], url: "blog/sti-lipa.html", cardId: "event2" },
+      { title: "IELTS Prep at 9.0 Niner Calamba", summary: "Reviewing English with proven techniques.", coordinates: [14.2133, 121.1658], url: "blog/calamba.html", cardId: "event1" },
+      { title: "Learning English in Tacloban", summary: "ELA helps students master the language.", coordinates: [11.2410, 125.0016], url: "blog/tacloban.html", cardId: "event1" }
     ];
 
     const map = L.map("map", {
@@ -284,49 +475,32 @@
     }).setView([12.8797, 121.7740], 6);
 
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      attribution: "© OpenStreetMap contributors",
-      minZoom: 6,
-      maxZoom: 18
+      attribution: "© OpenStreetMap contributors", minZoom: 6, maxZoom: 18
     }).addTo(map);
 
     schools.forEach(school => {
-      const marker = L.marker([school.coordinates[1], school.coordinates[0]]).addTo(map);
-
-      marker.bindPopup(`
-        <h5>${school.title}</h5>
-        <p>${school.summary}</p>
-        <a href="${school.url}" target="_blank">Read Blog →</a>
-      `);
-
+      const marker = L.marker(school.coordinates).addTo(map);
+      marker.bindPopup(`<h5>${school.title}</h5><p>${school.summary}</p><a href="${school.url}" target="_blank">Read Blog →</a>`);
       marker.on('click', () => {
-        map.setView([school.coordinates[1], school.coordinates[0]], 10);
-
-        document.querySelectorAll('.news-card').forEach(card => card.classList.remove('hovered'));
-
+        map.setView(school.coordinates, 13);
+        document.querySelectorAll('.blog-card').forEach(card => card.classList.remove('hovered'));
         if (school.cardId) {
           const card = document.getElementById(school.cardId);
           if (card) {
             card.classList.add('hovered');
+            card.scrollIntoView({ behavior: 'smooth', block: 'center' });
           }
         }
       });
-
     });
   </script>
-
   <script>
-    function showSubscriptionForm() {
-      document.getElementById("subscription-form").style.display = "block";
-      document.getElementById("show-form-btn").style.display = "none";
-    }
-
     function submitSubscription() {
-      const email = document.getElementById("email").value;
+      const emailInput = document.getElementById("email");
+      const email = emailInput.value;
       if (email && email.includes('@')) {
         alert("Subscribed successfully with: " + email);
-        document.getElementById("email").value = "";
-        document.getElementById("subscription-form").style.display = "none";
-        document.getElementById("show-form-btn").style.display = "inline-block";
+        emailInput.value = "";
       } else {
         alert("Please enter a valid email address.");
       }
