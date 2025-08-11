@@ -7,7 +7,7 @@
   <title>Caregiver Permit</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="all.css" />
   <style>
     * {
@@ -17,7 +17,7 @@
     }
 
     body {
-      font-family: 'Poppins', sans-serif;
+      font-family: "Poppins", sans-serif;
       background-color: #f8f9fa;
     }
 
@@ -31,7 +31,7 @@
     header {
       position: relative;
       height: 100vh;
-      background-image: url('../img/Fcaregiver.png');
+      background-image: url("../img/Fcaregiver.png");
       background-size: cover;
       background-position: center;
       display: flex;
@@ -134,78 +134,6 @@
       }
     }
 
-
-    footer {
-      background-color: #7b2c2c;
-      color: white;
-      padding: 50px 20px;
-    }
-
-    .footer-container {
-      display: flex;
-      justify-content: space-between;
-      max-width: 1100px;
-      margin: auto;
-      flex-wrap: wrap;
-      gap: 40px;
-    }
-
-    .footer-left,
-    .footer-right {
-      flex: 1;
-      min-width: 300px;
-      padding: 10px;
-    }
-
-    .footer-left {
-      text-align: center;
-      border-right: 1px solid rgba(255, 255, 255, 0.4);
-    }
-
-    .footer-left button,
-    .footer-left #subscription-form button {
-      background-color: #b60022;
-      color: white;
-      border: none;
-      padding: 8px 20px;
-      font-size: 14px;
-      border-radius: 25px;
-      margin-top: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-
-    .footer-left button:hover {
-      background-color: #8e001a;
-    }
-
-    .footer-right h3 {
-      font-weight: bold;
-      margin-bottom: 15px;
-    }
-
-    @media (max-width: 768px) {
-      .footer-container {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .footer-left {
-        border-right: none;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-        margin-bottom: 30px;
-      }
-
-      .hero-content h1 {
-        font-size: 2.5rem;
-      }
-
-      .hero-content p {
-        font-size: 1rem;
-      }
-    }
-
     .tab-pane .img-fluid {
       max-height: 400;
       object-fit: cover;
@@ -253,9 +181,12 @@
     </div>
     <div class="hero-content text-white text-center px-3">
       <h1>Caregiver Permit</h1>
-      <p>A caregiver provides personal care and support to individuals in need, such as the elderly or those with
-        disabilities. They assist with daily activities while promoting dignity and independence.</p>
-      <a href="#info">Explore</a>
+      <p>
+        A caregiver provides personal care and support to individuals in need,
+        such as the elderly or those with disabilities. They assist with daily
+        activities while promoting dignity and independence.
+      </p>
+      <a href="#">Apply Now</a>
     </div>
   </header>
   <!-- TABS SECTION -->
@@ -263,23 +194,29 @@
     <div class="container fixed-container px-4 px-md-5">
       <ul class="nav nav-tabs mb-5 justify-content-center border-0" id="tabMenu" role="tablist">
         <li class="nav-item" role="presentation">
-          <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#about" type="button"
-            role="tab">About</button>
+          <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#about" type="button" role="tab">
+            About
+          </button>
         </li>
         <li class="nav-item" role="presentation">
-          <button class="nav-link" data-bs-toggle="tab" data-bs-target="#criteria" type="button"
-            role="tab">Criteria</button>
+          <button class="nav-link" data-bs-toggle="tab" data-bs-target="#criteria" type="button" role="tab">
+            Criteria
+          </button>
         </li>
         <li class="nav-item" role="presentation">
-          <button class="nav-link" data-bs-toggle="tab" data-bs-target="#process" type="button"
-            role="tab">Process</button>
+          <button class="nav-link" data-bs-toggle="tab" data-bs-target="#process" type="button" role="tab">
+            Process
+          </button>
         </li>
         <li class="nav-item" role="presentation">
-          <button class="nav-link" data-bs-toggle="tab" data-bs-target="#documents" type="button"
-            role="tab">Documents</button>
+          <button class="nav-link" data-bs-toggle="tab" data-bs-target="#documents" type="button" role="tab">
+            Documents
+          </button>
         </li>
         <li class="nav-item" role="presentation">
-          <button class="nav-link" data-bs-toggle="tab" data-bs-target="#faq" type="button" role="tab">FAQs</button>
+          <button class="nav-link" data-bs-toggle="tab" data-bs-target="#faq" type="button" role="tab">
+            FAQs
+          </button>
         </li>
       </ul>
 
@@ -288,23 +225,28 @@
         <div class="tab-pane fade show active" id="about" role="tabpanel">
           <div class="row align-items-center g-4">
             <div class="col-md-6">
-              <p class="lh-lg text-justify ps-5 pe-3" style="font-size: 18px; line-height: 1.8;">
-                The <strong>Caregiver Pilot Program</strong> is designed for individuals who wish to migrate to Canada
-                and work as caregivers. This program provides two pathways for prospective applicants:
-                the <strong>Home Child Care Provider Pilot (HCCP)</strong> and the <strong>Home Support Worker Pilot
-                  (HSWP)</strong>.
-                <br><br>
-                These programs were introduced in 2019 following the closure of the Interim Pathway for Caregivers,
-                offering more flexibility and options for caregivers interested in immigrating to Canada.
-                <br><br>
-                Caregivers under this program must have a valid job offer from a Canadian employer, meet the standard
-                criteria for economic immigration, and work in Canada to gain the required experience needed to apply
-                for permanent residence.
+              <p class="lh-lg text-justify ps-5 pe-3" style="font-size: 18px; line-height: 1.8">
+                The <strong>Caregiver Pilot Program</strong> is designed for
+                individuals who wish to migrate to Canada and work as
+                caregivers. This program provides two pathways for prospective
+                applicants: the
+                <strong>Home Child Care Provider Pilot (HCCP)</strong> and the
+                <strong>Home Support Worker Pilot (HSWP)</strong>.
+                <br /><br />
+                These programs were introduced in 2019 following the closure
+                of the Interim Pathway for Caregivers, offering more
+                flexibility and options for caregivers interested in
+                immigrating to Canada.
+                <br /><br />
+                Caregivers under this program must have a valid job offer from
+                a Canadian employer, meet the standard criteria for economic
+                immigration, and work in Canada to gain the required
+                experience needed to apply for permanent residence.
               </p>
             </div>
             <div class="col-md-6 text-center">
               <img src="../img/pic2.png" alt="Caregiver Image" class="img-fluid rounded"
-                style="height: 350px; object-fit: contain;" />
+                style="height: 350px; object-fit: contain" />
             </div>
           </div>
         </div>
@@ -313,31 +255,45 @@
         <div class="tab-pane fade" id="criteria" role="tabpanel">
           <div class="row align-items-center g-4">
             <div class="col-md-3 text-center">
-              <img src="../img/criteria.jpg" class="img-fluid rounded" style="height: 350px; object-fit: contain;"
-                alt="Checklist">
+              <img src="../img/criteria.jpg" class="img-fluid rounded" style="height: 350px; object-fit: contain"
+                alt="Checklist" />
             </div>
             <div class="col-md-9 px-5">
               <h4 class="fw-bold mb-3">Criteria:</h4>
-              <ol class="lh-lg text-justify" style="font-size: 18px; line-height: 1.8; padding-left: 1rem;">
+              <ol class="lh-lg text-justify" style="font-size: 18px; line-height: 1.8; padding-left: 1rem">
                 <li>
                   <strong>Basic Immigration Criteria (for Employees):</strong>
-                  <ul style="list-style-type: circle; padding-left: 1.5rem;">
-                    <li><strong>Work Experience:</strong> Must have at least 2 years of experience in NOC 4411 (Home
-                      Child Care Provider)
-                      or NOC 4412 (Home Support Worker).</li>
-                    <li><strong>Job Offer:</strong> Must have a valid, genuine job offer from a Canadian employer.</li>
-                    <li><strong>Language Skills:</strong> Minimum CLB 5 in English or French.</li>
-                    <li><strong>Education:</strong> At least 1 year of post-secondary education or equivalent recognized
-                      in Canada.</li>
+                  <ul style="list-style-type: circle; padding-left: 1.5rem">
+                    <li>
+                      <strong>Work Experience:</strong> Must have at least 2
+                      years of experience in NOC 4411 (Home Child Care
+                      Provider) or NOC 4412 (Home Support Worker).
+                    </li>
+                    <li>
+                      <strong>Job Offer:</strong> Must have a valid, genuine
+                      job offer from a Canadian employer.
+                    </li>
+                    <li>
+                      <strong>Language Skills:</strong> Minimum CLB 5 in
+                      English or French.
+                    </li>
+                    <li>
+                      <strong>Education:</strong> At least 1 year of
+                      post-secondary education or equivalent recognized in
+                      Canada.
+                    </li>
                   </ul>
                 </li>
                 <li>
                   <strong>Job Offer Criteria (for Employers):</strong>
-                  <ul style="list-style-type: circle; padding-left: 1.5rem;">
+                  <ul style="list-style-type: circle; padding-left: 1.5rem">
                     <li>Must use the Offer of Employment IMM 5983 form.</li>
                     <li>Job must be full-time and located outside Quebec.</li>
                     <li>Must fall under NOC 4411 or 4412 categories.</li>
-                    <li>Employer must prove no Canadian/permanent resident was available for the job.</li>
+                    <li>
+                      Employer must prove no Canadian/permanent resident was
+                      available for the job.
+                    </li>
                   </ul>
                 </li>
               </ol>
@@ -349,44 +305,65 @@
           <div class="row align-items-center g-4">
             <div class="col-md-9 ps-5">
               <h4 class="fw-bold mb-3">Process:</h4>
-              <ol class="ps-3 text-justify" style="font-size: 18px; line-height: 1.8;">
+              <ol class="ps-3 text-justify" style="font-size: 18px; line-height: 1.8">
                 <li>
                   <strong>Employer Extends a Job Offer:</strong>
-                  <ul style="list-style-type: circle; padding-left: 1.2rem;">
-                    <li>The employer must provide a genuine, full-time job offer to the caregiver.</li>
-                    <li>The offer must meet criteria for NOC 4411 or 4412 and use form IMM 5983.</li>
+                  <ul style="list-style-type: circle; padding-left: 1.2rem">
+                    <li>
+                      The employer must provide a genuine, full-time job offer
+                      to the caregiver.
+                    </li>
+                    <li>
+                      The offer must meet criteria for NOC 4411 or 4412 and
+                      use form IMM 5983.
+                    </li>
                   </ul>
                 </li>
                 <li>
                   <strong>Employee Applies for a Work Permit:</strong>
-                  <ul style="list-style-type: circle; padding-left: 1.2rem;">
-                    <li>After receiving the job offer, the caregiver applies online for a work permit.</li>
+                  <ul style="list-style-type: circle; padding-left: 1.2rem">
+                    <li>
+                      After receiving the job offer, the caregiver applies
+                      online for a work permit.
+                    </li>
                   </ul>
                 </li>
                 <li>
                   <strong>Work Permit Approval:</strong>
-                  <ul style="list-style-type: circle; padding-left: 1.2rem;">
-                    <li>Once approved, the caregiver is authorized to work in Canada.</li>
+                  <ul style="list-style-type: circle; padding-left: 1.2rem">
+                    <li>
+                      Once approved, the caregiver is authorized to work in
+                      Canada.
+                    </li>
                   </ul>
                 </li>
                 <li>
                   <strong>Gaining Work Experience:</strong>
-                  <ul style="list-style-type: circle; padding-left: 1.2rem;">
-                    <li>The caregiver must work for at least 2 years in their designated role.</li>
+                  <ul style="list-style-type: circle; padding-left: 1.2rem">
+                    <li>
+                      The caregiver must work for at least 2 years in their
+                      designated role.
+                    </li>
                   </ul>
                 </li>
                 <li>
                   <strong>Apply for Permanent Residence:</strong>
-                  <ul style="list-style-type: circle; padding-left: 1.2rem;">
-                    <li>Once 2 years of Canadian experience is completed, the caregiver can apply for PR.</li>
-                    <li>Applications may be submitted through Express Entry or other immigration pathways.</li>
+                  <ul style="list-style-type: circle; padding-left: 1.2rem">
+                    <li>
+                      Once 2 years of Canadian experience is completed, the
+                      caregiver can apply for PR.
+                    </li>
+                    <li>
+                      Applications may be submitted through Express Entry or
+                      other immigration pathways.
+                    </li>
                   </ul>
                 </li>
               </ol>
             </div>
             <div class="col-md-3 text-center">
               <img src="../img/proc.png" alt="Process" class="img-fluid rounded"
-                style="height: 350px; object-fit: contain;" />
+                style="height: 350px; object-fit: contain" />
             </div>
           </div>
         </div>
@@ -395,36 +372,55 @@
           <div class="row align-items-center g-4">
             <div class="col-md-3 text-center">
               <img src="../img/documents.png" alt="Documents" class="img-fluid rounded"
-                style="height: 350px; object-fit: contain;" />
+                style="height: 350px; object-fit: contain" />
             </div>
             <div class="col-md-9 px-4">
               <h4 class="fw-bold mb-3">Documents:</h4>
-              <div style="font-size: 18px; line-height: 1.8;" class="text-justify">
+              <div style="font-size: 18px; line-height: 1.8" class="text-justify">
                 <p class="fw-bold mb-1">For Employees:</p>
                 <ol class="ps-3">
-                  <li><strong>Valid Job Offer:</strong> A full-time, permanent job offer from a Canadian employer.</li>
-                  <li><strong>Work Experience:</strong> Evidence of at least 2 years of experience as a Home Child Care
-                    Provider (NOC
-                    4411) or Home Support Worker (NOC 4412).</li>
-                  <li><strong>Language Proficiency:</strong> Proof of language skills (CLB 5) in English or French.</li>
-                  <li><strong>Education:</strong> Educational credentials or proof of post-secondary education
-                    equivalent to Canadian
-                    standards.</li>
-                  <li><strong>Passport:</strong> Valid passport and other travel documents.</li>
-                  <li><strong>Proof of Relationship (if applicable):</strong> For spouses or dependents who may
-                    accompany the applicant.
+                  <li>
+                    <strong>Valid Job Offer:</strong> A full-time, permanent
+                    job offer from a Canadian employer.
+                  </li>
+                  <li>
+                    <strong>Work Experience:</strong> Evidence of at least 2
+                    years of experience as a Home Child Care Provider (NOC
+                    4411) or Home Support Worker (NOC 4412).
+                  </li>
+                  <li>
+                    <strong>Language Proficiency:</strong> Proof of language
+                    skills (CLB 5) in English or French.
+                  </li>
+                  <li>
+                    <strong>Education:</strong> Educational credentials or
+                    proof of post-secondary education equivalent to Canadian
+                    standards.
+                  </li>
+                  <li>
+                    <strong>Passport:</strong> Valid passport and other travel
+                    documents.
+                  </li>
+                  <li>
+                    <strong>Proof of Relationship (if applicable):</strong>
+                    For spouses or dependents who may accompany the applicant.
                   </li>
                 </ol>
 
                 <p class="fw-bold mb-1 mt-4">For Employers:</p>
                 <ol class="ps-3" start="1">
-                  <li><strong>Offer of Employment IMM 5983:</strong> This form must be used to extend
-                    the job offer to the caregiver.
+                  <li>
+                    <strong>Offer of Employment IMM 5983:</strong> This form
+                    must be used to extend the job offer to the caregiver.
                   </li>
-                  <li><strong>Employer’s Evidence:</strong> Proof that the employer was unable to fill
-                    the position with a Canadian
-                    citizen or permanent resident.</li>
-                  <li><strong>Job Description:</strong> The job description must match the relevant NOC (4411 or 4412).
+                  <li>
+                    <strong>Employer’s Evidence:</strong> Proof that the
+                    employer was unable to fill the position with a Canadian
+                    citizen or permanent resident.
+                  </li>
+                  <li>
+                    <strong>Job Description:</strong> The job description must
+                    match the relevant NOC (4411 or 4412).
                   </li>
                 </ol>
               </div>
@@ -436,46 +432,55 @@
           <div class="row align-items-center g-4">
             <div class="col-md-9">
               <h4 class="fw-bold ps-5 mb-3">Frequently Asked:</h4>
-              <ul class="list-group list-group-flush lh-lg text-justify ps-5"
-                style="font-size: 16px; line-height: 1.0;">
+              <ul class="list-group list-group-flush lh-lg text-justify ps-5" style="font-size: 16px; line-height: 1">
                 <li class="list-group-item">
-                  <strong>Q1:</strong> What is the difference between the Home Child Care Provider Pilot (HCCP) and the
-                  Home Support Worker Pilot (HSWP)?<br>
-                  <strong>A:</strong> HCCP is for individuals who provide child care in a private home, while HSWP is
-                  for individuals providing support services to individuals with disabilities, elderly people, or others
-                  requiring assistance.
+                  <strong>Q1:</strong> What is the difference between the Home
+                  Child Care Provider Pilot (HCCP) and the Home Support Worker
+                  Pilot (HSWP)?<br />
+                  <strong>A:</strong> HCCP is for individuals who provide
+                  child care in a private home, while HSWP is for individuals
+                  providing support services to individuals with disabilities,
+                  elderly people, or others requiring assistance.
                 </li>
                 <li class="list-group-item">
-                  <strong>Q2:</strong> Can I apply if I don’t have a job offer yet?<br>
-                  <strong>A:</strong> No, you must have a valid job offer from a Canadian employer before applying for
-                  the work permit under this program.
+                  <strong>Q2:</strong> Can I apply if I don’t have a job offer
+                  yet?<br />
+                  <strong>A:</strong> No, you must have a valid job offer from
+                  a Canadian employer before applying for the work permit
+                  under this program.
                 </li>
                 <li class="list-group-item">
-                  <strong>Q3:</strong> How can my employer prove they were unable to hire a Canadian citizen or
-                  permanent resident?<br>
-                  <strong>A:</strong> The employer must provide evidence of recruitment efforts to hire a Canadian
-                  citizen or permanent resident, showing that they were unable to find a suitable candidate for the
-                  position.
+                  <strong>Q3:</strong> How can my employer prove they were
+                  unable to hire a Canadian citizen or permanent resident?<br />
+                  <strong>A:</strong> The employer must provide evidence of
+                  recruitment efforts to hire a Canadian citizen or permanent
+                  resident, showing that they were unable to find a suitable
+                  candidate for the position.
                 </li>
                 <li class="list-group-item">
-                  <strong>Q4:</strong> Is there a minimum duration for my job offer?<br>
-                  <strong>A:</strong> Yes, the job offer must be full-time and permanent, not temporary.
+                  <strong>Q4:</strong> Is there a minimum duration for my job
+                  offer?<br />
+                  <strong>A:</strong> Yes, the job offer must be full-time and
+                  permanent, not temporary.
                 </li>
                 <li class="list-group-item">
-                  <strong>Q5:</strong> How long do I need to work in Canada before applying for Permanent Residency?<br>
-                  <strong>A:</strong> You must work for at least 2 years in your designated role in Canada to qualify
-                  for permanent residency.
+                  <strong>Q5:</strong> How long do I need to work in Canada
+                  before applying for Permanent Residency?<br />
+                  <strong>A:</strong> You must work for at least 2 years in
+                  your designated role in Canada to qualify for permanent
+                  residency.
                 </li>
                 <li class="list-group-item">
-                  <strong>Q6:</strong> Can my family come with me?<br>
-                  <strong>A:</strong> Yes, under the Caregiver Pilot Program, your spouse and dependent children may be
-                  eligible to join you in Canada during your stay.
+                  <strong>Q6:</strong> Can my family come with me?<br />
+                  <strong>A:</strong> Yes, under the Caregiver Pilot Program,
+                  your spouse and dependent children may be eligible to join
+                  you in Canada during your stay.
                 </li>
               </ul>
             </div>
             <div class="col-md-3 text-center">
               <img src="../img/faq.jpg" alt="FAQs Image" class="img-fluid rounded"
-                style="height: 350px; object-fit: contain;" />
+                style="height: 350px; object-fit: contain" />
             </div>
           </div>
         </div>
@@ -483,20 +488,32 @@
     </div>
   </section>
   <!-- FOOTER -->
-  <footer>
-    <div class="footer-container">
-      <div class="footer-left">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <footer style="background-color:#7b2c2c;color:white;padding:50px 20px;font-family:'Poppins',sans-serif;">
+    <div style="display:flex;justify-content:space-between;max-width:1100px;margin:auto;flex-wrap:wrap;gap:40px;">
+      <!-- Left side -->
+      <div style="flex:1;min-width:300px;padding:10px;text-align:center;border-right:1px solid rgba(255,255,255,0.4);">
         <h3>Wanna Subscribe to our Newsletter?</h3>
         <p>Get the latest updates and tips straight to your inbox.</p>
-        <button onclick="showSubscriptionForm()">Click here</button>
-        <div id="subscription-form" style="display: none;">
+        <button onclick="showSubscriptionForm(event)" style="background-color:#b60022;color:white;border:none;padding:8px 20px;
+        font-size:14px;border-radius:25px;margin-top:10px;
+        box-shadow:0 4px 10px rgba(0,0,0,0.2);cursor:pointer;">
+          Click here
+        </button>
+        <div id="subscription-form" style="display:none;margin-top:10px;">
           <input type="email" id="email" placeholder="Enter your email" required
-            style="padding: 6px 12px; width: 45%; border-radius: 25px; border: none;" />
-          <button onclick="submitSubscription()">Subscribe</button>
+            style="padding:6px 12px;width:45%;border-radius:25px;border:none;" />
+          <button onclick="submitSubscription()" style="background-color:#b60022;color:white;border:none;padding:8px 20px;
+          font-size:14px;border-radius:25px;margin-top:10px;
+          box-shadow:0 4px 10px rgba(0,0,0,0.2);cursor:pointer;">
+            Subscribe
+          </button>
         </div>
       </div>
-      <div class="footer-right">
-        <h3>Get In Touch</h3>
+      <!-- Right side -->
+      <div style="flex:1;min-width:300px;padding:10px;">
+        <h3 style="font-weight:bold;margin-bottom:15px;">Get In Touch</h3>
         <p>
           <i class="bi bi-envelope-fill me-2"></i> assessment@romancis.ca<br>
           <i class="bi bi-telephone-fill me-2"></i> 09171857247 | (250) 667-0565<br>
@@ -507,15 +524,30 @@
     </div>
   </footer>
 
+  <!-- Right side -->
+  <div style="flex: 1; min-width: 300px; padding: 10px">
+    <h3 style="font-weight: bold; margin-bottom: 15px">Get In Touch</h3>
+    <p>
+      <i class="bi bi-envelope-fill me-2"></i>
+      assessment@romancis.ca<br />
+      <i class="bi bi-telephone-fill me-2"></i> 09171857247 | (250)
+      667-0565<br />
+      <i class="bi bi-geo-alt-fill me-2"></i> City Sleep Inn Hotel and
+      Events Centre, Brgy Sico, Lipa City, Batangas
+    </p>
+  </div>
+  </div>
+  </footer>
+
   <!-- JS -->
   <script>
-    function showSubscriptionForm() {
+    function showSubscriptionForm(event) {
       document.getElementById("subscription-form").style.display = "block";
       event.target.style.display = "none";
     }
 
     function submitSubscription() {
-      const email = document.getElementById("email").value;
+      const email = document.getElementById("email").value.trim();
       if (email) {
         alert("Subscribed successfully with: " + email);
         document.getElementById("email").value = "";
@@ -525,6 +557,7 @@
       }
     }
   </script>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
