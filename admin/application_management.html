@@ -4,33 +4,28 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RAIS Admin - User Management</title>
+    <title>RAIS Admin - Application Management</title>
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Bootstrap Icons CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="icon" href="../img/logoulit.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap" rel="stylesheet">
-    <link rel="icon" href="../img/logoulit.png" />
+    <!-- Custom Styles -->
     <style>
         :root {
             --rais-primary-green: #004d40;
-            /* Dark Navy Green for primary elements */
             --rais-dark-green: #00332c;
-            /* Even Darker Navy Green for hover states */
             --rais-text-dark: #000000;
             --rais-text-light: #525252;
             --rais-card-bg: #FFFFFF;
             --rais-light-gray: #E8E8E8;
-            --rais-progress-bg: #D9D9D9;
-            --rais-progress-active: var(--rais-primary-green);
-            /* Use primary green for progress */
             --rais-bg-light: #F7F7F7;
             --rais-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
             --rais-button-maroon: #811F1D;
-            /* Maroon for buttons, badges, floating elements */
-            --rais-highlight-light-green: #98FB98;
-            /* Light Green for tour highlights */
         }
 
         body {
@@ -59,6 +54,7 @@
             height: 100vh;
             display: flex;
             flex-direction: column;
+            z-index: 1031;
         }
 
         .sidebar:hover {
@@ -114,39 +110,6 @@
             opacity: 1;
         }
 
-        .profile-section {
-            cursor: pointer;
-            padding: 15px 30px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            white-space: nowrap;
-            transition: background-color 0.3s ease;
-            margin-top: auto;
-        }
-
-        .profile-section:hover {
-            background-color: var(--rais-dark-green);
-        }
-
-        .profile-section i {
-            font-size: 1.2rem;
-            min-width: 20px;
-            text-align: center;
-            color: white;
-        }
-
-        .profile-section .profile-name-text {
-            opacity: 0;
-            transition: opacity 0.1s ease-in-out 0.2s;
-            color: white;
-            /* Explicitly set to white */
-        }
-
-        .sidebar:hover .profile-name-text {
-            opacity: 1;
-        }
-
         .sidebar .footer-text {
             font-size: 0.8rem;
             color: #bbb;
@@ -178,7 +141,7 @@
             max-width: 200px;
             object-fit: contain;
         }
-
+        
         .header .company-name {
             font-weight: 900;
             color: #000000;
@@ -220,13 +183,7 @@
             padding: 30px;
             margin-bottom: 20px;
         }
-
-        .content-card h2 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-
+        
         .table-responsive {
             margin-top: 15px;
         }
@@ -238,7 +195,6 @@
 
         .table .btn {
             font-size: 0.85rem;
-            padding: 5px 10px;
         }
 
         /* Responsive Design */
@@ -267,7 +223,7 @@
             }
 
             .main-content {
-                padding-top: 15px;
+                padding: 15px;
             }
 
             .sidebar {
@@ -306,16 +262,10 @@
 
             .sidebar .nav-link {
                 flex: 1;
-                flex-direction: row;
                 justify-content: center;
-                align-items: center;
                 padding: 0 10px;
                 gap: 0;
                 height: 100%;
-            }
-
-            .sidebar .nav-link:hover {
-                background-color: var(--rais-dark-green);
             }
 
             .sidebar .nav-link i {
@@ -335,106 +285,147 @@
 </head>
 
 <body>
-    <div class="main-wrapper">
-        <aside class="sidebar d-flex flex-column">
-            <div class="logo">RAIS</div>
-            <nav class="nav flex-column">
-                <a class="nav-link" href="admin.html"><i class="bi bi-window-sidebar"></i><span>Dashboard</span></a>
-                <a class="nav-link active" href="user_management.html"><i class="bi bi-people-fill"></i><span>User
-                        Management</span></a>
-                <a class="nav-link" href="chat_management.html"><i class="bi bi-chat-dots-fill"></i><span>Chat
-                        Management</span></a>
-                <a class="nav-link" href="blog_management.html"><i class="bi bi-journal-richtext"></i><span>Blog
-                        Management</span></a>
-                <a class="nav-link" href="content_management.html"><i class="bi bi-pencil-square"></i><span>Content Management</span></a>
-                <a class="nav-link" href="application_management.html"><i class="bi bi-file-earmark-text-fill"></i><span>Application Management</span></a>
-                <a class="nav-link" href="booking_management.html"><i class="bi bi-calendar-check-fill"></i><span>Booking Management</span></a>
-                <a class="nav-link" href="admin_profile.html"><i class="bi bi-person-gear"></i><span>Admin
-                        Profiles</span></a>
-            </nav>
-            <div class="mt-auto">
+  <div class="main-wrapper">
+    <!-- Sidebar -->
+    <aside class="sidebar d-flex flex-column">
+      <div class="logo">RAIS</div>
+      <nav class="nav flex-column">
+        <a class="nav-link" href="admin.html"><i class="bi bi-window-sidebar"></i><span>Dashboard</span></a>
+        <a class="nav-link" href="user_management.html"><i class="bi bi-people-fill"></i><span>User Management</span></a>
+        <a class="nav-link" href="chat_management.html"><i class="bi bi-chat-dots-fill"></i><span>Chat Management</span></a>
+        <a class="nav-link" href="blog_management.html"><i class="bi bi-journal-richtext"></i><span>Blog Management</span></a>
+        <a class="nav-link" href="content_management.html"><i class="bi bi-pencil-square"></i><span>Content Management</span></a>
+        <a class="nav-link active" href="application_management.html"><i class="bi bi-file-earmark-text-fill"></i><span>Application Management</span></a>
+        <a class="nav-link" href="booking_management.html"><i class="bi bi-calendar-check-fill"></i><span>Booking Management</span></a>
+        <a class="nav-link" href="admin_profile.html"><i class="bi bi-person-gear"></i><span>Admin Profiles</span></a>
+      </nav>
+      <div class="mt-auto">
           <a class="nav-link" href="profile.html"><i class="bi bi-person-circle"></i><span>Profile</span></a>
       </div>
 
-            <div class="mt-auto footer-text">
-                &copy; 2023 RAIS
-            </div>
-        </aside>
+      <div class="mt-auto footer-text">
+        &copy; 2024 RAIS
+      </div>
+    </aside>
 
-        <div class="d-flex flex-column flex-grow-1">
-            <div class="header">
-                <div class="d-flex align-items-center gap-3">
-                    <img src="../img/logoulit.png" alt="RAIS Logo" class="logo-img">
-                    <h5 class="company-name d-none d-sm-block">Roman & Associates Immigration Services</h5>
-                </div>
-                <div class="user-status d-flex align-items-center gap-2">
-                    <button class="btn btn-link"><i class="bi bi-power"></i></button>
-                    <span class="badge">ADMIN</span>
-                </div>
-            </div>
-
-            <main class="main-content">
-                <h1>User Management</h1>
-
-                <div class="content-card">
-                    <h2>All Users</h2>
-                    <div class="table-responsive">
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Status</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody id="userTableBody">
-                                </tbody>
-                        </table>
-                    </div>
-                    <button class="btn btn-sm btn-primary"
-                        style="background-color: var(--rais-button-maroon); border: none;">Add New
-                        User</button>
-                </div>
-
-            </main>
+    <!-- Main Content Area -->
+    <div class="d-flex flex-column flex-grow-1">
+      <!-- Header -->
+      <header class="header">
+        <div class="d-flex align-items-center gap-3">
+            <img src="../img/logoulit.png" alt="RAIS Logo" class="logo-img">
+            <h5 class="company-name d-none d-sm-block">Roman & Associates Immigration Services</h5>
         </div>
+        <div class="user-status d-flex align-items-center gap-2">
+          <span class="badge">ADMIN</span>
+          <button class="btn btn-link text-secondary"><i class="bi bi-power"></i></button>
+        </div>
+      </header>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <h1>Application Management</h1>
+
+        <div class="content-card">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2>Submitted Applications</h2>
+                <div class="input-group w-50">
+                    <input type="text" class="form-control" placeholder="Search by name or type..." id="searchInput">
+                    <button class="btn btn-outline-secondary" type="button"><i class="bi bi-search"></i></button>
+                </div>
+            </div>
+            
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">App ID</th>
+                            <th scope="col">User Name</th>
+                            <th scope="col">Application Type</th>
+                            <th scope="col">Submitted</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="applicationsTableBody">
+                        <!-- Application data will be dynamically inserted here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+      </main>
     </div>
+  </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-        crossorigin="anonymous"></script>
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+    crossorigin="anonymous"></script>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Placeholder user data for admin table
-            const users = [
-                { id: 1, name: 'John Doe', email: 'john.doe@example.com', status: 'Active' },
-                { id: 2, name: 'Jane Smith', email: 'jane.smith@example.com', status: 'Pending Docs' },
-                { id: 3, name: 'Peter Jones', email: 'peter.j@example.com', status: 'Approved' },
-                { id: 4, name: 'Alice Brown', email: 'alice.b@example.com', status: 'Inactive' }
-            ];
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Mock data for applications
+        const applications = [
+            { id: 'APP-001', userName: 'John Doe', type: 'Visa Application', date: '2024-07-28', status: 'Pending Review', fileUrl: '#' },
+            { id: 'APP-002', userName: 'Jane Smith', type: 'Work Permit', date: '2024-07-27', status: 'Approved', fileUrl: '#' },
+            { id: 'APP-003', userName: 'Peter Jones', type: 'Study Permit', date: '2024-07-25', status: 'Cancelled', fileUrl: '#' },
+            { id: 'APP-004', userName: 'Alice Brown', type: 'Visa Application', date: '2024-07-22', status: 'Pending Review', fileUrl: '#' }
+        ];
 
-            const userTableBody = document.getElementById('userTableBody');
-            users.forEach(user => {
-                const row = userTableBody.insertRow();
-                // This logic creates the responsive button layout
-                row.innerHTML = `
-                <td>${user.id}</td>
-                <td>${user.name}</td>
-                <td>${user.email}</td>
-                <td><span class="badge bg-${user.status === 'Active' || user.status === 'Approved' ? 'success' : 'warning'}">${user.status}</span></td>
-                <td>
-                    <div class="d-flex flex-column flex-md-row gap-2">
-                        <button class="btn btn-sm btn-info">Edit</button>
-                        <button class="btn btn-sm btn-danger">Delete</button>
-                    </div>
-                </td>
-            `;
+        const tableBody = document.getElementById('applicationsTableBody');
+        const searchInput = document.getElementById('searchInput');
+
+        function renderTable(data) {
+            tableBody.innerHTML = '';
+            data.forEach(app => {
+                let statusBadge;
+                switch(app.status) {
+                    case 'Approved':
+                        statusBadge = 'bg-success';
+                        break;
+                    case 'Pending Review':
+                        statusBadge = 'bg-warning text-dark';
+                        break;
+                    case 'Cancelled':
+                        statusBadge = 'bg-danger';
+                        break;
+                    default:
+                        statusBadge = 'bg-secondary';
+                }
+                
+                const row = `
+                    <tr>
+                        <td>${app.id}</td>
+                        <td>${app.userName}</td>
+                        <td>${app.type}</td>
+                        <td>${app.date}</td>
+                        <td><span class="badge ${statusBadge}">${app.status}</span></td>
+                        <td>
+                            <a href="${app.fileUrl}" class="btn btn-sm btn-outline-primary" download><i class="bi bi-download"></i></a>
+                            <button class="btn btn-sm btn-success approve-btn" data-id="${app.id}"><i class="bi bi-check-lg"></i></button>
+                            <button class="btn btn-sm btn-danger cancel-btn" data-id="${app.id}"><i class="bi bi-x-lg"></i></button>
+                        </td>
+                    </tr>
+                `;
+                tableBody.innerHTML += row;
             });
+        }
+        
+        searchInput.addEventListener('keyup', function() {
+            const searchTerm = this.value.toLowerCase();
+            const filteredData = applications.filter(app => 
+                app.userName.toLowerCase().includes(searchTerm) || 
+                app.type.toLowerCase().includes(searchTerm)
+            );
+            renderTable(filteredData);
         });
-    </script>
+
+        // Initial render
+        renderTable(applications);
+    });
+  </script>
+
 </body>
 
 </html>

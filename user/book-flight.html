@@ -8,26 +8,36 @@
   <link rel="icon" href="../img/logoulit.png" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <!-- Bootstrap Icons CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Custom Styles -->
   <style>
     :root {
       --rais-primary-green: #004d40;
+      /* Dark Navy Green for primary elements */
       --rais-dark-green: #00332c;
+      /* Even Darker Navy Green for hover states */
       --rais-text-dark: #333333;
       --rais-text-light: #525252;
       --rais-card-bg: #FFFFFF;
       --rais-light-gray: #E8E8E8;
       --rais-progress-bg: #D9D9D9;
       --rais-progress-active: var(--rais-primary-green);
+      /* Use primary green for progress */
       --rais-bg-light: #F7F7F7;
       --rais-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-      --rais-button-maroon: #20811d;
+      --rais-button-maroon: #811F1D;
+      /* Maroon for buttons, badges, floating elements */
       --rais-highlight-light-green: #98FB98;
+      /* Light Green for tour highlights */
     }
 
     body {
-      font-family: 'Satoshi', sans-serif;
+      font-family: 'Poppins', sans-serif;
       background-color: var(--rais-light-gray);
       color: var(--rais-text-dark);
     }
@@ -37,6 +47,7 @@
       min-height: 100vh;
     }
 
+    /* Sidebar Styles */
     .sidebar {
       background-color: var(--rais-primary-green);
       width: 70px;
@@ -46,7 +57,9 @@
       box-shadow: var(--rais-shadow);
       transition: width 0.3s ease-in-out;
       overflow: hidden;
-      position: relative;
+      position: sticky;
+      top: 0;
+      height: 100vh;
       display: flex;
       flex-direction: column;
     }
@@ -104,38 +117,6 @@
       opacity: 1;
     }
 
-    .profile-section {
-      cursor: pointer;
-      padding: 15px 30px;
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      white-space: nowrap;
-      transition: background-color 0.3s ease;
-      margin-top: auto;
-    }
-
-    .profile-section:hover {
-      background-color: var(--rais-dark-green);
-    }
-
-    .profile-section i {
-      font-size: 1.2rem;
-      min-width: 20px;
-      text-align: center;
-      color: white;
-    }
-
-    .profile-section .profile-name-text {
-      opacity: 0;
-      transition: opacity 0.1s ease-in-out 0.2s;
-      color: white;
-    }
-
-    .sidebar:hover .profile-name-text {
-      opacity: 1;
-    }
-
     .sidebar .footer-text {
       font-size: 0.8rem;
       color: #bbb;
@@ -143,12 +124,14 @@
       padding: 15px 0;
       opacity: 0;
       transition: opacity 0.3s ease-in-out;
+      margin-top: auto;
     }
 
     .sidebar:hover .footer-text {
       opacity: 1;
     }
 
+    /* Header Styles */
     .header {
       background-color: var(--rais-bg-light);
       height: 60px;
@@ -161,8 +144,8 @@
     }
 
     .header .logo-img {
-      height: 250px;
-      width: 250px;
+      height: 150px;
+      width: 150px;
       object-fit: contain;
     }
 
@@ -186,6 +169,28 @@
       padding: 0;
     }
 
+    .tour-help-btn {
+      background: none;
+      border: 2px solid var(--rais-highlight-light-green);
+      border-radius: 50%;
+      color: var(--rais-text-dark);
+      font-size: 1.5rem;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      margin-right: 10px;
+      transition: background-color 0.2s, color 0.2s;
+    }
+
+    .tour-help-btn:hover {
+      background-color: var(--rais-light-gray);
+      color: var(--rais-primary-green);
+    }
+
+    /* Main Content Styles */
     .main-content {
       flex-grow: 1;
       padding: 30px;
@@ -205,30 +210,6 @@
       padding: 30px;
     }
 
-    .floating-btn {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background-color: var(--rais-button-maroon);
-      /* Changed to Maroon */
-      color: white;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      text-decoration: none;
-      transition: background-color 0.2s;
-      z-index: 100;
-    }
-
-    .floating-btn:hover {
-      background-color: var(--rais-dark-green);
-    }
-
     .flight-form-card .form-label {
       font-weight: 600;
     }
@@ -243,6 +224,7 @@
       background-color: var(--rais-dark-green);
     }
 
+    /* Collapsible Chatbox */
     .chat-container {
       position: fixed;
       bottom: 100px;
@@ -302,7 +284,7 @@
     .chat-toggle-btn {
       position: fixed;
       bottom: 30px;
-      right: 100px;
+      right: 30px;
       background-color: var(--rais-button-maroon);
       color: white;
       border-radius: 50%;
@@ -317,18 +299,114 @@
       z-index: 100;
     }
 
+
+    /* Responsive Design */
     @media (max-width: 768px) {
+      body {
+        padding-top: 60px;
+        padding-bottom: 50px;
+      }
+
       .main-wrapper {
         flex-direction: column;
       }
 
+      .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1030;
+      }
+
+      .header .logo-img {
+        height: 120px;
+        width: 120px;
+      }
+
+      .main-content {
+        padding-top: 15px;
+      }
+
+      /* Transform sidebar into a bottom navigation bar */
       .sidebar {
+        width: 100%;
+        height: 50px;
+        position: fixed;
+        top: auto;
+        bottom: 0;
+        left: 0;
+        z-index: 1029;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        padding: 0;
+        transition: none;
+      }
+
+      .sidebar:hover {
+        width: 100%;
+      }
+
+      .sidebar .logo,
+      .sidebar .footer-text,
+      .profile-section {
         display: none;
       }
 
+      .sidebar .nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        flex-grow: 1;
+        height: 100%;
+      }
+
+      .sidebar .nav-link {
+        flex: 1;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 0 10px;
+        gap: 0;
+        height: 100%;
+      }
+
+      .sidebar .nav-link:hover {
+        background-color: var(--rais-dark-green);
+      }
+
+      .sidebar .nav-link i {
+        font-size: 1.5rem;
+        margin-bottom: 0;
+      }
+
+      .sidebar .nav-link span {
+        display: none;
+      }
+
+      .sidebar:hover .nav-link span {
+        display: none;
+      }
+
+      .chat-toggle-btn {
+        bottom: 80px;
+        right: 15px;
+      }
+
       .chat-container {
-        width: 90%;
-        left: 5%;
+        width: calc(100% - 20px);
+        max-width: 350px;
+        left: 50%;
+        transform: translateX(-50%) translateY(100%);
+        bottom: 80px;
+      }
+
+      .chat-container.show {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+        visibility: visible;
       }
     }
   </style>
@@ -336,35 +414,40 @@
 
 <body>
   <div class="main-wrapper">
-    <aside class="sidebar d-flex flex-column d-none d-md-block">
+    <!-- Sidebar -->
+    <aside class="sidebar d-flex flex-column">
       <div class="logo">RAIS</div>
-      <nav class="nav flex-column" style="font-family: 'Archivo Black', sans-serif;">
+      <nav class="nav flex-column">
         <a class="nav-link" href="dashboard.html"><i class="bi bi-house-door-fill"></i><span>Dashboard</span></a>
+        <a class="nav-link" href="book-consultation.html"><i class="bi bi-calendar-check"></i><span>Book
+            Consultation</span></a>
+        <a class="nav-link" href="statement-of-account.html"><i class="bi bi-receipt"></i><span>Statement of
+            Account</span></a>
         <a class="nav-link" href="documents.html"><i class="bi bi-file-earmark-text"></i><span>Documents</span></a>
         <a class="nav-link" href="forms.html"><i class="bi bi-journal-text"></i><span>Forms</span></a>
         <a class="nav-link" href="notifications.html"><i class="bi bi-bell"></i><span>Notifications</span></a>
         <a class="nav-link" href="settings.html"><i class="bi bi-gear"></i><span>Settings</span></a>
+        <a class="nav-link" href="profile.html"><i class="bi bi-person-circle"></i><span>Profile</span></a>
       </nav>
-
-      <a class="profile-section" style="font-family: 'Archivo Black', sans-serif;" href="profile.html">
-        <i class="bi bi-person-circle"></i>
-        <span class="profile-name-text">Profile</span>
-      </a>
 
       <div class="mt-auto footer-text">
         &copy; 2023 RAIS
       </div>
     </aside>
 
+    <!-- Main Content Area -->
     <div class="d-flex flex-column flex-grow-1">
+      <!-- Header -->
       <div class="header">
-        <div></div>
-        <img src="../img/logo.png" class="logo-img">
-        <div class="user-status d-flex align-items-center gap-2">
+        <img src="../img/logo.png" alt="RAIS Logo" class="logo-img">
+        <div class="user-status d-flex align-items: center gap-2">
+          <button class="tour-help-btn" id="tourToggleButton"><i class="bi bi-question-circle"></i></button>
           <button class="btn btn-link"><i class="bi bi-power"></i></button>
           <span class="badge">ACTIVE</span>
         </div>
       </div>
+
+      <!-- Main Content -->
       <main class="main-content">
         <h1>Book Flight</h1>
         <div class="row g-4 justify-content-center">
@@ -409,16 +492,15 @@
     </div>
   </div>
 
-  <a href="book-flight.html" class="floating-btn text-decoration-none">
-    <i class="bi bi-plus-lg"></i>
-  </a>
+  <!-- Collapsible Chatbox -->
   <div class="chat-container" id="chatContainer">
     <div class="chat-header d-flex justify-content-between align-items-center" onclick="toggleChat()">
       <h5 class="chat-modal-title mb-0"><i class="bi bi-chat-dots-fill me-2"></i>Live Chat</h5>
       <i class="bi bi-x-lg text-white"></i>
     </div>
     <div class="chat-body">
-      <div class="text-center text-muted">Start a new conversation.</div>
+      <!-- Chat messages will go here -->
+      <div class="text-center text-muted">RAIS Support how may i assist you?</div>
     </div>
     <div class="chat-footer">
       <div class="input-group">
@@ -430,10 +512,13 @@
       </div>
     </div>
   </div>
+
+  <!-- Floating Chat Toggle Button -->
   <button class="chat-toggle-btn" onclick="toggleChat()">
     <i class="bi bi-chat-dots"></i>
   </button>
 
+  <!-- Bootstrap JS Bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
