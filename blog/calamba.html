@@ -5,8 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RAIS Blog | Visit to Laguna</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="../img/logoulit.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome for the back button icon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
       --primary-color: #0C470C;
@@ -28,6 +30,36 @@
       color: var(--text-color);
     }
 
+    /* --- Back Button (Top Right) --- */
+    .btn-back {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1001;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      background-color: var(--primary-color);
+      color: white;
+      border-radius: 50%;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transition: all 0.3s ease;
+    }
+
+    .btn-back:hover {
+      background-color: var(--heading-color);
+      transform: scale(1.1);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-back i {
+      font-size: 1.2rem;
+    }
+
+    /* --- Header --- */
     header {
       background: var(--surface-color);
       padding: 1rem 5%;
@@ -56,6 +88,7 @@
       color: var(--heading-color);
     }
 
+    /* --- Main Content --- */
     main {
       width: 90%;
       max-width: 800px;
@@ -113,51 +146,12 @@
       margin-bottom: 1.5rem;
     }
 
-
-    @media (max-width: 768px) {
-      .blog-post {
-        padding: 1.5rem;
-      }
-
-      .blog-title {
-        font-size: 2rem;
-      }
-
-      .newsletter form {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .newsletter input[type="email"] {
-        min-width: auto;
-        width: 100%;
-        box-sizing: border-box;
-      }
-    }
-
-    .btn-back {
-      margin-bottom: 2rem;
-      font-weight: 500;
-      color: var(--primary-color);
-      border-color: var(--primary-color);
-      margin-left: 2rem;
-      text-decoration: none;
-      padding: 0.5rem 1rem;
-      border: 1px solid var(--primary-color);
-      border-radius: 5px;
-      display: inline-block;
-      transition: all 0.3s ease;
-    }
-
-    .btn-back:hover {
-      background-color: var(--primary-color);
-      color: white;
-    }
-
+    /* --- Footer --- */
     footer {
       background-color: var(--primary-color);
       color: white;
       padding: 50px 20px;
+      margin-top: 2rem;
     }
 
     .footer-container {
@@ -201,13 +195,13 @@
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
       cursor: pointer;
-      transition: background var(--primary-color) 0.3s ease;
+      transition: background-color 0.3s ease;
     }
 
     .footer-left button:hover {
-      background-color: var(--primary-color);
+      background-color: var(--heading-color);
     }
-
+    
     .footer-right h3 {
       font-weight: bold;
       margin-bottom: 15px;
@@ -219,7 +213,27 @@
       color: #ddd;
     }
 
+    /* --- Media Queries --- */
     @media (max-width: 768px) {
+      .blog-post {
+        padding: 1.5rem;
+      }
+
+      .blog-title {
+        font-size: 2rem;
+      }
+      
+      .btn-back {
+        top: 15px;
+        left: 15px;
+        width: 40px;
+        height: 40px;
+      }
+
+      .btn-back i {
+        font-size: 1rem;
+      }
+      
       .footer-container {
         flex-direction: column;
         text-align: center;
@@ -228,17 +242,22 @@
       .footer-left {
         border-right: none;
         border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+        padding-bottom: 30px;
         margin-bottom: 30px;
       }
-
+      
       .footer-right {
-        padding-top: 20px;
+        padding-top: 0;
       }
     }
   </style>
 </head>
 
 <body>
+  <a href="../blog.html" class="btn-back" aria-label="Go Back">
+    <i class="fas fa-arrow-left"></i>
+  </a>
+
   <header>
     <div class="logo-container">
       <img src="img/logo.png" alt="RAIS Logo">
@@ -256,8 +275,7 @@
         <p class="author">Written By: Imnil Benmarc A. Jolo</p>
       </div>
 
-      <img class="main-image" src="img/laguna.png"
-        alt="RCIS team at the Niner Review and Testing Center in Calamba, Laguna">
+      <img class="main-image" src="img/laguna.png" alt="RCIS team at the Niner Review and Testing Center in Calamba, Laguna">
 
       <section id="visit">
         <h2>Connecting with Students in Calamba</h2>
@@ -268,14 +286,8 @@
           learning and preparation for students aiming to pursue their dreams of studying, working, or living in Canada.
         </p>
       </section>
-
-
     </article>
   </main>
-
-  <a href="blog.html" class="btn-back">
-    ← Go Back
-  </a>
 
   <footer id="contact">
     <div class="footer-container">
@@ -290,7 +302,7 @@
           <input type="email" id="email" placeholder="Enter your email" required
             style="padding: 6px 10px 6px 20px; width: 45%; border-radius: 25px; border: 1px solid #ccc; outline: none;" />
           <button onclick="submitSubscription()"
-            style="padding: 6px 16px; margin-left: 5px; border-radius: 25px; background-color :#012b26; color: white; border: none; cursor: pointer;">
+            style="padding: 6px 16px; margin-left: 5px; border-radius: 25px; background-color: #012b26; color: white; border: none; cursor: pointer;">
             Subscribe
           </button>
         </div>

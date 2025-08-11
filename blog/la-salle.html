@@ -10,6 +10,8 @@
     integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="../img/logoulit.png" />
+  <!-- Font Awesome for the back button icon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
  
   <style>
     :root {
@@ -32,6 +34,36 @@
       color: var(--text-color);
     }
 
+    /* --- Back Button (Top Right) --- */
+    .btn-back {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1001;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      background-color: var(--primary-color);
+      color: white;
+      border-radius: 50%;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transition: all 0.3s ease;
+    }
+
+    .btn-back:hover {
+      background-color: var(--heading-color);
+      transform: scale(1.1);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-back i {
+      font-size: 1.2rem;
+    }
+
+    /* --- Header --- */
     header {
       background: var(--surface-color);
       padding: 1rem 5%;
@@ -60,6 +92,7 @@
       color: var(--heading-color);
     }
 
+    /* --- Main Content --- */
     main {
       width: 90%;
       max-width: 800px;
@@ -80,7 +113,6 @@
     }
 
     .blog-title {
-      font-family: var(--heading-font);
       font-size: 2.8rem;
       color: var(--heading-color);
       margin-bottom: 0.5rem;
@@ -104,7 +136,6 @@
     }
 
     .blog-post h2 {
-      font-family: var(--heading-font);
       font-size: 1.8rem;
       color: var(--primary-color);
       font-weight: 600;
@@ -124,28 +155,7 @@
       font-weight: 600;
     }
 
-    .btn-back-container {
-      text-align: left;
-      margin-top: 2rem;
-      margin-bottom: 2rem;
-    }
-
-    .btn-back {
-      font-weight: 500;
-      color: var(--primary-color);
-      text-decoration: none;
-      padding: 0.5rem 1.5rem;
-      border: 1px solid var(--primary-color);
-      border-radius: 20px;
-      display: inline-block;
-      transition: all 0.3s ease;
-    }
-
-    .btn-back:hover {
-      background-color: var(--primary-color);
-      color: white;
-    }
-
+    /* --- Footer --- */
     footer {
       background-color: var(--primary-color);
       color: white;
@@ -176,7 +186,6 @@
 
     .footer-left h3,
     .footer-right h3 {
-      font-family: var(--heading-font);
       font-weight: bold;
       margin-bottom: 15px;
     }
@@ -207,6 +216,17 @@
         font-size: 2.2rem;
       }
 
+      .btn-back {
+        top: 15px;
+        left: 15px;
+        width: 40px;
+        height: 40px;
+      }
+
+      .btn-back i {
+        font-size: 1rem;
+      }
+
       .footer-container {
         flex-direction: column;
         text-align: center;
@@ -215,17 +235,22 @@
       .footer-left {
         border-right: none;
         border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+        padding-bottom: 30px;
         margin-bottom: 30px;
       }
 
       .footer-right {
-        padding-top: 20px;
+        padding-top: 0;
       }
     }
   </style>
 </head>
 
 <body>
+
+  <a href="../blogs.html" class="btn-back" aria-label="Go Back">
+    <i class="fas fa-arrow-left"></i>
+  </a>
 
   <header>
     <div class="logo-container">
@@ -268,15 +293,9 @@
         </p>
       </section>
     </article>
-
-    <div class="btn-back-container">
-      <a href="../blogs.html" class="btn-back">
-        ← Go Back
-      </a>
-    </div>
   </main>
 
-  <footer>
+  <footer id="contact">
     <div class="footer-container">
       <div class="footer-left">
         <h3>Wanna Subscribe to our News Letter?</h3>

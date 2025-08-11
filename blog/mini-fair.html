@@ -8,6 +8,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
     :root {
@@ -21,6 +22,10 @@
       --font-family: 'Poppins', sans-serif;
     }
 
+    html, body {
+       overflow-x: visible;
+    }
+
     body {
       font-family: var(--font-family);
       line-height: 1.7;
@@ -30,6 +35,35 @@
       color: var(--text-color);
     }
 
+    .btn-back {
+      position: fixed;
+      top: 20px;
+      left: 20px; /* Changed from left to right */
+      z-index: 1001;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      background-color: var(--primary-color);
+      color: white;
+      border-radius: 50%;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transition: all 0.3s ease;
+    }
+
+    .btn-back:hover {
+      background-color: var(--heading-color);
+      transform: scale(1.1);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-back i {
+      font-size: 1.2rem;
+    }
+
+
     header {
       background: var(--surface-color);
       padding: 1rem 5%;
@@ -38,7 +72,7 @@
       align-items: center;
       border-bottom: 1px solid var(--light-gray);
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-      position: sticky;
+     /* position: sticky;*/
       top: 0;
       z-index: 1000;
     }
@@ -96,9 +130,7 @@
       width: 100%;
       height: auto;
       aspect-ratio: 16 / 9;
-      /* Enforce landscape ratio */
       object-fit: cover;
-      /* Prevents image distortion */
       border-radius: 12px;
       margin-bottom: 2rem;
     }
@@ -126,6 +158,7 @@
       padding: 2rem;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+       border-left: 5px solid var(--primary-color);
     }
 
     .event-card:hover {
@@ -137,9 +170,7 @@
       width: 100%;
       height: auto;
       aspect-ratio: 16 / 9;
-      /* Enforce landscape ratio */
       object-fit: cover;
-      /* Prevents image distortion */
       border-radius: 8px;
       margin-bottom: 1.5rem;
     }
@@ -149,86 +180,6 @@
       color: var(--heading-color);
       margin-top: 0;
       margin-bottom: 1rem;
-    }
-
-
-
-    footer {
-      background: var(--heading-color);
-      color: #ffffff;
-      padding: 3rem 5%;
-      margin-top: 3rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-    }
-
-    .footer-section h3 {
-      color: var(--secondary-color);
-      border-bottom: 2px solid var(--secondary-color);
-      padding-bottom: 10px;
-      margin-bottom: 1rem;
-      font-weight: 600;
-    }
-
-    footer p,
-    footer a {
-      color: #E0E0E0;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-
-    footer a:hover {
-      color: var(--secondary-color);
-    }
-
-    .social-media a {
-      display: inline-block;
-      margin-right: 1rem;
-      font-size: 1.2rem;
-    }
-
-    @media (max-width: 768px) {
-      .blog-post {
-        padding: 1.5rem;
-      }
-
-      .blog-title {
-        font-size: 2rem;
-      }
-
-      .newsletter form {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .newsletter input[type="email"] {
-        min-width: auto;
-        width: 100%;
-        box-sizing: border-box;
-      }
-
-      footer {
-        text-align: center;
-      }
-
-      .social-media {
-        margin-top: 1rem;
-      }
-    }
-
-    /* Style for the back button */
-    .btn-back {
-      margin-bottom: 2rem;
-      font-weight: 500;
-      color: var(--primary-color);
-      border-color: var(--primary-color);
-      margin-left: 2rem;
-    }
-
-    .btn-back:hover {
-      background-color: var(--primary-color);
-      color: white;
     }
 
     footer {
@@ -311,11 +262,36 @@
       .footer-right {
         padding-top: 20px;
       }
+      
+      .blog-post {
+        padding: 1.5rem;
+      }
+
+      .blog-title {
+        font-size: 2rem;
+      }
+      
+      .btn-back {
+        top: 15px;
+        left: 15px; /* Changed from left to right for mobile view */
+        left: auto; /* Ensure left is not applied */
+        width: 40px;
+        height: 40px;
+      }
+
+      .btn-back i {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
 
 <body>
+
+  <a href="../blog.html" class="btn-back">
+    <i class="fas fa-arrow-left"></i>
+  </a>
+
   <header>
     <div class="logo-container">
       <img src="img/logo.png" alt="RCIS Logo">
@@ -323,7 +299,7 @@
     <nav>
       <a href="#about">About</a>
       <a href="#events">Events</a>
-      <a href="#contact">Contact</a>
+      <a href="#Contact">Contact</a>
     </nav>
   </header>
 
@@ -397,12 +373,10 @@
     </script>
 
   </main>
-  <a href="index.html" class="btn btn-outline-primary btn-back">
-    ← Go Back
-  </a>
+
 
   <footer>
-    <div class="footer-container">
+    <div id="Contact"class="footer-container">
       <div class="footer-left" style="padding-left: 20px;">
         <h3>Wanna Subscribe to our News Letter?</h3>
         <p>Subscribe to our newsletter for the latest updates on new features and product releases.</p>
