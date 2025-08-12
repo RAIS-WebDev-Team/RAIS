@@ -40,11 +40,12 @@
       font-family: 'Poppins', sans-serif;
       background-color: var(--rais-light-gray);
       color: var(--rais-text-dark);
+      overflow: hidden; /* Prevent body scroll */
     }
 
     .main-wrapper {
       display: flex;
-      min-height: 100vh;
+      height: 100vh;
     }
 
     /* Sidebar Styles */
@@ -97,7 +98,7 @@
       white-space: nowrap;
       transition: background-color 0.3s ease;
     }
-    
+
     .sidebar .nav-link.active,
     .sidebar .nav-link:hover {
       background-color: var(--rais-dark-green);
@@ -131,6 +132,12 @@
     .sidebar:hover .footer-text {
       opacity: 1;
     }
+    
+    .content-area {
+      flex-grow: 1;
+      height: 100vh;
+      overflow-y: auto;
+    }
 
     /* Header Styles */
     .header {
@@ -141,13 +148,26 @@
       align-items: center;
       padding: 0 25px;
       box-shadow: var(--rais-shadow);
-      flex-grow: 1;
+      position: sticky;
+      top: 0;
+      z-index: 1020;
+    }
+    
+    .header-brand {
+      gap: 10px;
     }
 
-    .header .logo-img {
-      height: 150px;
-      width: 150px;
-      object-fit: contain;
+    .header-logo-img {
+        height: 100px;
+        width: auto;
+        object-fit: contain;
+    }
+
+    .header-title {
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--rais-text-dark);
+        white-space: nowrap;
     }
 
     .user-status .badge {
@@ -163,7 +183,7 @@
       font-size: 1.5rem;
       padding: 0;
     }
-    
+
     .tour-help-btn {
       background: none;
       border: 2px solid var(--rais-highlight-light-green);
@@ -189,13 +209,19 @@
     .main-content {
       flex-grow: 1;
       padding: 30px;
-      overflow-y: auto;
       animation: fadeIn 0.5s ease-in-out;
     }
-    
+
     @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .main-content h1 {
@@ -343,10 +369,17 @@
       body {
         padding-top: 60px;
         padding-bottom: 50px;
+        overflow: auto;
       }
 
       .main-wrapper {
         flex-direction: column;
+        height: auto;
+      }
+      
+      .content-area {
+          height: auto;
+          overflow-y: visible;
       }
 
       .header {
@@ -356,14 +389,18 @@
         right: 0;
         z-index: 1030;
       }
-      
+
       .header .logo-img {
-          height: 120px;
-          width: 120px;
+        height: 120px;
+        width: 120px;
       }
       
+      .header-title {
+          display: none;
+      }
+
       .main-content {
-          padding-top: 15px;
+        padding-top: 15px;
       }
 
       /* Transform sidebar into a bottom navigation bar */
@@ -385,13 +422,13 @@
       .sidebar:hover {
         width: 100%;
       }
-      
+
       .sidebar .logo,
       .sidebar .footer-text,
       .profile-section {
         display: none;
       }
-      
+
       .sidebar .nav {
         display: flex;
         flex-direction: row;
@@ -403,27 +440,27 @@
 
       .sidebar .nav-link {
         flex: 1;
-        flex-direction: row; 
+        flex-direction: row;
         justify-content: center;
         align-items: center;
         padding: 0 10px;
         gap: 0;
         height: 100%;
       }
-      
+
       .sidebar .nav-link:hover {
         background-color: var(--rais-dark-green);
       }
 
       .sidebar .nav-link i {
-        font-size: 1.5rem; 
+        font-size: 1.5rem;
         margin-bottom: 0;
       }
 
       .sidebar .nav-link span {
-        display: none; 
+        display: none;
       }
-      
+
       .sidebar:hover .nav-link span {
         display: none;
       }
@@ -445,7 +482,7 @@
         transform: translateX(-50%) translateY(100%);
         bottom: 80px;
       }
-      
+
       .chat-container.show {
         transform: translateX(-50%) translateY(0);
         opacity: 1;
@@ -462,8 +499,10 @@
       <div class="logo">RAIS</div>
       <nav class="nav flex-column">
         <a class="nav-link" href="dashboard.html"><i class="bi bi-house-door-fill"></i><span>Dashboard</span></a>
-        <a class="nav-link" href="book-consultation.html"><i class="bi bi-calendar-check"></i><span>Book Consultation</span></a>
-          <a class="nav-link" href="statement-of-account.html"><i class="bi bi-receipt"></i><span>Statement of Account</span></a>
+        <a class="nav-link" href="book-consultation.html"><i class="bi bi-calendar-check"></i><span>Book
+            Consultation</span></a>
+        <a class="nav-link" href="statement-of-account.html"><i class="bi bi-receipt"></i><span>Statement of
+            Account</span></a>
         <a class="nav-link" href="documents.html"><i class="bi bi-file-earmark-text"></i><span>Documents</span></a>
         <a class="nav-link" href="forms.html"><i class="bi bi-journal-text"></i><span>Forms</span></a>
         <a class="nav-link active" href="notifications.html"><i class="bi bi-bell"></i><span>Notifications</span></a>
@@ -477,12 +516,15 @@
     </aside>
 
     <!-- Main Content Area -->
-    <div class="d-flex flex-column flex-grow-1">
+    <div class="content-area">
       <!-- Header -->
       <div class="header">
-        <img src="../img/logo.png" alt="RAIS Logo" class="logo-img">
+        <div class="header-brand d-flex align-items-center">
+            <img src="../img/logo.png" alt="RAIS Logo" class="header-logo-img">
+            <span class="header-title">Roman & Associates Immigration Services</span>
+        </div>
         <div class="user-status d-flex align-items: center gap-2">
-        
+
           <button class="btn btn-link"><i class="bi bi-power"></i></button>
           <span class="badge">ACTIVE</span>
         </div>

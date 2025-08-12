@@ -40,11 +40,12 @@
       font-family: 'Poppins', sans-serif;
       background-color: var(--rais-light-gray);
       color: var(--rais-text-dark);
+      overflow: hidden; /* Prevent body scroll */
     }
 
     .main-wrapper {
       display: flex;
-      min-height: 100vh;
+      height: 100vh;
     }
 
     /* Sidebar Styles */
@@ -130,6 +131,12 @@
     .sidebar:hover .footer-text {
       opacity: 1;
     }
+    
+    .content-area {
+      flex-grow: 1;
+      height: 100vh;
+      overflow-y: auto;
+    }
 
     /* Header Styles */
     .header {
@@ -140,13 +147,26 @@
       align-items: center;
       padding: 0 25px;
       box-shadow: var(--rais-shadow);
-      flex-grow: 1;
+      position: sticky;
+      top: 0;
+      z-index: 1020;
+    }
+    
+    .header-brand {
+      gap: 10px;
     }
 
-    .header .logo-img {
-      height: 150px;
-      width: 150px;
-      object-fit: contain;
+    .header-logo-img {
+        height: 100px;
+        width: auto;
+        object-fit: contain;
+    }
+
+    .header-title {
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--rais-text-dark);
+        white-space: nowrap;
     }
 
     .user-status {
@@ -194,7 +214,6 @@
     .main-content {
       flex-grow: 1;
       padding: 30px;
-      overflow-y: auto;
     }
 
     .main-content h1 {
@@ -305,10 +324,17 @@
       body {
         padding-top: 60px;
         padding-bottom: 50px;
+        overflow: auto;
       }
 
       .main-wrapper {
         flex-direction: column;
+        height: auto;
+      }
+      
+      .content-area {
+          height: auto;
+          overflow-y: visible;
       }
 
       .header {
@@ -322,6 +348,10 @@
       .header .logo-img {
         height: 120px;
         width: 120px;
+      }
+      
+      .header-title {
+          display: none;
       }
 
       .main-content {
@@ -436,11 +466,14 @@
     </aside>
 
     <!-- Main Content Area -->
-    <div class="d-flex flex-column flex-grow-1">
+    <div class="content-area">
       <!-- Header -->
       <div class="header">
-        <img src="../img/logo.png" alt="RAIS Logo" class="logo-img">
-        <div class="user-status d-flex align-items: center gap-2">
+        <div class="header-brand d-flex align-items-center">
+            <img src="../img/logo.png" alt="RAIS Logo" class="header-logo-img">
+            <span class="header-title">Roman & Associates Immigration Services</span>
+        </div>
+        <div class="user-status d-flex align-items-center gap-2">
           <button class="tour-help-btn" id="tourToggleButton"><i class="bi bi-question-circle"></i></button>
           <button class="btn btn-link"><i class="bi bi-power"></i></button>
           <span class="badge">ACTIVE</span>

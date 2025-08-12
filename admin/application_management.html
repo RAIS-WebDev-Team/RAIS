@@ -13,30 +13,66 @@
     <link rel="icon" href="../img/logoulit.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap"
+        rel="stylesheet">
     <!-- Custom Styles -->
     <style>
+        /* Light Mode (Default) */
         :root {
             --rais-primary-green: #004d40;
             --rais-dark-green: #00332c;
-            --rais-text-dark: #000000;
-            --rais-text-light: #525252;
-            --rais-card-bg: #FFFFFF;
-            --rais-light-gray: #E8E8E8;
-            --rais-bg-light: #F7F7F7;
+            --rais-text-dark: #212529;
+            --rais-text-light: #6c757d;
+            --rais-card-bg: #ffffff;
+            --rais-light-gray: #f8f9fa;
+            --rais-bg-light: #f8f9fa;
             --rais-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
             --rais-button-maroon: #811F1D;
+            --rais-border-color: #dee2e6;
+        }
+
+        /* Dark Mode Styles */
+        body.dark-mode {
+            --rais-text-dark: #ffffff;
+            --rais-text-light: #adb5bd;
+            --rais-card-bg: #212529;
+            --rais-light-gray: #343a40;
+            --rais-bg-light: #2c3034;
+            --rais-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            --rais-border-color: #495057;
         }
 
         body {
             font-family: 'Poppins', sans-serif;
             background-color: var(--rais-light-gray);
             color: var(--rais-text-dark);
+            overflow: hidden;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body.dark-mode .table {
+            --bs-table-bg: var(--rais-bg-light);
+            --bs-table-border-color: var(--rais-light-gray);
+            --bs-table-color: var(--rais-text-dark);
+            --bs-table-hover-bg: var(--rais-dark-green);
+        }
+
+        body.dark-mode .form-control {
+            background-color: var(--rais-light-gray);
+            color: var(--rais-text-dark);
+            border-color: var(--rais-dark-green);
+        }
+
+        body.dark-mode .form-control:focus {
+            background-color: var(--rais-light-gray);
+            color: var(--rais-text-dark);
+            border-color: var(--rais-primary-green);
+            box-shadow: 0 0 0 0.25rem rgba(0, 77, 64, 0.25);
         }
 
         .main-wrapper {
             display: flex;
-            min-height: 100vh;
+            height: 100vh;
         }
 
         /* Sidebar Styles */
@@ -91,7 +127,8 @@
             transition: background-color 0.3s ease;
         }
 
-        .sidebar .nav-link:hover, .sidebar .nav-link.active {
+        .sidebar .nav-link:hover,
+        .sidebar .nav-link.active {
             background-color: var(--rais-dark-green);
         }
 
@@ -123,6 +160,12 @@
             opacity: 1;
         }
 
+        .content-area {
+            flex-grow: 1;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
         /* Header Styles */
         .header {
             background-color: var(--rais-bg-light);
@@ -132,21 +175,32 @@
             align-items: center;
             padding: 0 25px;
             box-shadow: var(--rais-shadow);
-            flex-grow: 1;
+            position: sticky;
+            top: 0;
+            z-index: 1020;
         }
 
-        .header .logo-img {
-            height: 45px;
+        .header-brand {
+            gap: 10px;
+        }
+
+        .header-logo-img {
+            height: 70px;
             width: auto;
-            max-width: 200px;
             object-fit: contain;
         }
+
+        .header-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--rais-text-dark);
+            white-space: nowrap;
+        }
         
-        .header .company-name {
-            font-weight: 900;
-            color: #000000;
-            font-size: 1.1rem;
-            margin: 0;
+        .user-status {
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
 
         .user-status .badge {
@@ -158,16 +212,18 @@
         }
 
         .user-status .btn {
-            color: var(--rais-text-light);
             font-size: 1.5rem;
             padding: 0;
+        }
+
+        .user-status .btn .bi-power {
+            color: red;
         }
 
         /* Main Content Styles */
         .main-content {
             flex-grow: 1;
             padding: 30px;
-            overflow-y: auto;
         }
 
         .main-content h1 {
@@ -183,18 +239,70 @@
             padding: 30px;
             margin-bottom: 20px;
         }
-        
+
         .table-responsive {
             margin-top: 15px;
         }
 
-        .table th,
-        .table td {
-            vertical-align: middle;
-        }
-
         .table .btn {
             font-size: 0.85rem;
+        }
+        
+        /* Theme Switcher Styles */
+        .theme-switch-wrapper {
+            display: flex;
+            align-items: center;
+        }
+        .theme-switch {
+            display: inline-block;
+            height: 24px;
+            position: relative;
+            width: 48px;
+        }
+        .theme-switch input {
+            display:none;
+        }
+        .slider {
+            background-color: #ccc;
+            bottom: 0;
+            cursor: pointer;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            transition: .4s;
+        }
+        .slider:before {
+            background-color: #fff;
+            bottom: 4px;
+            content: "";
+            height: 16px;
+            left: 4px;
+            position: absolute;
+            transition: .4s;
+            width: 16px;
+        }
+        input:checked + .slider {
+            background-color: var(--rais-primary-green);
+        }
+        input:checked + .slider:before {
+            transform: translateX(24px);
+        }
+        .slider.round {
+            border-radius: 34px;
+        }
+        .slider.round:before {
+            border-radius: 50%;
+        }
+        .theme-switch-wrapper i {
+            font-size: 1rem;
+            color: var(--rais-text-dark);
+        }
+        .theme-switch-wrapper .bi-sun-fill {
+            margin-right: 8px;
+        }
+        .theme-switch-wrapper .bi-moon-fill {
+            margin-left: 8px;
         }
 
         /* Responsive Design */
@@ -202,10 +310,17 @@
             body {
                 padding-top: 60px;
                 padding-bottom: 50px;
+                overflow: auto;
             }
 
             .main-wrapper {
                 flex-direction: column;
+                height: auto;
+            }
+
+            .content-area {
+                height: auto;
+                overflow-y: visible;
             }
 
             .header {
@@ -216,10 +331,14 @@
                 z-index: 1030;
             }
 
-            .header .logo-img {
-                height: 40px;
+            .header-logo-img {
+                height: 70px;
                 width: auto;
                 max-width: 150px;
+            }
+
+            .header-title {
+                display: none;
             }
 
             .main-content {
@@ -285,146 +404,192 @@
 </head>
 
 <body>
-  <div class="main-wrapper">
-    <!-- Sidebar -->
-    <aside class="sidebar d-flex flex-column">
-      <div class="logo">RAIS</div>
-      <nav class="nav flex-column">
-        <a class="nav-link" href="admin.html"><i class="bi bi-window-sidebar"></i><span>Dashboard</span></a>
-        <a class="nav-link" href="user_management.html"><i class="bi bi-people-fill"></i><span>User Management</span></a>
-        <a class="nav-link" href="chat_management.html"><i class="bi bi-chat-dots-fill"></i><span>Chat Management</span></a>
-        <a class="nav-link" href="blog_management.html"><i class="bi bi-journal-richtext"></i><span>Blog Management</span></a>
-        <a class="nav-link" href="content_management.html"><i class="bi bi-pencil-square"></i><span>Content Management</span></a>
-        <a class="nav-link active" href="application_management.html"><i class="bi bi-file-earmark-text-fill"></i><span>Application Management</span></a>
-        <a class="nav-link" href="booking_management.html"><i class="bi bi-calendar-check-fill"></i><span>Booking Management</span></a>
-        <a class="nav-link" href="admin_profile.html"><i class="bi bi-person-gear"></i><span>Admin Profiles</span></a>
-      </nav>
-      <div class="mt-auto">
-          <a class="nav-link" href="profile.html"><i class="bi bi-person-circle"></i><span>Profile</span></a>
-      </div>
+    <div class="main-wrapper">
+        <!-- Sidebar -->
+        <aside class="sidebar d-flex flex-column">
+            <div class="logo">RAIS</div>
+            <nav class="nav flex-column">
+                <a class="nav-link" href="admin.html"><i class="bi bi-window-sidebar"></i><span>Dashboard</span></a>
+                <a class="nav-link" href="user_management.html"><i class="bi bi-people-fill"></i><span>User
+                        Management</span></a>
+                <a class="nav-link active" href="application_management.html"><i
+                        class="bi bi-file-earmark-text-fill"></i><span>Application Management</span></a>
+                <a class="nav-link" href="chat_management.html"><i class="bi bi-chat-dots-fill"></i><span>Chat
+                        Management</span></a>
+                <a class="nav-link" href="content_management.html"><i class="bi bi-pencil-square"></i><span>Content
+                        Management</span></a>
+                <a class="nav-link" href="booking_management.html"><i
+                        class="bi bi-calendar-check-fill"></i><span>Booking Management</span></a>
+                <a class="nav-link" href="admin_profile.html"><i class="bi bi-person-gear"></i><span>Admin
+                        Profiles</span></a>
+            </nav>
+            <div class="mt-auto">
+                <a class="nav-link" href="profile.html"><i class="bi bi-person-circle"></i><span>Profile</span></a>
+            </div>
 
-      <div class="mt-auto footer-text">
-        &copy; 2024 RAIS
-      </div>
-    </aside>
+            <div class="mt-auto footer-text">
+                &copy; 2024 RAIS
+            </div>
+        </aside>
 
-    <!-- Main Content Area -->
-    <div class="d-flex flex-column flex-grow-1">
-      <!-- Header -->
-      <header class="header">
-        <div class="d-flex align-items-center gap-3">
-            <img src="../img/logoulit.png" alt="RAIS Logo" class="logo-img">
-            <h5 class="company-name d-none d-sm-block">Roman & Associates Immigration Services</h5>
-        </div>
-        <div class="user-status d-flex align-items-center gap-2">
-          <span class="badge">ADMIN</span>
-          <button class="btn btn-link text-secondary"><i class="bi bi-power"></i></button>
-        </div>
-      </header>
-
-      <!-- Main Content -->
-      <main class="main-content">
-        <h1>Application Management</h1>
-
-        <div class="content-card">
-            <div class="d-flex justify-content-between align-items-center mb-3">
-                <h2>Submitted Applications</h2>
-                <div class="input-group w-50">
-                    <input type="text" class="form-control" placeholder="Search by name or type..." id="searchInput">
-                    <button class="btn btn-outline-secondary" type="button"><i class="bi bi-search"></i></button>
+        <!-- Main Content Area -->
+        <div class="content-area">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-brand d-flex align-items-center">
+                    <img src="../img/logoulit.png" alt="RAIS Logo" class="header-logo-img">
+                    <span class="header-title">Roman & Associates Immigration Services</span>
                 </div>
-            </div>
-            
-            <div class="table-responsive">
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th scope="col">App ID</th>
-                            <th scope="col">User Name</th>
-                            <th scope="col">Application Type</th>
-                            <th scope="col">Submitted</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody id="applicationsTableBody">
-                        <!-- Application data will be dynamically inserted here -->
-                    </tbody>
-                </table>
-            </div>
+                <div class="user-status d-flex align-items-center gap-2">
+                    <div class="theme-switch-wrapper">
+                        <i class="bi bi-sun-fill"></i>
+                        <label class="theme-switch" for="theme-checkbox">
+                            <input type="checkbox" id="theme-checkbox" />
+                            <div class="slider round"></div>
+                        </label>
+                        <i class="bi bi-moon-fill"></i>
+                    </div>
+                    <span class="badge">ADMIN</span>
+                    <a href="../index.html" class="btn btn-link"><i class="bi bi-power"></i></a>
+                </div>
+            </header>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <h1>Application Management</h1>
+
+                <div class="content-card">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h2>Submitted Applications</h2>
+                        <div class="input-group w-50">
+                            <input type="text" class="form-control" placeholder="Search by ID, name or type..."
+                                id="searchInput">
+                            <button class="btn btn-outline-secondary" type="button"><i
+                                    class="bi bi-search"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">User Name</th>
+                                    <th scope="col">Application Type</th>
+                                    <th scope="col">Submitted</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="applicationsTableBody">
+                                <!-- Application data will be dynamically inserted here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </main>
         </div>
-
-      </main>
     </div>
-  </div>
 
-  <!-- Bootstrap JS Bundle -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-    crossorigin="anonymous"></script>
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // Mock data for applications
-        const applications = [
-            { id: 'APP-001', userName: 'John Doe', type: 'Visa Application', date: '2024-07-28', status: 'Pending Review', fileUrl: '#' },
-            { id: 'APP-002', userName: 'Jane Smith', type: 'Work Permit', date: '2024-07-27', status: 'Approved', fileUrl: '#' },
-            { id: 'APP-003', userName: 'Peter Jones', type: 'Study Permit', date: '2024-07-25', status: 'Cancelled', fileUrl: '#' },
-            { id: 'APP-004', userName: 'Alice Brown', type: 'Visa Application', date: '2024-07-22', status: 'Pending Review', fileUrl: '#' }
-        ];
+    <script>
+         // THEME SWITCHER LOGIC
+        document.addEventListener('DOMContentLoaded', function () {
+            const themeSwitch = document.getElementById('theme-checkbox');
+            const currentTheme = localStorage.getItem('theme');
 
-        const tableBody = document.getElementById('applicationsTableBody');
-        const searchInput = document.getElementById('searchInput');
-
-        function renderTable(data) {
-            tableBody.innerHTML = '';
-            data.forEach(app => {
-                let statusBadge;
-                switch(app.status) {
-                    case 'Approved':
-                        statusBadge = 'bg-success';
-                        break;
-                    case 'Pending Review':
-                        statusBadge = 'bg-warning text-dark';
-                        break;
-                    case 'Cancelled':
-                        statusBadge = 'bg-danger';
-                        break;
-                    default:
-                        statusBadge = 'bg-secondary';
+            function setTheme(theme) {
+                if (theme === 'dark') {
+                    document.body.classList.add('dark-mode');
+                    themeSwitch.checked = true;
+                } else {
+                    document.body.classList.remove('dark-mode');
+                    themeSwitch.checked = false;
                 }
-                
-                const row = `
-                    <tr>
-                        <td>${app.id}</td>
-                        <td>${app.userName}</td>
-                        <td>${app.type}</td>
-                        <td>${app.date}</td>
-                        <td><span class="badge ${statusBadge}">${app.status}</span></td>
-                        <td>
-                            <a href="${app.fileUrl}" class="btn btn-sm btn-outline-primary" download><i class="bi bi-download"></i></a>
-                            <button class="btn btn-sm btn-success approve-btn" data-id="${app.id}"><i class="bi bi-check-lg"></i></button>
-                            <button class="btn btn-sm btn-danger cancel-btn" data-id="${app.id}"><i class="bi bi-x-lg"></i></button>
-                        </td>
-                    </tr>
-                `;
-                tableBody.innerHTML += row;
+            }
+
+            if (currentTheme) {
+                setTheme(currentTheme);
+            }
+
+            themeSwitch.addEventListener('change', function(event) {
+                if (event.target.checked) {
+                    localStorage.setItem('theme', 'dark');
+                    setTheme('dark');
+                } else {
+                    localStorage.setItem('theme', 'light');
+                    setTheme('light');
+                }
             });
-        }
-        
-        searchInput.addEventListener('keyup', function() {
-            const searchTerm = this.value.toLowerCase();
-            const filteredData = applications.filter(app => 
-                app.userName.toLowerCase().includes(searchTerm) || 
-                app.type.toLowerCase().includes(searchTerm)
-            );
-            renderTable(filteredData);
         });
 
-        // Initial render
-        renderTable(applications);
-    });
-  </script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Mock data for applications
+            const applications = [
+                { id: 'APP-001', userName: 'John Doe', type: 'Visa Application', date: '2024-07-28', status: 'Pending Review', fileUrl: '#' },
+                { id: 'APP-002', userName: 'Jane Smith', type: 'Work Permit', date: '2024-07-27', status: 'Approved', fileUrl: '#' },
+                { id: 'APP-003', userName: 'Peter Jones', type: 'Study Permit', date: '2024-07-25', status: 'Cancelled', fileUrl: '#' },
+                { id: 'APP-004', userName: 'Alice Brown', type: 'Visa Application', date: '2024-07-22', status: 'Pending Review', fileUrl: '#' }
+            ];
+
+            const tableBody = document.getElementById('applicationsTableBody');
+            const searchInput = document.getElementById('searchInput');
+
+            function renderTable(data) {
+                tableBody.innerHTML = '';
+                data.forEach(app => {
+                    let statusBadge;
+                    switch (app.status) {
+                        case 'Approved':
+                            statusBadge = 'bg-success';
+                            break;
+                        case 'Pending Review':
+                            statusBadge = 'bg-warning text-dark';
+                            break;
+                        case 'Cancelled':
+                            statusBadge = 'bg-danger';
+                            break;
+                        default:
+                            statusBadge = 'bg-secondary';
+                    }
+
+                    const row = `
+                        <tr>
+                            <td>${app.id}</td>
+                            <td>${app.userName}</td>
+                            <td>${app.type}</td>
+                            <td>${app.date}</td>
+                            <td><span class="badge ${statusBadge}">${app.status}</span></td>
+                            <td>
+                                <a href="${app.fileUrl}" class="btn btn-sm btn-outline-primary" download><i class="bi bi-download"></i></a>
+                                <button class="btn btn-sm btn-success approve-btn" data-id="${app.id}"><i class="bi bi-check-lg"></i></button>
+                                <button class="btn btn-sm btn-danger cancel-btn" data-id="${app.id}"><i class="bi bi-x-lg"></i></button>
+                            </td>
+                        </tr>
+                    `;
+                    tableBody.innerHTML += row;
+                });
+            }
+
+            searchInput.addEventListener('keyup', function () {
+                const searchTerm = this.value.toLowerCase();
+                const filteredData = applications.filter(app =>
+                    app.id.toLowerCase().includes(searchTerm) ||
+                    app.userName.toLowerCase().includes(searchTerm) ||
+                    app.type.toLowerCase().includes(searchTerm)
+                );
+                renderTable(filteredData);
+            });
+
+            // Initial render
+            renderTable(applications);
+        });
+    </script>
 
 </body>
 

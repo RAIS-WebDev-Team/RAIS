@@ -5,46 +5,68 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RAIS Admin Dashboard</title>
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="icon" href="../img/logoulit.png" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap" rel="stylesheet">
-    <!-- Custom Styles -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap"
+        rel="stylesheet">
     <style>
+        /* Light Mode (Default) */
         :root {
             --rais-primary-green: #004d40;
-            /* Dark Navy Green for primary elements */
             --rais-dark-green: #00332c;
-            /* Even Darker Navy Green for hover states */
-            --rais-text-dark: #000000;
-            --rais-text-light: #525252;
-            --rais-card-bg: #FFFFFF;
-            --rais-light-gray: #E8E8E8;
-            --rais-progress-bg: #D9D9D9;
-            --rais-progress-active: var(--rais-primary-green);
-            /* Use primary green for progress */
-            --rais-bg-light: #F7F7F7;
+            --rais-text-dark: #212529;
+            --rais-text-light: #6c757d;
+            --rais-card-bg: #ffffff;
+            --rais-light-gray: #f8f9fa;
+            --rais-bg-light: #f8f9fa;
             --rais-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
             --rais-button-maroon: #811F1D;
-            /* Maroon for buttons, badges, floating elements */
-            --rais-highlight-light-green: #98FB98;
-            /* Light Green for tour highlights */
+            --rais-border-color: #dee2e6;
+        }
+
+        /* Dark Mode Styles */
+        body.dark-mode {
+            --rais-text-dark: #ffffff;
+            --rais-text-light: #adb5bd;
+            --rais-card-bg: #212529;
+            --rais-light-gray: #343a40;
+            --rais-bg-light: #2c3034;
+            --rais-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            --rais-border-color: #495057;
         }
 
         body {
             font-family: 'Poppins', sans-serif;
             background-color: var(--rais-light-gray);
             color: var(--rais-text-dark);
+            overflow: hidden;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body.dark-mode .table {
+            --bs-table-bg: var(--rais-bg-light);
+            --bs-table-border-color: var(--rais-light-gray);
+            --bs-table-color: var(--rais-text-dark);
+            --bs-table-hover-bg: var(--rais-dark-green);
+        }
+
+        body.dark-mode .card {
+             background-color: var(--rais-bg-light);
+             border-color: var(--rais-light-gray);
+             color: var(--rais-text-dark);
+        }
+
+        body.dark-mode .chat-log-item {
+            background-color: var(--rais-light-gray);
         }
 
         .main-wrapper {
             display: flex;
-            min-height: 100vh;
+            height: 100vh;
         }
 
         /* Sidebar Styles */
@@ -62,6 +84,7 @@
             height: 100vh;
             display: flex;
             flex-direction: column;
+            z-index: 1031;
         }
 
         .sidebar:hover {
@@ -98,7 +121,8 @@
             transition: background-color 0.3s ease;
         }
 
-        .sidebar .nav-link:hover, .sidebar .nav-link.active {
+        .sidebar .nav-link:hover,
+        .sidebar .nav-link.active {
             background-color: var(--rais-dark-green);
         }
 
@@ -130,6 +154,12 @@
             opacity: 1;
         }
 
+        .content-area {
+            flex-grow: 1;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
         /* Header Styles */
         .header {
             background-color: var(--rais-bg-light);
@@ -139,27 +169,32 @@
             align-items: center;
             padding: 0 25px;
             box-shadow: var(--rais-shadow);
-            flex-grow: 1;
+            position: sticky;
+            top: 0;
+            z-index: 1020;
         }
 
-        .header .logo-img {
-            height: 45px;
+        .header-brand {
+            gap: 10px;
+        }
+
+        .header-logo-img {
+            height: 70px;
             width: auto;
-            max-width: 200px;
             object-fit: contain;
         }
-        
-        .header .company-name {
-            font-weight: 900;
-            color: #000000;
+
+        .header-title {
             font-size: 1.1rem;
-            margin: 0;
+            font-weight: 600;
+            color: var(--rais-text-dark);
+            white-space: nowrap;
         }
 
         .user-status {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
         }
 
         .user-status .badge {
@@ -171,16 +206,18 @@
         }
 
         .user-status .btn {
-            color: var(--rais-text-light);
             font-size: 1.5rem;
             padding: 0;
+        }
+
+        .user-status .btn .bi-power {
+            color: red;
         }
 
         /* Main Content Styles */
         .main-content {
             flex-grow: 1;
             padding: 30px;
-            overflow-y: auto;
         }
 
         .main-content h1 {
@@ -195,9 +232,8 @@
             box-shadow: var(--rais-shadow);
             padding: 30px;
             margin-bottom: 20px;
-            /* Added margin for spacing */
         }
-
+        
         .content-card h2 {
             font-size: 1.5rem;
             font-weight: 600;
@@ -207,36 +243,89 @@
         .table-responsive {
             margin-top: 15px;
         }
-
-        .table th,
-        .table td {
-            vertical-align: middle;
-        }
-
+        
         .table .btn {
             font-size: 0.85rem;
-            padding: 5px 10px;
         }
-
-        .chat-log-item {
-            background-color: var(--rais-light-gray);
-            border-radius: 8px;
-            padding: 10px;
-            margin-bottom: 8px;
-        }
-
+        
         .chat-log-item strong {
-            color: var(--rais-primary-green);
+            color: #28a745; /* Bootstrap success green */
         }
+        
+        /* Theme Switcher Styles */
+        .theme-switch-wrapper {
+            display: flex;
+            align-items: center;
+        }
+        .theme-switch {
+            display: inline-block;
+            height: 24px;
+            position: relative;
+            width: 48px;
+        }
+        .theme-switch input {
+            display:none;
+        }
+        .slider {
+            background-color: #ccc;
+            bottom: 0;
+            cursor: pointer;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            transition: .4s;
+        }
+        .slider:before {
+            background-color: #fff;
+            bottom: 4px;
+            content: "";
+            height: 16px;
+            left: 4px;
+            position: absolute;
+            transition: .4s;
+            width: 16px;
+        }
+        input:checked + .slider {
+            background-color: var(--rais-primary-green);
+        }
+        input:checked + .slider:before {
+            transform: translateX(24px);
+        }
+        .slider.round {
+            border-radius: 34px;
+        }
+        .slider.round:before {
+            border-radius: 50%;
+        }
+        .theme-switch-wrapper i {
+            font-size: 1rem;
+            color: var(--rais-text-dark);
+        }
+        .theme-switch-wrapper .bi-sun-fill {
+            margin-right: 8px;
+        }
+        .theme-switch-wrapper .bi-moon-fill {
+            margin-left: 8px;
+        }
+
 
         /* Responsive Design */
         @media (max-width: 768px) {
             body {
                 padding-top: 60px;
                 padding-bottom: 50px;
+                overflow: auto;
             }
+
             .main-wrapper {
                 flex-direction: column;
+                height: auto;
+            }
+            
+            .content-area {
+                height: auto;
+                overflow-y: visible;
             }
 
             .header {
@@ -246,15 +335,17 @@
                 right: 0;
                 z-index: 1030;
             }
+            
+            .header-logo-img {
+                height: 70px;
+            }
 
-            .header .logo-img {
-                height: 40px;
-                width: auto;
-                max-width: 150px;
+            .header-title {
+                display: none;
             }
 
             .main-content {
-                padding-top: 15px;
+                padding: 15px;
             }
 
             .sidebar {
@@ -293,16 +384,10 @@
 
             .sidebar .nav-link {
                 flex: 1;
-                flex-direction: row;
                 justify-content: center;
-                align-items: center;
                 padding: 0 10px;
                 gap: 0;
                 height: 100%;
-            }
-
-            .sidebar .nav-link:hover {
-                background-color: var(--rais-dark-green);
             }
 
             .sidebar .nav-link i {
@@ -323,7 +408,6 @@
 
 <body>
     <div class="main-wrapper">
-        <!-- Sidebar -->
         <aside class="sidebar d-flex flex-column">
             <div class="logo">RAIS</div>
             <nav class="nav flex-column">
@@ -331,62 +415,67 @@
                         class="bi bi-window-sidebar"></i><span>Dashboard</span></a>
                 <a class="nav-link" href="user_management.html"><i class="bi bi-people-fill"></i><span>User
                         Management</span></a>
+                <a class="nav-link" href="application_management.html"><i
+                        class="bi bi-file-earmark-text-fill"></i><span>Application Management</span></a>
                 <a class="nav-link" href="chat_management.html"><i class="bi bi-chat-dots-fill"></i><span>Chat
                         Management</span></a>
-                <a class="nav-link" href="blog_management.html"><i class="bi bi-journal-richtext"></i><span>Blog
+                <a class="nav-link" href="content_management.html"><i class="bi bi-pencil-square"></i><span>Content
                         Management</span></a>
-                <a class="nav-link" href="content_management.html"><i class="bi bi-pencil-square"></i><span>Content Management</span></a>
-                <a class="nav-link" href="application_management.html"><i class="bi bi-file-earmark-text-fill"></i><span>Application Management</span></a>
-                <a class="nav-link" href="booking_management.html"><i class="bi bi-calendar-check-fill"></i><span>Booking Management</span></a>
+                
+                <a class="nav-link" href="booking_management.html"><i
+                        class="bi bi-calendar-check-fill"></i><span>Booking Management</span></a>
                 <a class="nav-link" href="admin_profile.html"><i class="bi bi-person-gear"></i><span>Admin
                         Profiles</span></a>
             </nav>
             <div class="mt-auto">
-          <a class="nav-link" href="profile.html"><i class="bi bi-person-circle"></i><span>Profile</span></a>
-      </div>
+                <a class="nav-link" href="profile.html"><i class="bi bi-person-circle"></i><span>Profile</span></a>
+            </div>
 
             <div class="mt-auto footer-text">
-                &copy; 2023 RAIS
+                &copy; 2025 RAIS
             </div>
         </aside>
 
-        <!-- Main Content Area -->
-        <div class="d-flex flex-column flex-grow-1">
-            <!-- Header -->
-            <div class="header">
-                <div class="d-flex align-items-center gap-3">
-                    <img src="../img/logoulit.png" alt="RAIS Logo" class="logo-img">
-                    <h5 class="company-name d-none d-sm-block">Roman & Associates Immigration Services</h5>
+        <div class="content-area">
+            <header class="header">
+                <div class="header-brand d-flex align-items-center">
+                    <img src="../img/logoulit.png" alt="RAIS Logo" class="header-logo-img">
+                    <span class="header-title d-none d-sm-block">Roman & Associates Immigration Services</span>
                 </div>
                 <div class="user-status d-flex align-items-center gap-2">
-                    <button class="btn btn-link"><i class="bi bi-power"></i></button>
+                    <div class="theme-switch-wrapper">
+                        <i class="bi bi-sun-fill"></i>
+                        <label class="theme-switch" for="theme-checkbox">
+                            <input type="checkbox" id="theme-checkbox" />
+                            <div class="slider round"></div>
+                        </label>
+                        <i class="bi bi-moon-fill"></i>
+                    </div>
                     <span class="badge">ADMIN</span>
+                    <a href="../index.html" class="btn btn-link"><i class="bi bi-power"></i></a>
                 </div>
-            </div>
+            </header>
 
-            <!-- Main Content -->
             <main class="main-content">
                 <h1>Admin Dashboard</h1>
 
-                <!-- Active/Inactive Users Overview -->
                 <div class="row g-4 mb-4">
                     <div class="col-md-6">
                         <div class="content-card text-center">
                             <h2>Active Users</h2>
-                            <h1 class="display-4 text-success">125</h1>
+                            <h1 class="display-4" style="color: #28a745;">125</h1>
                             <p class="text-muted">Currently logged in or active in the last 24 hours.</p>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="content-card text-center">
                             <h2>Inactive Users</h2>
-                            <h1 class="display-4 text-warning">45</h1>
+                            <h1 class="display-4" style="color: #ffc107;">45</h1>
                             <p class="text-muted">Users who haven't logged in for over 30 days.</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- User Management Section -->
                 <div class="content-card">
                     <h2>User Management</h2>
                     <div class="table-responsive">
@@ -401,42 +490,36 @@
                                 </tr>
                             </thead>
                             <tbody id="userTableBody">
-                                <!-- User data will be loaded here -->
-                            </tbody>
+                                </tbody>
                         </table>
                     </div>
                     <a href="user_management.html" class="btn btn-sm btn-primary"
-                        style="background-color: var(--rais-button-maroon);">Manage Users</a>
+                        style="background-color: var(--rais-button-maroon); border-color: var(--rais-button-maroon);">Manage Users</a>
                 </div>
 
-                <!-- Chat Management Section -->
                 <div class="content-card">
                     <h2>Live Chat Monitoring</h2>
                     <div id="chatLog"
-                        style="max-height: 300px; overflow-y: auto; border: 1px solid var(--rais-light-gray); border-radius: 8px; padding: 15px;">
-                        <!-- Chat messages will be dynamically added here -->
+                        style="max-height: 300px; overflow-y: auto; border: 1px solid var(--rais-border-color); border-radius: 8px; padding: 15px;">
                         <div class="chat-log-item"><strong>User 1:</strong> Hello, I have a question about my visa
                             application.</div>
                         <div class="chat-log-item"><strong>User 2:</strong> When is the next IELTS fair?</div>
                         <div class="chat-log-item"><strong>User 3:</strong> I need help updating my profile information.
                         </div>
                     </div>
-                    <a href="chat_management.html" class="btn btn-sm btn-outline-secondary mt-3"
-                        style="color: var(--rais-primary-green); border-color: var(--rais-primary-green);">View Full
+                    <a href="chat_management.html" class="btn btn-sm btn-outline-dark mt-3">View Full
                         Chat History</a>
                 </div>
 
-                <!-- Blog Management Section -->
                 <div class="content-card">
-                    <h2>Blog Management</h2>
+                    <h2>Content Management</h2>
                     <div class="row g-3">
                         <div class="col-md-6">
                             <div class="card h-100">
                                 <div class="card-body">
-                                    <h5 class="card-title">Latest Blog Post</h5>
+                                    <h5 class="card-title">Latest Post</h5>
                                     <p class="card-text text-muted">"A Long Road for 'A Calling to Canada'"</p>
-                                    <button class="btn btn-sm btn-outline-secondary"
-                                        style="color: var(--rais-primary-green); border-color: var(--rais-primary-green);">Edit
+                                    <button class="btn btn-sm btn-outline-dark">Edit
                                         Latest</button>
                                 </div>
                             </div>
@@ -446,27 +529,54 @@
                                 <div class="card-body">
                                     <h5 class="card-title">Create New Post</h5>
                                     <p class="card-text text-muted">Draft and publish new articles for your users.</p>
-                                    <button class="btn btn-sm btn-outline-secondary"
-                                        style="color: var(--rais-primary-green); border-color: var(--rais-primary-green);">New
+                                    <button class="btn btn-sm btn-outline-dark">New
                                         Post</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <a href="blog_management.html" class="btn btn-sm btn-primary mt-3"
-                        style="background-color: var(--rais-button-maroon);">Manage Blogs</a>
+                    <a href="content_management.html" class="btn btn-sm btn-primary mt-3"
+                        style="background-color: var(--rais-button-maroon); border-color: var(--rais-button-maroon);">Manage Content</a>
                 </div>
-
             </main>
         </div>
     </div>
 
-    <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
         crossorigin="anonymous"></script>
 
     <script>
+        // THEME SWITCHER LOGIC
+        document.addEventListener('DOMContentLoaded', function () {
+            const themeSwitch = document.getElementById('theme-checkbox');
+            const currentTheme = localStorage.getItem('theme');
+
+            function setTheme(theme) {
+                if (theme === 'dark') {
+                    document.body.classList.add('dark-mode');
+                    themeSwitch.checked = true;
+                } else {
+                    document.body.classList.remove('dark-mode');
+                    themeSwitch.checked = false;
+                }
+            }
+
+            if (currentTheme) {
+                setTheme(currentTheme);
+            }
+
+            themeSwitch.addEventListener('change', function(event) {
+                if (event.target.checked) {
+                    localStorage.setItem('theme', 'dark');
+                    setTheme('dark');
+                } else {
+                    localStorage.setItem('theme', 'light');
+                    setTheme('light');
+                }
+            });
+        });
+
         document.addEventListener('DOMContentLoaded', function () {
             // Placeholder user data for admin table
             const users = [
@@ -479,11 +589,18 @@
             const userTableBody = document.getElementById('userTableBody');
             users.forEach(user => {
                 const row = userTableBody.insertRow();
+                let statusClass = 'bg-warning text-dark';
+                if (user.status === 'Active' || user.status === 'Approved') {
+                    statusClass = 'bg-success';
+                } else if (user.status === 'Inactive') {
+                    statusClass = 'bg-secondary';
+                }
+
                 row.innerHTML = `
                 <td>${user.id}</td>
                 <td>${user.name}</td>
                 <td>${user.email}</td>
-                <td><span class="badge bg-${user.status === 'Active' || user.status === 'Approved' ? 'success' : 'warning'}">${user.status}</span></td>
+                <td><span class="badge ${statusClass}">${user.status}</span></td>
                 <td>
                     <button class="btn btn-sm btn-info me-1">Edit</button>
                     <button class="btn btn-sm btn-danger">Delete</button>

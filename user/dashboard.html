@@ -5,16 +5,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RAIS Dashboard</title>
-  <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="icon" href="../img/logoulit.png" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <!-- Custom Styles -->
   <style>
     :root {
       --rais-primary-green: #004d40;
@@ -40,11 +37,12 @@
       font-family: 'Poppins', sans-serif;
       background-color: var(--rais-light-gray);
       color: var(--rais-text-dark);
+      overflow: hidden; /* Prevent body scroll */
     }
 
     .main-wrapper {
       display: flex;
-      min-height: 100vh;
+      height: 100vh;
     }
 
     /* Sidebar Styles */
@@ -163,6 +161,12 @@
     .sidebar:hover .footer-text {
       opacity: 1;
     }
+    
+    .content-area {
+      flex-grow: 1;
+      height: 100vh;
+      overflow-y: auto;
+    }
 
     /* Header Styles */
     .header {
@@ -170,19 +174,29 @@
       height: 60px;
       display: flex;
       justify-content: space-between;
-      /* Adjusted to space-between */
       align-items: center;
       padding: 0 25px;
       box-shadow: var(--rais-shadow);
-      flex-grow: 1;
+      position: sticky;
+      top: 0;
+      z-index: 1020;
     }
 
-    .header .logo-img {
-      height: 150px;
-      /* Adjusted size */
-      width: 150px;
-      /* Adjusted size */
+    .header-brand {
+      gap: 10px;
+    }
+
+    .header-logo-img {
+      height: 100px;
+      width: auto;
       object-fit: contain;
+    }
+
+    .header-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--rais-text-dark);
+      white-space: nowrap;
     }
 
     .user-status {
@@ -238,7 +252,6 @@
     .main-content {
       flex-grow: 1;
       padding: 30px;
-      overflow-y: auto;
       animation: fadeIn 0.5s ease-in-out;
     }
 
@@ -718,12 +731,19 @@
     /* Responsive Design */
     @media (max-width: 768px) {
       body {
-        padding-top: 60px;
+        padding-top: 50px;
         padding-bottom: 50px;
+        overflow: auto;
       }
 
       .main-wrapper {
         flex-direction: column;
+        height: auto;
+      }
+      
+      .content-area {
+        height: auto;
+        overflow-y: visible;
       }
 
       .header {
@@ -732,11 +752,11 @@
         left: 0;
         right: 0;
         z-index: 1030;
+        height: 50px;
       }
 
-      .header .logo-img {
-        height: 120px;
-        width: 120px;
+      .header-title {
+        display: none;
       }
 
       .main-content {
@@ -854,7 +874,6 @@
 
 <body>
   <div class="main-wrapper">
-    <!-- Sidebar -->
     <aside class="sidebar d-flex flex-column">
       <div class="logo">RAIS</div>
       <nav class="nav flex-column">
@@ -875,33 +894,30 @@
       </div>
     </aside>
 
-    <!-- Main Content Area -->
-    <div class="d-flex flex-column flex-grow-1">
-      <!-- Header -->
+    <div class="content-area">
       <div class="header">
-        <img src="../img/logo.png" alt="RAIS Logo" class="logo-img">
-        <div class="user-status d-flex align-items: center gap-2">
+        <div class="header-brand d-flex align-items-center">
+          <img src="../img/logo.png" alt="RAIS Logo" class="header-logo-img">
+          <span class="header-title">Roman & Associates Immigration Services</span>
+        </div>
+        <div class="user-status d-flex align-items-center gap-2">
           <button class="tour-help-btn" id="tourToggleButton"><i class="bi bi-question-circle"></i></button>
           <button class="btn btn-link"><i class="bi bi-power"></i></button>
           <span class="badge">ACTIVE</span>
         </div>
       </div>
 
-      <!-- Main Content -->
       <main class="main-content">
         <div class="row g-4 mb-4">
-          <!-- User Info Card -->
           <div class="col-12 col-lg-7">
             <div class="user-info-card h-100 d-flex flex-column justify-content-between">
               <div>
-                <div class="profile-info d-flex align-items: center gap-3">
+                <div class="profile-info d-flex align-items-center gap-3">
                   <div class="profile-display-area" id="dashboardProfileImageContainer">
-                    <!-- Profile image or icon will be rendered here by JS -->
                   </div>
                   <span class="profile-name" id="dashboardProfileName">FIRST NAME, LAST NAME</span>
                 </div>
                 <div class="social-links mt-3" id="dashboardSocialLinks">
-                  <!-- Social media icons will be dynamically loaded here -->
                 </div>
                 <div class="contact-info mt-3">
                   <div id="dashboardContactNumber">(+63) 987 654 3210</div>
@@ -911,16 +927,13 @@
               </div>
             </div>
           </div>
-          <!-- Quick Actions Card (Now just the logo) -->
           <div class="col-12 col-lg-5">
             <div class="quick-actions-card h-100 d-flex flex-column justify-content-center">
-              <!-- Added an ID to the logo for the JavaScript interactivity -->
               <img src="../img/logoulit.png" alt="RAIS Logo" class="logo-only-img img-fluid" id="interactive-logo">
             </div>
           </div>
         </div>
 
-        <!-- Progress Steps -->
         <div class="progress-steps mb-4">
           <div class="step-item">
             <div class="step-circle active">1</div>
@@ -940,7 +953,6 @@
           </div>
         </div>
 
-        <!-- Contents Grid -->
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 contents-grid">
           <div class="col">
             <a href="../blogs.html" class="card h-100 text-decoration-none text-dark">
@@ -960,7 +972,7 @@
               </div>
             </a>
           </div>
-        <div class="col">
+          <div class="col">
             <a href="../index.html" class="card h-100 text-decoration-none text-dark">
               <img src="../img/index2.png" class="card-img-top" alt="Service Offering">
               <div class="card-body">
@@ -987,19 +999,18 @@
               </div>
             </a>
           </div>
-         
+
+        </div>
       </main>
     </div>
   </div>
 
-  <!-- Collapsible Chatbox -->
   <div class="chat-container" id="chatContainer">
     <div class="chat-header d-flex justify-content-between align-items-center" onclick="toggleChat()">
       <h5 class="chat-modal-title mb-0"><i class="bi bi-chat-dots-fill me-2"></i>Live Chat</h5>
       <i class="bi bi-x-lg text-white"></i>
     </div>
     <div class="chat-body">
-      <!-- Chat messages will go here -->
       <div class="text-center text-muted">RAIS Support how may i help you?</div>
     </div>
     <div class="chat-footer">
@@ -1013,17 +1024,14 @@
     </div>
   </div>
 
-  <!-- Floating Action Button -->
   <a href="book-flight.html" class="floating-btn text-decoration-none">
     <i class="bi bi-plus-lg"></i>
   </a>
 
-  <!-- Floating Chat Toggle Button -->
   <button class="chat-toggle-btn" onclick="toggleChat()">
     <i class="bi bi-chat-dots"></i>
   </button>
 
-  <!-- Welcome Tour Modal -->
   <div class="modal fade welcome-tour-modal" id="welcomeTourModal" tabindex="-1" aria-labelledby="welcomeTourModalLabel"
     aria-hidden="true">
     <div class="modal-dialog">
@@ -1053,7 +1061,6 @@
     </div>
   </div>
 
-  <!-- Bootstrap JS Bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
@@ -1084,8 +1091,13 @@
       document.getElementById('dashboardProfileName').textContent = `${profileData.firstName || 'FIRST NAME'}, ${profileData.lastName || 'LAST NAME'}`;
       document.getElementById('dashboardContactNumber').textContent = profileData.contact || '(+63) 987 654 3210';
       document.getElementById('dashboardBirthday').textContent = profileData.birthday ? `Birthday: ${profileData.birthday}` : 'Birthday: MM/DD/YYYY';
-      // You might want to update the date dynamically or keep it static
-      // document.getElementById('dashboardDate').textContent = new Date().toLocaleDateString(); 
+      
+      // Update the date dynamically
+      document.getElementById('dashboardDate').textContent = new Date().toLocaleDateString('en-US', {
+        month: '2-digit',
+        day: '2-digit',
+        year: '2-digit'
+      });
 
       // Handle profile image display on dashboard
       const dashboardProfileImageContainer = document.getElementById('dashboardProfileImageContainer');
@@ -1323,3 +1335,4 @@
 </body>
 
 </html>
+here a
