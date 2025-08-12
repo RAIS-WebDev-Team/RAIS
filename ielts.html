@@ -1,202 +1,206 @@
-<!DOCTYPE html>
-<html lang="en">
+  <!DOCTYPE html>
+  <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IELTS - International English Language Testing System</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-</head>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IELTS - International English Language Testing System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <style>
+    /* Custom styles to make the accordion look like the original design */
+    .accordion-button:not(.collapsed) {
+      color: #000;
+      background-color: #f8f9fa;
+      /* bg-light */
+    }
 
-<body class="text-black" style="font-family: 'Poppins', sans-serif;">
+    .accordion-button:focus {
+      box-shadow: none;
+      border-color: rgba(0, 0, 0, .125);
+    }
 
-  <header class="position-relative">
-    <img src="img/ielts.png" class="position-absolute w-100 h-100" style="object-fit: cover; z-index: -1;">
-    <div class="position-absolute pt-4 mx-5">
-      <img src="img/logo_ielts.png" style="height: 65px;">
-    </div>
-    <div class="d-flex flex-column justify-content-end w-100 mx-5" style="min-height: 80vh;">
-      <div class="text-start mb-4">
-        <h1 class="display-4">International English Language Testing System (IELTS)</h1>
-        <p class="lead mt-3">
-          IELTS is the top English proficiency test for study, work, and migration, assessing four key language skills
-          and recognized globally.
-        </p>
-        <a href="https://ieltsregistration.britishcouncil.org/register-for-agent/MDhhNTQ3YjQtYmI2MC00NDRiLWI2MDQtZTQ0MjAzZDE3ZTJlOzE2MDcyOzE2NzMxNzEyMDk="
-          class="btn mb-5 px-3 py-2 text-white" style="background-color: #0C470C;">Book Now</a>
+    .accordion-item {
+      background-color: #f8f9fa;
+      /* bg-light */
+      border: none !important;
+    }
+
+    .accordion-button.collapsed {
+      border-radius: .375rem !important;
+      /* rounded-3 */
+    }
+
+    .accordion-button:not(.collapsed) {
+      border-top-left-radius: .375rem !important;
+      border-top-right-radius: .375rem !important;
+    }
+
+    .accordion-button::after {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+    }
+  </style>
+
+
+  <body class="text-black" style="font-family: 'Poppins', sans-serif;">
+
+    <header class="position-relative">
+      <img src="img/ielts.png" class="position-absolute w-100 h-100" style="object-fit: cover; z-index: -1;">
+      <div class="position-absolute pt-4 mx-5">
+        <img src="img/logo_ielts.png" style="height: 65px;">
       </div>
-    </div>
-  </header>
-
-  <main>
-    <section id="about" class="py-5">
-      <div class="container-fluid text-center">
-        <div class="row justify-content-center">
-          <div class="col-lg-8">
-            <h2 class="display-5 fw-bold">About Us</h2>
-            <p class="mt-4 fs-5 text-center">
-              IELTS stands for the International English Language Testing System. Developed jointly by the British
-              Council, IDP: IELTS Australia, and Cambridge Assessment English, the exam measures your proficiency in
-              English through real-life language tasks. With two test types available—IELTS Academic for university
-              admission and professional registration, and IELTS General Training for migration and training
-              purposes—IELTS is designed to suit diverse needs.
-            </p>
-          </div>
+      <div class="d-flex flex-column justify-content-end w-100 mx-5" style="min-height: 80vh;">
+        <div class="text-start mb-4">
+          <h1 class="display-4">International English Language Testing System (IELTS)</h1>
+          <p class="lead mt-3">
+            IELTS is the top English proficiency test for study, work, and migration, assessing four key language skills
+            and recognized globally.
+          </p>
+          <a href="https://ieltsregistration.britishcouncil.org/register-for-agent/MDhhNTQ3YjQtYmI2MC00NDRiLWI2MDQtZTQ0MjAzZDE3ZTJlOzE2MDcyOzE2NzMxNzEyMDk="
+            class="btn mb-5 px-3 py-2 text-white" style="background-color: #0C470C;">Book Now</a>
         </div>
       </div>
-    </section>
-    <section id="test-format" class="py-3">
-      <div class="container">
-        <div class="text-center mb-4">
-          <h2 class="display-5 fw-bold">Test Format</h2>
-        </div>
+    </header>
 
-        <div class="row g-4 justify-content-center">
-          <div class="col-lg-3 col-md-6">
-            <div class="bg-light rounded-4 text-center h-100 p-4">
-              <div class="card-body">
-                <i class="bi bi-headphones display-3" style="color: #0C470C;"></i>
-                <h3 class="fs-4 fw-bold mt-3">Listening</h3>
-                <p class="mt-2">30 minutes (plus transfer time for paper-based tests)</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6">
-            <div class="bg-light rounded-4 text-center h-100 p-4">
-              <div class="card-body">
-                <i class="bi bi-pencil-square display-3" style="color: #0C470C;"></i>
-                <h3 class="fs-4 fw-bold mt-3">Writing</h3>
-                <p class="mt-2">60 minutes (Spend 20 minutes on Task 1, and 40 minutes on Task 2).</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6">
-            <div class="bg-light rounded-4 text-center h-100 p-4">
-              <div class="card-body">
-                <i class="bi bi-book-half display-3" style="color: #0C470C;"></i>
-                <h3 class="fs-4 fw-bold mt-3">Reading</h3>
-                <p class="mt-2">60 minutes (plus transfer time for paper-based tests)</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6">
-            <div class="bg-light rounded-4 text-center h-100 p-4">
-              <div class="card-body">
-                <i class="bi bi-mic display-3" style="color: #0C470C;"></i>
-                <h3 class="fs-4 fw-bold mt-3">Speaking</h3>
-                <p class="mt-2">11-14 minutes (scheduled the same day or within a week before or after)</p>
-              </div>
+    <main>
+      <section id="about" class="py-5">
+        <div class="container-fluid text-center">
+          <div class="row justify-content-center">
+            <div class="col-lg-8">
+              <h2 class="display-5 fw-bold">About Us</h2>
+              <p class="mt-4 fs-5 text-center">
+                IELTS stands for the International English Language Testing System. Developed jointly by the British
+                Council, IDP: IELTS Australia, and Cambridge Assessment English, the exam measures your proficiency in
+                English through real-life language tasks. With two test types available—IELTS Academic for university
+                admission and professional registration, and IELTS General Training for migration and training
+                purposes—IELTS is designed to suit diverse needs.
+              </p>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-  </main>
+      </section>
+      <section id="test-format" class="py-3">
+        <div class="container">
+          <div class="text-center mb-4">
+            <h2 class="display-5 fw-bold">Test Format</h2>
+          </div>
 
-  <div class="container my-5">
-    <h1 class="text-center mb-5 display-5 fw-bold">Why should you choose IELTS?</h1>
-    <div class="row g-4">
-      <div class="col-lg-4 col-md-6">
-        <div class="card h-100 rounded-top-start bg-light">
-          <img src="img/ielts_p1.jpg" class="card-img-top object-fit-cover" style="height: 250px;">
-          <div class="card-body d-flex flex-column p-4">
-            <h4 class="h4 fw-bold mb-1">Access new opportunities</h4>
-            <p class="fs-6 mb-3">IELTS is trusted by 12,500 organisations in over 140 countries around the
-              world, meaning you can study abroad at the institutions of your choice.</p>
+          <div class="row g-4 justify-content-center">
+            <div class="col-lg-3 col-md-6">
+              <div class="bg-light rounded-4 text-center h-100 p-4">
+                <div class="card-body">
+                  <i class="bi bi-headphones display-3" style="color: #0C470C;"></i>
+                  <h3 class="fs-4 fw-bold mt-3">Listening</h3>
+                  <p class="mt-2">30 minutes (plus transfer time for paper-based tests)</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+              <div class="bg-light rounded-4 text-center h-100 p-4">
+                <div class="card-body">
+                  <i class="bi bi-pencil-square display-3" style="color: #0C470C;"></i>
+                  <h3 class="fs-4 fw-bold mt-3">Writing</h3>
+                  <p class="mt-2">60 minutes (Spend 20 minutes on Task 1, and 40 minutes on Task 2).</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+              <div class="bg-light rounded-4 text-center h-100 p-4">
+                <div class="card-body">
+                  <i class="bi bi-book-half display-3" style="color: #0C470C;"></i>
+                  <h3 class="fs-4 fw-bold mt-3">Reading</h3>
+                  <p class="mt-2">60 minutes (plus transfer time for paper-based tests)</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+              <div class="bg-light rounded-4 text-center h-100 p-4">
+                <div class="card-body">
+                  <i class="bi bi-mic display-3" style="color: #0C470C;"></i>
+                  <h3 class="fs-4 fw-bold mt-3">Speaking</h3>
+                  <p class="mt-2">11-14 minutes (scheduled the same day or within a week before or after)</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-lg-4 col-md-6">
-        <div class="card h-100 rounded-top-start bg-light">
-          <img src="img/ielts_p2.jpg" class="card-img-top object-fit-cover" style="height: 250px;">
-          <div class="card-body d-flex flex-column p-4">
-            <h4 class="h4 fw-bold mb-1">Advance your career</h4>
-            <p class="fs-6 mb-3">Prove your English proficiency to future employers with secure and easy-to-understand
-              results that highlight your communication skills.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6">
-        <div class="card h-100 rounded-top-start bg-light">
-          <img src="img/ielts_p3.jpg" class="card-img-top object-fit-cover" style="height: 250px;">
-          <div class="card-body d-flex flex-column p-4">
-            <h4 class="h4 fw-bold mb-1">Work internationally</h4>
-            <p class="fs-6 mb-3">The Listening section of IELTS includes a range of accents and the Speaking section
-              examines English used by people from different parts of the world.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6">
-        <div class="card h-100 rounded-top-start bg-light">
-          <img src="img/ielts_p4.jpg" class="card-img-top object-fit-cover" style="height: 250px;">
-          <div class="card-body d-flex flex-column p-4">
-            <h4 class="h4 fw-bold mb-1">Access new opportunities</h4>
-            <p class="fs-6 mb-3">IELTS helps you demonstrate to immigration authorities that your level of English
-              meets the required standards.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6">
-        <div class="card h-100 rounded-top-start bg-light">
-          <img src="img/ielts_p5.jpg" class="card-img-top object-fit-cover" style="height: 250px;">
-          <div class="card-body d-flex flex-column p-4">
-            <h4 class="h4 fw-bold mb-1">Choose the test that suits you</h4>
-            <p class="fs-6 mb-3">Take the test on paper, on computer or online from the comfort of your home. With many
-              testing dates available around the world, IELTS fits schedules.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6">
-        <div class="card h-100 rounded-top-start bg-light">
-          <img src="img/ielts_p6.jpg" class="card-img-top object-fit-cover" style="height: 250px;">
-          <div class="card-body d-flex flex-column p-4">
-            <h4 class="h4 fw-bold mb-1">Be confident in your results</h4>
-            <p class="fs-6 mb-3">IELTS is a fair and accurate test. Examiners are qualified and experienced language
-              specialists who focus on skills and practical communication.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
+      </section>
+    </main>
 
     <div class="container my-5">
-      <!-- Main Title and Intro -->
-      <div class="text-center mb-5">
-        <h1 class="fw-bold">How does IELTS work?</h1>
-        <p class="text-center mx-auto fs-5 my-5">
-          IELTS is aimed at people who want to study in an English-speaking environment, work in or emigrate to an
-          English-speaking country, or get a job in your own country where English proficiency is required. For this
-          reason, there are two IELTS tests to choose from:
-        </p>
-      </div>
-
-      <!-- IELTS Options -->
-      <div class="row g-4 justify-content-center mb-5 pb-4">
-        <div class="col-lg-5">
-          <div class="bg-light p-4 p-md-5 rounded-4 text-center h-100">
-            <h3 class="fw-bold fs-4 mb-3">IELTS Academic</h3>
-            <p class="mb-0">This test can help you secure university acceptance, student visas, and prove
-              your English ability to professional organisations.</p>
+      <h1 class="text-center mb-5 display-5 fw-bold">Why should you choose IELTS?</h1>
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+          <div class="card h-100 rounded-top-start bg-light">
+            <img src="img/ielts_p1.jpg" class="card-img-top object-fit-cover" style="height: 250px;">
+            <div class="card-body d-flex flex-column p-4">
+              <h4 class="h4 fw-bold mb-1">Access new opportunities</h4>
+              <p class="fs-6 mb-3">IELTS is trusted by 12,500 organisations in over 140 countries around the
+                world, meaning you can study abroad at the institutions of your choice.</p>
+            </div>
           </div>
         </div>
-        <div class="col-lg-5">
-          <div class="bg-light p-4 p-md-5 rounded-4 text-center h-100">
-            <h3 class="fw-bold fs-4 mb-3">IELTS General Training</h3>
-            <p class="mb-0">This test assesses your workplace English skills and helps demonstrate your
-              level when applying to English-speaking companies.</p>
+        <div class="col-lg-4 col-md-6">
+          <div class="card h-100 rounded-top-start bg-light">
+            <img src="img/ielts_p2.jpg" class="card-img-top object-fit-cover" style="height: 250px;">
+            <div class="card-body d-flex flex-column p-4">
+              <h4 class="h4 fw-bold mb-1">Advance your career</h4>
+              <p class="fs-6 mb-3">Prove your English proficiency to future employers with secure and easy-to-understand
+                results that highlight your communication skills.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="card h-100 rounded-top-start bg-light">
+            <img src="img/ielts_p3.jpg" class="card-img-top object-fit-cover" style="height: 250px;">
+            <div class="card-body d-flex flex-column p-4">
+              <h4 class="h4 fw-bold mb-1">Work internationally</h4>
+              <p class="fs-6 mb-3">The Listening section of IELTS includes a range of accents and the Speaking section
+                examines English used by people from different parts of the world.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="card h-100 rounded-top-start bg-light">
+            <img src="img/ielts_p4.jpg" class="card-img-top object-fit-cover" style="height: 250px;">
+            <div class="card-body d-flex flex-column p-4">
+              <h4 class="h4 fw-bold mb-1">Access new opportunities</h4>
+              <p class="fs-6 mb-3">IELTS helps you demonstrate to immigration authorities that your level of English
+                meets the required standards.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="card h-100 rounded-top-start bg-light">
+            <img src="img/ielts_p5.jpg" class="card-img-top object-fit-cover" style="height: 250px;">
+            <div class="card-body d-flex flex-column p-4">
+              <h4 class="h4 fw-bold mb-1">Choose the test that suits you</h4>
+              <p class="fs-6 mb-3">Take the test on paper, on computer or online from the comfort of your home. With many
+                testing dates available around the world, IELTS fits schedules.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="card h-100 rounded-top-start bg-light">
+            <img src="img/ielts_p6.jpg" class="card-img-top object-fit-cover" style="height: 250px;">
+            <div class="card-body d-flex flex-column p-4">
+              <h4 class="h4 fw-bold mb-1">Be confident in your results</h4>
+              <p class="fs-6 mb-3">IELTS is a fair and accurate test. Examiners are qualified and experienced language
+                specialists who focus on skills and practical communication.</p>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Frequently Asked Questions -->
+
       <div class="container my-5">
         <!-- Main Title and Intro -->
         <div class="text-center mb-5">
           <h1 class="fw-bold">How does IELTS work?</h1>
-          <p class="mx-auto fs-5 my-5">
+          <p class="text-center mx-auto fs-5 my-5">
             IELTS is aimed at people who want to study in an English-speaking environment, work in or emigrate to an
             English-speaking country, or get a job in your own country where English proficiency is required. For this
             reason, there are two IELTS tests to choose from:
@@ -208,8 +212,8 @@
           <div class="col-lg-5">
             <div class="bg-light p-4 p-md-5 rounded-4 text-center h-100">
               <h3 class="fw-bold fs-4 mb-3">IELTS Academic</h3>
-              <p class="mb-0">This test can help you secure university acceptance, student visas, and
-                prove your English ability to professional organisations.</p>
+              <p class="mb-0">This test can help you secure university acceptance, student visas, and prove
+                your English ability to professional organisations.</p>
             </div>
           </div>
           <div class="col-lg-5">
@@ -222,57 +226,176 @@
         </div>
 
         <!-- Frequently Asked Questions -->
-        <div class="text-center mb-4">
-          <h2 class="fw-bold">Frequently Asked Questions</h2>
-        </div>
+        <div class="container my-5">
+          <!-- Main Title and Intro -->
+          <div class="text-center mb-5">
+            <h1 class="fw-bold">How does IELTS work?</h1>
+            <p class="lead text-secondary mx-auto" style="max-width: 650px;">
+              IELTS is aimed at people who want to study in an English-speaking environment, work in or emigrate to an
+              English-speaking country, or get a job in your own country where English proficiency is required. For this
+              reason, there are two IELTS tests to choose from:
+            </p>
+          </div>
 
-        <div class="row justify-content-center">
-          <div class="col-lg-10">
-            <div class="list-group list-group-flush">
-              <a href="#"
-                class="list-group-item list-group-item-action d-flex justify-content-between bg-light mb-2 rounded-3 p-3">
-                The IELTS test explained
-                <span class="badge bg-success p-0 fs-5" style="width: 28px; height: 28px; line-height: 28px;">></span>
-              </a>
-              <a href="#"
-                class="list-group-item list-group-item-action d-flex justify-content-between bg-light mb-2 rounded-3 p-3">
-                Practicing for the IELTS test
-                <span class="badge bg-success p-0 fs-5" style="width: 28px; height: 28px; line-height: 28px;">></span>
-              </a>
-              <a href="#"
-                class="list-group-item list-group-item-action d-flex justify-content-between bg-light mb-2 rounded-3 p-3">
-                Booking an IELTS test
-                <span class="badge bg-success p-0 fs-5" style="width: 28px; height: 28px; line-height: 28px;">></span>
-              </a>
-              <a href="#"
-                class="list-group-item list-group-item-action d-flex justify-content-between bg-light mb-2 rounded-3 p-3">
-                On the day of the test
-                <span class="badge bg-success p-0 fs-5" style="width: 28px; height: 28px; line-height: 28px;">></span>
-              </a>
-              <a href="#"
-                class="list-group-item list-group-item-action d-flex justify-content-between bg-light mb-2 rounded-3 p-3">
-                Results, Scores and Report Forms
-                <span class="badge bg-success p-0 fs-5" style="width: 28px; height: 28px; line-height: 28px;">></span>
-              </a>
-              <a href="#"
-                class="list-group-item list-group-item-action d-flex justify-content-between bg-light mb-2 rounded-3 p-3">
-                Cancellations, Refunds and Re-Sitting
-                <span class="badge bg-success p-0 fs-5" style="width: 28px; height: 28px; line-height: 28px;">></span>
-              </a>
-              <a href="#"
-                class="list-group-item list-group-item-action d-flex justify-content-between bg-light mb-2 rounded-3 p-3">
-                Login and Account
-                <span class="badge bg-success p-0 fs-5" style="width: 28px; height: 28px; line-height: 28px;">></span>
-              </a>
+          <!-- IELTS Options -->
+          <div class="row g-4 justify-content-center mb-5 pb-4">
+            <div class="col-lg-5">
+              <div class="bg-light p-4 p-md-5 rounded-4 text-center h-100">
+                <h3 class="fw-normal fs-4 mb-3">IELTS Academic</h3>
+                <p class="mb-0 text-secondary">This test can help you secure university acceptance, student visas, and
+                  prove your English ability to professional organisations.</p>
+              </div>
+            </div>
+            <div class="col-lg-5">
+              <div class="bg-light p-4 p-md-5 rounded-4 text-center h-100">
+                <h3 class="fw-normal fs-4 mb-3">IELTS General Training</h3>
+                <p class="mb-0 text-secondary">This test assesses your workplace English skills and helps demonstrate your
+                  level when applying to English-speaking companies.</p>
+              </div>
             </div>
           </div>
+
+
+          <!-- Frequently Asked Questions -->
+          <div class="text-center mb-4">
+            <h2 class="fw-bold">Frequently Asked Questions</h2>
+          </div>
+
+          <div class="row justify-content-center">
+            <div class="col-lg-10">
+              <div class="accordion" id="faqAccordion">
+
+                <!-- Accordion Item 1 -->
+                <div class="accordion-item mb-2 rounded-3">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed p-3 rounded-3 bg-light" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                      The IELTS test explained
+                    </button>
+                  </h2>
+                  <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                    data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                      <strong>This is the placeholder text for "The IELTS test explained."</strong> You can add detailed
+                      information about the test format, sections (Listening, Reading, Writing, and Speaking), and what
+                      each section assesses.
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Accordion Item 2 -->
+                <div class="accordion-item mb-2 rounded-3">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed p-3 rounded-3 bg-light" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                      Practicing for the IELTS test
+                    </button>
+                  </h2>
+                  <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                    data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                      <strong>This is the placeholder text for "Practicing for the IELTS test."</strong> Here you can
+                      include tips, resources, sample questions, and strategies for effective test preparation.
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Accordion Item 3 -->
+                <div class="accordion-item mb-2 rounded-3">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed p-3 rounded-3 bg-light" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                      Booking an IELTS test
+                    </button>
+                  </h2>
+                  <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                    data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                      <strong>This is the placeholder text for "Booking an IELTS test."</strong> Provide a step-by-step
+                      guide on how to register for the test, find test centers, view available dates, and understand the
+                      fees.
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Accordion Item 4 -->
+                <div class="accordion-item mb-2 rounded-3">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed p-3 rounded-3 bg-light" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                      On the day of the test
+                    </button>
+                  </h2>
+                  <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                    data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                      <strong>This is the placeholder text for "On the day of the test."</strong> Explain what candidates
+                      need to bring, the check-in process, rules and regulations, and what to expect during the test day.
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Accordion Item 5 -->
+                <div class="accordion-item mb-2 rounded-3">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed p-3 rounded-3 bg-light" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                      Results, Scores and Report Forms
+                    </button>
+                  </h2>
+                  <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+                    data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                      <strong>This is the placeholder text for "Results, Scores and Report Forms."</strong> Detail when
+                      and how results are released, how to understand the band scores, and information about the Test
+                      Report Form (TRF).
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Accordion Item 6 -->
+                <div class="accordion-item mb-2 rounded-3">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed p-3 rounded-3 bg-light" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                      Cancellations, Refunds and Re-Sitting
+                    </button>
+                  </h2>
+                  <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
+                    data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                      <strong>This is the placeholder text for "Cancellations, Refunds and Re-Sitting."</strong> Outline
+                      the policies for canceling a test, requesting a refund, or re-sitting the test if needed.
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Accordion Item 7 -->
+                <div class="accordion-item mb-2 rounded-3">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed p-3 rounded-3 bg-light" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                      Login and Account
+                    </button>
+                  </h2>
+                  <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven"
+                    data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                      <strong>This is the placeholder text for "Login and Account."</strong> Provide information on how to
+                      manage the candidate's online account, check registration details, and access results.
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
         </div>
 
-      </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+          crossorigin="anonymous"></script>
+  </body>
 
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-</body>
-
-</html>
+  </html>
