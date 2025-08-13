@@ -16,25 +16,47 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     <!-- Custom Styles -->
     <style>
+        /* Light Mode (Default) */
         :root {
             --rais-primary-green: #004d40;
             --rais-dark-green: #00332c;
+            --rais-text-dark: #212529;
+            --rais-text-light: #6c757d;
+            --rais-card-bg: #ffffff;
+            --rais-light-gray: #f8f9fa;
+            --rais-bg-light: #f8f9fa;
+            --rais-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            --rais-button-maroon: #811F1D;
+            --rais-border-color: #dee2e6;
+        }
+
+        /* Dark Mode Styles */
+        body.dark-mode {
             --rais-text-dark: #ffffff;
             --rais-text-light: #adb5bd;
             --rais-card-bg: #212529;
             --rais-light-gray: #343a40;
             --rais-bg-light: #2c3034;
             --rais-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-            --rais-button-maroon: #811F1D;
+            --rais-border-color: #495057;
         }
 
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #121212;
+            background-color: var(--rais-light-gray);
             color: var(--rais-text-dark);
             overflow: hidden;
-            /* Prevent body scroll */
+            transition: background-color 0.3s, color 0.3s;
         }
+
+        body.dark-mode .nav-pills .nav-link {
+            color: var(--rais-text-light);
+        }
+        
+        body.dark-mode .nav-pills .nav-link.active {
+             color: #fff;
+        }
+
 
         .main-wrapper {
             display: flex;
@@ -155,12 +177,31 @@
             width: auto;
             object-fit: contain;
         }
+        
+        .header-logo-img.light-mode-logo {
+            display: block;
+        }
+        .header-logo-img.dark-mode-logo {
+            display: none;
+        }
+        body.dark-mode .header-logo-img.light-mode-logo {
+            display: none;
+        }
+        body.dark-mode .header-logo-img.dark-mode-logo {
+            display: block;
+        }
 
         .header-title {
             font-size: 1rem;
             font-weight: 600;
             color: var(--rais-text-dark);
             white-space: nowrap;
+        }
+
+        .user-status {
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
 
         .user-status .badge {
@@ -223,6 +264,63 @@
 
         .content-section.active {
             display: block;
+        }
+        
+        /* Theme Switcher Styles */
+        .theme-switch-wrapper {
+            display: flex;
+            align-items: center;
+        }
+        .theme-switch {
+            display: inline-block;
+            height: 24px;
+            position: relative;
+            width: 48px;
+        }
+        .theme-switch input {
+            display:none;
+        }
+        .slider {
+            background-color: #ccc;
+            bottom: 0;
+            cursor: pointer;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            transition: .4s;
+        }
+        .slider:before {
+            background-color: #fff;
+            bottom: 4px;
+            content: "";
+            height: 16px;
+            left: 4px;
+            position: absolute;
+            transition: .4s;
+            width: 16px;
+        }
+        input:checked + .slider {
+            background-color: var(--rais-primary-green);
+        }
+        input:checked + .slider:before {
+            transform: translateX(24px);
+        }
+        .slider.round {
+            border-radius: 34px;
+        }
+        .slider.round:before {
+            border-radius: 50%;
+        }
+        .theme-switch-wrapper i {
+            font-size: 1rem;
+            color: var(--rais-text-dark);
+        }
+        .theme-switch-wrapper .bi-sun-fill {
+            margin-right: 8px;
+        }
+        .theme-switch-wrapper .bi-moon-fill {
+            margin-left: 8px;
         }
 
         /* Responsive Design */
@@ -321,7 +419,7 @@
             }
 
             .content-nav {
-                border-bottom: 1px solid #dee2e6;
+                border-bottom: 1px solid var(--rais-border-color);
             }
 
             .content-nav .nav-link {
@@ -352,10 +450,8 @@
                         class="bi bi-calendar-check-fill"></i><span>Booking Management</span></a>
                 <a class="nav-link" href="admin_profile.html"><i class="bi bi-person-gear"></i><span>Admin
                         Profiles</span></a>
+                <a class="nav-link mt-auto" href="profile.html"><i class="bi bi-person-circle"></i><span>Profile</span></a>
             </nav>
-            <div class="mt-auto">
-                <a class="nav-link" href="profile.html"><i class="bi bi-person-circle"></i><span>Profile</span></a>
-            </div>
 
             <div class="mt-auto footer-text">
                 &copy; 2024 RAIS
@@ -367,12 +463,21 @@
             <!-- Header -->
             <header class="header">
                 <div class="header-brand d-flex align-items-center">
-                    <img src="../img/logoulit.png" alt="RAIS Logo" class="header-logo-img">
+                    <img src="../img/logoulit.png" alt="RAIS Logo Light" class="header-logo-img light-mode-logo">
+                    <img src="../img/logowhite.png" alt="RAIS Logo Dark" class="header-logo-img dark-mode-logo">
                     <span class="header-title">Roman & Associates Immigration Services</span>
                 </div>
                 <div class="user-status d-flex align-items-center gap-2">
+                    <div class="theme-switch-wrapper">
+                        <i class="bi bi-sun-fill"></i>
+                        <label class="theme-switch" for="theme-checkbox">
+                            <input type="checkbox" id="theme-checkbox" />
+                            <div class="slider round"></div>
+                        </label>
+                        <i class="bi bi-moon-fill"></i>
+                    </div>
                     <span class="badge">ADMIN</span>
-                    <button class="btn btn-link"><i class="bi bi-power"></i></button>
+                    <a href="../index.html" class="btn btn-link"><i class="bi bi-power"></i></a>
                 </div>
             </header>
 
@@ -449,6 +554,36 @@
         crossorigin="anonymous"></script>
 
     <script>
+        // THEME SWITCHER LOGIC
+        document.addEventListener('DOMContentLoaded', function () {
+            const themeSwitch = document.getElementById('theme-checkbox');
+            const currentTheme = localStorage.getItem('theme');
+
+            function setTheme(theme) {
+                if (theme === 'dark') {
+                    document.body.classList.add('dark-mode');
+                    themeSwitch.checked = true;
+                } else {
+                    document.body.classList.remove('dark-mode');
+                    themeSwitch.checked = false;
+                }
+            }
+
+            if (currentTheme) {
+                setTheme(currentTheme);
+            }
+
+            themeSwitch.addEventListener('change', function(event) {
+                if (event.target.checked) {
+                    localStorage.setItem('theme', 'dark');
+                    setTheme('dark');
+                } else {
+                    localStorage.setItem('theme', 'light');
+                    setTheme('light');
+                }
+            });
+        });
+
         document.addEventListener('DOMContentLoaded', function () {
             const navLinks = document.querySelectorAll('.content-nav .nav-link');
             const contentSections = document.querySelectorAll('.content-section');
