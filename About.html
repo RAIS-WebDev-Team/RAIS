@@ -6,10 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Roman & Associates Immigration Services LTD</title>
 
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
+    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -120,12 +122,11 @@
             border: none;
             border-radius: 8px;
             cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.3s ease;
+            transition: background-color 0.3s ease;
         }
 
         .learn-more-button:hover {
             background-color: var(--heading-color);
-            transform: translateY(-2px);
         }
 
         .expanded-about-wrapper {
@@ -166,7 +167,7 @@
             transition: all 0.3s ease-in-out;
         }
 
-        /* This is the new style for the active nav link box */
+       
         .expanded-nav a.active {
             background-color: var(--primary-color);
             color: white;
@@ -353,41 +354,6 @@
                 font-size: 1rem;
             }
         }
-
-        /* --- ADDED HOVER EFFECTS --- */
-
-        /* Hover for Mission, Vision, Objectives, Background links */
-        .expanded-nav a:not(.active):hover {
-            background-color: #e9f0e9; /* Light green background */
-            color: var(--heading-color);
-            transform: translateY(-2px); /* Subtle lift effect */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Transition for "Click Here" button */
-        #show-form-btn {
-            transition: all 0.3s ease;
-        }
-        
-        /* Hover for "Click Here" button */
-        #show-form-btn:hover {
-            transform: scale(1.05); /* Slightly enlarge the button */
-            background-color: var(--primary-color) !important; /* Change color, !important to override inline style */
-        }
-        
-        /* Base and transition for "Subscribe" button */
-        #subscription-form button {
-            background-color: var(--primary-color);
-            color: white;
-            transition: all 0.3s ease;
-        }
-        
-        /* Hover for "Subscribe" button */
-        #subscription-form button:hover {
-            transform: scale(1.05); /* Slightly enlarge the button */
-            background-color: var(--heading-color); /* Change color */
-        }
-
     </style>
 </head>
 
@@ -532,10 +498,9 @@
             <div class="footer-right">
                 <h3>Get In Touch</h3>
                 <p>
-                    <i class="fas fa-envelope"></i> Email: <a
-                        href="mailto: assessment@romancis.ca">assessment@romancis.ca</a><br>
-                    <i class="fas fa-phone-alt"></i> Contacts: 09171857247 | (250) 667-0565<br>
-                    <i class="fas fa-map-marker-alt"></i> Location: City Sleep Inn Hotel and Events Centre, Barangay
+                    <i class="fas fa-envelope"></i> : assessment@romancis.ca <br>
+                    <i class="fas fa-phone-alt"></i> : 09171857247 | (250) 667-0565<br>
+                    <i class="fas fa-map-marker-alt"></i> : City Sleep Inn Hotel and Events Centre, Barangay
                     Sico, Lipa
                     City, Batangas
                 </p>
