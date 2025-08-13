@@ -9,7 +9,6 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <!-- Font Awesome for the back button icon -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
@@ -19,9 +18,10 @@
       --background-color: #F7F9F9;
       --surface-color: #FFFFFF;
       --text-color: #333333;
-      --heading-color: #102A43;
+      --heading-color: #023621;
       --light-gray: #E0E0E0;
       --font-family: 'Poppins', sans-serif;
+      --heading-font: 'Archivo Black', sans-serif;
     }
 
     body {
@@ -33,7 +33,7 @@
       color: var(--text-color);
     }
 
-    /* --- Back Button (Top Right) --- */
+
     .btn-back {
       position: fixed;
       top: 20px;
@@ -135,7 +135,7 @@
     }
 
     .blog-post h2 {
-      font-size: 1.8rem;
+      font-size: var(--heading-font);
       color: var(--primary-color);
       font-weight: 600;
       margin-top: 3rem;
@@ -158,8 +158,9 @@
     footer {
       background-color: var(--primary-color);
       color: white;
-      padding: 50px 20px;
-      margin-top: 3rem;
+      padding: 30px 10px;
+      margin-top: 2rem;
+      font-family: var(--font-family);
     }
 
     .footer-container {
@@ -193,7 +194,7 @@
     .footer-right p {
       font-size: 14px;
       color: #ddd;
-      line-height: 1.6;
+      line-height: 1.8;
     }
 
     .footer-left button {
@@ -202,8 +203,12 @@
       border: none;
       padding: 8px 20px;
       font-size: 14px;
-      border-radius: 10px;
+      border-radius: 20px;
       cursor: pointer;
+    }
+    .footer-right p i {
+      margin-right: 10px;
+      width: 15px;
     }
 
     @media (max-width: 768px) {
@@ -217,7 +222,7 @@
 
       .btn-back {
         top: 15px;
-        right: 15px;
+        left: 15px;
         width: 40px;
         height: 40px;
       }
@@ -318,9 +323,9 @@
       <div class="footer-right">
         <h3>Get In Touch</h3>
         <p>
-          Email: assessment@romancis.ca<br>
-          Contacts: 09171857247 | (250) 667-0565<br>
-          Location: City Sleep Inn Hotel and Events Centre, Barangay Sico, Lipa City, Batangas
+          <i class="fas fa-envelope"></i>Email: assessment@romancis.ca<br>
+          <i class="fas fa-phone"></i>Contacts: 09171857247 | (250) 667-0565<br>
+          <i class="fas fa-map-marker-alt"></i>Location: City Sleep Inn Hotel and Events Centre, Barangay Sico, Lipa City, Batangas
         </p>
       </div>
     </div>

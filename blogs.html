@@ -74,7 +74,7 @@
       z-index: 1000;
     }
 
-   
+
     header nav a {
       margin: 0 1rem;
       text-decoration: none;
@@ -210,10 +210,13 @@
       margin-bottom: 1rem;
     }
 
+    /* --- Footer --- */
     footer {
       background-color: var(--primary-color);
       color: white;
-      padding: 60px 20px;
+      padding: 30px 10px;
+      margin-top: 2rem;
+      font-family: var(--font-family);
     }
 
     .footer-container {
@@ -233,14 +236,13 @@
     }
 
     .footer-left {
-      text-align: left;
-      padding-right: 2rem;
-      border-right: 1px solid rgba(255, 255, 255, 0.2);
+      text-align: center;
+      border-right: 1px solid rgba(255, 255, 255, 0.4);
     }
 
     .footer-left h3,
     .footer-right h3 {
-      font-weight: 700;
+      font-weight: bold;
       margin-bottom: 15px;
     }
 
@@ -248,34 +250,24 @@
     .footer-right p {
       font-size: 14px;
       color: #ddd;
+      line-height: 1.8;
     }
 
-    #subscription-form {
-      display: flex;
-      background-color: white;
-      border-radius: 30px;
-      padding: 5px;
-      margin-top: 1.5rem;
-    }
-
-    #subscription-form input {
-      flex-grow: 1;
-      border: none;
-      outline: none;
-      padding: 8px 20px;
-      background: transparent;
-      color: #333;
-    }
-
-    #subscription-form button {
-      background-color: var(--primary-color);
+    .footer-left button {
+      background-color: #012b26;
       color: white;
       border: none;
-      padding: 10px 25px;
+      padding: 8px 20px;
       font-size: 14px;
-      border-radius: 25px;
+      border-radius: 20px;
       cursor: pointer;
     }
+
+    .footer-right p i {
+      margin-right: 10px;
+      width: 15px;
+    }
+  
 
     @media (max-width: 991px) {
       header {
@@ -388,7 +380,7 @@
           <div class="col-lg-6">
             <a href="blog/mini-fair.html" class="blog-card" id="event1">
               <div class="img-wrapper">
-                <img src="blog/img/minifair.png" alt="IELTS Mini Fair">
+                <img src="blog/img/mini fair.png" alt="IELTS Mini Fair">
               </div>
               <div class="card-content">
                 <div class="title-area">
@@ -438,17 +430,29 @@
     <div class="footer-container">
       <div class="footer-left">
         <h3>Wanna Subscribe to our News Letter?</h3>
-        <p>Subscribe for the latest updates on new features and product releases.</p>
-        <div id="subscription-form">
-          <input type="email" id="email" placeholder="Enter your email" required />
-          <button onclick="submitSubscription()">Subscribe</button>
+        <p>Subscribe to our newsletter for the latest updates on new features and product releases.</p>
+        <button id="show-form-btn" onclick="showSubscriptionForm()" style="padding: 10px 20px; border-radius: 20px;">
+          Click here
+        </button>
+        <div id="subscription-form" style="display: none; margin-top: 10px;">
+          <input type="email" id="email" placeholder="Enter your email" required
+            style="padding: 6px 10px 6px 20px; width: 45%; border-radius: 25px; border: 1px solid #ccc; outline: none; color: #333;" />
+          <button onclick="submitSubscription()"
+            style="padding: 6px 16px; margin-left: 5px; border-radius: 25px;">
+            Subscribe
+          </button>
         </div>
       </div>
       <div class="footer-right">
         <h3>Get In Touch</h3>
-        <p>Email: assessment@romancis.ca<br>Contacts: 09171857247 | (250) 667-0565<br>Location: City Sleep Inn Hotel and
-          Events Centre, Barangay Sico, Lipa City, Batangas</p>
+        <p>
+          <i class="fas fa-envelope"></i> Email: <a href="mailto:assessment@romancis.ca">assessment@romancis.ca</a><br>
+          <i class="fas fa-phone-alt"></i> Contacts: 09171857247 | (250) 667-0565<br>
+          <i class="fas fa-map-marker-alt"></i> Location: City Sleep Inn Hotel and Events Centre, Barangay Sico, Lipa
+          City, Batangas
+        </p>
       </div>
+
     </div>
   </footer>
 
@@ -494,13 +498,19 @@
       });
     });
   </script>
-  <script>
+   <script>
+    function showSubscriptionForm() {
+      document.getElementById("subscription-form").style.display = "block";
+      document.getElementById("show-form-btn").style.display = "none";
+    }
+
     function submitSubscription() {
-      const emailInput = document.getElementById("email");
-      const email = emailInput.value;
+      const email = document.getElementById("email").value;
       if (email && email.includes('@')) {
         alert("Subscribed successfully with: " + email);
-        emailInput.value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("subscription-form").style.display = "none";
+        document.getElementById("show-form-btn").style.display = "inline-block";
       } else {
         alert("Please enter a valid email address.");
       }

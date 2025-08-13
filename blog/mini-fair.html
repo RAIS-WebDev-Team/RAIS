@@ -1,3 +1,4 @@
+<!doctype html>
 <html lang="en">
 
 <head>
@@ -17,13 +18,10 @@
       --background-color: #F7F9F9;
       --surface-color: #FFFFFF;
       --text-color: #333333;
-      --heading-color: #102A43;
+      --heading-color: #023621;
       --light-gray: #E0E0E0;
       --font-family: 'Poppins', sans-serif;
-    }
-
-    html, body {
-       overflow-x: visible;
+      --heading-font: 'Archivo Black', sans-serif;
     }
 
     body {
@@ -33,12 +31,13 @@
       padding: 0;
       background-color: var(--background-color);
       color: var(--text-color);
+      overflow-x: hidden; /* Prevents horizontal scroll */
     }
 
     .btn-back {
       position: fixed;
       top: 20px;
-      left: 20px; /* Changed from left to right */
+      left: 20px;
       z-index: 1001;
       display: flex;
       align-items: center;
@@ -63,7 +62,6 @@
       font-size: 1.2rem;
     }
 
-
     header {
       background: var(--surface-color);
       padding: 1rem 5%;
@@ -72,7 +70,6 @@
       align-items: center;
       border-bottom: 1px solid var(--light-gray);
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-     /* position: sticky;*/
       top: 0;
       z-index: 1000;
     }
@@ -97,7 +94,6 @@
       width: 90%;
       max-width: 800px;
       margin: 2rem auto;
-      border-left: 5px solid var(--primary-color);
     }
 
     .blog-post {
@@ -105,6 +101,7 @@
       padding: 2rem 3rem;
       border-radius: 12px;
       box-shadow: 0 8px 24px rgba(16, 42, 67, 0.1);
+      border-left: 5px solid var(--primary-color);
     }
 
     .blog-header {
@@ -136,7 +133,7 @@
     }
 
     .blog-post h2 {
-      font-size: 1.8rem;
+      font-size: var(--heading-font);
       color: var(--primary-color);
       font-weight: 600;
       margin-top: 3rem;
@@ -158,7 +155,7 @@
       padding: 2rem;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-       border-left: 5px solid var(--primary-color);
+      border-left: 5px solid var(--primary-color);
     }
 
     .event-card:hover {
@@ -176,7 +173,7 @@
     }
 
     .event-card h3 {
-      font-size: 1.5rem;
+      font-size: var(--heading-font);
       color: var(--heading-color);
       margin-top: 0;
       margin-bottom: 1rem;
@@ -185,7 +182,9 @@
     footer {
       background-color: var(--primary-color);
       color: white;
-      padding: 50px 20px;
+      padding: 30px 10px;
+      margin-top: 2rem;
+      font-family: var(--font-family);
     }
 
     .footer-container {
@@ -209,45 +208,54 @@
       border-right: 1px solid rgba(255, 255, 255, 0.4);
     }
 
-    .footer-left h3 {
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
-
-    .footer-left p {
-      font-size: 14px;
-      margin-bottom: 20px;
-      color: #ddd;
-    }
-
-    .footer-left button {
-      background-color: var(--primary-color);
-      color: white;
-      border: none;
-      padding: 8px 20px;
-      font-size: 14px;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-      cursor: pointer;
-      transition: background var(--primary-color) 0.3s ease;
-    }
-
-    .footer-left button:hover {
-      background-color: var(--primary-color);
-    }
-
+    .footer-left h3,
     .footer-right h3 {
       font-weight: bold;
       margin-bottom: 15px;
     }
 
+    .footer-left p,
     .footer-right p {
       font-size: 14px;
-      line-height: 1.6;
       color: #ddd;
+      line-height: 1.8;
     }
 
+    .footer-left button {
+      background-color: #012b26;
+      color: white;
+      border: none;
+      padding: 8px 20px;
+      font-size: 14px;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+    
+    .footer-right p i {
+      margin-right: 10px;
+      width: 15px;
+    }
+    
     @media (max-width: 768px) {
+      .blog-post {
+        padding: 1.5rem;
+      }
+
+      .blog-title {
+        font-size: 2.2rem;
+      }
+
+      .btn-back {
+        top: 15px;
+        left: 15px;
+        width: 40px;
+        height: 40px;
+      }
+
+      .btn-back i {
+        font-size: 1rem;
+      }
+      
       .footer-container {
         flex-direction: column;
         text-align: center;
@@ -256,31 +264,12 @@
       .footer-left {
         border-right: none;
         border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+        padding-bottom: 30px;
         margin-bottom: 30px;
       }
 
       .footer-right {
-        padding-top: 20px;
-      }
-      
-      .blog-post {
-        padding: 1.5rem;
-      }
-
-      .blog-title {
-        font-size: 2rem;
-      }
-      
-      .btn-back {
-        top: 15px;
-        left: 15px; /* Changed from left to right for mobile view */
-        left: auto; /* Ensure left is not applied */
-        width: 40px;
-        height: 40px;
-      }
-
-      .btn-back i {
-        font-size: 1rem;
+        padding-top: 0;
       }
     }
   </style>
@@ -288,7 +277,7 @@
 
 <body>
 
-  <a href="../blog.html" class="btn-back">
+  <a href="/blogs.html" class="btn-back">
     <i class="fas fa-arrow-left"></i>
   </a>
 
@@ -299,7 +288,7 @@
     <nav>
       <a href="#about">About</a>
       <a href="#events">Events</a>
-      <a href="#Contact">Contact</a>
+      <a href="#contact">Contact</a>
     </nav>
   </header>
 
@@ -310,7 +299,7 @@
         <p class="author">Written By: Imnil Benmarc A. Jolo</p>
       </div>
 
-      <img class="main-image" src="img/mini fair.png" alt="A promotional banner for the IELTS Mini Fair">
+      <img class="main-image" src="img/minifair.png" alt="A promotional banner for the IELTS Mini Fair">
 
       <section id="about">
         <p>On the 29th of March 2025, Roman Canadian Immigration Services (RCIS) proudly became one of the
@@ -352,45 +341,22 @@
         </div>
       </section>
     </article>
-
-
-    <script>
-      function showSubscriptionForm() {
-        document.getElementById("subscription-form").style.display = "block";
-        document.getElementById("show-form-btn").style.display = "none";
-      }
-
-      function submitSubscription() {
-        const email = document.getElementById("email").value;
-        if (email) {
-          alert("Subscribed successfully with: " + email);
-          document.getElementById("email").value = "";
-          document.getElementById("subscription-form").style.display = "none";
-        } else {
-          alert("Please enter a valid email address.");
-        }
-      }
-    </script>
-
   </main>
 
-
-  <footer>
-    <div id="Contact"class="footer-container">
-      <div class="footer-left" style="padding-left: 20px;">
+  <footer id="contact">
+    <div class="footer-container">
+      <div class="footer-left">
         <h3>Wanna Subscribe to our News Letter?</h3>
         <p>Subscribe to our newsletter for the latest updates on new features and product releases.</p>
 
-        <button id="show-form-btn" onclick="showSubscriptionForm()"
-          style="padding: 10px 20px; border-radius: 20px; background-color: #012b26; color: white; border: none; cursor: pointer;">
+        <button id="show-form-btn" onclick="showSubscriptionForm()" style="padding: 10px 20px; border-radius: 20px;">
           Click here
         </button>
 
         <div id="subscription-form" style="display: none; margin-top: 10px;">
           <input type="email" id="email" placeholder="Enter your email" required
-            style="padding: 6px 10px 6px 20px; width: 45%; border-radius: 25px; border: 1px solid #ccc; outline: none;" />
-          <button onclick="submitSubscription()"
-            style="padding: 6px 16px; margin-left: 5px; border-radius: 25px; background-color: #012b26; color: white; border: none; cursor: pointer;">
+            style="padding: 6px 10px 6px 20px; width: 45%; border-radius: 25px; border: 1px solid #ccc; outline: none; color: #333;" />
+          <button onclick="submitSubscription()" style="padding: 6px 16px; margin-left: 5px; border-radius: 25px;">
             Subscribe
           </button>
         </div>
@@ -399,13 +365,32 @@
       <div class="footer-right">
         <h3>Get In Touch</h3>
         <p>
-          Email: assessment@romancis.ca<br>
-          Contacts: 09171857247 | (250) 667-0565<br>
-          Location: City Sleep Inn Hotel and Events Centre, Barangay Sico, Lipa City, Batangas
+          <i class="fas fa-envelope"></i>Email: assessment@romancis.ca<br>
+          <i class="fas fa-phone"></i>Contacts: 09171857247 | (250) 667-0565<br>
+          <i class="fas fa-map-marker-alt"></i>Location: City Sleep Inn Hotel and Events Centre, Barangay Sico, Lipa City, Batangas
         </p>
       </div>
     </div>
   </footer>
+
+  <script>
+    function showSubscriptionForm() {
+      document.getElementById("subscription-form").style.display = "block";
+      document.getElementById("show-form-btn").style.display = "none";
+    }
+
+    function submitSubscription() {
+      const email = document.getElementById("email").value;
+      if (email && email.includes('@')) {
+        alert("Subscribed successfully with: " + email);
+        document.getElementById("email").value = "";
+        document.getElementById("subscription-form").style.display = "none";
+        document.getElementById("show-form-btn").style.display = "inline-block";
+      } else {
+        alert("Please enter a valid email address.");
+      }
+    }
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
     crossorigin="anonymous"></script>
