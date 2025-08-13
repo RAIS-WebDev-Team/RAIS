@@ -10,25 +10,25 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="img/logoulit.png" />
   <style>
-    #MainContent {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: rgba(255, 255, 255, 0.9);
+    body {
+        overflow-x: hidden; 
+        font-family: 'Poppins', sans-serif;
     }
 
     #serviceOffered {
       width: 100%;
-      max-height: 1000vh;
-      overflow-y: auto;
-      padding: 1rem;
       color: black;
+    }
+
+    /* Styles for the new About section video */
+    .video-container video {
+        width: 100%;
+        border-radius: 8px;
     }
   </style>
 </head>
 
-<body class="text-white" style="overflow-x: hidden; font-family: 'Poppins', sans-serif">
+<body class="text-white">
 
   <section class="hero position-relative text-white" style="min-height: 100vh; overflow: hidden;">
     <video autoplay muted loop playsinline class="position-absolute w-100 h-100"
@@ -48,8 +48,8 @@
           <div class="collapse navbar-collapse justify-content-center" id="navbarContent"
             style="text-shadow: 3px 3px 8px #000000cc;">
             <ul class="navbar-nav">
-              <li class="nav-item"><a class="nav-link text-white fs-5 me-md-3" href="#">About</a></li>
-              <li class="nav-item"><a class="nav-link text-white fs-5 me-md-3" href="#MainContent">Services
+              <li class="nav-item"><a class="nav-link text-white fs-5 me-md-3" href="#about">About</a></li>
+              <li class="nav-item"><a class="nav-link text-white fs-5 me-md-3" href="#services">Services
                   Offered</a></li>
               <li class="nav-item"><a class="nav-link text-white fs-5 me-md-3" href="blogs.html">Blogs</a></li>
               <li class="nav-item"><a class="nav-link text-white fs-5 me-md-3" href="#">Partner</a></li>
@@ -78,9 +78,31 @@
     </div>
   </section>
 
-  <section id="MainContent">
-    <div class="container-fluid">
-      <div id="serviceOffered" class="container-fluid"></div>
+  <section id="about" class="py-5 position-relative" style="background-image: url('img/logoulit.png'); background-size: cover; background-attachment: fixed; background-position: center; color: #333;">
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(247, 249, 249, 0.9);"></div>
+    <div class="container position-relative">
+        <div class="card overflow-hidden" style="border-radius: 12px; box-shadow: 0 8px 24px rgba(16, 42, 67, 0.1); border-left: 6px solid #0C470C;">
+            <div class="card-body p-4 p-lg-5">
+                <div class="row align-items-center g-4">
+                    <div class="col-lg-6 video-container">
+                        <video src="vids/about_vid.mov" loop="true" poster="https://play.teleporthq.io/static/svg/videoposter.svg" autoplay="true" controls="true" muted=""></video>
+                    </div>
+                    <div class="col-lg-6">
+                        <h2 style="color: #023621; font-weight: 700;">About Roman & Associates Immigration Services LTD</h2>
+                        <p class="fs-5 my-4" style="line-height: 1.7;">We are a licensed Canadian immigration firm based in Vancouver Island BC, providing expert advice on visas, permits, and sponsorships to help people achieve a brighter future in Canada.</p>
+                        <a href="About.html" class="btn btn-lg text-white fw-bold" style="background-color: #0C470C;">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </section>
+  
+  <section id="services" class="py-5" style="background-color: #ffffff; color: #333;">
+    <div class="container">
+      <h2 class="text-center mb-5" style="color: #023621; font-weight: 700;">Our Services</h2>
+      <div id="serviceOffered">
+          </div>
     </div>
   </section>
 
