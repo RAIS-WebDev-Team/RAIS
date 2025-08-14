@@ -125,10 +125,9 @@
     .blog-section .col-lg-6 {
       display: flex;
       align-items: stretch;
-      height: 200px;
     }
 
-    logo-link {
+    .logo-link {
       text-decoration: none;
     }
 
@@ -168,20 +167,18 @@
     .blog-card {
       width: 100%;
       display: flex;
-      background: var(--surface-color);
-      border-radius: 12px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-      overflow: hidden;
       text-decoration: none;
       color: var(--text-color);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      border: 1px solid var(--light-gray);
+      transition: opacity 0.3s ease;
     }
 
     .blog-card:hover,
     .blog-card.hovered {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 25px rgba(12, 71, 12, 0.15);
+        opacity: 0.8;
+    }
+    
+    .blog-card:hover h5 {
+        color: var(--primary-color);
     }
 
     .blog-card .img-wrapper {
@@ -192,11 +189,15 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
     }
 
     .blog-card .card-content {
-      padding: 1.5rem;
+      padding: 1rem 1.5rem;
       display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     .card-content .title-area {
@@ -208,6 +209,7 @@
       line-height: 1.4;
       font-size: 1.15rem;
       margin-bottom: 1rem;
+      transition: color 0.3s ease;
     }
 
     /* --- Footer --- */
@@ -254,7 +256,7 @@
     }
 
     .footer-left button {
-      background-color: #012b26;
+      background-color: #1ac522;
       color: white;
       border: none;
       padding: 8px 20px;
@@ -267,7 +269,8 @@
       margin-right: 10px;
       width: 15px;
     }
-  
+
+
 
     @media (max-width: 991px) {
       header {
@@ -307,13 +310,20 @@
         display: flex;
       }
 
-      .footer-left {
-        border-right: none;
+       .footer-container {
+        flex-direction: column;
         text-align: center;
       }
 
+      .footer-left {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+        padding-bottom: 30px;
+        margin-bottom: 30px;
+      }
+
       .footer-right {
-        text-align: center;
+        padding-top: 0;
       }
     }
 
@@ -324,6 +334,7 @@
       }
 
       .blog-card .card-content {
+        padding: 1.5rem 0.5rem;
         text-align: center;
       }
 
@@ -363,7 +374,7 @@
   </header>
 
   <main>
-    <a href="index.html" class="btn-back" aria-label="Go Back">
+    <a href="../index.html" class="btn-back" aria-label="Go Back">
       <i class="fas fa-arrow-left"></i>
     </a>
     <section class="section-container">
@@ -380,7 +391,7 @@
           <div class="col-lg-6">
             <a href="blog/mini-fair.html" class="blog-card" id="event1">
               <div class="img-wrapper">
-                <img src="blog/img/mini fair.png" alt="IELTS Mini Fair">
+                <img src="blog/img/minifair.png" alt="IELTS Mini Fair">
               </div>
               <div class="card-content">
                 <div class="title-area">
@@ -437,8 +448,7 @@
         <div id="subscription-form" style="display: none; margin-top: 10px;">
           <input type="email" id="email" placeholder="Enter your email" required
             style="padding: 6px 10px 6px 20px; width: 45%; border-radius: 25px; border: 1px solid #ccc; outline: none; color: #333;" />
-          <button onclick="submitSubscription()"
-            style="padding: 6px 16px; margin-left: 5px; border-radius: 25px;">
+          <button onclick="submitSubscription()" style="padding: 6px 16px; margin-left: 5px; border-radius: 25px;">
             Subscribe
           </button>
         </div>
@@ -446,9 +456,10 @@
       <div class="footer-right">
         <h3>Get In Touch</h3>
         <p>
-          <i class="fas fa-envelope"></i> Email: <a href="mailto:assessment@romancis.ca">assessment@romancis.ca</a><br>
-          <i class="fas fa-phone-alt"></i> Contacts: 09171857247 | (250) 667-0565<br>
-          <i class="fas fa-map-marker-alt"></i> Location: City Sleep Inn Hotel and Events Centre, Barangay Sico, Lipa
+          <i class="fas fa-envelope"></i> : assessment@romancis.ca <br>
+          <i class="fas fa-phone-alt"></i> : 09171857247 | (250) 667-0565<br>
+          <i class="fas fa-map-marker-alt"></i> : City Sleep Inn Hotel and Events Centre, Barangay
+          Sico, Lipa
           City, Batangas
         </p>
       </div>
@@ -498,7 +509,7 @@
       });
     });
   </script>
-   <script>
+  <script>
     function showSubscriptionForm() {
       document.getElementById("subscription-form").style.display = "block";
       document.getElementById("show-form-btn").style.display = "none";
