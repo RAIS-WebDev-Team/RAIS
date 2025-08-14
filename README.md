@@ -7,3 +7,5 @@ We are a licensed Canadian immigration firm based in Vancouver Island BC, Canada
 [![JP's GitHub stats](https://github-readme-stats.vercel.app/api?username=jpgodoy04)](https://github.com/anuraghazra/github-readme-stats)[![MARGA's GitHub stats](https://github-readme-stats.vercel.app/api?username=margarain)](https://github.com/anuraghazra/github-readme-stats)
 [![MATTHEW's GitHub stats](https://github-readme-stats.vercel.app/api?username=jeisafino)](https://github.com/anuraghazra/github-readme-stats)[![JODIEL's GitHub stats](https://github-readme-stats.vercel.app/api?username=jodimeyyy)](https://github.com/anuraghazra/github-readme-stats)
 [![AJ's GitHub stats](https://github-readme-stats.vercel.app/api?username=Drawn2AJI)](https://github.com/anuraghazra/github-readme-stats)
+[![Patricia Nicole's GitHub stats](https://github-readme-stats.vercel.app/api?username=patriciabrin)](https://github.com/anuraghazra/github-readme-stats)
+[![Patricia Marie's GitHub stats](https://github-readme-stats.vercel.app/api?username=patriciafalible)](https://github.com/anuraghazra/github-readme-stats)
