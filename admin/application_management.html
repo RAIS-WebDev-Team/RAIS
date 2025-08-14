@@ -89,7 +89,8 @@
             box-shadow: var(--rais-shadow);
             transition: width 0.3s ease-in-out;
             overflow: hidden;
-            position: sticky;
+            /* Changed from sticky to fixed */
+            position: fixed;
             top: 0;
             height: 100vh;
             display: flex;
@@ -98,7 +99,8 @@
         }
 
         .sidebar:hover {
-            width: 240px;
+            /* Increased width to better fit content */
+            width: 280px;
         }
 
         .sidebar .logo {
@@ -168,6 +170,9 @@
             flex-grow: 1;
             height: 100vh;
             overflow-y: auto;
+            /* Added margin to account for the fixed sidebar */
+            margin-left: 70px;
+            transition: margin-left 0.3s ease-in-out;
         }
 
         /* Header Styles */
@@ -338,6 +343,8 @@
             .content-area {
                 height: auto;
                 overflow-y: visible;
+                /* Remove margin on smaller screens */
+                margin-left: 0;
             }
 
             .header {

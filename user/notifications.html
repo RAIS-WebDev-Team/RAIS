@@ -58,15 +58,16 @@
       box-shadow: var(--rais-shadow);
       transition: width 0.3s ease-in-out;
       overflow: hidden;
-      position: sticky;
+      position: fixed;
       top: 0;
       height: 100vh;
       display: flex;
       flex-direction: column;
+      z-index: 1031;
     }
 
     .sidebar:hover {
-      width: 240px;
+      width: 280px;
     }
 
     .sidebar .logo {
@@ -137,6 +138,7 @@
       flex-grow: 1;
       height: 100vh;
       overflow-y: auto;
+      margin-left: 70px;
     }
 
     /* Header Styles */
@@ -380,6 +382,7 @@
       .content-area {
           height: auto;
           overflow-y: visible;
+          margin-left: 0;
       }
 
       .header {
@@ -457,10 +460,7 @@
         margin-bottom: 0;
       }
 
-      .sidebar .nav-link span {
-        display: none;
-      }
-
+      .sidebar .nav-link span,
       .sidebar:hover .nav-link span {
         display: none;
       }
@@ -523,7 +523,7 @@
             <img src="../img/logo.png" alt="RAIS Logo" class="header-logo-img">
             <span class="header-title">Roman & Associates Immigration Services</span>
         </div>
-        <div class="user-status d-flex align-items: center gap-2">
+        <div class="user-status d-flex align-items-center gap-2">
 
           <button class="btn btn-link"><i class="bi bi-power"></i></button>
           <span class="badge">ACTIVE</span>

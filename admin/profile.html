@@ -5,16 +5,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RAIS Admin - Profile</title>
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <!-- Bootstrap Icons CSS -->
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="icon" href="../img/logowhite.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap" rel="stylesheet">
-    <!-- Custom Styles -->
     <style>
         /* Light Mode (Default) */
         :root {
@@ -87,7 +84,7 @@
             box-shadow: var(--rais-shadow);
             transition: width 0.3s ease-in-out;
             overflow: hidden;
-            position: sticky;
+            position: fixed;
             top: 0;
             height: 100vh;
             display: flex;
@@ -96,7 +93,7 @@
         }
 
         .sidebar:hover {
-            width: 240px;
+            width: 280px;
         }
 
         .sidebar .logo {
@@ -166,6 +163,7 @@
             flex-grow: 1;
             height: 100vh;
             overflow-y: auto;
+            margin-left: 70px;
         }
 
         /* Header Styles */
@@ -251,13 +249,12 @@
         }
 
         .cover-photo {
-            height: 300px;
+            height: 350px;
             background-image: url('../img/logo2.png');
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
             border-radius: 12px 12px 0 0;
-            cursor: pointer;
             background-color: var(--rais-light-gray);
         }
 
@@ -280,7 +277,6 @@
             border-radius: 50%;
             border: 5px solid var(--rais-card-bg);
             object-fit: cover;
-            cursor: pointer;
         }
 
         .profile-name {
@@ -408,6 +404,7 @@
             .content-area {
                 height: auto;
                 overflow-y: visible;
+                margin-left: 0;
             }
 
             .header {
@@ -479,10 +476,7 @@
                 margin-bottom: 0;
             }
 
-            .sidebar .nav-link span {
-                display: none;
-            }
-
+            .sidebar .nav-link span,
             .sidebar:hover .nav-link span {
                 display: none;
             }
@@ -492,7 +486,6 @@
 
 <body>
     <div class="main-wrapper">
-        <!-- Sidebar -->
         <aside class="sidebar d-flex flex-column">
             <div class="logo">RAIS</div>
             <nav class="nav flex-column">
@@ -518,9 +511,7 @@
             </div>
         </aside>
 
-        <!-- Main Content Area -->
         <div class="content-area">
-            <!-- Header -->
             <header class="header">
                 <div class="header-brand d-flex align-items-center">
                     <img src="../img/logoulit.png" alt="RAIS Logo Light" class="header-logo-img light-mode-logo">
@@ -541,11 +532,9 @@
                 </div>  
             </header>
 
-            <!-- Main Content -->
             <main class="main-content">
                 <div class="profile-header">
-                    <div class="cover-photo" id="coverPhoto"></div>
-                    <input type="file" id="coverPhotoInput" style="display: none;" accept="image/*">
+                    <div class="cover-photo"></div>
                     <div class="profile-info">
                         <img src="https://placehold.co/150" alt="Profile Picture" class="profile-picture"
                             id="profilePicture">
@@ -583,7 +572,6 @@
         </div>
     </div>
 
-    <!-- Edit Profile Modal -->
     <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -594,6 +582,13 @@
                 </div>
                 <div class="modal-body">
                     <form id="editProfileForm">
+                        <div class="mb-4 text-center">
+                            <img src="https://placehold.co/150" alt="Profile Preview" id="modalProfilePicturePreview" class="rounded-circle mb-3" style="width: 120px; height: 120px; object-fit: cover;">
+                            <div>
+                                <label for="profilePictureInput" class="btn btn-primary btn-sm">Upload a Photo</label>
+                            </div>
+                        </div>
+                        <hr>
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="inputFirstName" class="form-label">First Name</label>
@@ -634,9 +629,8 @@
         </div>
     </div>
 
-    <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
 
     <script>
@@ -679,14 +673,15 @@
             const profileEmail = document.getElementById('profileEmail');
             const profilePhone = document.getElementById('profilePhone');
             const profilePicture = document.getElementById('profilePicture');
-            const coverPhoto = document.getElementById('coverPhoto');
             const profilePictureInput = document.getElementById('profilePictureInput');
-            const coverPhotoInput = document.getElementById('coverPhotoInput');
-
-
+            const modalProfilePicturePreview = document.getElementById('modalProfilePicturePreview');
+            
             const editProfileModal = new bootstrap.Modal(document.getElementById('editProfileModal'));
             const editProfileForm = document.getElementById('editProfileForm');
             const saveProfileChangesBtn = document.getElementById('saveProfileChanges');
+
+            // This will hold the base64 URL of the new image, if one is chosen
+            let newPictureDataUrl = null;
 
             // Initial Data (can be fetched from a server)
             let adminProfile = {
@@ -698,7 +693,6 @@
                 email: 'john.doe@rais.com',
                 phone: '+1 234 567 8900',
                 picture: 'https://placehold.co/150',
-                cover: '' // Start with no cover to use CSS default
             };
 
             function updateProfileDisplay() {
@@ -709,12 +703,9 @@
                 profileEmail.innerHTML = `<i class="bi bi-envelope-fill"></i> ${adminProfile.email}`;
                 profilePhone.innerHTML = `<i class="bi bi-telephone-fill"></i> ${adminProfile.phone}`;
                 profilePicture.src = adminProfile.picture;
-                if(adminProfile.cover) {
-                    coverPhoto.style.backgroundImage = `url('${adminProfile.cover}')`;
-                }
             }
 
-            // Populate form when modal is opened
+            // Populate form and image preview when modal is opened
             document.getElementById('editProfileModal').addEventListener('show.bs.modal', function () {
                 document.getElementById('inputFirstName').value = adminProfile.firstName;
                 document.getElementById('inputLastName').value = adminProfile.lastName;
@@ -723,10 +714,29 @@
                 document.getElementById('inputLocation').value = adminProfile.location.replace('Lives in ', '');
                 document.getElementById('inputEmail').value = adminProfile.email;
                 document.getElementById('inputPhone').value = adminProfile.phone;
+
+                // Set the modal preview image and reset any pending changes
+                modalProfilePicturePreview.src = adminProfile.picture;
+                newPictureDataUrl = null; 
             });
 
-            // Save changes
+            // Handle new profile picture selection
+            profilePictureInput.addEventListener('change', function(event) {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        // Store the new image data and update the preview in the modal
+                        newPictureDataUrl = e.target.result;
+                        modalProfilePicturePreview.src = newPictureDataUrl;
+                    }
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            // Save all changes from the modal
             saveProfileChangesBtn.addEventListener('click', function () {
+                // Update text fields
                 adminProfile.firstName = document.getElementById('inputFirstName').value;
                 adminProfile.lastName = document.getElementById('inputLastName').value;
                 adminProfile.title = document.getElementById('inputTitle').value;
@@ -735,38 +745,14 @@
                 adminProfile.email = document.getElementById('inputEmail').value;
                 adminProfile.phone = document.getElementById('inputPhone').value;
 
+                // If a new picture was chosen, update the profile picture data
+                if (newPictureDataUrl) {
+                    adminProfile.picture = newPictureDataUrl;
+                }
+
                 updateProfileDisplay();
                 editProfileModal.hide();
             });
-            
-            // Image upload logic
-            profilePicture.addEventListener('click', () => profilePictureInput.click());
-            coverPhoto.addEventListener('click', () => coverPhotoInput.click());
-
-            profilePictureInput.addEventListener('change', function(event) {
-                const file = event.target.files[0];
-                if (file) {
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                        adminProfile.picture = e.target.result;
-                        updateProfileDisplay();
-                    }
-                    reader.readAsDataURL(file);
-                }
-            });
-
-            coverPhotoInput.addEventListener('change', function(event) {
-                const file = event.target.files[0];
-                if (file) {
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                        adminProfile.cover = e.target.result;
-                        updateProfileDisplay();
-                    }
-                    reader.readAsDataURL(file);
-                }
-            });
-
 
             // Initial display
             updateProfileDisplay();

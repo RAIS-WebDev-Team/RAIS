@@ -97,7 +97,7 @@
             box-shadow: var(--rais-shadow);
             transition: width 0.3s ease-in-out;
             overflow: hidden;
-            position: sticky;
+            position: fixed;
             top: 0;
             height: 100vh;
             display: flex;
@@ -106,7 +106,8 @@
         }
 
         .sidebar:hover {
-            width: 240px;
+            /* FIX: Increased width to accommodate longer text like "Application Management" */
+            width: 280px;
         }
 
         .sidebar .logo {
@@ -176,6 +177,7 @@
             flex-grow: 1;
             height: 100vh;
             overflow-y: auto;
+            margin-left: 70px;
         }
 
         /* Header Styles */
@@ -357,6 +359,7 @@
             .content-area {
                 height: auto;
                 overflow-y: visible;
+                margin-left: 0;
             }
 
             .header {
@@ -457,10 +460,8 @@
                         class="bi bi-calendar-check-fill"></i><span>Booking Management</span></a>
                 <a class="nav-link" href="admin_profile.html"><i class="bi bi-person-gear"></i><span>Admin
                         Profiles</span></a>
-                <!-- START CHANGE: Moved profile link here and added mt-auto -->
                 <a class="nav-link mt-auto" href="profile.html"><i class="bi bi-person-circle"></i><span>Profile</span></a>
-                <!-- END CHANGE -->
-            </nav>
+                </nav>
 
             <div class="mt-auto footer-text">
                 &copy; 2025 RAIS

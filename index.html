@@ -9,26 +9,276 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="img/logoulit.png" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <style>
     body {
-        overflow-x: hidden; 
-        font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+      font-family: 'Poppins', sans-serif;
+      background-color: white;
     }
 
-    #serviceOffered {
-      width: 100%;
-      color: black;
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(to bottom, #0C470C, #3BA43B);
+      border-radius: 6px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(to bottom, #023621, #2a7c2a);
     }
 
     /* Styles for the new About section video */
     .video-container video {
-        width: 100%;
-        border-radius: 8px;
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    /* Styles for the expandable About section */
+    .expanded-about-wrapper {
+      background-color: #fafcfa;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 1.2s ease-in-out;
+      border-top: 1px solid #E0E0E0;
+    }
+
+    .expanded-about-wrapper.is-open {
+      max-height: 3500px; /* Increased for mobile */
+    }
+
+    .expanded-nav {
+      background: #f0f5f0;
+      padding: 1rem 3rem;
+      border-top: 1px solid #E0E0E0;
+      border-bottom: 1px solid #E0E0E0;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .expanded-nav a {
+      margin: 0.5rem;
+      text-decoration: none;
+      color: #0C470C;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 8px 16px;
+      border-radius: 8px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .expanded-nav a.active {
+      background-color: #0C470C;
+      color: white;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .content-box {
+      background: #FFFFFF;
+      border: 1px solid #E0E0E0;
+      border-radius: 8px;
+      margin-top: 1.5rem;
+      padding: 1rem 2rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      border-left: 5px solid #0C470C;
+    }
+
+    .expanded-content h3 {
+      color: #023621;
+      margin-top: 0.5rem;
+      border-bottom: 2px solid #0C470C;
+      padding-bottom: 0.5rem;
+      display: inline-block;
+    }
+
+    .content-section {
+      display: none;
+    }
+
+    .content-section.active {
+      display: block;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Styles for Service Offered Section */
+    .service-section {
+        color: black;
+    }
+
+    .full-height-center {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5rem 1rem;
+    }
+
+    .card-stack {
+      position: relative;
+      height: 320px;
+      max-width: 500px;
+      margin: auto;
+      perspective: 1000px;
+    }
+
+    .card-link {
+      position: absolute;
+      width: 100%;
+      height: 300px;
+      border-radius: 12px;
+      color: white;
+      font-size: 1rem;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      text-decoration: none;
+      background-color: #ccc;
+      transform: translate(calc(var(--i) * 30px), calc(var(--i) * -30px)) rotate(calc(var(--i) * 3deg));
+      z-index: calc(10 - var(--i));
+      transition: transform 1.5s ease, box-shadow 1.3s ease;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+    }
+
+    .card-link:hover {
+      transform: translate(calc(var(--i) * 30px), calc(var(--i) * -30px)) scale(1.05);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+    }
+
+    .card-link img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-top: 1rem;
+    }
+
+    .card-link:nth-child(1) {
+      background-color: #C2D6C3;
+    }
+
+    .card-link:nth-child(2) {
+      background-color: #FFE0B3;
+    }
+
+    .card-link:nth-child(3) {
+      background-color: #C8775D;
+    }
+
+    .card-link:nth-child(4) {
+      background-color: #F19D6D;
+    }
+
+    .card-link:nth-child(5) {
+      background-color: #F3C982;
+    }
+
+    .card-link:nth-child(6) {
+      background-color: #7D9C7B;
+    }
+
+    .card-link:nth-child(7) {
+      background-color: #5D8B6D;
+    }
+
+    /* Styles for Map Section */
+    .section-title {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      font-weight: 600;
+      color: #023621;
+      font-size: 2rem;
+    }
+
+    #map {
+      height: 550px;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      border: 3px solid #0C470C;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .hero .display-1 {
+        font-size: 3rem;
+      }
+      .hero .fs-3 {
+        font-size: 1.25rem;
+      }
+      .card-stack {
+        position: static;
+        height: auto;
+        overflow-y: visible;
+        scroll-snap-type: none;
+      }
+
+      .card-link {
+        position: relative;
+        height: 300px;
+        transform: none !important;
+        scroll-snap-align: none;
+        z-index: auto;
+        margin-bottom: 1rem;
+      }
+
+      .card-link:hover {
+        transform: scale(1.02) !important;
+      }
+
+      .full-height-center {
+        padding: 2.5rem 1rem;
+        min-height: auto;
+        display: block;
+      }
+
+      .text-section {
+        text-align: center;
+        margin-bottom: 1.5rem;
+      }
+
+      .expanded-nav {
+        padding: 1rem;
+      }
+      .expanded-nav a {
+        flex-grow: 1;
+        text-align: center;
+      }
+      .content-box {
+        padding: 1rem;
+      }
+      .footer-left {
+        border-right: none;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid rgba(255,255,255,0.4);
+      }
     }
   </style>
 </head>
 
-<body class="text-white">
+<body>
 
   <section class="hero position-relative text-white" style="min-height: 100vh; overflow: hidden;">
     <video autoplay muted loop playsinline class="position-absolute w-100 h-100"
@@ -51,7 +301,7 @@
               <li class="nav-item"><a class="nav-link text-white fs-5 me-md-3" href="#about">About</a></li>
               <li class="nav-item"><a class="nav-link text-white fs-5 me-md-3" href="#services">Services
                   Offered</a></li>
-              <li class="nav-item"><a class="nav-link text-white fs-5 me-md-3" href="blogs.html">Blogs</a></li>
+              <li class="nav-item"><a class="nav-link text-white fs-5 me-md-3" href="#blogs">Blogs</a></li>
               <li class="nav-item"><a class="nav-link text-white fs-5 me-md-3" href="#">Partner</a></li>
               <li class="nav-item"><a class="nav-link text-white fs-5" href="#Footer">Contacts</a></li>
             </ul>
@@ -65,9 +315,10 @@
       </a>
     </header>
 
-    <div class="d-flex flex-column justify-content-center align-items-center text-center"
+    <div class="d-flex flex-column justify-content-center align-items-center text-center px-3"
       style="min-height: calc(75vh - 150px);">
-      <h1 class="display-1 fw-bold" style="font-family:'Poppins', 'sans-serif'; text-shadow: 3px 3px 8px #000000cc;">TARA CANADA!</h1>
+      <h1 class="display-1 fw-bold" style="font-family:'Poppins', 'sans-serif'; text-shadow: 3px 3px 8px #000000cc;">
+        TARA CANADA!</h1>
       <p class="fs-3 fst-italic mt-2 mb-4" style="text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.8);">
         The Best Pathway to your future
       </p>
@@ -78,33 +329,186 @@
     </div>
   </section>
 
-  <section id="about" class="py-5 position-relative" style="background-image: url('img/logoulit.png'); background-size: cover; background-attachment: fixed; background-position: center; color: #333;">
+  <section id="about" class="pt-5 position-relative"
+    style="padding-bottom: 8rem; background-image: url('img/logoulit.png'); background-size: cover; background-attachment: fixed; background-position: center; color: #333;">
+    <div
+      style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(247, 249, 249, 0.9);">
+    </div>
+    <div class="container position-relative">
+      <div class="card overflow-hidden"
+        style="border-radius: 12px; box-shadow: 0 8px 24px rgba(16, 42, 67, 0.1); border-left: 6px solid #0C470C;">
+        <div class="card-body p-4 p-lg-5">
+          <div class="row align-items-center g-4">
+            <div class="col-lg-6 video-container">
+              <video src="vids/about_vid.mov" loop autoplay controls muted
+                poster="https://play.teleporthq.io/static/svg/videoposter.svg"></video>
+            </div>
+            <div class="col-lg-6">
+              <h2 style="color: #023621; font-weight: 700;">About Roman & Associates Immigration Services LTD</h2>
+              <p class="fs-5 my-4" style="line-height: 1.7;">We are a licensed Canadian immigration firm based in
+                Vancouver Island BC, providing expert advice on visas, permits, and sponsorships to help people achieve
+                a brighter future in Canada.</p>
+              <button id="learnMoreBtn" class="btn btn-lg text-white fw-bold" style="background-color: #0C470C;">Learn
+                More</button>
+            </div>
+          </div>
+        </div>
+        <div class="expanded-about-wrapper" id="expandedAboutWrapper">
+          <div class="card-body p-4 p-lg-5">
+            <p>Canadian Immigration Consultants are able to help and support with the processing and
+              documentation needed to work, study or immigrate to Canada. This process may seem overwhelming
+              and confusing. We at Roman & Associates Immigration Services Ltd are here to provide support and
+              services for your immigration needs and make it simple.</p>
+            <p>We are registered Canadian Immigration consultants with active good standing with ICCRC. Book an
+              appointment now to see how your life can change.</p>
+            <p>We offer Immigration Services to clients across British Columbia including cities: Nanaimo,
+              Ladysmith, Duncan, Parksville, Vancouver, Victoria, Richmond, Surrey, and the rest of Canada
+              except Quebec.</p>
+            <p>We also serve across China, Japan, Philippines, Korea, Hong Kong, Saudi Arabia, UAE, Singapore,
+              and the rest of the world.</p>
+          </div>
+
+          <nav class="expanded-nav">
+            <a href="#" data-target="mission" class="active">Mission</a>
+            <a href="#" data-target="vision">Vision</a>
+            <a href="#" data-target="objectives">Objectives</a>
+            <a href="#" data-target="background">Background</a>
+          </nav>
+
+          <div class="card-body p-4 p-lg-5 expanded-content">
+            <div class="content-box">
+              <section id="mission" class="content-section active">
+                <h3>Mission Statement</h3>
+                <p>To provide honest, transparent, and expert Canadian immigration consulting services,
+                  empowering individuals and families worldwide to achieve better opportunities and a
+                  brighter future in Canada.</p>
+              </section>
+              <section id="vision" class="content-section">
+                <h3>Vision Statement</h3>
+                <p>To be a trusted global leader in Canadian immigration consultancy—known for our
+                  integrity, personalized service, and commitment to helping clients successfully build a
+                  new life in Canada.</p>
+              </section>
+              <section id="objectives" class="content-section">
+                <h3>Company Objectives</h3>
+                <ul>
+                  <li><strong>Deliver Expert Guidance:</strong> Continuously provide up-to-date,
+                    professional immigration advice on Canadian visas including study permits, work
+                    permits, visit visas, and family sponsorships.</li>
+
+                  <li><strong>Uphold Integrity and Transparency:</strong> Maintain 100% honesty in all
+                    client interactions, fostering long-term trust and confidence in our services.</li>
+
+                  <li><strong>Stay Informed and Compliant:</strong> Attend regular industry seminars,
+                    training, and regulatory updates to ensure compliance with the latest Canadian
+                    immigration laws and policies.</li>
+
+                  <li><strong>Expand Global Reach:</strong> Serve clients not only across Canada (except
+                    Quebec) but also in Asia, the Middle East, and beyond, helping more individuals
+                    access life-changing opportunities.</li>
+
+                  <li><strong>Enhance Client Support:</strong> Offer personalized, compassionate support
+                    that motivates and encourages clients throughout their immigration journey.</li>
+
+                  <li><strong>Ensure Affordable Excellence:</strong> Provide high-quality services at
+                    reasonable fees, reflecting the care, diligence, and dedication poured into every
+                    application.</li>
+
+                  <li><strong>Promote Responsible Immigration:</strong> Actively contribute to Canada’s
+                    values by supporting qualified, deserving applicants and helping them integrate
+                    successfully into Canadian society.</li>
+                </ul>
+              </section>
+              <section id="background" class="content-section">
+                <h3>Company Background</h3>
+                <p>Roman Canadian Immigration Services is a licensed Canadian immigration consultancy firm founded on
+                  December 1, 2016, and proudly based on Vancouver Island, British Columbia, Canada. We specialize in
+                  providing professional, transparent, and client-focused immigration services for individuals and
+                  families aiming to visit, study, work, or settle in Canada.</p>
+
+                <p>Our firm is led by a Regulated Canadian Immigration Consultant (RCIC) and operates in full compliance
+                  with the Immigration Consultants of Canada Regulatory Council (ICCRC)—ensuring that all our services
+                  meet the highest standards of ethical and legal practice.</p>
+
+                <p> With nearly a decade of experience in the immigration industry, we have successfully guided clients
+                  from various parts of the world—including the Philippines, Japan, China, Korea, Saudi Arabia, UAE,
+                  Singapore, and Hong Kong—through the complex immigration process. We also serve clients across British
+                  Columbia and other Canadian provinces, excluding Quebec.</p>
+
+                <p>At Roman Canadian Immigration Services, we pride ourselves on our integrity, transparency, and
+                  dedication. We believe that each client deserves personalized attention, honest advice, and unwavering
+                  support throughout their immigration journey. Our commitment to lifelong learning and adaptation
+                  allows us to stay updated with the latest policies and pathways introduced by the Canadian government.
+                </p>
+
+                <p>Over the years, we have helped hundreds of clients realize their dream of starting a new life in
+                  Canada. Whether it's pursuing higher education, reuniting with loved ones, or securing a better job
+                  opportunity, we’re here to support our clients every step of the way.</p>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="service-section">
+      <div class="container full-height-center">
+        <div class="row justify-content-center align-items-center text-center text-md-start w-100">
+          <!-- Text Section -->
+          <div class="col-12 col-md-4 text-section mb-4 mb-md-0">
+            <h1><strong>Service Offered</strong></h1>
+            <p>High-quality solutions with expert support and convenience.</p>
+          </div>
+    
+          <!-- Cards -->
+          <div class="col-12 col-md-8">
+            <div class="card-stack">
+              <a href="Service Offered/caregiver.html" class="card-link" style="--i:0;">
+                Caregiver Permit
+                <img src="img/Fcaregiver.png" alt="Caregiver Permit" />
+              </a>
+              <a href="Service Offered/work.html" class="card-link" style="--i:1;">
+                Work Permit
+                <img src="img/Fwork.png" alt="Work Permit" />
+              </a>
+              <a href="Service Offered/visitpermit.html" class="card-link" style="--i:2;">
+                Visit (Tourist Visa) Permit
+                <img src="img/Fvisit.png" alt="Tourist Visa" />
+              </a>
+              <a href="pr.html" class="card-link" style="--i:3;">
+                Permanent Residency (PR)
+                <img src="img/Fpr.png" alt="PR" />
+              </a>
+              <a href="Service Offered/fam.html" class="card-link" style="--i:4;">
+                Family Sponsorship
+                <img src="img/Ffamily.png" alt="Family Sponsorship" />
+              </a>
+              <a href="Service Offered/lmia.html" class="card-link" style="--i:5;">
+                Labour Market Impact Assessment (LMIA)
+                <img src="img/Flmia.png" alt="LMIA" />
+              </a>
+              <a href="Service Offered/study.html" class="card-link" style="--i:6;">
+                Study Permit
+                <img src="img/Fstudy.png" alt="Study Permit" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
+
+  <section id="blogs" class="py-5 position-relative" style="background-image: url('img/logoulit.png'); background-size: cover; background-attachment: fixed; background-position: center; color: #333;">
     <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(247, 249, 249, 0.9);"></div>
     <div class="container position-relative">
-        <div class="card overflow-hidden" style="border-radius: 12px; box-shadow: 0 8px 24px rgba(16, 42, 67, 0.1); border-left: 6px solid #0C470C;">
-            <div class="card-body p-4 p-lg-5">
-                <div class="row align-items-center g-4">
-                    <div class="col-lg-6 video-container">
-                        <video src="vids/about_vid.mov" loop="true" poster="https://play.teleporthq.io/static/svg/videoposter.svg" autoplay="true" controls="true" muted=""></video>
-                    </div>
-                    <div class="col-lg-6">
-                        <h2 style="color: #023621; font-weight: 700;">About Roman & Associates Immigration Services LTD</h2>
-                        <p class="fs-5 my-4" style="line-height: 1.7;">We are a licensed Canadian immigration firm based in Vancouver Island BC, providing expert advice on visas, permits, and sponsorships to help people achieve a brighter future in Canada.</p>
-                        <a href="About.html" class="btn btn-lg text-white fw-bold" style="background-color: #0C470C;">Learn More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+      <h2 class="section-title">Event Locations</h2>
+      <div id="map"></div>
+      <div class="text-center mt-4">
+        <a href="blogs.html" class="btn btn-lg text-white fw-bold" style="background-color: #0C470C;">See More Blogs</a>
+      </div>
     </div>
   </section>
-  
-  <section id="services" class="py-5" style="background-color: #ffffff; color: #333;">
-    <div class="container">
-      <h2 class="text-center mb-5" style="color: #023621; font-weight: 700;">Our Services</h2>
-      <div id="serviceOffered">
-          </div>
-    </div>
-  </section>
+
 
   <button class="back-to-top position-fixed bottom-0 end-0 mb-4 me-4 btn btn-success rounded-circle d-none"
     onclick="scrollToTop()" style="width: 50px; height: 50px; z-index: 999;">
@@ -112,38 +516,46 @@
   </button>
 
   <footer id="Footer" style="background-color:#0C470C;color:white;padding:50px 20px;font-family:'Poppins',sans-serif;">
-    <div style="display:flex;justify-content:space-between;max-width:1100px;margin:auto;flex-wrap:wrap;gap:40px;">
-      <div style="flex:1;min-width:300px;padding:10px;text-align:center;border-right:1px solid rgba(255,255,255,0.4);">
-        <h3>Wanna Subscribe to our Newsletter?</h3>
-        <p>Get the latest updates and tips straight to your inbox.</p>
-        <button onclick="showSubscriptionForm(event)" style="background-color:#3BA43B;color:white;border:none;padding:8px 20px;
-        font-size:14px;border-radius:25px;margin-top:10px;
-        box-shadow:0 4px 10px rgba(0,0,0,0.2);cursor:pointer;">
-          Click here
-        </button>
-        <div id="subscription-form" style="display:none;margin-top:10px;">
-          <input type="email" id="email" placeholder="Enter your email" required
-            style="padding:6px 12px;width:45%;border-radius:25px;border:none;" />
-          <button onclick="submitSubscription()" style="background-color:#3BA43B;color:white;border:none;padding:8px 20px;
-          font-size:14px;border-radius:25px;margin-top:10px;
-          box-shadow:0 4px 10px rgba(0,0,0,0.2);cursor:pointer;">
-            Subscribe
-          </button>
+    <div class="container">
+        <div class="row gy-4">
+            <div class="col-lg-6 col-md-12 footer-left" style="border-right:1px solid rgba(255,255,255,0.4);">
+                <div class="text-center">
+                    <h3>Wanna Subscribe to our Newsletter?</h3>
+                    <p>Get the latest updates and tips straight to your inbox.</p>
+                    <button id="showSubFormBtn" onclick="showSubscriptionForm(event)" style="background-color:#3BA43B;color:white;border:none;padding:8px 20px;
+                    font-size:14px;border-radius:25px;margin-top:10px;
+                    box-shadow:0 4px 10px rgba(0,0,0,0.2);cursor:pointer;">
+                      Click here
+                    </button>
+                    <div id="subscription-form" style="display:none;margin-top:10px;">
+                      <input type="email" id="email" placeholder="Enter your email" required
+                        style="padding:6px 12px;width:60%;max-width:280px;border-radius:25px;border:none; color: #333;" />
+                      <button onclick="submitSubscription()" style="background-color:#3BA43B;color:white;border:none;padding:8px 20px;
+                    font-size:14px;border-radius:25px;margin-top:10px;
+                    box-shadow:0 4px 10px rgba(0,0,0,0.2);cursor:pointer;">
+                        Subscribe
+                      </button>
+                    </div>
+                    <div id="subscription-message" style="display:none;margin-top:15px;font-weight:500;"></div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 footer-right">
+                <div class="text-center text-lg-start">
+                    <h3 style="font-weight:bold;margin-bottom:15px;">Get In Touch</h3>
+                    <p>
+                      <i class="bi bi-envelope-fill me-2"></i> assessment@romancis.ca<br>
+                      <i class="bi bi-telephone-fill me-2"></i> 09171857247 | (250) 667-0565<br>
+                      <i class="bi bi-geo-alt-fill me-2"></i> City Sleep Inn Hotel and Events Centre, Brgy Sico, Lipa
+                      City, Batangas
+                    </p>
+                </div>
+            </div>
         </div>
-      </div>
-      <div style="flex:1;min-width:300px;padding:10px;">
-        <h3 style="font-weight:bold;margin-bottom:15px;">Get In Touch</h3>
-        <p>
-          <i class="bi bi-envelope-fill me-2"></i> assessment@romancis.ca<br>
-          <i class="bi bi-telephone-fill me-2"></i> 09171857247 | (250) 667-0565<br>
-          <i class="bi bi-geo-alt-fill me-2"></i> City Sleep Inn Hotel and Events Centre, Brgy Sico, Lipa
-          City, Batangas
-        </p>
-      </div>
     </div>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script>
     const backToTopBtn = document.querySelector('.back-to-top');
 
@@ -162,36 +574,114 @@
       });
     }
 
-    fetch('serviceOffered.html')
-      .then(response => response.text())
-      .then(html => {
-        const container = document.getElementById('serviceOffered');
-        container.innerHTML = html;
-
-        const scripts = container.querySelectorAll('script');
-        scripts.forEach(oldScript => {
-          const newScript = document.createElement('script');
-          newScript.text = oldScript.textContent;
-          document.body.appendChild(newScript);
-          oldScript.remove();
-        });
-      });
-
     function showSubscriptionForm(event) {
       document.getElementById("subscription-form").style.display = "block";
       event.target.style.display = "none";
     }
 
     function submitSubscription() {
-      const email = document.getElementById("email").value.trim();
-      if (email) {
-        alert("Subscribed successfully with: " + email);
-        document.getElementById("email").value = "";
-        document.getElementById("subscription-form").style.display = "none";
+      const emailInput = document.getElementById("email");
+      const email = emailInput.value.trim();
+      const messageEl = document.getElementById("subscription-message");
+
+      // Basic email validation
+      if (email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          messageEl.textContent = "Subscribed successfully!";
+          messageEl.style.color = "#3BA43B";
+          messageEl.style.display = "block";
+          emailInput.value = "";
+
+          // Hide the message and form, and show the original button after a few seconds
+          setTimeout(() => {
+              document.getElementById("subscription-form").style.display = "none";
+              messageEl.style.display = "none";
+              document.getElementById("showSubFormBtn").style.display = "inline-block";
+          }, 3000);
       } else {
-        alert("Please enter a valid email address.");
+          messageEl.textContent = "Please enter a valid email address.";
+          messageEl.style.color = "#dc3545"; // Bootstrap's danger color
+          messageEl.style.display = "block";
+
+          // Hide the error message after a few seconds
+          setTimeout(() => {
+              messageEl.style.display = "none";
+          }, 3000);
       }
     }
+
+    // --- Script for Expandable About Section ---
+    document.getElementById('learnMoreBtn').addEventListener('click', function () {
+      document.getElementById('expandedAboutWrapper').classList.toggle('is-open');
+    });
+
+    const navLinks = document.querySelectorAll('.expanded-nav a');
+    const contentSections = document.querySelectorAll('.content-section');
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        // Prevent default anchor behavior
+        e.preventDefault();
+
+        // Update active state for nav links
+        navLinks.forEach(l => l.classList.remove('active'));
+        e.currentTarget.classList.add('active');
+
+        // Hide all content sections
+        contentSections.forEach(s => s.classList.remove('active'));
+
+        // Show the target content section
+        const targetId = e.currentTarget.getAttribute('data-target');
+        document.getElementById(targetId).classList.add('active');
+      });
+    });
+
+    // --- Script for Service Offered Section ---
+    const serviceCards = document.querySelectorAll('.card-link');
+    let cardIndex = 0;
+
+    function updateCards() {
+      serviceCards.forEach((card, i) => {
+        const pos = (i - cardIndex + serviceCards.length) % serviceCards.length;
+        card.style.setProperty('--i', pos);
+      });
+    }
+
+    function isMobile() {
+      return window.innerWidth <= 768;
+    }
+
+    if (!isMobile()) {
+      updateCards();
+      setInterval(() => {
+        cardIndex = (cardIndex + 1) % serviceCards.length;
+        updateCards();
+      }, 2500);
+    }
+
+    // --- Script for Map Section ---
+    const schools = [
+      { title: "Student Life at La Salle Lipa", summary: "Experience education and values at La Salle.", coordinates: [13.9412, 121.1621], url: "blog/la-salle.html" },
+      { title: "Tech & Training at STI Lipa", summary: "A look into STI Lipa’s modern curriculum.", coordinates: [13.9416, 121.1628], url: "blog/sti-lipa.html" },
+      { title: "IELTS Prep at 9.0 Niner Calamba", summary: "Reviewing English with proven techniques.", coordinates: [14.2133, 121.1658], url: "blog/calamba.html" },
+      { title: "Learning English in Tacloban", summary: "ELA helps students master the language.", coordinates: [11.2410, 125.0016], url: "blog/tacloban.html" }
+    ];
+
+    const map = L.map("map", {
+      maxBounds: [[4.0, 116.0], [21.5, 127.5]],
+      maxBoundsViscosity: 1.0
+    }).setView([12.8797, 121.7740], 6);
+
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution: "© OpenStreetMap contributors", minZoom: 6, maxZoom: 18
+    }).addTo(map);
+
+    schools.forEach(school => {
+      const marker = L.marker(school.coordinates).addTo(map);
+      marker.bindPopup(`<h5>${school.title}</h5><p>${school.summary}</p><a href="${school.url}" target="_blank">Read Blog →</a>`);
+      marker.on('click', () => {
+        map.setView(school.coordinates, 13);
+      });
+    });
   </script>
 </body>
 
