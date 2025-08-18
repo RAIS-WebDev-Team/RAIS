@@ -172,6 +172,12 @@
         white-space: nowrap;
     }
 
+    .user-status {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
     .user-status .badge {
       background-color: var(--rais-button-maroon);
       font-size: 0.8rem;
@@ -523,7 +529,7 @@
       </nav>
 
       <div class="mt-auto footer-text">
-        &copy; 2023 RAIS
+        &copy; 2025 RAIS
       </div>
     </aside>
 
@@ -536,6 +542,7 @@
             <span class="header-title">Roman & Associates Immigration Services</span>
         </div>
         <div class="user-status d-flex align-items-center gap-2">
+          <div id="headerDate" class="me-3" style="font-weight: 500; color: var(--rais-text-light);"></div>
           <button class="btn btn-link"><i class="bi bi-power"></i></button>
           <span class="badge">ACTIVE</span>
         </div>
@@ -758,7 +765,17 @@
     }
 
     // Event Listeners
-    document.addEventListener('DOMContentLoaded', loadProfileData);
+    document.addEventListener('DOMContentLoaded', function() {
+        // Update the date dynamically in the header with the new format
+        document.getElementById('headerDate').textContent = new Date().toLocaleDateString('en-US', {
+            month: 'long',
+            day: 'numeric',
+            year: 'numeric'
+        });
+        
+        loadProfileData();
+    });
+
 
     document.getElementById('editProfileBtn').addEventListener('click', function () {
       document.getElementById('profile-view').style.display = 'none';

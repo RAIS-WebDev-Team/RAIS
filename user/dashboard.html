@@ -37,7 +37,8 @@
             font-family: 'Poppins', sans-serif;
             background-color: var(--rais-light-gray);
             color: var(--rais-text-dark);
-            overflow: hidden; /* Prevent body scroll */
+            overflow: hidden;
+            /* Prevent body scroll */
         }
 
         .main-wrapper {
@@ -55,15 +56,18 @@
             box-shadow: var(--rais-shadow);
             transition: width 0.3s ease-in-out;
             overflow: hidden;
-            position: sticky;
+            position: fixed;
+            /* <-- CHANGE TO fixed */
             top: 0;
             height: 100vh;
             display: flex;
             flex-direction: column;
+            z-index: 1031;
+            /* <-- ADD THIS to ensure it's on top */
         }
 
         .sidebar:hover {
-            width: 240px;
+            width: 280px;
         }
 
         .sidebar .logo {
@@ -161,11 +165,13 @@
         .sidebar:hover .footer-text {
             opacity: 1;
         }
-        
+
         .content-area {
             flex-grow: 1;
             height: 100vh;
             overflow-y: auto;
+            margin-left: 70px;
+            /* <-- ADD THIS LINE */
         }
 
         /* Header Styles */
@@ -558,8 +564,10 @@
             width: 100%;
             height: 100vh;
             background-color: var(--rais-bg-light);
-            z-index: 2000; /* High z-index to cover everything */
-            display: none; /* Initially hidden */
+            z-index: 2000;
+            /* High z-index to cover everything */
+            display: none;
+            /* Initially hidden */
             flex-direction: column;
         }
 
@@ -580,7 +588,7 @@
             cursor: pointer;
             margin-right: 1rem;
         }
-        
+
         .chat-title-fullscreen {
             font-weight: 600;
             font-size: 1.2rem;
@@ -760,7 +768,7 @@
                 flex-direction: column;
                 height: auto;
             }
-            
+
             .content-area {
                 height: auto;
                 overflow-y: visible;
@@ -851,7 +859,7 @@
                 bottom: 80px;
                 right: 85px;
             }
-            
+
             /* On mobile, hide the desktop chat pop-up completely */
             .chat-container {
                 display: none !important;
@@ -859,13 +867,14 @@
 
             /* --- START: MOBILE PROGRESS BAR FIX --- */
             .progress-steps {
-                padding: 20px 15px; /* Reduce padding for smaller screens */
+                padding: 20px 15px;
+                /* Reduce padding for smaller screens */
             }
 
             .progress-steps::before {
                 /* Recalculate line position based on new element sizes */
                 /* Top position is half the new circle's height, aligning it vertically */
-                top: 20px; 
+                top: 20px;
                 /* Left/Right is half the new circle's width, to connect centers */
                 left: 20px;
                 right: 20px;
@@ -884,12 +893,15 @@
             }
 
             .step-label {
-                 /* Reduce font size and allow text to wrap */
+                /* Reduce font size and allow text to wrap */
                 font-size: 0.75rem;
-                white-space: normal; /* Allow wrapping */
-                max-width: 60px; /* Constrain width to encourage wrapping */
+                white-space: normal;
+                /* Allow wrapping */
+                max-width: 60px;
+                /* Constrain width to encourage wrapping */
                 margin-top: 0;
             }
+
             /* --- END: MOBILE PROGRESS BAR FIX --- */
 
             .welcome-tour-modal .modal-header,
@@ -922,12 +934,14 @@
         <aside class="sidebar d-flex flex-column">
             <div class="logo">RAIS</div>
             <nav class="nav flex-column">
-                <a class="nav-link active" href="dashboard.html"><i class="bi bi-house-door-fill"></i><span>Dashboard</span></a>
+                <a class="nav-link active" href="dashboard.html"><i
+                        class="bi bi-house-door-fill"></i><span>Dashboard</span></a>
                 <a class="nav-link" href="book-consultation.html"><i class="bi bi-calendar-check"></i><span>Book
                         Consultation</span></a>
                 <a class="nav-link" href="statement-of-account.html"><i class="bi bi-receipt"></i><span>Statement of
                         Account</span></a>
-                <a class="nav-link" href="documents.html"><i class="bi bi-file-earmark-text"></i><span>Documents</span></a>
+                <a class="nav-link" href="documents.html"><i
+                        class="bi bi-file-earmark-text"></i><span>Documents</span></a>
                 <a class="nav-link" href="forms.html"><i class="bi bi-journal-text"></i><span>Forms</span></a>
                 <a class="nav-link" href="notifications.html"><i class="bi bi-bell"></i><span>Notifications</span></a>
                 <a class="nav-link" href="settings.html"><i class="bi bi-gear"></i><span>Settings</span></a>
@@ -946,6 +960,7 @@
                     <span class="header-title">Roman & Associates Immigration Services</span>
                 </div>
                 <div class="user-status d-flex align-items-center gap-2">
+                    <div id="headerDate" class="me-3" style="font-weight: 500; color: var(--rais-text-light);"></div>
                     <button class="tour-help-btn" id="tourToggleButton"><i class="bi bi-question-circle"></i></button>
                     <button class="btn btn-link"><i class="bi bi-power"></i></button>
                     <span class="badge">ACTIVE</span>
@@ -967,14 +982,14 @@
                                 <div class="contact-info mt-3">
                                     <div id="dashboardContactNumber">(+63) 987 654 3210</div>
                                     <div id="dashboardBirthday">Birthday: MM/DD/YYYY</div>
-                                    <div id="dashboardDate">MM/DD/YY</div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-12 col-lg-5">
                         <div class="quick-actions-card h-100 d-flex flex-column justify-content-center">
-                            <img src="../img/logoulit.png" alt="RAIS Logo" class="logo-only-img img-fluid" id="interactive-logo">
+                            <img src="../img/logoulit.png" alt="RAIS Logo" class="logo-only-img img-fluid"
+                                id="interactive-logo">
                         </div>
                     </div>
                 </div>
@@ -1097,8 +1112,8 @@
         <i class="bi bi-chat-dots"></i>
     </button>
 
-    <div class="modal fade welcome-tour-modal" id="welcomeTourModal" tabindex="-1" aria-labelledby="welcomeTourModalLabel"
-        aria-hidden="true">
+    <div class="modal fade welcome-tour-modal" id="welcomeTourModal" tabindex="-1"
+        aria-labelledby="welcomeTourModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -1114,13 +1129,16 @@
                     <h5 class="modal-title" id="welcomeTourModalLabel">Welcome</h5>
                 </div>
                 <div class="modal-body">
-                    <p id="tourContent">Welcome to your RAIS dashboard! This tour will guide you through the main features and how
+                    <p id="tourContent">Welcome to your RAIS dashboard! This tour will guide you through the main
+                        features and how
                         to navigate them.</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" id="tourPrevBtn" style="display: none;">Previous</button>
+                    <button type="button" class="btn btn-secondary" id="tourPrevBtn"
+                        style="display: none;">Previous</button>
                     <button type="button" class="btn btn-primary" id="tourNextBtn">Next</button>
-                    <button type="button" class="btn btn-secondary" id="tourSkipBtn" data-bs-dismiss="modal">Skip Tour</button>
+                    <button type="button" class="btn btn-secondary" id="tourSkipBtn" data-bs-dismiss="modal">Skip
+                        Tour</button>
                 </div>
             </div>
         </div>
@@ -1135,10 +1153,10 @@
         const mainWrapper = document.querySelector('.main-wrapper');
         const floatingBtn = document.querySelector('.floating-btn');
         const chatToggleBtn = document.querySelector('.chat-toggle-btn');
-        
+
         // Pop-up Chat (Desktop) Elements
         const popupChatContainer = document.getElementById('chatContainer');
-        
+
         // Full-screen Chat (Mobile) Elements
         const fullScreenChat = document.getElementById('full-screen-chat');
 
@@ -1147,7 +1165,7 @@
             if (window.innerWidth <= 768) {
                 // --- Full-screen logic for MOBILE ---
                 const isChatVisible = fullScreenChat.style.display === 'flex';
-                
+
                 if (isChatVisible) {
                     // Hide chat, show dashboard
                     fullScreenChat.style.display = 'none';
@@ -1193,12 +1211,12 @@
             document.getElementById('dashboardProfileName').textContent = `${profileData.firstName || 'FIRST NAME'}, ${profileData.lastName || 'LAST NAME'}`;
             document.getElementById('dashboardContactNumber').textContent = profileData.contact || '(+63) 987 654 3210';
             document.getElementById('dashboardBirthday').textContent = profileData.birthday ? `Birthday: ${profileData.birthday}` : 'Birthday: MM/DD/YYYY';
-            
-            // Update the date dynamically
-            document.getElementById('dashboardDate').textContent = new Date().toLocaleDateString('en-US', {
-                month: '2-digit',
-                day: '2-digit',
-                year: '2-digit'
+
+            // Update the date dynamically in the header with the new format
+            document.getElementById('headerDate').textContent = new Date().toLocaleDateString('en-US', {
+                month: 'long',
+                day: 'numeric',
+                year: 'numeric'
             });
 
             // Handle profile image display on dashboard
