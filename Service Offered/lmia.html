@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LMIA Program</title>
+  <title>Labor Market Impact Assesment</title>
   <link rel="icon" href="../img/logoulit.png" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
@@ -19,6 +19,24 @@
     body {
       font-family: 'Poppins', sans-serif;
       background-color: #f8f9fa;
+    }
+
+    /* Custom Scrollbar Styles */
+    ::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #3BA43B, #0C470C);
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(180deg, #45b945, #0a3a0a);
     }
 
     .highlight {
@@ -58,6 +76,11 @@
 
     .logo img {
       width: 90px;
+      transition: transform 0.3s ease;
+    }
+
+    .logo a:hover img {
+        transform: scale(1.1);
     }
 
     .hero-content {
@@ -91,8 +114,13 @@
     }
 
     .hero-btn:hover {
-      background-color: #0C470C;
-      transform: scale(1.05);
+      background-color: #167e16;
+      transform: scale(1.05) translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .nav-tabs {
+        border-bottom: none;
     }
 
     .nav-tabs .nav-link {
@@ -100,6 +128,12 @@
       font-weight: 600;
       border-radius: 0;
       border: 0;
+      transition: all 0.3s ease;
+    }
+    
+    .nav-tabs .nav-link:not(.active):hover {
+        color: #0C470C;
+        transform: translateY(-3px);
     }
 
     .nav-tabs .nav-link.active {
@@ -122,7 +156,10 @@
       max-height: 400px;
       width: 100%;
       object-fit: contain;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+
+  
 
     .text-content {
       font-size: 1.125rem;
@@ -142,65 +179,6 @@
       padding: 0 15px;
     }
 
-    /* ===== FOOTER ===== */
-    footer {
-      background-color: #0C470C;
-      color: white;
-      padding: 50px 20px;
-    }
-
-    .footer-container {
-      display: flex;
-      justify-content: space-between;
-      max-width: 1100px;
-      margin: auto;
-      flex-wrap: wrap;
-      gap: 40px;
-    }
-
-    .footer-left,
-    .footer-right {
-      flex: 1;
-      min-width: 300px;
-      padding: 10px;
-    }
-
-    .footer-left {
-      text-align: center;
-      border-right: 1px solid rgba(255, 255, 255, 0.4);
-    }
-
-    .footer-left button {
-      background-color: #3BA43B;
-      color: white;
-      border: none;
-      padding: 8px 20px;
-      font-size: 14px;
-      border-radius: 25px;
-      margin-top: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-
-    .footer-left button:hover {
-      background-color: #3BA43B;
-    }
-
-    .footer-left #subscription-form input {
-      padding: 6px 12px;
-      width: 35%;
-      border-radius: 25px;
-      border: none;
-      margin-right: 10px;
-    }
-
-    .footer-right h3 {
-      font-weight: bold;
-      margin-bottom: 15px;
-    }
-
-    /* ===== NAV BUTTONS ===== */
     .nav-btn {
       width: 50px;
       height: 50px;
@@ -228,12 +206,10 @@
     .nav-btn:disabled {
       background-color: #167e16;
       color: #fff;
-      box-shadow: 0 4px 12px rgba(1, 62, 33, 0.5);
       cursor: not-allowed;
       transform: none;
     }
 
-    /* ===== MEDIA QUERIES ===== */
     @media (min-width: 769px) {
       .tab-navigation-buttons {
         display: none;
@@ -260,50 +236,6 @@
     }
 
     @media (max-width: 768px) {
-
-      .footer-container {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 10px;
-      }
-
-      .footer-left {
-        border-right: none;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-        margin-bottom: 10px;
-        padding-bottom: 15px;
-        font-size: 12px;
-      }
-
-      .footer-right h3 {
-        font-size: 20px;
-      }
-
-      .footer-right i {
-        font-size: 8px;
-      }
-
-      .footer-right p {
-        font-size: 12px;
-      }
-
-      .footer-left #subscription-form {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .footer-left #subscription-form input {
-        width: 80%;
-        margin: 0 0 10px 0;
-      }
-
-      .footer-left button {
-        width: 100%;
-        max-width: 150px;
-      }
-
       .tab-pane .row {
         flex-direction: column-reverse;
       }
@@ -314,7 +246,10 @@
         flex-direction: column;
       }
 
-      .text-content {
+      .text-content,
+      #process li,
+      #documents ul,
+      #faq p {
         font-size: 14px;
       }
 
@@ -324,29 +259,14 @@
         padding-right: 1rem !important;
       }
 
-      #process li {
-        font-size: 14px;
-      }
-
-      #documents ul {
-        font-size: 14px;
-      }
-
-      #faq p {
-        font-size: 14px
-      }
-
       .hero-btn {
         font-size: 12px;
         padding: 10px 15px;
       }
 
-      #info h4 {
-        font-size: 18px;
-      }
-
+      #info h4,
       #info h5 {
-        font-size: 16px;
+        font-size: 18px;
       }
     }
   </style>
@@ -356,7 +276,9 @@
   <header>
     <div class="overlay-box"></div>
     <div class="logo">
-      <img src="../img/logo1.png" alt="logo" />
+      <a href="../index.html">
+        <img src="../img/logowhite.png" alt="logo" />
+      </a>
     </div>
     <div class="hero-content text-white text-center">
       <h1>Labour Market Impact Assessment (LMIA)</h1>
@@ -364,7 +286,7 @@
         An LMIA is a document in Canada that evaluates the effect of hiring a foreign worker on the local job
         market. A positive LMIA shows a need for a foreign worker because no local candidates are available.
       </p>
-      <a href="#" class="btn hero-btn">Apply Now</a>
+      <a href="../form.html" class="btn hero-btn">Apply Now</a>
     </div>
   </header>
 
@@ -417,7 +339,7 @@
                 </p>
               </div>
               <div class="col-lg-6 text-center">
-                <img src="../img/lmia.png" alt="LMIA Image" class="img-fluid rounded tab-image" />
+                <img src="../img/lmia1.png" alt="LMIA Image" class="img-fluid rounded tab-image" />
               </div>
             </div>
           </div>
@@ -615,7 +537,6 @@
                       applications are for positions paying below that threshold.</p>
                   </div>
                   <hr class="my-3">
-
                   <div class="faq-item">
                     <p><strong>Q2:</strong> Do I need an LMIA for every type of work permit?</p>
                     <p><strong>A:</strong> No, not all work permits require an LMIA. Some workers
@@ -624,7 +545,6 @@
                       Mobility Program.</p>
                   </div>
                   <hr class="my-3">
-
                   <div class="faq-item">
                     <p><strong>Q3:</strong> How long does it take to get a positive LMIA?</p>
                     <p><strong>A:</strong> The processing time for an LMIA application can take
@@ -634,7 +554,6 @@
                       volume of requests being processed.</p>
                   </div>
                   <hr class="my-3">
-
                   <div class="faq-item">
                     <p><strong>Q4:</strong> Can I hire a foreign worker without advertising the job
                       for
@@ -645,7 +564,6 @@
                       situation qualifies for an exemption or expedited process.</p>
                   </div>
                   <hr class="my-3">
-
                   <div class="faq-item">
                     <p><strong>Q5:</strong> What happens if my LMIA is denied?</p>
                     <p><strong>A:</strong> If your LMIA application is denied, you can either
@@ -655,7 +573,6 @@
                       to make adjustments to your recruitment process.</p>
                   </div>
                   <hr class="my-3">
-
                   <div class="faq-item">
                     <p><strong>Q6:</strong> Is there any way to speed up the LMIA process?</p>
                     <p><strong>A:</strong> The LMIA process can take time, but ensuring your
@@ -687,52 +604,10 @@
     </section>
   </main>
 
-  <footer>
-    <div class="footer-container">
-      <div class="footer-left">
-        <h3>Wanna Subscribe to our Newsletter?</h3>
-        <p>Get the latest updates and tips straight to your inbox.</p>
-        <button onclick="showSubscriptionForm()" class="subscribe-btn">Click here</button>
-        <div id="subscription-form" style="display: none;">
-          <input type="email" id="email" placeholder="Enter your email" required />
-          <button onclick="submitSubscription()">Subscribe</button>
-        </div>
-      </div>
-      <div class="footer-right">
-        <h3>Get In Touch</h3>
-        <p>
-          <i class="bi bi-envelope-fill me-2"></i> assessment@romancis.ca<br />
-          <i class="bi bi-telephone-fill me-2"></i> 09171857247 | (250) 667-0565<br />
-          <i class="bi bi-geo-alt-fill me-2"></i> City Sleep Inn Hotel and Events Centre, Brgy Sico, Lipa
-          City, Batangas
-        </p>
-      </div>
-    </div>
-  </footer>
+  <div id="footer-placeholder"></div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    function showSubscriptionForm() {
-      const form = document.getElementById("subscription-form");
-      const button = document.querySelector(".subscribe-btn");
-      if (form && button) {
-        form.style.display = "block";
-        button.style.display = "none";
-      }
-    }
-
-    function submitSubscription() {
-      const emailInput = document.getElementById("email");
-      if (emailInput && emailInput.value) {
-        alert("Subscribed successfully with: " + emailInput.value);
-        emailInput.value = "";
-        document.getElementById("subscription-form").style.display = "none";
-        document.querySelector(".subscribe-btn").style.display = "block";
-      } else {
-        alert("Please enter a valid email address.");
-      }
-    }
-
     document.addEventListener("DOMContentLoaded", function () {
       const tabs = document.querySelectorAll('#tabMenu .nav-link');
       const tabList = Array.from(tabs);
@@ -776,6 +651,117 @@
       });
 
       updateButtons();
+    });
+
+    // SCRIPT TO FETCH AND LOAD FOOTER
+    document.addEventListener("DOMContentLoaded", function() {
+        const footerPaths = [
+            '../footer.html',
+            'footer.html',
+            '/footer.html'
+        ];
+
+        async function findAndLoadFooter() {
+            for (const path of footerPaths) {
+                try {
+                    console.log(`Attempting to fetch footer from: "${path}"`);
+                    const response = await fetch(path);
+                    if (response.ok) {
+                        console.log(`✅ Success! Found and loaded footer from "${path}"`);
+                        const data = await response.text();
+                        injectFooter(data);
+                        return; // Exit after successful load
+                    } else {
+                        console.warn(`⚠️ Failed to load from "${path}". Status: ${response.status}`);
+                    }
+                } catch (error) {
+                    console.error(`❌ Error fetching from "${path}":`, error);
+                }
+            }
+            console.error("Fatal: Could not load footer.html from any attempted paths.");
+            const placeholder = document.getElementById("footer-placeholder");
+            if (placeholder) {
+                placeholder.innerHTML = `<p class="text-center text-danger p-4"><b>Footer could not be loaded.</b><br>Please check the Developer Console (Right-click -> Inspect -> Console) for more details.</p>`;
+            }
+        }
+
+        function injectFooter(data) {
+            const placeholder = document.getElementById("footer-placeholder");
+            if (!placeholder) {
+                console.error("Could not find the #footer-placeholder div.");
+                return;
+            }
+
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(data, 'text/html');
+
+            doc.head.querySelectorAll('style').forEach(style => {
+                document.head.appendChild(style.cloneNode(true));
+            });
+            
+            placeholder.innerHTML = doc.body.innerHTML;
+            
+            // Manually attach event listeners for the new content.
+            const footerTop = placeholder.querySelector('#footerTop');
+            const footerDivider = placeholder.querySelector('#footerDivider');
+            const mainFooter = placeholder.querySelector('#mainFooter');
+            const upButton = placeholder.querySelector('#footer-btn-up');
+            const topCloseButton = placeholder.querySelector('#footerTopClose');
+            const subscribeBtn = placeholder.querySelector('.subscribe-btn');
+            const subscriptionForm = placeholder.querySelector('#subscription-form');
+            const submitSubscriptionBtn = placeholder.querySelector('#subscription-form button');
+            const emailInput = placeholder.querySelector('#email');
+            const footerLeft = placeholder.querySelector('.footer-left');
+
+            if (upButton) {
+                upButton.addEventListener('click', () => {
+                    footerTop.classList.add('show');
+                    mainFooter.classList.add('hide');
+                    footerDivider.classList.add('show');
+                });
+            }
+
+            if (topCloseButton) {
+                topCloseButton.addEventListener('click', () => {
+                    footerTop.classList.remove('show');
+                    mainFooter.classList.remove('hide');
+                    footerDivider.classList.remove('show');
+                });
+            }
+
+            if (subscribeBtn) {
+                subscribeBtn.addEventListener('click', () => {
+                    if (subscriptionForm) subscriptionForm.style.display = "flex";
+                    subscribeBtn.style.display = "none";
+                });
+            }
+
+            if (submitSubscriptionBtn) {
+                submitSubscriptionBtn.addEventListener('click', () => {
+                    if (emailInput && emailInput.value) {
+                        const successMessage = document.createElement('p');
+                        successMessage.textContent = "Thank you for subscribing!";
+                        successMessage.style.color = "#3BA43B";
+                        successMessage.style.fontWeight = "bold";
+
+                        if (subscriptionForm && footerLeft && subscribeBtn) {
+                            subscriptionForm.style.display = "none";
+                            footerLeft.insertBefore(successMessage, subscribeBtn);
+
+                            setTimeout(() => {
+                                successMessage.remove();
+                                subscribeBtn.style.display = "block";
+                                emailInput.value = "";
+                            }, 3000);
+                        }
+                    } else if (emailInput) {
+                        emailInput.placeholder = "Please enter a valid email!";
+                    }
+                });
+            }
+        }
+
+        findAndLoadFooter();
     });
   </script>
 </body>

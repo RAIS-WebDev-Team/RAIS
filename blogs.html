@@ -3,9 +3,10 @@
 
 <head>
   <meta charset="UTF-8" />
-  <title>RAIS Blogs & Events</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RAIS Blogs & Events</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="../img/logoulit.png" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -28,10 +29,9 @@
     body {
       margin: 0;
       font-family: var(--font-family);
-      background: var(--background-color);
+      background-color: var(--background-color);
       color: var(--text-color);
     }
-
 
     header {
       background: var(--surface-color);
@@ -41,6 +41,9 @@
       align-items: center;
       border-bottom: 1px solid var(--light-gray);
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
 
     .logo-link {
@@ -61,19 +64,6 @@
       letter-spacing: 1.5px;
       font-weight: 600;
     }
-
-    header {
-      background: var(--surface-color);
-      padding: 1rem 5%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid var(--light-gray);
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-      top: 0;
-      z-index: 1000;
-    }
-
 
     header nav a {
       margin: 0 1rem;
@@ -210,71 +200,10 @@
         font-size: 1.15rem;
         margin-bottom: 1rem;
         transition: color 0.3s ease;
-        /* --- FIX: Ensure consistent height and alignment --- */
-        min-height: 3.25rem; /* Calculated for 2 lines of text (1.15 * 1.4 * 2) */
+        min-height: 3.25rem; 
         display: flex;
         align-items: center;
     }
-
-    /* --- Footer --- */
-    footer {
-      background-color: var(--primary-color);
-      color: white;
-      padding: 30px 10px;
-      margin-top: 2rem;
-      font-family: var(--font-family);
-    }
-
-    .footer-container {
-      display: flex;
-      justify-content: space-between;
-      max-width: 1100px;
-      margin: auto;
-      flex-wrap: wrap;
-      gap: 40px;
-    }
-
-    .footer-left,
-    .footer-right {
-      flex: 1;
-      min-width: 300px;
-      padding: 10px;
-    }
-
-    .footer-left {
-      text-align: center;
-      border-right: 1px solid rgba(255, 255, 255, 0.4);
-    }
-
-    .footer-left h3,
-    .footer-right h3 {
-      font-weight: bold;
-      margin-bottom: 15px;
-    }
-
-    .footer-left p,
-    .footer-right p {
-      font-size: 14px;
-      color: #ddd;
-      line-height: 1.8;
-    }
-
-    .footer-left button {
-      background-color: #1ac522;
-      color: white;
-      border: none;
-      padding: 8px 20px;
-      font-size: 14px;
-      border-radius: 20px;
-      cursor: pointer;
-    }
-
-    .footer-right p i {
-      margin-right: 10px;
-      width: 15px;
-    }
-
-
 
     @media (max-width: 991px) {
       header {
@@ -313,22 +242,6 @@
       .menu-toggle {
         display: flex;
       }
-
-       .footer-container {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .footer-left {
-        border-right: none;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-        padding-bottom: 30px;
-        margin-bottom: 30px;
-      }
-
-      .footer-right {
-        padding-top: 0;
-      }
     }
 
     @media (max-width: 768px) {
@@ -362,6 +275,31 @@
         font-size: 1rem;
       }
     }
+    /* For WebKit browsers (Chrome, Safari, Edge) */
+ ::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #3BA43B, #0C470C);
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(180deg, #45b945, #0a3a0a);
+    }
+
+    .highlight {
+      color: #3BA43B;
+      font-weight: bold;
+      text-decoration: underline;
+      text-underline-offset: 8px;
+    }
+
   </style>
 </head>
 
@@ -378,7 +316,7 @@
     <nav id="nav-links">
       <a href="#map">Event</a>
       <a href="#blogs">Blogs</a>
-      <a href="#contact">Contact</a>
+      <a href="#footer-placeholder">Contact</a>
     </nav>
   </header>
 
@@ -446,35 +384,7 @@
     </section>
   </main>
 
-  <footer id="contact">
-    <div class="footer-container">
-      <div class="footer-left">
-        <h3>Wanna Subscribe to our News Letter?</h3>
-        <p>Subscribe to our newsletter for the latest updates on new features and product releases.</p>
-        <button id="show-form-btn" onclick="showSubscriptionForm()" style="padding: 10px 20px; border-radius: 20px;">
-          Click here
-        </button>
-        <div id="subscription-form" style="display: none; margin-top: 10px;">
-          <input type="email" id="email" placeholder="Enter your email" required
-            style="padding: 6px 10px 6px 20px; width: 45%; border-radius: 25px; border: 1px solid #ccc; outline: none; color: #333;" />
-          <button onclick="submitSubscription()" style="padding: 6px 16px; margin-left: 5px; border-radius: 25px;">
-            Subscribe
-          </button>
-        </div>
-      </div>
-      <div class="footer-right">
-        <h3>Get In Touch</h3>
-        <p>
-          <i class="fas fa-envelope"></i> : assessment@romancis.ca <br>
-          <i class="fas fa-phone-alt"></i> : 09171857247 | (250) 667-0565<br>
-          <i class="fas fa-map-marker-alt"></i> : City Sleep Inn Hotel and Events Centre, Barangay
-          Sico, Lipa
-          City, Batangas
-        </p>
-      </div>
-
-    </div>
-  </footer>
+<div id="footer-placeholder"></div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -517,24 +427,117 @@
         }
       });
     });
-  </script>
-  <script>
-    function showSubscriptionForm() {
-      document.getElementById("subscription-form").style.display = "block";
-      document.getElementById("show-form-btn").style.display = "none";
-    }
 
-    function submitSubscription() {
-      const email = document.getElementById("email").value;
-      if (email && email.includes('@')) {
-        alert("Subscribed successfully with: " + email);
-        document.getElementById("email").value = "";
-        document.getElementById("subscription-form").style.display = "none";
-        document.getElementById("show-form-btn").style.display = "inline-block";
-      } else {
-        alert("Please enter a valid email address.");
-      }
-    }
+    // SCRIPT TO FETCH AND LOAD FOOTER
+    document.addEventListener("DOMContentLoaded", function() {
+        const footerPaths = [
+            '../footer.html',
+            'footer.html',
+            '/footer.html'
+        ];
+
+        async function findAndLoadFooter() {
+            for (const path of footerPaths) {
+                try {
+                    console.log(`Attempting to fetch footer from: "${path}"`);
+                    const response = await fetch(path);
+                    if (response.ok) {
+                        console.log(`✅ Success! Found and loaded footer from "${path}"`);
+                        const data = await response.text();
+                        injectFooter(data);
+                        return; // Exit after successful load
+                    } else {
+                        console.warn(`⚠️ Failed to load from "${path}". Status: ${response.status}`);
+                    }
+                } catch (error) {
+                    console.error(`❌ Error fetching from "${path}":`, error);
+                }
+            }
+            console.error("Fatal: Could not load footer.html from any attempted paths.");
+            const placeholder = document.getElementById("footer-placeholder");
+            if (placeholder) {
+                placeholder.innerHTML = `<p class="text-center text-danger p-4"><b>Footer could not be loaded.</b><br>Please check the Developer Console (Right-click -> Inspect -> Console) for more details.</p>`;
+            }
+        }
+
+        function injectFooter(data) {
+            const placeholder = document.getElementById("footer-placeholder");
+            if (!placeholder) {
+                console.error("Could not find the #footer-placeholder div.");
+                return;
+            }
+
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(data, 'text/html');
+
+            doc.head.querySelectorAll('style').forEach(style => {
+                document.head.appendChild(style.cloneNode(true));
+            });
+            
+            placeholder.innerHTML = doc.body.innerHTML;
+            
+            // Manually attach event listeners for the new content.
+            const footerTop = placeholder.querySelector('#footerTop');
+            const footerDivider = placeholder.querySelector('#footerDivider');
+            const mainFooter = placeholder.querySelector('#mainFooter');
+            const upButton = placeholder.querySelector('#footer-btn-up');
+            const topCloseButton = placeholder.querySelector('#footerTopClose');
+            const subscribeBtn = placeholder.querySelector('.subscribe-btn');
+            const subscriptionForm = placeholder.querySelector('#subscription-form');
+            const submitSubscriptionBtn = placeholder.querySelector('#subscription-form button');
+            const emailInput = placeholder.querySelector('#email');
+            const footerLeft = placeholder.querySelector('.footer-left');
+
+            if (upButton) {
+                upButton.addEventListener('click', () => {
+                    footerTop.classList.add('show');
+                    mainFooter.classList.add('hide');
+                    footerDivider.classList.add('show');
+                });
+            }
+
+            if (topCloseButton) {
+                topCloseButton.addEventListener('click', () => {
+                    footerTop.classList.remove('show');
+                    mainFooter.classList.remove('hide');
+                    footerDivider.classList.remove('show');
+                });
+            }
+
+            if (subscribeBtn) {
+                subscribeBtn.addEventListener('click', () => {
+                    if (subscriptionForm) subscriptionForm.style.display = "flex";
+                    subscribeBtn.style.display = "none";
+                });
+            }
+
+            if (submitSubscriptionBtn) {
+                submitSubscriptionBtn.addEventListener('click', () => {
+                    if (emailInput && emailInput.value) {
+                        const successMessage = document.createElement('p');
+                        successMessage.textContent = "Thank you for subscribing!";
+                        successMessage.style.color = "#3BA43B";
+                        successMessage.style.fontWeight = "bold";
+
+                        if (subscriptionForm && footerLeft && subscribeBtn) {
+                            subscriptionForm.style.display = "none";
+                            footerLeft.insertBefore(successMessage, subscribeBtn);
+
+                            setTimeout(() => {
+                                successMessage.remove();
+                                subscribeBtn.style.display = "block";
+                                emailInput.value = "";
+                            }, 3000);
+                        }
+                    } else if (emailInput) {
+                        emailInput.placeholder = "Please enter a valid email!";
+                    }
+                });
+            }
+        }
+
+        findAndLoadFooter();
+    });
   </script>
 </body>
 
