@@ -1,35 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Footer</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <title>Sliding Footer with Arrows</title>
+
+    <!-- Bootstrap Icons CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
     <style>
-        /* General Styles */
         body {
+            margin: 0;
+            padding-bottom: 400px;
             font-family: 'Poppins', sans-serif;
         }
 
-        /* FOOTER STYLES */
-        footer#mainFooter {
-            background-color: #0C470C;
-            color: white;
-            padding: 30px 20px;
-            transition: padding 0.4s ease, opacity 0.4s ease, max-height 0.4s ease;
-            max-height: 1000px;
-            opacity: 1;
-            overflow: hidden;
+        .footer-wrapper {
             position: relative;
+            width: 100%;
+            overflow: hidden;
+            transition: height 0.5s ease-in-out;
         }
 
-        footer#mainFooter.hide {
-            max-height: 0;
-            opacity: 0;
-            padding-top: 0;
-            padding-bottom: 0;
+        #mainFooter,
+        .footer-top {
+            position: absolute;
+            width: 100%;
+            top: 0;
+            left: 0;
+            transition: transform 0.5s ease-in-out;
+            box-sizing: border-box;
+        }
+
+        #mainFooter {
+            transform: translateY(0);
+            z-index: 2;
+        }
+
+        .footer-top {
+            transform: translateY(100%);
+            z-index: 1;
+        }
+
+        .footer-top.show {
+            transform: translateY(0);
+            z-index: 2;
+        }
+
+        #mainFooter.hide {
+            transform: translateY(-100%);
+            z-index: 1;
+        }
+
+        #mainFooter {
+            background-color: #0C470C;
+            color: white;
+            padding: 30px 20px 15px;
         }
 
         .footer-container {
@@ -38,7 +65,8 @@
             gap: 40px;
             align-items: flex-start;
             padding: 40px;
-            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .footer-left,
@@ -57,120 +85,11 @@
             padding-left: 40px;
         }
 
-        .footer-left .subscribe-btn {
-            background-color: #3BA43B;
-            color: white;
-            border: none;
-            padding: 8px 20px;
-            font-size: 14px;
-            border-radius: 25px;
-            margin-top: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            cursor: pointer;
-            transition: background 0.3s ease;
-            width: fit-content;
-            align-self: center;
-        }
-
-        .footer-left .subscribe-btn:hover {
-            background-color: #339933;
-        }
-
-        #subscription-form {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 12px;
-            padding: 8px 0;
-        }
-
-        #subscription-form input {
-            padding: 6px 12px;
-            width: 60%;
-            border-radius: 25px;
-            border: none;
-            outline: none;
-        }
-
-        #subscription-form button {
-            background-color: #339933;
-            color: white;
-            border: none;
-            padding: 8px 20px;
-            font-size: 14px;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-
-        #subscription-form button:hover {
-            background-color: #2d7d2d;
-        }
-
-        .footer-toggle {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            z-index: 5;
-        }
-
-        .separator-btn {
-            background-color: rgba(255, 255, 255, 0.2);
-            color: #ffffff;
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            border-radius: 50%;
-            width: 36px;
-            height: 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
-
-        .separator-btn:hover {
-            background-color: #339933;
-            transform: scale(1.08);
-        }
-
-        .footer-divider {
-            border: 0;
-            height: 1px;
-            background-color: white;
-            max-width: 1200px;
-            margin: 0 auto;
-            opacity: 0;
-            max-height: 0;
-            overflow: hidden;
-            transition: opacity 0.35s ease, max-height 0.35s ease, margin 0.35s ease;
-        }
-
-        .footer-divider.show {
-            opacity: 1;
-            max-height: 20px;
-            margin: 6px auto 0;
-        }
-
         .footer-top {
             background-image: url('../img/lake.jpg');
             background-size: cover;
             background-position: center;
-            position: relative;
             color: white;
-            opacity: 0;
-            max-height: 0;
-            overflow: hidden;
-            padding: 0 40px;
-            transition: opacity 0.4s ease-in-out, max-height 0.4s ease-in-out, padding 0.4s ease;
-        }
-
-        .footer-top.show {
-            opacity: 1;
-            max-height: 800px;
             padding: 50px 40px;
         }
 
@@ -179,15 +98,7 @@
             position: absolute;
             inset: 0;
             background-color: rgba(0, 0, 0, 0.35);
-            backdrop-filter: blur(4px);
-            border-radius: 15px;
-        }
-
-        .footer-top .top-close {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            z-index: 2;
+            backdrop-filter: blur(3px);
         }
 
         .footer-links-container {
@@ -227,132 +138,232 @@
             text-decoration: underline;
         }
 
-        /* MEDIA QUERIES FOR FOOTER */
+        .footer-toggle {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 5;
+        }
+
+        .top-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 5;
+        }
+
+        .separator-btn {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            font-size: 18px;
+        }
+
+        .separator-btn:hover {
+            background-color: #339933;
+            transform: scale(1.08);
+        }
+
+        .subscribe-btn {
+            background-color: #3BA43B;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            font-size: 14px;
+            border-radius: 25px;
+            margin-top: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: background 0.3s ease;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .subscribe-btn:hover {
+            background-color: #339933;
+        }
+
+        #subscription-form {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 12px;
+            padding: 8px 0;
+        }
+
+        #subscription-form input {
+            padding: 6px 12px;
+            width: 60%;
+            border-radius: 25px;
+            border: none;
+            outline: none;
+        }
+
+        #subscription-form button {
+            background-color: #339933;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            font-size: 14px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        #subscription-form button:hover {
+            background-color: #2d7d2d;
+        }
+
+        /* Social icons */
+        .footer-socials {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .footer-socials a {
+            display: inline-block;
+            margin: 0 10px;
+            font-size: 22px;
+            color: white;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+
+        .footer-socials a:hover {
+            color: #3BA43B;
+            transform: scale(1.15);
+        }
+
         @media (max-width: 768px) {
             .footer-container {
                 flex-direction: column;
-                text-align: center;
+                align-items: center;
+                gap: 30px;
+                padding: 30px 15px;
             }
 
             .footer-left {
                 border-right: none;
                 border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-                margin-bottom: 30px;
                 padding-bottom: 30px;
+                width: 100%;
             }
 
             .footer-right {
-                padding-left: 0;
-            }
-
-            #subscription-form input,
-            #subscription-form button {
-                width: 80%;
-                margin-bottom: 10px; /* Spacing for stacked items */
-            }
-            
-            #subscription-form {
-                flex-direction: column;
-                align-items: center;
+                padding-left: 20px;
+                width: 100%;
             }
 
             .footer-links-container {
                 flex-direction: column;
                 align-items: center;
                 text-align: center;
-                gap: 30px;
+                gap: 25px;
+            }
+
+            #subscription-form {
+                flex-direction: column;
+                gap: 15px;
                 width: 100%;
             }
 
-            .footer-column {
-                width: 100%;
-                max-width: 350px;
-                padding-bottom: 20px;
-                position: relative;
-            }
-
-            .footer-column:not(:last-child) {
-                border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-                margin-bottom: 20px;
+            #subscription-form input,
+            #subscription-form button {
+                width: 90%;
+                max-width: 300px;
             }
         }
     </style>
 </head>
+
 <body>
 
-    <!-- Collapsible Top Footer -->
-    <div class="footer-top" id="footerTop">
-        <button id="footerTopClose" class="separator-btn top-close" aria-label="Hide footer top">
-            <i class="bi bi-chevron-down"></i>
-        </button>
-        <div class="footer-links-container">
-            <div class="footer-column">
-                <h4>Company</h4>
-                <ul>
-                    <li><a href="../About.html">About Us</a></li>
-                    <li><a href="../blogs.html">Blogs</a></li>
-                    <li><a href="#">Contacts</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h4>Resources</h4>
-                <ul>
-                    <li><a href="#">Help Center</a></li>
-                    <li><a href="#">Guides</a></li>
-                    <li><a href="#">FAQ</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h4>Legal</h4>
-                <ul>
-                    <li><a href="#">Terms</a></li>
-                    <li><a href="#">Privacy</a></li>
-                    <li><a href="#">Cookies</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <!-- Divider -->
-    <hr class="footer-divider" id="footerDivider" />
-
-    <!-- Main Footer -->
-    <footer id="mainFooter">
-        <div class="footer-toggle">
-            <button id="footer-btn-up" class="separator-btn" aria-label="Show footer top">
-                <i class="bi bi-chevron-up"></i>
+    <div class="footer-wrapper" id="footerWrapper">
+        <div class="footer-top" id="footerTop">
+            <button id="footerTopClose" class="separator-btn top-close" aria-label="Hide footer top">
+                <i class="bi bi-chevron-down"></i>
             </button>
-        </div>
-        <div class="footer-container">
-            <div class="footer-left">
-                <h3>Wanna Subscribe to our Newsletter?</h3>
-                <p>Get the latest updates and tips straight to your inbox.</p>
-                <button onclick="showSubscriptionForm()" class="subscribe-btn">Click here</button>
-                <div id="subscription-form" style="display: none;">
-                    <input type="email" id="email" placeholder="Enter your email" required />
-                    <button onclick="submitSubscription()">Subscribe</button>
+            <div class="footer-links-container">
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="About.html">About Us</a></li>
+                        <li><a href="blogs.html">Blogs</a></li>
+                        <li><a href="#">Contacts</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Guides</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Terms</a></li>
+                        <li><a href="#">Privacy</a></li>
+                        <li><a href="#">Cookies</a></li>
+                    </ul>
                 </div>
             </div>
-            <div class="footer-right">
-                <h3>Get In Touch</h3>
-                <p>
-                    <i class="bi bi-envelope-fill me-2"></i> assessment@romancis.ca<br />
-                    <i class="bi bi-telephone-fill me-2"></i> 09171857247 | (250) 667-0565<br />
-                    <i class="bi bi-geo-alt-fill me-2"></i> City Sleep Inn Hotel and Events Centre, Barangay Sico, Lipa
-                    City, Batangas
-                </p>
-            </div>
         </div>
-    </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <footer id="mainFooter">
+            <div class="footer-toggle">
+                <button id="footer-btn-up" class="separator-btn" aria-label="Show footer top">
+                    <i class="bi bi-chevron-up"></i>
+                </button>
+            </div>
+            <div class="footer-container">
+                <div class="footer-left">
+                    <h3>Wanna Subscribe to our Newsletter?</h3>
+                    <p>Get the latest updates and tips straight to your inbox.</p>
+                    <button onclick="showSubscriptionForm()" class="subscribe-btn">Click here</button>
+                    <div id="subscription-form" style="display: none;">
+                        <input type="email" id="email" placeholder="Enter your email" required />
+                        <button onclick="submitSubscription()">Subscribe</button>
+                    </div>
+                </div>
+                <div class="footer-right">
+                    <h3>Get In Touch</h3>
+                    <p>
+                        <i class="bi bi-envelope-fill me-2"></i> assessment@romancis.ca<br />
+                        <i class="bi bi-telephone-fill me-2"></i> 09171857247 | (250) 667-0565<br />
+                        <i class="bi bi-geo-alt-fill me-2"></i> City Sleep Inn Hotel and Events Centre, Barangay Sico,
+                        Lipa City,
+                        Batangas
+                    </p>
+                </div>
+            </div>
+
+            <!-- Socials -->
+            <div class="footer-socials">
+                <a href="https://facebook.com" target="_blank"><i class="bi bi-facebook"></i></a>
+                <a href="https://twitter.com" target="_blank"><i class="bi bi-twitter"></i></a>
+                <a href="https://instagram.com" target="_blank"><i class="bi bi-instagram"></i></a>
+                <a href="https://linkedin.com" target="_blank"><i class="bi bi-linkedin"></i></a>
+            </div>
+        </footer>
+    </div>
+
     <script>
-        // SCRIPT FOR FOOTER
         function showSubscriptionForm() {
             const form = document.getElementById("subscription-form");
             const button = document.querySelector(".subscribe-btn");
             if (form && button) {
-                form.style.display = "flex"; // Changed to flex for better alignment
+                form.style.display = "flex";
                 button.style.display = "none";
             }
         }
@@ -360,53 +371,36 @@
         function submitSubscription() {
             const emailInput = document.getElementById("email");
             if (emailInput && emailInput.value) {
-                // In a real application, you would send this to a server.
-                // For now, we'll just show a success message.
-                const form = document.getElementById("subscription-form");
-                const button = document.querySelector(".subscribe-btn");
-                const footerLeft = document.querySelector(".footer-left");
-                
-                // Display a success message
-                const successMessage = document.createElement('p');
-                successMessage.textContent = "Thank you for subscribing!";
-                successMessage.style.color = "#3BA43B";
-                successMessage.style.fontWeight = "bold";
-
-                // Hide form and show the message
-                form.style.display = "none";
-                footerLeft.insertBefore(successMessage, button);
-                
-                // Optionally, show the button again after a delay
-                setTimeout(() => {
-                    successMessage.remove();
-                    button.style.display = "block";
-                    emailInput.value = "";
-                }, 3000); // Hide message and show button after 3 seconds
-
+                alert("Subscribed successfully with: " + emailInput.value);
+                emailInput.value = "";
+                document.getElementById("subscription-form").style.display = "none";
+                document.querySelector(".subscribe-btn").style.display = "block";
             } else {
-                // You can add a more user-friendly message here
-                emailInput.placeholder = "Please enter a valid email!";
+                alert("Please enter a valid email address.");
             }
         }
 
         document.addEventListener('DOMContentLoaded', function () {
+            const wrapper = document.getElementById('footerWrapper');
             const footerTop = document.getElementById('footerTop');
-            const footerDivider = document.getElementById('footerDivider');
             const mainFooter = document.getElementById('mainFooter');
-
             const upButton = document.getElementById('footer-btn-up');
             const topCloseButton = document.getElementById('footerTopClose');
 
+            if (wrapper && mainFooter) {
+                wrapper.style.height = mainFooter.offsetHeight + 'px';
+            }
+
             function showFooterTop() {
+                wrapper.style.height = footerTop.offsetHeight + 'px';
                 footerTop.classList.add('show');
                 mainFooter.classList.add('hide');
-                footerDivider.classList.add('show');
             }
 
             function showMainFooter() {
+                wrapper.style.height = mainFooter.offsetHeight + 'px';
                 footerTop.classList.remove('show');
                 mainFooter.classList.remove('hide');
-                footerDivider.classList.remove('show');
             }
 
             if (upButton) upButton.addEventListener('click', showFooterTop);
@@ -414,4 +408,5 @@
         });
     </script>
 </body>
+
 </html>
