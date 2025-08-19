@@ -349,7 +349,7 @@
         const placeholder = document.getElementById("footer-placeholder");
         
         // Since blogs.html is in a subfolder, the path to the footer is '../footer-fragment.html'
-        fetch('../footer-fragment.html')
+        fetch('/footer-fragment.html')
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status} - Could not find footer-fragment.html`);
