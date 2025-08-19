@@ -595,114 +595,40 @@
     });
 
     // SCRIPT TO FETCH AND LOAD FOOTER
-    document.addEventListener("DOMContentLoaded", function() {
-        const footerPaths = [
-            '../footer.html',
-            'footer.html',
-            '/footer.html'
-        ];
-
-        async function findAndLoadFooter() {
-            for (const path of footerPaths) {
-                try {
-                    console.log(`Attempting to fetch footer from: "${path}"`);
-                    const response = await fetch(path);
-                    if (response.ok) {
-                        console.log(`✅ Success! Found and loaded footer from "${path}"`);
-                        const data = await response.text();
-                        injectFooter(data);
-                        return; // Exit after successful load
-                    } else {
-                        console.warn(`⚠️ Failed to load from "${path}". Status: ${response.status}`);
-                    }
-                } catch (error) {
-                    console.error(`❌ Error fetching from "${path}":`, error);
+      document.addEventListener("DOMContentLoaded", function() {
+        const placeholder = document.getElementById("footer-placeholder");
+        
+        fetch('../footer-fragment.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status} - Could not find footer-fragment.html`);
                 }
-            }
-            console.error("Fatal: Could not load footer.html from any attempted paths.");
-            const placeholder = document.getElementById("footer-placeholder");
-            if (placeholder) {
-                placeholder.innerHTML = `<p class="text-center text-danger p-4"><b>Footer could not be loaded.</b><br>Please check the Developer Console (Right-click -> Inspect -> Console) for more details.</p>`;
-            }
-        }
+                return response.text();
+            })
+            .then(data => {
+                const parser = new DOMParser();
+                const footerDoc = parser.parseFromString(data, 'text/html');
+                
+                footerDoc.querySelectorAll('style').forEach(style => document.head.appendChild(style));
 
-        function injectFooter(data) {
-            const placeholder = document.getElementById("footer-placeholder");
-            if (!placeholder) {
-                console.error("Could not find the #footer-placeholder div.");
-                return;
-            }
+                const bodyContent = footerDoc.body.firstElementChild;
+                if (bodyContent) {
+                    placeholder.appendChild(bodyContent);
+                }
 
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(data, 'text/html');
-
-            doc.head.querySelectorAll('style').forEach(style => {
-                document.head.appendChild(style.cloneNode(true));
+                const scriptTag = footerDoc.querySelector('script');
+                if (scriptTag) {
+                    const newScript = document.createElement('script');
+                    newScript.textContent = scriptTag.textContent;
+                    document.body.appendChild(newScript);
+                }
+            })
+            .catch(error => {
+                console.error("Footer loading failed:", error);
+                if(placeholder) {
+                    placeholder.innerHTML = `<p style="text-align:center; color:red; padding: 20px;"><b>Error:</b> Footer could not be loaded. Please check the console for details.</p>`;
+                }
             });
-            
-            placeholder.innerHTML = doc.body.innerHTML;
-            
-            // Manually attach event listeners for the new content.
-            const footerTop = placeholder.querySelector('#footerTop');
-            const footerDivider = placeholder.querySelector('#footerDivider');
-            const mainFooter = placeholder.querySelector('#mainFooter');
-            const upButton = placeholder.querySelector('#footer-btn-up');
-            const topCloseButton = placeholder.querySelector('#footerTopClose');
-            const subscribeBtn = placeholder.querySelector('.subscribe-btn');
-            const subscriptionForm = placeholder.querySelector('#subscription-form');
-            const submitSubscriptionBtn = placeholder.querySelector('#subscription-form button');
-            const emailInput = placeholder.querySelector('#email');
-            const footerLeft = placeholder.querySelector('.footer-left');
-
-            if (upButton) {
-                upButton.addEventListener('click', () => {
-                    footerTop.classList.add('show');
-                    mainFooter.classList.add('hide');
-                    footerDivider.classList.add('show');
-                });
-            }
-
-            if (topCloseButton) {
-                topCloseButton.addEventListener('click', () => {
-                    footerTop.classList.remove('show');
-                    mainFooter.classList.remove('hide');
-                    footerDivider.classList.remove('show');
-                });
-            }
-
-            if (subscribeBtn) {
-                subscribeBtn.addEventListener('click', () => {
-                    if (subscriptionForm) subscriptionForm.style.display = "flex";
-                    subscribeBtn.style.display = "none";
-                });
-            }
-
-            if (submitSubscriptionBtn) {
-                submitSubscriptionBtn.addEventListener('click', () => {
-                    if (emailInput && emailInput.value) {
-                        const successMessage = document.createElement('p');
-                        successMessage.textContent = "Thank you for subscribing!";
-                        successMessage.style.color = "#3BA43B";
-                        successMessage.style.fontWeight = "bold";
-
-                        if (subscriptionForm && footerLeft && subscribeBtn) {
-                            subscriptionForm.style.display = "none";
-                            footerLeft.insertBefore(successMessage, subscribeBtn);
-
-                            setTimeout(() => {
-                                successMessage.remove();
-                                subscribeBtn.style.display = "block";
-                                emailInput.value = "";
-                            }, 3000);
-                        }
-                    } else if (emailInput) {
-                        emailInput.placeholder = "Please enter a valid email!";
-                    }
-                });
-            }
-        }
-
-        findAndLoadFooter();
     });
   </script>
 </body>
