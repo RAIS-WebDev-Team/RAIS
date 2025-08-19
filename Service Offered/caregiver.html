@@ -17,7 +17,7 @@
     }
 
     html {
-        min-height: 100%;
+      min-height: 100%;
     }
 
     body {
@@ -27,11 +27,11 @@
       flex-direction: column;
       min-height: 100vh;
     }
-    
+
     main {
-        flex-grow: 1;
+      flex-grow: 1;
     }
-    
+
     /* Custom Scrollbar Styles */
     ::-webkit-scrollbar {
       width: 12px;
@@ -89,7 +89,7 @@
       width: 90px;
       transition: transform 0.3s ease;
     }
-    
+
     .logo a:hover img {
       transform: scale(1.1);
     }
@@ -127,13 +127,13 @@
     .hero-btn:hover {
       background-color: #167e16;
       transform: scale(1.05) translateY(-2px);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     }
 
     .nav-tabs {
       border-bottom: none;
     }
-    
+
     .nav-tabs .nav-link {
       color: #444;
       font-weight: 600;
@@ -141,10 +141,10 @@
       border: 0;
       transition: all 0.3s ease;
     }
-    
+
     .nav-tabs .nav-link:not(.active):hover {
-        color: #0C470C;
-        transform: translateY(-3px);
+      color: #0C470C;
+      transform: translateY(-3px);
     }
 
     .nav-tabs .nav-link.active {
@@ -169,7 +169,7 @@
       object-fit: contain;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    
+
 
     .text-content {
       font-size: 1.125rem;
@@ -278,6 +278,75 @@
         font-size: 18px;
       }
     }
+
+    /* Center container */
+    .button-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 10vh;
+      padding: 1rem;
+      box-sizing: border-box;
+      padding-top: 50px;
+    }
+
+    /* Button styling */
+    .backbutton {
+      font-size: 14px;
+      padding: 0.7em 1.5em;
+      font-weight: 500;
+      background: #0C470C;
+      color: white;
+      border: none;
+      position: relative;
+      overflow: hidden;
+      border-radius: 0.6em;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    /* Gradient overlay */
+    .gradient {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      border-radius: 0.6em;
+      margin-top: -0.25em;
+      background-image: linear-gradient(rgba(0, 0, 0, 0),
+          rgba(0, 0, 0, 0),
+          rgba(0, 0, 0, 0.3));
+    }
+
+    /* Label */
+    .label {
+      position: relative;
+      top: -1px;
+      z-index: 1;
+    }
+
+    .transition {
+      transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+      transition-duration: 500ms;
+      background-color: rgba(51, 153, 51, 0.6);
+      border-radius: 9999px;
+      width: 0;
+      height: 0;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .backbutton:hover .transition {
+      width: 10em;
+      height: 10em;
+    }
+
+    .backbutton:active {
+      transform: scale(0.97);
+    }
   </style>
 </head>
 
@@ -286,7 +355,7 @@
     <div class="overlay-box"></div>
     <div class="logo">
       <a href="../index.html">
-        <img src="../img/logowhite.png" alt="logo" />
+        <img src="../img/logo1.png" alt="logo" />
       </a>
     </div>
     <div class="hero-content text-white text-center">
@@ -532,6 +601,15 @@
             </div>
           </div>
         </div>
+
+        <div class="button-container">
+          <button class="backbutton" onclick="window.location.href='../About.html'">
+            <span class="label">Back</span>
+            <span class="gradient"></span>
+            <span class="transition"></span>
+          </button>
+        </div>
+
         <div class="tab-navigation-buttons d-lg-none d-flex justify-content-center gap-3 mt-3">
           <button id="prevBtn" class="btn rounded-circle shadow-sm nav-btn">
             <i class="bi bi-chevron-left fs-4"></i>
@@ -594,41 +672,41 @@
     });
 
     // SCRIPT TO FETCH AND LOAD FOOTER
-    document.addEventListener("DOMContentLoaded", function() {
-        const placeholder = document.getElementById("footer-placeholder");
-        
-        // Since this file is in a subfolder, the path is relative to the root
-        fetch('../footer-fragment.html')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status} - Could not find footer-fragment.html`);
-                }
-                return response.text();
-            })
-            .then(data => {
-                const parser = new DOMParser();
-                const footerDoc = parser.parseFromString(data, 'text/html');
-                
-                footerDoc.querySelectorAll('style').forEach(style => document.head.appendChild(style));
+    document.addEventListener("DOMContentLoaded", function () {
+      const placeholder = document.getElementById("footer-placeholder");
 
-                const bodyContent = footerDoc.body.firstElementChild;
-                if (bodyContent) {
-                    placeholder.appendChild(bodyContent);
-                }
+      // Since this file is in a subfolder, the path is relative to the root
+      fetch('../footer-fragment.html')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status} - Could not find footer-fragment.html`);
+          }
+          return response.text();
+        })
+        .then(data => {
+          const parser = new DOMParser();
+          const footerDoc = parser.parseFromString(data, 'text/html');
 
-                const scriptTag = footerDoc.querySelector('script');
-                if (scriptTag) {
-                    const newScript = document.createElement('script');
-                    newScript.textContent = scriptTag.textContent;
-                    document.body.appendChild(newScript);
-                }
-            })
-            .catch(error => {
-                console.error("Footer loading failed:", error);
-                if(placeholder) {
-                    placeholder.innerHTML = `<p style="text-align:center; color:red; padding: 20px;"><b>Error:</b> Footer could not be loaded. Please check the console for details.</p>`;
-                }
-            });
+          footerDoc.querySelectorAll('style').forEach(style => document.head.appendChild(style));
+
+          const bodyContent = footerDoc.body.firstElementChild;
+          if (bodyContent) {
+            placeholder.appendChild(bodyContent);
+          }
+
+          const scriptTag = footerDoc.querySelector('script');
+          if (scriptTag) {
+            const newScript = document.createElement('script');
+            newScript.textContent = scriptTag.textContent;
+            document.body.appendChild(newScript);
+          }
+        })
+        .catch(error => {
+          console.error("Footer loading failed:", error);
+          if (placeholder) {
+            placeholder.innerHTML = `<p style="text-align:center; color:red; padding: 20px;"><b>Error:</b> Footer could not be loaded. Please check the console for details.</p>`;
+          }
+        });
     });
   </script>
 </body>
