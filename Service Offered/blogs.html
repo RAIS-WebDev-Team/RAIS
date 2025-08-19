@@ -8,7 +8,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="icon" href="img/logoulit.png" />
+  <link rel="icon" href="../img/logoulit.png" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
@@ -221,7 +221,7 @@
 
 <body>
   <header>
-    <a href="index.html" class="logo-link">
+    <a href="../index.html" class="logo-link">
       <img src="img/logo.png" alt="RAIS Events Logo" class="logo-image">
     </a>
     <div class="menu-toggle" id="mobile-menu">
@@ -237,7 +237,7 @@
   </header>
 
   <main>
-    <a href="index.html" class="btn-back" aria-label="Go Back">
+    <a href="../index.html" class="btn-back" aria-label="Go Back">
       <i class="fas fa-arrow-left"></i>
     </a>
     <section class="section-container">
@@ -252,9 +252,9 @@
 
           <!-- Card 1 -->
           <div class="col-lg-6">
-            <a href="blog/mini-fair.html" class="blog-card" id="event1">
+            <a href="../blog/mini-fair.html" class="blog-card" id="event1">
               <div class="img-wrapper">
-                <img src="blog/img/minifair2.png" alt="IELTS Mini Fair">
+                <img src="../blog/img/minifair2.png" alt="IELTS Mini Fair">
               </div>
               <div class="card-content">
                 <div class="title-area">
@@ -267,9 +267,9 @@
 
           <!-- Card 2 -->
           <div class="col-lg-6">
-            <a href="blog/visitation.html" class="blog-card" id="event2">
+            <a href="../blog/visitation.html" class="blog-card" id="event2">
               <div class="img-wrapper">
-                <img src="blog/img/lasalle.png" alt="Visitation from academic partners">
+                <img src="../blog/img/lasalle.png" alt="Visitation from academic partners">
               </div>
               <div class="card-content">
                 <div class="title-area">
@@ -282,9 +282,9 @@
 
           <!-- Card 3 -->
           <div class="col-lg-6">
-            <a href="blog/canada.html" class="blog-card" id="event3">
+            <a href="../blog/canada.html" class="blog-card" id="event3">
               <div class="img-wrapper">
-                <img src="blog/img/canada.png" alt="A Calling to Canada event">
+                <img src="../blog/img/canada.png" alt="A Calling to Canada event">
               </div>
               <div class="card-content">
                 <div class="title-area">
@@ -313,10 +313,10 @@
     });
 
     const schools = [
-      { title: "Student Life at La Salle Lipa", summary: "Experience education and values at La Salle.", coordinates: [13.9412, 121.1621], url: "blog/la-salle.html", cardId: "event2" },
-      { title: "Tech & Training at STI Lipa", summary: "A look into STI Lipa’s modern curriculum.", coordinates: [13.9416, 121.1628], url: "blog/sti-lipa.html", cardId: "event2" },
-      { title: "IELTS Prep at 9.0 Niner Calamba", summary: "Reviewing English with proven techniques.", coordinates: [14.2133, 121.1658], url: "blog/calamba.html", cardId: "event1" },
-      { title: "Learning English in Tacloban", summary: "ELA helps students master the language.", coordinates: [11.2410, 125.0016], url: "blog/tacloban.html", cardId: "event1" }
+      { title: "Student Life at La Salle Lipa", summary: "Experience education and values at La Salle.", coordinates: [13.9412, 121.1621], url: "../blog/la-salle.html", cardId: "event2" },
+      { title: "Tech & Training at STI Lipa", summary: "A look into STI Lipa’s modern curriculum.", coordinates: [13.9416, 121.1628], url: "../blog/sti-lipa.html", cardId: "event2" },
+      { title: "IELTS Prep at 9.0 Niner Calamba", summary: "Reviewing English with proven techniques.", coordinates: [14.2133, 121.1658], url: "../blog/calamba.html", cardId: "event1" },
+      { title: "Learning English in Tacloban", summary: "ELA helps students master the language.", coordinates: [11.2410, 125.0016], url: "../blog/tacloban.html", cardId: "event1" }
     ];
 
     const map = L.map("map", {
@@ -349,7 +349,7 @@
         const placeholder = document.getElementById("footer-placeholder");
         
         // Since blogs.html is in a subfolder, the path to the footer is '../footer-fragment.html'
-        fetch('footer-fragment.html')
+        fetch('../footer-fragment.html')
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status} - Could not find footer-fragment.html`);

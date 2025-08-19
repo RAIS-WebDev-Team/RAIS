@@ -178,65 +178,6 @@
       font-weight: 600;
     }
 
-    /* --- Footer --- */
-    footer {
-      background-color: var(--primary-color);
-      color: white;
-      padding: 30px 10px;
-      margin-top: 2rem;
-      font-family: var(--font-family);
-    }
-
-    .footer-container {
-      display: flex;
-      justify-content: space-between;
-      max-width: 1100px;
-      margin: auto;
-      flex-wrap: wrap;
-      gap: 40px;
-    }
-
-    .footer-left,
-    .footer-right {
-      flex: 1;
-      min-width: 300px;
-      padding: 10px;
-    }
-
-    .footer-left {
-      text-align: center;
-      border-right: 1px solid rgba(255, 255, 255, 0.4);
-    }
-
-    .footer-left h3,
-    .footer-right h3 {
-      font-weight: bold;
-      margin-bottom: 15px;
-    }
-
-    .footer-left p,
-    .footer-right p {
-      font-size: 14px;
-      color: #ddd;
-      line-height: 1.8;
-    }
-
-  .footer-left button {
-      background-color: #1ac522;
-      color: white;
-      border: none;
-      padding: 8px 20px;
-      font-size: 14px;
-      border-radius: 20px;
-      cursor: pointer;
-    }
-
-    .footer-right p i {
-      margin-right: 10px;
-      width: 15px;
-    }
-
-
     @media (max-width: 768px) {
       .blog-post {
         padding: 1.5rem;
@@ -255,22 +196,6 @@
 
       .btn-back i {
         font-size: 1rem;
-      }
-
-      .footer-container {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .footer-left {
-        border-right: none;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-        padding-bottom: 30px;
-        margin-bottom: 30px;
-      }
-
-      .footer-right {
-        padding-top: 0;
       }
     }
   </style>
@@ -318,56 +243,43 @@
       </section>
     </article>
   </main>
-
-  <footer id="contact">
-    <div class="footer-container">
-      <div class="footer-left">
-        <h3>Wanna Subscribe to our News Letter?</h3>
-        <p>Subscribe to our newsletter for the latest updates on new features and product releases.</p>
-
-        <button id="show-form-btn" onclick="showSubscriptionForm()" style="padding: 10px 20px; border-radius: 20px;">
-          Click here
-        </button>
-
-        <div id="subscription-form" style="display: none; margin-top: 10px;">
-          <input type="email" id="email" placeholder="Enter your email" required
-            style="padding: 6px 10px 6px 20px; width: 45%; border-radius: 25px; border: 1px solid #ccc; outline: none; color: #333;" />
-          <button onclick="submitSubscription()" style="padding: 6px 16px; margin-left: 5px; border-radius: 25px;">
-            Subscribe
-          </button>
-        </div>
-      </div>
-
-      <div class="footer-right">
-        <h3>Get In Touch</h3>
-        <p>
-          <i class="fas fa-envelope"></i> : assessment@romancis.ca <br>
-          <i class="fas fa-phone-alt"></i> : 09171857247 | (250) 667-0565<br>
-          <i class="fas fa-map-marker-alt"></i> : City Sleep Inn Hotel and Events Centre, Barangay
-          Sico, Lipa
-          City, Batangas
-        </p>
-      </div>
-    </div>
-  </footer>
-
+    <div id="footer-placeholder"></div>
   <script>
-    function showSubscriptionForm() {
-      document.getElementById("subscription-form").style.display = "block";
-      document.getElementById("show-form-btn").style.display = "none";
-    }
+     document.addEventListener("DOMContentLoaded", function() {
+        const placeholder = document.getElementById("footer-placeholder");
+        
+        fetch('../footer-fragment.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status} - Could not find footer-fragment.html`);
+                }
+                return response.text();
+            })
+            .then(data => {
+                const parser = new DOMParser();
+                const footerDoc = parser.parseFromString(data, 'text/html');
+                
+                footerDoc.querySelectorAll('style').forEach(style => document.head.appendChild(style));
 
-    function submitSubscription() {
-      const email = document.getElementById("email").value;
-      if (email && email.includes('@')) {
-        alert("Subscribed successfully with: " + email);
-        document.getElementById("email").value = "";
-        document.getElementById("subscription-form").style.display = "none";
-        document.getElementById("show-form-btn").style.display = "inline-block";
-      } else {
-        alert("Please enter a valid email address.");
-      }
-    }
+                const bodyContent = footerDoc.body.firstElementChild;
+                if (bodyContent) {
+                    placeholder.appendChild(bodyContent);
+                }
+
+                const scriptTag = footerDoc.querySelector('script');
+                if (scriptTag) {
+                    const newScript = document.createElement('script');
+                    newScript.textContent = scriptTag.textContent;
+                    document.body.appendChild(newScript);
+                }
+            })
+            .catch(error => {
+                console.error("Footer loading failed:", error);
+                if(placeholder) {
+                    placeholder.innerHTML = `<p style="text-align:center; color:red; padding: 20px;"><b>Error:</b> Footer could not be loaded. Please check the console for details.</p>`;
+                }
+            });
+    });
   </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"

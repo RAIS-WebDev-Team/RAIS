@@ -1668,11 +1668,11 @@
                         row.classList.add('selected');
                     }
                     row.innerHTML = `
-                        <td>${media.name}</td>
-                        <td>${media.uploader}</td>
-                        <td>${media.date}</td>
-                        <td>${media.fileName}</td>
-                    `;
+                <td>${media.name}</td>
+                <td>${media.uploader}</td>
+                <td>${media.date}</td>
+                <td>${media.fileName}</td>
+            `;
                 });
             }
 
@@ -1707,7 +1707,7 @@
 
                 if (mode === 'add') {
                     modalTitle.textContent = 'Add New Hero Media';
-                    saveMediaBtn.textContent = 'Upload Media';
+                    saveMediaBtn.textContent = 'Add Media';
                     saveMediaBtn.dataset.mode = 'add';
                     mediaFileInput.required = true;
                     fileHelp.textContent = 'Please select a photo or video to upload.';
@@ -1718,7 +1718,7 @@
 
                     document.getElementById('mediaName').value = media.name;
                     document.getElementById('uploaderName').value = media.uploader;
-                    mediaFileInput.required = false; // File is not required on edit
+                    mediaFileInput.required = false;
                     fileHelp.textContent = `Current file: ${media.fileName}. You can upload a new file to replace it.`;
                 }
             }
@@ -1729,7 +1729,6 @@
                 if (row) selectRow(parseInt(row.dataset.id));
             });
 
-            // FAB Listeners
             addLandingBtn.addEventListener('click', () => {
                 resetAndPrepareModal('add');
                 uploadModal.show();
@@ -1779,7 +1778,6 @@
                 previewModal.show();
             });
 
-            // Modal Form Listeners
             mediaFileInput.addEventListener('change', function (event) {
                 const file = event.target.files[0];
                 if (!file) return;
@@ -1789,7 +1787,10 @@
                     const reader = new FileReader();
                     reader.onload = e => {
                         const img = new Image();
-                        img.onload = () => { isLandscape = (img.height <= img.width); };
+                        img.onload = () => {
+                            // CHANGED: Strict check for landscape (width MUST BE greater than height)
+                            isLandscape = (img.width > img.height);
+                        };
                         img.src = e.target.result;
                     };
                     reader.readAsDataURL(file);
@@ -1798,6 +1799,7 @@
                 }
             });
 
+            // CHANGED: Save button now triggers confirmation, doesn't save directly
             saveMediaBtn.addEventListener('click', () => {
                 if (!uploadForm.checkValidity()) {
                     uploadForm.reportValidity();
@@ -1809,29 +1811,38 @@
                 }
 
                 const mode = saveMediaBtn.dataset.mode;
-                const name = document.getElementById('mediaName').value;
-                const uploader = document.getElementById('uploaderName').value;
+                const confirmationBody = document.getElementById('landing-confirmation-body');
+                confirmationBody.textContent = `Are you sure you want to ${mode === 'add' ? 'add this new' : 'update this'} media item?`;
 
-                if (mode === 'add') {
-                    landingMediaData.push({
-                        id: nextMediaId++,
-                        name: name,
-                        uploader: uploader,
-                        date: new Date().toISOString().slice(0, 10),
-                        file: tempFile,
-                        fileName: tempFile.name
-                    });
-                } else { // edit mode
-                    const media = landingMediaData.find(m => m.id === selectedMediaId);
-                    media.name = name;
-                    media.uploader = uploader;
-                    if (tempFile) {
-                        media.file = tempFile;
-                        media.fileName = tempFile.name;
+                // ADDED: The actual save logic is moved inside the confirmation button's click handler
+                document.getElementById('confirm-landing-action-btn').onclick = () => {
+                    const name = document.getElementById('mediaName').value;
+                    const uploader = document.getElementById('uploaderName').value;
+
+                    if (mode === 'add') {
+                        landingMediaData.push({
+                            id: nextMediaId++,
+                            name: name,
+                            uploader: uploader,
+                            date: new Date().toISOString().slice(0, 10),
+                            file: tempFile,
+                            fileName: tempFile.name
+                        });
+                    } else { // edit mode
+                        const media = landingMediaData.find(m => m.id === selectedMediaId);
+                        media.name = name;
+                        media.uploader = uploader;
+                        if (tempFile) {
+                            media.file = tempFile;
+                            media.fileName = tempFile.name;
+                        }
                     }
-                }
-                renderTable();
-                uploadModal.hide();
+                    renderTable();
+                    uploadModal.hide();
+                    confirmationModal.hide(); // Hide the confirmation modal after saving
+                };
+
+                confirmationModal.show(); // Show the confirmation modal
             });
 
             repickPhotoBtn.addEventListener('click', () => {
@@ -1843,7 +1854,7 @@
             continueAnywayBtn.addEventListener('click', () => {
                 isLandscape = true; // User overrides warning
                 warningModal.hide();
-                saveMediaBtn.click(); // Re-trigger the save action
+                saveMediaBtn.click(); // Re-trigger the save action, which will now open the confirmation modal
             });
 
             // Initial Render
