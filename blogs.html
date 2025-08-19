@@ -221,8 +221,8 @@
 
 <body>
   <header>
-    <a href="../index.html" class="logo-link">
-      <img src="../img/logo.png" alt="RAIS Events Logo" class="logo-image">
+    <a href="index.html" class="logo-link">
+      <img src="img/logo.png" alt="RAIS Events Logo" class="logo-image">
     </a>
     <div class="menu-toggle" id="mobile-menu">
       <div class="bar"></div>
@@ -237,7 +237,7 @@
   </header>
 
   <main>
-    <a href="../index.html" class="btn-back" aria-label="Go Back">
+    <a href="index.html" class="btn-back" aria-label="Go Back">
       <i class="fas fa-arrow-left"></i>
     </a>
     <section class="section-container">
@@ -349,7 +349,7 @@
         const placeholder = document.getElementById("footer-placeholder");
         
         // Since blogs.html is in a subfolder, the path to the footer is '../footer-fragment.html'
-        fetch('/footer-fragment.html')
+        fetch('footer-fragment.html')
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status} - Could not find footer-fragment.html`);
