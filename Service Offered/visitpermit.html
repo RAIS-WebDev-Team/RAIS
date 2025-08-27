@@ -7,7 +7,7 @@
   <title>Visit Permit</title>
   <link rel="icon" href="../img/logoulit.png" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     * {
@@ -80,7 +80,7 @@
     }
 
     .logo a:hover img {
-        transform: scale(1.1);
+      transform: scale(1.1);
     }
 
     .hero-content {
@@ -116,11 +116,11 @@
     .hero-btn:hover {
       background-color: #167e16;
       transform: scale(1.05) translateY(-2px);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     }
 
     .nav-tabs {
-        border-bottom: none;
+      border-bottom: none;
     }
 
     .nav-tabs .nav-link {
@@ -130,10 +130,10 @@
       border: 0;
       transition: all 0.3s ease;
     }
-    
+
     .nav-tabs .nav-link:not(.active):hover {
-        color: #0C470C;
-        transform: translateY(-3px);
+      color: #0C470C;
+      transform: translateY(-3px);
     }
 
     .nav-tabs .nav-link.active {
@@ -245,7 +245,10 @@
         flex-direction: column;
       }
 
-      .text-content, #info li, #documents ul, #info p {
+      .text-content,
+      #info li,
+      #documents ul,
+      #info p {
         font-size: 14px;
       }
 
@@ -260,7 +263,8 @@
         padding: 10px 15px;
       }
 
-      #info h4, #info h5 {
+      #info h4,
+      #info h5 {
         font-size: 18px;
       }
     }
@@ -337,8 +341,7 @@
           <div class="tab-pane fade" id="criteria" role="tabpanel">
             <div class="row align-items-center g-4">
               <div class="col-md-3 text-center">
-                <img src="../img/criteria.jpg" class="img-fluid rounded tab-image"
-                  alt="Checklist">
+                <img src="../img/criteria.jpg" class="img-fluid rounded tab-image" alt="Checklist">
               </div>
               <div class="col-md-9 px-5">
                 <h4 class="fw-bold mb-3">Criteria:</h4>
@@ -355,7 +358,8 @@
                     document.</li>
                 </p>
                 <p><strong>3. Nationality:</strong>
-                  <li style="list-style-type: circle; padding-left: 1.5rem;">Your nationality determines whether you need
+                  <li style="list-style-type: circle; padding-left: 1.5rem;">Your nationality determines whether you
+                    need
                     a Visitor
                     Visa or an
                     Electronic Travel Authorization (eTA).</li>
@@ -647,40 +651,40 @@
     });
 
     // SCRIPT TO FETCH AND LOAD FOOTER
-      document.addEventListener("DOMContentLoaded", function() {
-        const placeholder = document.getElementById("footer-placeholder");
-        
-        fetch('../footer-fragment.html')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status} - Could not find footer-fragment.html`);
-                }
-                return response.text();
-            })
-            .then(data => {
-                const parser = new DOMParser();
-                const footerDoc = parser.parseFromString(data, 'text/html');
-                
-                footerDoc.querySelectorAll('style').forEach(style => document.head.appendChild(style));
+    document.addEventListener("DOMContentLoaded", function () {
+      const placeholder = document.getElementById("footer-placeholder");
 
-                const bodyContent = footerDoc.body.firstElementChild;
-                if (bodyContent) {
-                    placeholder.appendChild(bodyContent);
-                }
+      fetch('../footer-fragment.html')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status} - Could not find footer-fragment.html`);
+          }
+          return response.text();
+        })
+        .then(data => {
+          const parser = new DOMParser();
+          const footerDoc = parser.parseFromString(data, 'text/html');
 
-                const scriptTag = footerDoc.querySelector('script');
-                if (scriptTag) {
-                    const newScript = document.createElement('script');
-                    newScript.textContent = scriptTag.textContent;
-                    document.body.appendChild(newScript);
-                }
-            })
-            .catch(error => {
-                console.error("Footer loading failed:", error);
-                if(placeholder) {
-                    placeholder.innerHTML = `<p style="text-align:center; color:red; padding: 20px;"><b>Error:</b> Footer could not be loaded. Please check the console for details.</p>`;
-                }
-            });
+          footerDoc.querySelectorAll('style').forEach(style => document.head.appendChild(style));
+
+          const bodyContent = footerDoc.body.firstElementChild;
+          if (bodyContent) {
+            placeholder.appendChild(bodyContent);
+          }
+
+          const scriptTag = footerDoc.querySelector('script');
+          if (scriptTag) {
+            const newScript = document.createElement('script');
+            newScript.textContent = scriptTag.textContent;
+            document.body.appendChild(newScript);
+          }
+        })
+        .catch(error => {
+          console.error("Footer loading failed:", error);
+          if (placeholder) {
+            placeholder.innerHTML = `<p style="text-align:center; color:red; padding: 20px;"><b>Error:</b> Footer could not be loaded. Please check the console for details.</p>`;
+          }
+        });
     });
   </script>
 </body>
